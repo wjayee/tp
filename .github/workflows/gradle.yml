@@ -1,6 +1,14 @@
 name: Java CI
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - 'config/**'
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'config/**'
 
 jobs:
   build:
