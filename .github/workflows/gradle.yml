@@ -18,7 +18,7 @@ jobs:
         with:
           ref: master
 
-      - name: Merge to master
+      - name: Checkout triggering commit
         run: git checkout --progress --force ${{ github.sha }}
 
       - name: Run repository-wide tests
