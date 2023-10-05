@@ -13,7 +13,7 @@ Given below are my contributions to the project:
 * **Code contributed**: [Jason's RepoSense Link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=bkjwjason&breakdown=true)
 
 * **Project management**:
-    * Designed and added UI mockup 
+    * Designed and added UI mockup
 
 * **Enhancements to existing features**:
   to be added
