@@ -6,7 +6,7 @@
 
 # PawFection User Guide
 
-PawFection is a **desktop app for managing animals in a pet shelter, optimized for use via a Line Interface** (CLI) while still
+PawFection is a **desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface** (CLI) while still
 having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to store and retrieve information
 about animals in a shelter easily. 
 
@@ -69,8 +69,8 @@ about animals in a shelter easily.
 
 ### Entry Management
 
-#### Adding a person: `addanimal`
-Adds a animal to the address book.
+#### Adding an animal: `addanimal`
+Adds an animal to the address book.
 
 Format: `addanimal n/NAME id/ID t/TYPE g/GENDER a/AGE`
 
@@ -81,24 +81,24 @@ Format: `addanimal n/NAME id/ID t/TYPE g/GENDER a/AGE`
 
 Examples:
 
-#### Listing all persons : `list`
-Shows a list of all persons in the address book.
+#### Listing all animals: `list`
+Shows a list of all animals in the address book.
 
 Format: `list`
 
 Expected outcome (success):\
 Here is the list of all contacts in your address book:
-1. Loysius 91234567 blizzerac@example.com Pasir Ris Avenue 6
-2. Jason Baek 97896054 jasonbaek@example.com Ivory tower 6
+1. Pookie 1234567 Dog Male 5y/o
+2. Tofu 1234565 Cat Female 1y/o
 
 
-#### Deleting a person : `delete`
-Deletes the specified person from the address book.
+#### Deleting an animal: `delete`
+Deletes the specified animal from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the animal at the specified `INDEX`.
+* The index refers to the index number shown in the displayed list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
