@@ -27,7 +27,21 @@ public class PersonListPanel extends UiPart<Region> {
         super(FXML);
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
+        personListView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        showPersonDetails(newValue);
+                    }
+                }
+        );
     }
+
+    private void showPersonDetails(Person selectedPerson) {
+        // This is just a placeholder. WIP to integrate PersonDetailPanel here.
+        logger.info("Selected person: " + selectedPerson);
+    }
+
+
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
@@ -45,5 +59,4 @@ public class PersonListPanel extends UiPart<Region> {
             }
         }
     }
-
 }

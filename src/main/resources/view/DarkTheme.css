@@ -104,7 +104,7 @@
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #515658;
+    -fx-background-color: #FF8B00;
 }
 
 .list-cell:filled:selected {
