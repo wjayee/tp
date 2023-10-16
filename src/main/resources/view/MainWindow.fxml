@@ -23,6 +23,7 @@
         <URL value="@Extensions.css" />
       </stylesheets>
 
+      <!-- Menu bar containing File and Help -->
       <VBox>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
@@ -33,12 +34,14 @@
           </Menu>
         </MenuBar>
 
+        <!-- Box to input command -->
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
 
+        <!-- Box to output remark of command -->
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
                    minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
@@ -46,6 +49,7 @@
           </padding>
         </StackPane>
 
+        <!-- Box showing list of contacts -->
         <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
@@ -53,6 +57,7 @@
           <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
 
+        <!-- Status bar showing file path -->
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
