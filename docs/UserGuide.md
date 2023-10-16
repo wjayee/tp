@@ -8,7 +8,7 @@
 
 PawFection is a **desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface** (CLI) while still
 having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to store and retrieve information
-about animals in a shelter easily. 
+about animals in a shelter easily.
 
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
@@ -133,7 +133,7 @@ Finds animals whose names/ID contain any of the given keywords.
 
 Format: `findn KEYWORD [MORE_KEYWORDS]…​` OR `findi KEYWORD [MORE_KEYWORDS]…​`
 
-* findn searches for animals whose names contain any of the given keywords while findi searches for animals whose ID 
+* findn searches for animals whose names contain any of the given keywords while findi searches for animals whose ID
 contain any of the given keywords.
 * The search is case-insensitive. e.g `pookie` will match `Pookie`
 * Animals matching at least one keyword will be returned (i.e. `OR` search).
