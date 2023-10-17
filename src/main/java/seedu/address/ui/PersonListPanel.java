@@ -16,6 +16,7 @@ import seedu.address.model.person.Person;
 public class PersonListPanel extends UiPart<Region> {
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+    private final PersonDetailPanel personDetailPanel;
 
     @FXML
     private ListView<Person> personListView;
@@ -23,8 +24,9 @@ public class PersonListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public PersonListPanel(ObservableList<Person> personList, PersonDetailPanel detailPanel) {
         super(FXML);
+        this.personDetailPanel = detailPanel;
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
         personListView.getSelectionModel().selectedItemProperty().addListener(
@@ -37,8 +39,7 @@ public class PersonListPanel extends UiPart<Region> {
     }
 
     private void showPersonDetails(Person selectedPerson) {
-        // This is just a placeholder. WIP to integrate PersonDetailPanel here.
-        logger.info("Selected person: " + selectedPerson);
+        personDetailPanel.updateDetails(selectedPerson);
     }
 
 
