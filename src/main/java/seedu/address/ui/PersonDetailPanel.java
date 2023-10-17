@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 
+/**
+ * UI Component that displays detailed information of a Person when selected.
+ */
 public class PersonDetailPanel extends UiPart<Region> {
     private static final String FXML = "PersonDetailPanel.fxml";
 
@@ -17,6 +20,9 @@ public class PersonDetailPanel extends UiPart<Region> {
     @FXML
     private Label email;
 
+    /**
+     * Creates an empty detailed view panel upon initialization.
+     */
     public PersonDetailPanel() {
         super(FXML);
         clearDetails();

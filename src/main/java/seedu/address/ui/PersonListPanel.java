@@ -29,15 +29,19 @@ public class PersonListPanel extends UiPart<Region> {
         this.personDetailPanel = detailPanel;
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
-        personListView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        showPersonDetails(newValue);
-                    }
+        personListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                showPersonDetails(newValue);
                 }
+            }
         );
     }
 
+    /**
+     * Updates the detailed view panel with the selected person.
+     *
+     * @param selectedPerson
+     */
     private void showPersonDetails(Person selectedPerson) {
         personDetailPanel.updateDetails(selectedPerson);
     }
