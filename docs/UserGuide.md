@@ -72,13 +72,13 @@ about animals in a shelter easily.
 #### Adding an animal: `add`
 Adds an animal to the address book.
 
-Format: `add n/NAME i/ID db/DOB s/SEX b/BREED da/DOA`
+Format: `add n/NAME i/ID db/DOB b/BREED da/DOA g/SEX s/SPECIES `
 
 * ID must be a unique 4 digit number.
 
 Examples:
-* `add n/Pookie i/1234 db/28-2-2022 s/male b/Golden Retriver da/23-5-2022`
-* `add n/Tofu i/1242 db/21/4/2023 s/female b/British Shorthair da/25-5-2022`
+* `add n/Pookie i/1234 db/28-2-2022 g/male b/Golden Retriver da/23-5-2022 s/dog`
+* `add n/Tofu i/1242 db/21-4-2023 g/female b/British Shorthair da/25-5-2022 s/cat`
 
 
 #### Adding healthStatus to animal: `addhealth`
@@ -190,7 +190,7 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME i/ID db/DOB da/DOA s/SEX b/BREED`
+**Add**    | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`
 **AddHealth** | `addhealth ID [s/STERERILIZATION_STATUS]... [v/VACCINATION_STATUS]... [a/ALLERGY]... [d/DIETRY_RESTRICTION]...`
 **RemoveHealth** | `removehealth ID [s/STERERILIZATION_STATUS_INDEX] [v/VACCINATION_STATUS_INDEX] [a/ALLERGY_INDEX] [d/DIETRY_RESTRICTION_INDEX]`
 **Clear**  | `clear`

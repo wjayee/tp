@@ -29,7 +29,7 @@ public class PetId {
     /**
      * Returns true if a given petId is a valid PetId.
      */
-    private static boolean isValidPetId(String test) {
+    public static boolean isValidPetId(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

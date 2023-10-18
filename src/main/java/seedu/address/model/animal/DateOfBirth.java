@@ -42,6 +42,13 @@ public class DateOfBirth {
         return age;
     }
 
+    /**
+     * Returns true if a given string is a valid date.
+     */
+    public static boolean isValidDate(String test) {
+        return TimeUtil.isValidDate(test);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
