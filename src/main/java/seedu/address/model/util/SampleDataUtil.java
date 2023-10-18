@@ -6,8 +6,14 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AnimalCatalog;
 import seedu.address.model.ReadOnlyAnimalCatalog;
-import seedu.address.model.animal.*;
-
+import seedu.address.model.animal.AdmissionDate;
+import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Breed;
+import seedu.address.model.animal.DateOfBirth;
+import seedu.address.model.animal.Name;
+import seedu.address.model.animal.PetId;
+import seedu.address.model.animal.Sex;
+import seedu.address.model.animal.Species;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -15,41 +21,25 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     /**
-    public static Person[] getSamplePersons() {
-        return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
-        };
-    }
-     **/
-
+     * A list of sample animals to show in the default app.
+     * @return A list of Animals
+     */
     public static Animal[] getSampleAnimals() {
         return new Animal[] {
-                new Animal(new Name("Pookie"), new PetId("1234"), new Species("Dog"),
-                        new Breed("Golden retriever"), new Sex("Male"),
-                        new AdmissionDate("2022-09-09"), new DateOfBirth("2022-09-09")),
-                new Animal(new Name("Bear"), new PetId("4321"), new Species("Bear"),
-                        new Breed("Brown Bear"), new Sex("Female"),
-                        new AdmissionDate("2022-09-09"), new DateOfBirth("2015-09-09"))
+            new Animal(new Name("Pookie"), new PetId("1234"), new Species("Dog"),
+                new Breed("Golden retriever"), new Sex("Male"),
+                new AdmissionDate("2022-09-09"), new DateOfBirth("2022-09-09")),
+            new Animal(new Name("Bear"), new PetId("4321"), new Species("Bear"),
+                new Breed("Brown Bear"), new Sex("Female"),
+                new AdmissionDate("2022-09-09"), new DateOfBirth("2015-09-09"))
         };
     }
 
+
+    /**
+     * Generates a series of sample animals and puts it inside the animal catalog
+     * @return AnimalCatalog
+     */
     public static ReadOnlyAnimalCatalog getSampleAnimalCatalog() {
         AnimalCatalog sampleAc = new AnimalCatalog();
         for (Animal sampleAnimal : getSampleAnimals()) {

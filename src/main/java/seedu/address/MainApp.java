@@ -15,9 +15,11 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.AnimalLogic;
 import seedu.address.logic.AnimalLogicManager;
-import seedu.address.logic.Logic;
-import seedu.address.logic.LogicManager;
-import seedu.address.model.*;
+import seedu.address.model.AnimalModel;
+import seedu.address.model.AnimalModelManager;
+import seedu.address.model.ReadOnlyAnimalCatalog;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
@@ -74,20 +76,18 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyAnimalCatalog> animalCatalogOptional;
         ReadOnlyAnimalCatalog initialData;
-        /**
-        try {
-            animalCatalogOptional = storage.readAddressBook();
-            if (!animalCatalogOptional.isPresent()) {
-                logger.info("Creating a new data file " + storage.getAddressBookFilePath()
-                        + " populated with a sample AddressBook.");
-            }
-            initialData = animalCatalogOptional.orElseGet(SampleDataUtil::getSampleAnimalCatalog);
-        } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
-            initialData = new AnimalCatalog();
-        }
-        **/
+        //try {
+        //    animalCatalogOptional = storage.readAddressBook();
+        //    if (!animalCatalogOptional.isPresent()) {
+        //        logger.info("Creating a new data file " + storage.getAddressBookFilePath()
+        //                + " populated with a sample AddressBook.");
+        //    }
+        //    initialData = animalCatalogOptional.orElseGet(SampleDataUtil::getSampleAnimalCatalog);
+        //} catch (DataLoadingException e) {
+        //    logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+        //            + " Will be starting with an empty AddressBook.");
+        //    initialData = new AnimalCatalog();
+        //}
         initialData = SampleDataUtil.getSampleAnimalCatalog();
         return new AnimalModelManager(initialData, userPrefs);
     }

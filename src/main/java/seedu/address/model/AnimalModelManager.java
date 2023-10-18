@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
-import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -13,9 +12,11 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.animal.Animal;
-import seedu.address.model.person.Person;
 
-public class AnimalModelManager implements AnimalModel{
+/**
+ * Represents the in-memory model of the AnimalCatalog Data
+ */
+public class AnimalModelManager implements AnimalModel {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AnimalCatalog animalCatalog;
@@ -24,6 +25,11 @@ public class AnimalModelManager implements AnimalModel{
 
     private final FilteredList<Animal> filteredAnimals;
 
+    /**
+     * Initializes an animalCatalog with the given animalCatalog and userPrefs
+     * @param animalCatalog Generated animalCatalog
+     * @param userPrefs UserPreferences
+     */
     public AnimalModelManager(ReadOnlyAnimalCatalog animalCatalog, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(animalCatalog, userPrefs);
 

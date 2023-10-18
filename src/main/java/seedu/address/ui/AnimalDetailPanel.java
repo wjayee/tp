@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.model.animal.Animal;
 
+/**
+ * UI component that displays detailed animal information when selected.
+ */
 public class AnimalDetailPanel extends UiPart<Region> {
     private static final String FXML = "AnimalDetailPanel.fxml";
 
@@ -41,8 +44,8 @@ public class AnimalDetailPanel extends UiPart<Region> {
         sex.setText(animal.getSex().toString());
         species.setText(animal.getSpecies().toString());
         breed.setText(animal.getBreed().toString());
-        dateOfBirth.setText(animal.getDateOfBirth().toString());
-        admissionDate.setText(animal.getAdmissionDate().toString());
+        dateOfBirth.setText("Age: " + animal.getDateOfBirth().toString());
+        admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
     }
 
     /**

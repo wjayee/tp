@@ -10,7 +10,9 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.animal.Animal;
 
-
+/**
+ * Panel containing the list of animals.
+ */
 public class AnimalListPanel extends UiPart<Region> {
 
     private static final String FXML = "AnimalListPanel.fxml";
@@ -20,16 +22,21 @@ public class AnimalListPanel extends UiPart<Region> {
     @FXML
     private ListView<Animal> animalListView;
 
+    /**
+     * Creates a AnimalListPanel with the given AnimalList.
+     * @param animalList ObservableList of Animals
+     * @param detailPanel detailedPanel of Animals
+     */
     public AnimalListPanel(ObservableList<Animal> animalList, AnimalDetailPanel detailPanel) {
         super(FXML);
         this.animalDetailPanel = detailPanel;
         animalListView.setItems(animalList);
         animalListView.setCellFactory(listView -> new AnimalListViewCell());
         animalListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        showAnimalDetails(newValue);
-                    }
+            if (newValue != null) {
+                showAnimalDetails(newValue);
                 }
+            }
         );
     }
 
