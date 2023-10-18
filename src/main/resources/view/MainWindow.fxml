@@ -53,19 +53,19 @@
         <SplitPane fx:id="splitPane" dividerPositions="0.5" VBox.vgrow="ALWAYS">
 
           <!-- Box showing list of contacts -->
-          <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <VBox fx:id="animalList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
-            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="animalListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
           <!-- Box showing details of selected contact -->
-          <VBox fx:id="personDetail" styleClass="pane-with-border" minWidth="340" prefWidth="340">
+          <VBox fx:id="animalDetail" styleClass="pane-with-border" minWidth="340" prefWidth="340">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
-            <StackPane fx:id="personDetailPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            <StackPane fx:id="animalDetailPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </SplitPane>
 

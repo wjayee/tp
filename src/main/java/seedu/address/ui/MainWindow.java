@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
+import seedu.address.logic.AnimalLogic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -28,7 +28,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private Logic logic;
+    private AnimalLogic logic;
 
     // Independent Ui parts residing in this Ui container
     private AnimalListPanel animalListPanel;
@@ -45,7 +45,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane animalListPanelPlaceholder;
 
     @FXML
-    private StackPane personDetailPanelPlaceholder;
+    private StackPane animalDetailPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -56,7 +56,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    public MainWindow(Stage primaryStage, AnimalLogic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -116,15 +116,13 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        // Sample code, adjust accordingly
-        PersonDetailPanel personDetailPanel = new PersonDetailPanel(); // Use a default person
-        personDetailPanelPlaceholder.getChildren().add(personDetailPanel.getRoot());
+        AnimalDetailPanel animalDetailPanel = new AnimalDetailPanel();
+        animalDetailPanelPlaceholder.getChildren().add(animalDetailPanel.getRoot());
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), personDetailPanel);
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        animalListPanel = new AnimalListPanel(logic.getFilteredAnimalList(), animalDetailPanel);
+        animalListPanelPlaceholder.getChildren().add(animalListPanel.getRoot());
 
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAnimalCatalogFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -159,8 +157,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show();
     }
 
-    public void showPersonDetail(PersonDetailPanel personDetailPanel) {
-        personDetailPanelPlaceholder.getChildren().setAll(personDetailPanel.getRoot());
+    public void showAnimalDetail(AnimalDetailPanel animalDetailPanel) {
+        animalDetailPanelPlaceholder.getChildren().setAll(animalDetailPanel.getRoot());
     }
 
 
@@ -176,8 +174,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public AnimalListPanel getAnimalListPanel() {
+        return animalListPanel;
     }
 
     /**
