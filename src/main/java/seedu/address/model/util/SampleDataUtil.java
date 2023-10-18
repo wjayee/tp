@@ -6,17 +6,16 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.animal.*;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+
 import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+    /**
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
@@ -37,6 +36,18 @@ public class SampleDataUtil {
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"))
+        };
+    }
+     **/
+
+    public static Animal[] getSampleAnimals() {
+        return new Animal[] {
+                new Animal(new Name("Pookie"), new PetId("1234"), new Species("Dog"),
+                        new Breed("Golden retriever"), new Sex("Male"),
+                        new AdmissionDate("01-01-2023"), new DateOfBirth("09-09-2022")),
+                new Animal(new Name("Bear"), new PetId("4321"), new Species("Bear"),
+                        new Breed("Brown Bear"), new Sex("Female"),
+                        new AdmissionDate("02-02-2023"), new DateOfBirth("03-03-2022"))
         };
     }
 

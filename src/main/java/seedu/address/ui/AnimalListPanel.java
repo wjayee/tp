@@ -1,0 +1,59 @@
+package seedu.address.ui;
+
+import java.util.logging.Logger;
+
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.animal.Animal;
+
+
+public class AnimalListPanel extends UiPart<Region> {
+
+    private static final String FXML = "AnimalListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(AnimalListPanel.class);
+    private final AnimalDetailPanel animalDetailPanel;
+
+    @FXML
+    private ListView<Animal> animalListView;
+
+    public AnimalListPanel(ObservableList<Animal> animalList, AnimalDetailPanel detailPanel) {
+        super(FXML);
+        this.animalDetailPanel = detailPanel;
+        animalListView.setItems(animalList);
+        animalListView.setCellFactory(listView -> new AnimalListViewCell());
+        animalListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        showAnimalDetails(newValue);
+                    }
+                }
+        );
+    }
+
+    /**
+     * Updates the detailed view panel with the selected person.
+     *
+     * @param selectedAnimal
+     */
+    private void showAnimalDetails(Animal selectedAnimal) {
+        animalDetailPanel.updateDetails(selectedAnimal);
+    }
+
+    class AnimalListViewCell extends ListCell<Animal> {
+        @Override
+        protected void updateItem(Animal animal, boolean empty) {
+            super.updateItem(animal, empty);
+
+            if (empty || animal == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(new AnimalCard(animal, getIndex() + 1).getRoot());
+            }
+        }
+    }
+
+}
