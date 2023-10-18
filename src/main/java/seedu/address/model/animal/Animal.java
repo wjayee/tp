@@ -4,7 +4,7 @@ import seedu.address.model.animal.healthStatus.HealthStatus;
 import seedu.address.model.animal.notes.Notes;
 
 /**
- * Represents a Person in the address book.
+ * Represents an Animal in the catalog.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Animal {
@@ -72,5 +72,37 @@ public class Animal {
     @Override
     public int hashCode() {
         return 1;
+    }
+
+    public boolean isSameAnimal(Animal otherAnimal) {
+        if (otherAnimal == this) {
+            return true;
+        }
+
+        return otherAnimal != null
+                && otherAnimal.getPetId().equals(getPetId());
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Animal)) {
+            return false;
+        }
+
+        Animal otherAnimal = (Animal) other;
+        return name.equals(otherAnimal.name)
+                && petId.equals(otherAnimal.petId)
+                && dateOfBirth.equals(otherAnimal.dateOfBirth)
+                && sex.equals(otherAnimal.sex)
+                && species.equals(otherAnimal.species)
+                && breed.equals(otherAnimal.breed)
+                && admissionDate.equals(otherAnimal.admissionDate)
+                && healthStatus.equals(otherAnimal.healthStatus)
+                && otherNotes.equals(otherAnimal.otherNotes);
     }
 }
