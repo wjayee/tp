@@ -78,11 +78,11 @@ public interface AnimalModel {
     void setAnimal(Animal target, Animal editedAnimal);
 
     /** Returns an unmodifiable view of the filtered animal list */
-    ObservableList<Animal> getFilteredPersonList();
+    ObservableList<Animal> getFilteredAnimalList();
 
     /**
      * Updates the filter of the filtered animal list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Animal> predicate);
+    void updateFilteredAnimalList(Predicate<Animal> predicate);
 }
