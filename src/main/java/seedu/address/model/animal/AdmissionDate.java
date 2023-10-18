@@ -25,6 +25,13 @@ public class AdmissionDate {
         this.admissionDate = TimeUtil.parseDateString(date);
     }
 
+    /**
+     * Returns true if a given string is a valid date.
+     */
+    public static boolean isValidDate(String test) {
+        return TimeUtil.isValidDate(test);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
