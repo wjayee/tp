@@ -38,12 +38,12 @@ public interface AnimalModel {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getAnimalCatalogFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setAnimalCatalogFilePath(Path animalCatalogFilePath);
 
     /**
      * Replaces address book data with the data in {@code addressBook}.
@@ -51,7 +51,7 @@ public interface AnimalModel {
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyAnimalCatalog getAnimalCatalog();
 
     /**
      * Returns true if an animal with the same identity as {@code animal} exists in the address book.

@@ -15,6 +15,7 @@ import seedu.address.logic.parser.AnimalCatalogParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.Animal;
 import seedu.address.storage.Storage;
 
@@ -51,7 +52,7 @@ public class AnimalLogicManager implements AnimalLogic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveAddressBook(model.getAnimalCatalog());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -62,8 +63,8 @@ public class AnimalLogicManager implements AnimalLogic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyAnimalCatalog getAnimalCatalog() {
+        return model.getAnimalCatalog();
     }
 
     @Override
@@ -72,8 +73,8 @@ public class AnimalLogicManager implements AnimalLogic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getAnimalCatalogFilePath() {
+        return model.getAnimalCatalogFilePath();
     }
 
     @Override
