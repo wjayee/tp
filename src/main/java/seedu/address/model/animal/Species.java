@@ -47,6 +47,8 @@ public class Species {
         return speciesName.equals(that.speciesName);
     }
 
+
+
     @Override
     public int hashCode() {
         return Objects.hash(speciesName);

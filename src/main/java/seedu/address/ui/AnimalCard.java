@@ -13,7 +13,7 @@ import seedu.address.model.animal.Animal;
  */
 public class AnimalCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "AnimalListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -34,13 +34,11 @@ public class AnimalCard extends UiPart<Region> {
     @FXML
     private Label petId;
     @FXML
-    private Label dateOfBirth;
-    @FXML
     private Label sex;
     @FXML
-    private Label breed;
+    private Label species;
     @FXML
-    private Label admissionDate;
+    private Label breed;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -51,9 +49,8 @@ public class AnimalCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(animal.getName().fullName);
         petId.setText(animal.getPetId().toString());
-        dateOfBirth.setText(animal.getDateOfBirth().toString());
         sex.setText(animal.getSex().toString());
+        species.setText(animal.getSpecies().toString());
         breed.setText(animal.getBreed().toString());
-        admissionDate.setText(animal.getAdmissionDate().toString());
     }
 }

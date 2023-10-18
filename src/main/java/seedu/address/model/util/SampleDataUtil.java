@@ -4,10 +4,9 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.AnimalCatalog;
+import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.*;
-import seedu.address.model.person.Person;
 
 import seedu.address.model.tag.Tag;
 
@@ -44,19 +43,19 @@ public class SampleDataUtil {
         return new Animal[] {
                 new Animal(new Name("Pookie"), new PetId("1234"), new Species("Dog"),
                         new Breed("Golden retriever"), new Sex("Male"),
-                        new AdmissionDate("01-01-2023"), new DateOfBirth("09-09-2022")),
+                        new AdmissionDate("2022-09-09"), new DateOfBirth("2022-09-09")),
                 new Animal(new Name("Bear"), new PetId("4321"), new Species("Bear"),
                         new Breed("Brown Bear"), new Sex("Female"),
-                        new AdmissionDate("02-02-2023"), new DateOfBirth("03-03-2022"))
+                        new AdmissionDate("2022-09-09"), new DateOfBirth("2015-09-09"))
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+    public static ReadOnlyAnimalCatalog getSampleAnimalCatalog() {
+        AnimalCatalog sampleAc = new AnimalCatalog();
+        for (Animal sampleAnimal : getSampleAnimals()) {
+            sampleAc.addAnimal(sampleAnimal);
         }
-        return sampleAb;
+        return sampleAc;
     }
 
     /**

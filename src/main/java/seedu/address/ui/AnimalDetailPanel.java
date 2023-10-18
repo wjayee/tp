@@ -18,6 +18,9 @@ public class AnimalDetailPanel extends UiPart<Region> {
     private Label sex;
     @FXML
     private Label breed;
+
+    @FXML
+    private Label species;
     @FXML
     private Label admissionDate;
 
@@ -35,9 +38,10 @@ public class AnimalDetailPanel extends UiPart<Region> {
     public void updateDetails(Animal animal) {
         name.setText(animal.getName().fullName);
         petId.setText(animal.getPetId().toString());
-        dateOfBirth.setText(animal.getDateOfBirth().toString());
         sex.setText(animal.getSex().toString());
+        species.setText(animal.getSpecies().toString());
         breed.setText(animal.getBreed().toString());
+        dateOfBirth.setText(animal.getDateOfBirth().toString());
         admissionDate.setText(animal.getAdmissionDate().toString());
     }
 
