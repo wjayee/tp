@@ -1,2 +1,3 @@
 ignore:
   - "src/main/java/seedu/address/model/animal/" # Exclude all files within the animal directory
+  - "src/main/java/seedu/" # Exclude all files within the seedu directory
