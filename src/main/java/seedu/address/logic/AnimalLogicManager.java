@@ -1,7 +1,5 @@
 package seedu.address.logic;
 
-import java.io.IOException;
-import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
@@ -14,7 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AnimalCatalogParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AnimalModel;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.Animal;
 import seedu.address.storage.Storage;
@@ -40,7 +37,7 @@ public class AnimalLogicManager implements AnimalLogic {
     public AnimalLogicManager(AnimalModel model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        animalCatalogParser= new AnimalCatalogParser();
+        animalCatalogParser = new AnimalCatalogParser();
     }
 
     @Override
@@ -51,13 +48,13 @@ public class AnimalLogicManager implements AnimalLogic {
         AnimalCommand command = animalCatalogParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-//        try {
-//            storage.saveAddressBook(model.getAnimalCatalog());
-//        } catch (AccessDeniedException e) {
-//            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
-//        } catch (IOException ioe) {
-//            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
-//        }
+        //        try {
+        //            storage.saveAddressBook(model.getAnimalCatalog());
+        //        } catch (AccessDeniedException e) {
+        //            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
+        //        } catch (IOException ioe) {
+        //            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
+        //        }
 
         return commandResult;
     }

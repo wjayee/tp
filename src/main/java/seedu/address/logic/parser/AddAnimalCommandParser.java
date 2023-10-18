@@ -1,27 +1,26 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_BIRTH;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_ADMISSION;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
 import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_BREED;
+import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_ADMISSION;
+import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_BIRTH;
+import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SEX;
+import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
 
 import java.util.stream.Stream;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddAnimalCommand;
-
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.animal.Animal;
-import seedu.address.model.animal.PetId;
-import seedu.address.model.animal.DateOfBirth;
 import seedu.address.model.animal.AdmissionDate;
-import seedu.address.model.animal.Species;
+import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Breed;
-import seedu.address.model.animal.Sex;
+import seedu.address.model.animal.DateOfBirth;
 import seedu.address.model.animal.Name;
+import seedu.address.model.animal.PetId;
+import seedu.address.model.animal.Sex;
+import seedu.address.model.animal.Species;
 
 
 /**
@@ -41,7 +40,8 @@ public class AddAnimalCommandParser {
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH,
                 PREFIX_DATE_OF_ADMISSION, PREFIX_SPECIES, PREFIX_SEX, PREFIX_BREED)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddAnimalCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                                                    AddAnimalCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH, PREFIX_DATE_OF_ADMISSION,

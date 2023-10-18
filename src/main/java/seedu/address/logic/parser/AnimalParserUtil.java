@@ -2,17 +2,18 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.animal.AdmissionDate;
+import seedu.address.model.animal.Breed;
+import seedu.address.model.animal.DateOfBirth;
 import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
-import seedu.address.model.animal.DateOfBirth;
-import seedu.address.model.animal.AdmissionDate;
-import seedu.address.model.animal.Species;
-import seedu.address.model.animal.Breed;
 import seedu.address.model.animal.Sex;
+import seedu.address.model.animal.Species;
+
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

@@ -14,6 +14,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 
+/**
+ * Adds a animal to the address book.
+ */
+
 public class AddAnimalCommand extends AnimalCommand {
 
     public static final String COMMAND_WORD = "add";

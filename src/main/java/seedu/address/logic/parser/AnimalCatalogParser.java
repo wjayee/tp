@@ -50,17 +50,17 @@ public class AnimalCatalogParser {
         case AddAnimalCommand.COMMAND_WORD:
             return new AddAnimalCommandParser().parse(arguments);
 
-//        case DeleteAnimalCommand.COMMAND_WORD:
-//            return new DeleteCommandParser().parse(arguments);
-//
-//        case ClearAnimalCommand.COMMAND_WORD:
-//            return new ClearCommand();
-//
-//        case ExitAnimalCommand.COMMAND_WORD:
-//            return new ExitCommand();
-//
-//        case HelpAnimalCommand.COMMAND_WORD:
-//            return new HelpCommand();
+        //        case DeleteAnimalCommand.COMMAND_WORD:
+        //            return new DeleteCommandParser().parse(arguments);
+        //
+        //        case ClearAnimalCommand.COMMAND_WORD:
+        //            return new ClearCommand();
+        //
+        //        case ExitAnimalCommand.COMMAND_WORD:
+        //            return new ExitCommand();
+        //
+        //        case HelpAnimalCommand.COMMAND_WORD:
+        //            return new HelpCommand();
 
 
 
