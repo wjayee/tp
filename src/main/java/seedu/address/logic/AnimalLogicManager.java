@@ -51,13 +51,13 @@ public class AnimalLogicManager implements AnimalLogic {
         AnimalCommand command = animalCatalogParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-        try {
-            storage.saveAddressBook(model.getAnimalCatalog());
-        } catch (AccessDeniedException e) {
-            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
-        } catch (IOException ioe) {
-            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
-        }
+//        try {
+//            storage.saveAddressBook(model.getAnimalCatalog());
+//        } catch (AccessDeniedException e) {
+//            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
+//        } catch (IOException ioe) {
+//            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
+//        }
 
         return commandResult;
     }
