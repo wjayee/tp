@@ -30,6 +30,8 @@ public class UniqueAnimalList implements Iterable<Animal> {
 
     /**
      * Returns true if the list contains an equivalent animal as the given argument.
+     *
+     * @param toCheck the animal to be checked.
      */
     public boolean contains(Animal toCheck) {
         requireNonNull(toCheck);
@@ -39,8 +41,11 @@ public class UniqueAnimalList implements Iterable<Animal> {
     /**
      * Adds an animal to the list.
      * The animal must not already exist in the list.
+     *
+     * @param toAdd the animal to be added.
+     * @throws DuplicateAnimalException if the animal already exists in the list.
      */
-    public void add(Animal toAdd) {
+    public void add(Animal toAdd) throws DuplicateAnimalException {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicateAnimalException();
@@ -52,8 +57,13 @@ public class UniqueAnimalList implements Iterable<Animal> {
      * Replaces the animal {@code target} in the list with {@code editedAnimal}.
      * {@code target} must exist in the list.
      * The animal identity of {@code editedAnimal} must not be the same as another existing animal in the list.
+     *
+     * @param target the animal to be replaced.
+     * @param editedAnimal the animal to replace {@code target}.
+     * @throws DuplicateAnimalException if editedAnimal is equivalent to another existing animal in the list.
+     * @throws AnimalNotFoundException if {@code target} does not exist in the list.
      */
-    public void setAnimal(Animal target, Animal editedAnimal) {
+    public void setAnimal(Animal target, Animal editedAnimal) throws DuplicateAnimalException, AnimalNotFoundException{
         requireAllNonNull(target, editedAnimal);
 
         int index = internalList.indexOf(target);
@@ -71,8 +81,11 @@ public class UniqueAnimalList implements Iterable<Animal> {
     /**
      * Removes the equivalent animal from the list.
      * The animal must exist in the list.
+     *
+     * @param toRemove the animal to be removed.
+     * @throws AnimalNotFoundException if the animal does not exist in the list.
      */
-    public void remove(Animal toRemove) {
+    public void remove(Animal toRemove) throws AnimalNotFoundException {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new AnimalNotFoundException();
@@ -87,8 +100,11 @@ public class UniqueAnimalList implements Iterable<Animal> {
     /**
      * Replaces the contents of this list with {@code animals}.
      * {@code animals} must not contain duplicate animals.
+     *
+     * @param animals the list of animals to replace the current list.
+     * @throws DuplicateAnimalException if the replacement contains duplicate animals.
      */
-    public void setAnimals(List<Animal> animals) {
+    public void setAnimals(List<Animal> animals) throws DuplicateAnimalException {
         requireAllNonNull(animals);
         if (!animalsAreUnique(animals)) {
             throw new DuplicateAnimalException();
@@ -120,8 +136,8 @@ public class UniqueAnimalList implements Iterable<Animal> {
             return false;
         }
 
-        UniqueAnimalList otherUniquePersonList = (UniqueAnimalList) other;
-        return internalList.equals(otherUniquePersonList.internalList);
+        UniqueAnimalList otherUniqueAnimalList = (UniqueAnimalList) other;
+        return internalList.equals(otherUniqueAnimalList.internalList);
     }
 
     @Override
@@ -136,6 +152,9 @@ public class UniqueAnimalList implements Iterable<Animal> {
 
     /**
      * Returns true if {@code animals} contains only unique animals.
+     *
+     * @param animals the list of animals to be checked.
+     * @return true if {@code animals} contains only unique animals.
      */
     private boolean animalsAreUnique(List<Animal> animals) {
         for (int i = 0; i < animals.size() - 1; i++) {

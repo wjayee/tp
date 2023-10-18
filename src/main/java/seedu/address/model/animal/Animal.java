@@ -2,10 +2,9 @@ package seedu.address.model.animal;
 
 import seedu.address.model.animal.healthStatus.HealthStatus;
 import seedu.address.model.animal.notes.Notes;
-import seedu.address.model.person.Person;
 
 /**
- * Represents a Person in the address book.
+ * Represents an Animal in the catalog.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Animal {
