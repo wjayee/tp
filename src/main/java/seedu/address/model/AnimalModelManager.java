@@ -69,7 +69,7 @@ public class AnimalModelManager implements AnimalModel {
 
     @Override
     public Path getAnimalCatalogFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getAnimalCatalogFilePath();
     }
 
     @Override
