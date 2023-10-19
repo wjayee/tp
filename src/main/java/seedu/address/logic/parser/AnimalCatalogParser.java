@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AnimalCommand;
+import seedu.address.logic.commands.DeleteAnimalCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -54,8 +55,8 @@ public class AnimalCatalogParser {
         case ListAnimalCommand.COMMAND_WORD:
             return new ListAnimalCommand();
 
-        //        case DeleteAnimalCommand.COMMAND_WORD:
-        //            return new DeleteCommandParser().parse(arguments);
+        case DeleteAnimalCommand.COMMAND_WORD:
+            return new DeleteAnimalCommandParser().parse(arguments);
         //
         //        case ClearAnimalCommand.COMMAND_WORD:
         //            return new ClearCommand();
