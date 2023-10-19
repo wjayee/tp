@@ -13,7 +13,7 @@ import seedu.address.model.animal.Animal;
  */
 public interface AnimalModel {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Animal> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Animal> PREDICATE_SHOW_ALL_ANIMALS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -36,44 +36,44 @@ public interface AnimalModel {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' catalog file path.
      */
     Path getAnimalCatalogFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' catalog file path.
      */
     void setAnimalCatalogFilePath(Path animalCatalogFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces catalog data with the data in {@code animalCatalog}.
      */
     void setAnimalCatalog(ReadOnlyAnimalCatalog animalCatalog);
 
-    /** Returns the AddressBook */
+    /** Returns the AnimalCatalog */
     ReadOnlyAnimalCatalog getAnimalCatalog();
 
     /**
-     * Returns true if an animal with the same identity as {@code animal} exists in the address book.
+     * Returns true if an animal with the same identity as {@code animal} exists in the catalog.
      */
     boolean hasAnimal(Animal animal);
 
     /**
      * Deletes the given animal.
-     * The animal must exist in the address book.
+     * The animal must exist in the catalog.
      */
     void deleteAnimal(Animal target);
 
     /**
      * Adds the given animal.
-     * {@code animal} must not already exist in the address book.
+     * {@code animal} must not already exist in the catalog.
      */
     void addAnimal(Animal animal);
 
     /**
      * Replaces the given animal {@code target} with {@code editedAnimal}.
-     * {@code target} must exist in the address book.
-     * The animal identity of {@code editedAnimal} must not be the same as another existing animal in the address book.
+     * {@code target} must exist in the catalog.
+     * The animal identity of {@code editedAnimal} must not be the same as another existing animal in the catalog.
      */
     void setAnimal(Animal target, Animal editedAnimal);
 

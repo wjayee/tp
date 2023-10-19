@@ -11,6 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AnimalCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -49,6 +50,9 @@ public class AnimalCatalogParser {
 
         case AddAnimalCommand.COMMAND_WORD:
             return new AddAnimalCommandParser().parse(arguments);
+
+        case ListAnimalCommand.COMMAND_WORD:
+            return new ListAnimalCommand();
 
         //        case DeleteAnimalCommand.COMMAND_WORD:
         //            return new DeleteCommandParser().parse(arguments);
