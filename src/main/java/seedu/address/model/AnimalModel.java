@@ -48,7 +48,7 @@ public interface AnimalModel {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAnimalCatalog(ReadOnlyAnimalCatalog animalCatalog);
 
     /** Returns the AddressBook */
     ReadOnlyAnimalCatalog getAnimalCatalog();

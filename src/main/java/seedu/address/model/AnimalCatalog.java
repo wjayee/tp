@@ -33,6 +33,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Creates an AnimalCatalog using the Animals in toBeCopied
+     *
      * @param toBeCopied Animals to be copied into the AnimalCatalog
      */
     public AnimalCatalog(ReadOnlyAnimalCatalog toBeCopied) {
@@ -42,6 +43,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Replaces the contents of the Animal List animals. Must not contain duplicate animals.
+     *
      * @param animals
      */
     public void setAnimals(List<Animal> animals) {
@@ -54,6 +56,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Resets the existing data of the AnimalCatalog with the newData
+     *
      * @param newData Data to be written into AnimalCatalog
      */
     public void resetData(ReadOnlyAnimalCatalog newData) {
@@ -64,6 +67,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Returns true if an animal in the AnimalCatalog has same identity as animal
+     *
      * @param animal Animal to be checked in the AnimalCatalog
      * @return A boolean value
      */
@@ -74,6 +78,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Adds an animal into the AnimalCatalog. The animal must not already exist in the catalog.
+     *
      * @param a Animal to be added in.
      */
     public void addAnimal(Animal a) {
@@ -86,6 +91,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Replaces the given animal in the AnimalCatalog with the editedAnimal
+     *
      * @param target Target animal to be replaced
      * @param editedAnimal editedAnimal to replace target
      */
@@ -102,6 +108,7 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
 
     /**
      * Removes Animal from the AnimalCatalog. Animal must exists in the AnimalCatalog.
+     *
      * @param key Animal to be removed
      */
     public void removeAnimal(Animal key) {

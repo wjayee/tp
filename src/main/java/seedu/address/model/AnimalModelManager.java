@@ -27,6 +27,7 @@ public class AnimalModelManager implements AnimalModel {
 
     /**
      * Initializes an animalCatalog with the given animalCatalog and userPrefs
+     *
      * @param animalCatalog Generated animalCatalog
      * @param userPrefs UserPreferences
      */
@@ -77,10 +78,10 @@ public class AnimalModelManager implements AnimalModel {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Animal Catalog ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+    public void setAnimalCatalog(ReadOnlyAnimalCatalog animalCatalog) {
         this.animalCatalog.resetData(animalCatalog);
     }
 
@@ -113,7 +114,7 @@ public class AnimalModelManager implements AnimalModel {
         animalCatalog.setAnimal(target, editedAnimal);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Animal List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
@@ -137,7 +138,7 @@ public class AnimalModelManager implements AnimalModel {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ModelManager)) {
+        if (!(other instanceof AnimalModelManager)) {
             return false;
         }
 
