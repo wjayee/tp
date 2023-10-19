@@ -104,7 +104,7 @@ public class AnimalModelManager implements AnimalModel {
     @Override
     public void addAnimal(Animal animal) {
         animalCatalog.addAnimal(animal);
-        updateFilteredAnimalList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
     }
 
     @Override

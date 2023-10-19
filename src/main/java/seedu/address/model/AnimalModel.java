@@ -13,7 +13,7 @@ import seedu.address.model.animal.Animal;
  */
 public interface AnimalModel {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Animal> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Animal> PREDICATE_SHOW_ALL_ANIMALS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
