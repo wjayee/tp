@@ -51,6 +51,8 @@ public class Animal {
         return sex;
     }
 
+    public Species getSpecies() {return species;}
+
     public Breed getBreed() {
         return breed;
     }
