@@ -75,7 +75,7 @@ public class AnimalModelManager implements AnimalModel {
     @Override
     public void setAnimalCatalogFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setAnimalCatalogFilePath(addressBookFilePath);
     }
 
     //=========== Animal Catalog ================================================================================
