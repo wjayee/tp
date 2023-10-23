@@ -1,5 +1,10 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.AnimalCatalog;
 import seedu.address.model.animal.Animal;
 
 /**
@@ -16,4 +21,16 @@ public class TypicalAnimals {
             .withAdmissionDate("2020-12-12").build();
 
     //TODO: Add more animals if needed
+
+    public static AnimalCatalog getTypicalCatalog() {
+        AnimalCatalog ac = new AnimalCatalog();
+        for (Animal animal : getTypicalAnimals()) {
+            ac.addAnimal(animal);
+        }
+        return ac;
+    }
+
+    public static List<Animal> getTypicalAnimals() {
+        return new ArrayList<>(Arrays.asList(TOFU, MUFFIN));
+    }
 }
