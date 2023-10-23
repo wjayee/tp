@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SEX;
 import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
@@ -63,7 +64,7 @@ public class AddAnimalCommand extends AnimalCommand {
         }
 
         model.addAnimal(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, AnimalMessages.format(toAdd)));
     }
 
     @Override
