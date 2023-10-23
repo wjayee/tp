@@ -17,12 +17,12 @@ import seedu.address.model.animal.notes.Notes;
 public class AnimalBuilder {
 
     public static final String DEFAULT_NAME = "Pookie";
-    public static final String DEFAULT_PETID = "1";
-    public static final String DEFAULT_DATE_OF_BIRTH = "01-01-2023";
-    public static final String DEFAULT_SEX = "M";
+    public static final String DEFAULT_PETID = "1111";
+    public static final String DEFAULT_DATE_OF_BIRTH = "2020-12-12";
+    public static final String DEFAULT_SEX = "MALE";
     public static final String DEFAULT_SPECIES = "Dog";
     public static final String DEFAULT_BREED = "Poodle";
-    public static final String DEFAULT_ADMISSION_DATE = "02-02-2023";
+    public static final String DEFAULT_ADMISSION_DATE = "2023-12-12";
 
     private Name name;
     private PetId petId;

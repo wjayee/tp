@@ -7,13 +7,13 @@ import seedu.address.model.animal.Animal;
  */
 public class TypicalAnimals {
 
-    public static final Animal TOFU = new AnimalBuilder().withName("Tofu").withPetId("2")
-            .withDateOfBirth("01/01/2019").withSex("M").withSpecies("Dog").withBreed("Retriever")
-            .withAdmissionDate("01/01/2020").build();
+    public static final Animal TOFU = new AnimalBuilder().withName("Tofu").withPetId("1234")
+            .withDateOfBirth("2019-10-10").withSex("FEMALE").withSpecies("Cat").withBreed("British Shorthair")
+            .withAdmissionDate("2019-11-11").build();
 
-    public static final Animal MUFFIN = new AnimalBuilder().withName("Muffin").withPetId("3")
-            .withDateOfBirth("02/02/2019").withSex("F").withSpecies("Dog").withBreed("Jack Russell Terrier")
-            .withAdmissionDate("02/02/2020").build();
+    public static final Animal MUFFIN = new AnimalBuilder().withName("Muffin").withPetId("3333")
+            .withDateOfBirth("2020-10-10").withSex("MALE").withSpecies("Dog").withBreed("Jack Russell Terrier")
+            .withAdmissionDate("2020-12-12").build();
 
     //TODO: Add more animals if needed
 }
