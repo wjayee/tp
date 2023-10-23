@@ -74,8 +74,8 @@ public class AnimalCommandTestUtil {
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
      * - the {@code actualModel} matches {@code expectedModel}
      */
-    public static void assertCommandSuccess(AnimalCommand command, AnimalModel actualModel, CommandResult expectedCommandResult,
-                                            AnimalModel expectedModel) {
+    public static void assertCommandSuccess(AnimalCommand command, AnimalModel actualModel,
+                                            CommandResult expectedCommandResult, AnimalModel expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -104,11 +104,11 @@ public class AnimalCommandTestUtil {
     public static void assertCommandFailure(AnimalCommand command, AnimalModel actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AnimalCatalog AnimalCatalog = new AnimalCatalog(actualModel.getAnimalCatalog());
+        AnimalCatalog animalCatalog = new AnimalCatalog(actualModel.getAnimalCatalog());
         List<Animal> expectedFilteredList = new ArrayList<>(actualModel.getFilteredAnimalList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(AnimalCatalog, actualModel.getAnimalCatalog());
+        assertEquals(animalCatalog, actualModel.getAnimalCatalog());
         assertEquals(expectedFilteredList, actualModel.getFilteredAnimalList());
     }
     /**
