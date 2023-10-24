@@ -7,13 +7,10 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 
-import java.util.Collection;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.address.model.animal.Animal;
 import seedu.address.testutil.AnimalBuilder;
 
@@ -40,14 +37,14 @@ public class AnimalCatalogTest {
 
     //TODO: Delete this test if exception is dealt with in this method
     //TODO: Uncomment if exception is dealt with elsewhere
-//    @Test
-//    public void resetData_withDuplicateAnimals_throwsDuplicateAnimalException() {
-//        //Two animals with the same identity fields
-//        Animal editedTofu = new AnimalBuilder(TOFU).withAdmissionDate("2023-01-01").build();
-//        List<Animal> newAnimals = Arrays.asList(TOFU, editedTofu);
-//        AnimalCatalogStub newData = new AnimalCatalogStub(newAnimals);
-//        assertThrows(DuplicateAnimalException.class, () -> animalCatalog.resetData(newData));
-//    }
+    //@Test
+    //public void resetData_withDuplicateAnimals_throwsDuplicateAnimalException() {
+    //Two animals with the same identity fields
+    //Animal editedTofu = new AnimalBuilder(TOFU).withAdmissionDate("2023-01-01").build();
+    //List<Animal> newAnimals = Arrays.asList(TOFU, editedTofu);
+    //AnimalCatalogStub newData = new AnimalCatalogStub(newAnimals);
+    //assertThrows(DuplicateAnimalException.class, () -> animalCatalog.resetData(newData));
+    //}
 
     @Test
     public void hasAnimal_nullAnimal_throwsNullPointerException() {
@@ -117,19 +114,19 @@ public class AnimalCatalogTest {
     }
 
     //TODO: Uncomment class if exception in resetData is dealt with elsewhere.
-//    /**
-//     * A stub ReadOnlyAnimalCatalog whose animals list can violate interface constraints.
-//     */
-//    private static class AnimalCatalogStub implements ReadOnlyAnimalCatalog {
-//        private final ObservableList<Animal> animals = FXCollections.observableArrayList();
-//
-//        AnimalCatalogStub(Collection<Animal> animals) {
-//            this.animals.setAll(animals);
-//        }
-//
-//        @Override
-//        public ObservableList<Animal> getAnimalList() {
-//            return animals;
-//        }
-//    }
+    ///**
+    // * A stub ReadOnlyAnimalCatalog whose animals list can violate interface constraints.
+    // */
+    //private static class AnimalCatalogStub implements ReadOnlyAnimalCatalog {
+    //private final ObservableList<Animal> animals = FXCollections.observableArrayList();
+
+    //AnimalCatalogStub(Collection<Animal> animals) {
+    //this.animals.setAll(animals);
+    //}
+
+    //@Override
+    //public ObservableList<Animal> getAnimalList() {
+    //return animals;
+    //}
+    //}
 }
