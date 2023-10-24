@@ -23,7 +23,6 @@ checkstyle {
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
-    exclude 'seedu/address/model/animal/**'  // Exclude all tests within the animal directory
 }
 
 tasks.withType(Checkstyle) {
