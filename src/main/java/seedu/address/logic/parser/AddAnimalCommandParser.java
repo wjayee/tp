@@ -26,7 +26,7 @@ import seedu.address.model.animal.Species;
 /**
  * Parses input arguments and creates a new AddCommand object
  */
-public class AddAnimalCommandParser {
+public class AddAnimalCommandParser implements AnimalParser<AddAnimalCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
