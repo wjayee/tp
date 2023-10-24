@@ -1,5 +1,6 @@
 package seedu.address.model.animal;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.animal.healthStatus.HealthStatus;
 import seedu.address.model.animal.notes.Notes;
 
@@ -68,7 +69,15 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "";
+        return new ToStringBuilder(this)
+                .add("name", name)
+                .add("id", petId)
+                .add("sex", sex)
+                .add("species", species)
+                .add("breed", breed)
+                .add("admissionDate", admissionDate)
+                .add("dateOfBirth", dateOfBirth)
+                .toString();
     }
 
     @Override
@@ -103,8 +112,6 @@ public class Animal {
                 && sex.equals(otherAnimal.sex)
                 && species.equals(otherAnimal.species)
                 && breed.equals(otherAnimal.breed)
-                && admissionDate.equals(otherAnimal.admissionDate)
-                && healthStatus.equals(otherAnimal.healthStatus)
-                && otherNotes.equals(otherAnimal.otherNotes);
+                && admissionDate.equals(otherAnimal.admissionDate);
     }
 }
