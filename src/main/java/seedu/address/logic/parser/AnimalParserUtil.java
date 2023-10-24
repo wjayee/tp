@@ -104,7 +104,7 @@ public class AnimalParserUtil {
     public static Sex parseSex(String sex) throws ParseException {
         requireNonNull(sex);
         String trimmedSex = sex.trim();
-        if (!Breed.isValidBreed(trimmedSex)) {
+        if (!Sex.isValidSex(trimmedSex)) {
             throw new ParseException(Sex.MESSAGE_CONSTRAINTS);
         }
         return new Sex(sex);
