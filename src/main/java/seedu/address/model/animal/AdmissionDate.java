@@ -31,6 +31,15 @@ public class AdmissionDate {
         return TimeUtil.isValidDate(test);
     }
 
+    /**
+     * Returns the {@link LocalDate} object representing this AdmissionDate.
+     *
+     * @return the LocalDate object representing this AdmissionDate.
+     */
+    public LocalDate getAdmissionDate() {
+        return admissionDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

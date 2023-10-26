@@ -54,4 +54,8 @@ public class Sex {
     public String toString() {
         return sex.getShortForm();
     }
+
+    public String getSerializableForm() {
+        return sex.toString();
+    }
 }
