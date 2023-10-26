@@ -71,16 +71,23 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts. Some core components include: `CommandBox`, `ResultDisplay`, `AnimalListPanel`, `AnimalDetailPanel`, and `AnimalCard`, along with other components. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 
-The `UI` component,
+Generally, the UI consists of the command box for the user to input commands, a result display to give an output based on the command given, and a main animal display panel consisting of 2 parts:
+1. `AnimalListPanel` which consists of a list of `AnimalCard` objects
+2. `AnimalDetailPanel` which is a detailed view of `Animal` objects, that displays data about an animal only when selected in the `AnimalListPanel`.
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
+The layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+
+The `UI` component does the following actions:
+
+* executes user commands using the 'Logic' component, and this is done through the `CommandBox` class of the UI where users can input a command.
+* listens for changes to `Model` data so that the UI can be updated with the modified data. For example, when an animal is deleted or added to the catalog, the UI is updated through the `AnimalListPanel` class, where the list that is referenced is an `Observable<Animal>` list that is updated live.
+* listens for selecting of `AnimalCard` in the UI to display the selected `Animal` in the `AnimalDetailPanel` through a `ChangeListener` class in the `AnimalListPanel`. It will be initialized as `null`, hence displaying a blank screen. Only upon clicking an `AnimalCard` will the `ChangeListener` update the `AnimalDetailPanel` to reflect the selected animal.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Animal` object residing in the `Model`.
 
 ### Logic component
 
