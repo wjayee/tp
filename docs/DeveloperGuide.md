@@ -244,6 +244,39 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
+## `DeleteAnimalCommand` Implementation
+
+### Proposed Implementation
+
+The `DeleteAnimalCommand` is a specific command designed to remove an animal from the animal catalog. It identifies the animal to be deleted based on its displayed index in the list.
+
+Here's a brief outline of its operations and attributes:
+
+- `DeleteAnimalCommand#execute(AnimalModel model)` — Executes the command to delete a specified animal.
+- `targetIndex` — An attribute that holds the index of the animal to be deleted.
+
+Given below is an example usage scenario of the `DeleteAnimalCommand`:
+
+1. The user views the list of animals in the animal catalog. Note that this can be a filtered list, such as after using the `find` command.
+2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would aim to delete the third animal on the list.
+3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, removes it from the model, and returns a successful command result.
+
+The following sequence diagram shows how the `DeleteAnimalCommand` works:
+
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+
+### Design considerations:
+
+**Aspect: How the deletion is handled**
+
+- **Alternative 1 (current choice):** Use an index to specify which animal to delete.
+    - Pros: Straightforward for the user, especially if the list of animals is displayed.
+    - Cons: Requires error handling in case of an invalid index.
+
+- **Alternative 2:** Delete by specifying the animal's unique identifier or name.
+    - Pros: Can be more intuitive if the user knows the specific animal's details.
+    - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
+
 _{more aspects and alternatives to be added}_
 
 ### \[Proposed\] Data archiving
