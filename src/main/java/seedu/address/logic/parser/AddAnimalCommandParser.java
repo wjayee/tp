@@ -10,7 +10,7 @@ import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.Messages;
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.animal.AdmissionDate;
@@ -40,7 +40,7 @@ public class AddAnimalCommandParser implements AnimalParser<AddAnimalCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH,
                 PREFIX_DATE_OF_ADMISSION, PREFIX_SPECIES, PREFIX_SEX, PREFIX_BREED)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(AnimalMessages.MESSAGE_INVALID_COMMAND_FORMAT,
                                                     AddAnimalCommand.MESSAGE_USAGE));
         }
 

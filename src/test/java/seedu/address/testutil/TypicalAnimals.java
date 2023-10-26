@@ -52,9 +52,6 @@ public class TypicalAnimals {
         .withAdmissionDate("2023-02-02")
         .build();
 
-
-    //TODO: Add more animals if needed
-
     public static AnimalCatalog getTypicalCatalog() {
         AnimalCatalog ac = new AnimalCatalog();
         for (Animal animal : getTypicalAnimals()) {

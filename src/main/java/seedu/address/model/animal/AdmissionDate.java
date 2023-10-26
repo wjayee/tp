@@ -10,7 +10,7 @@ import seedu.address.commons.util.TimeUtil;
 
 public class AdmissionDate {
     public static final String MESSAGE_CONSTRAINTS = String.format(
-        "Admission Date should be in one of the following formats:%n%s", TimeUtil.getValidDateFormats());
+        "Admission Date should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
     private final LocalDate admissionDate;
 
     /**

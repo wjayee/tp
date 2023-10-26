@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.AnimalMessages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -11,7 +11,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AnimalCommand;
 import seedu.address.logic.commands.DeleteAnimalCommand;
-import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -36,7 +35,7 @@ public class AnimalCatalogParser {
     public AnimalCommand parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, "Placeholder"));
         }
 
         final String commandWord = matcher.group("commandWord");

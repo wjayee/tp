@@ -15,7 +15,6 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AnimalUserPrefs;
-import seedu.address.model.UserPrefs;
 
 public class JsonAnimalUserPrefsStorageTest {
 
@@ -107,21 +106,21 @@ public class JsonAnimalUserPrefsStorageTest {
     @Test
     public void saveUserPrefs_allInOrder_success() throws DataLoadingException, IOException {
 
-        UserPrefs original = new UserPrefs();
+        AnimalUserPrefs original = new AnimalUserPrefs();
         original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));
 
         Path pefsFilePath = testFolder.resolve("TempPrefs.json");
-        JsonUserPrefsStorage jsonUserPrefsStorage = new JsonUserPrefsStorage(pefsFilePath);
+        JsonAnimalUserPrefsStorage jsonUserPrefsStorage = new JsonAnimalUserPrefsStorage(pefsFilePath);
 
         //Try writing when the file doesn't exist
-        jsonUserPrefsStorage.saveUserPrefs(original);
-        UserPrefs readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        jsonUserPrefsStorage.saveAnimalUserPrefs(original);
+        AnimalUserPrefs readBack = jsonUserPrefsStorage.readAnimalUserPrefs().get();
         assertEquals(original, readBack);
 
         //Try saving when the file exists
         original.setGuiSettings(new GuiSettings(5, 5, 5, 5));
-        jsonUserPrefsStorage.saveUserPrefs(original);
-        readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        jsonUserPrefsStorage.saveAnimalUserPrefs(original);
+        readBack = jsonUserPrefsStorage.readAnimalUserPrefs().get();
         assertEquals(original, readBack);
     }
 

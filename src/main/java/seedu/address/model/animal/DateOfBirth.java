@@ -11,7 +11,7 @@ import seedu.address.commons.util.TimeUtil;
 
 public class DateOfBirth {
     public static final String MESSAGE_CONSTRAINTS = String.format(
-        "Date Of Birth should be in one of the following formats:%n%s", TimeUtil.getValidDateFormats());
+        "Date Of Birth should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
     private final LocalDate dateOfBirth;
 
     /**
