@@ -2,14 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -20,8 +19,8 @@ import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalCatalog;
 import seedu.address.model.AnimalModel;
+import seedu.address.model.AnimalReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyAnimalCatalog;
-import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.animal.Animal;
 import seedu.address.testutil.AnimalBuilder;
 
@@ -42,7 +41,7 @@ public class AddAnimalCommandTest {
 
         assertEquals(String.format(AddAnimalCommand.MESSAGE_SUCCESS, AnimalMessages.format(validAnimal)),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validAnimal), modelStub.animalAdded);
+        assertEquals(List.of(validAnimal), modelStub.animalAdded);
     }
 
     @Test
@@ -63,20 +62,20 @@ public class AddAnimalCommandTest {
         AddAnimalCommand addMuffinCommand = new AddAnimalCommand(muffin);
 
         // same object -> returns true
-        assertTrue(addTofuCommand.equals(addTofuCommand));
+        assertEquals(addTofuCommand, addTofuCommand);
 
         // same values -> returns true
         AddAnimalCommand addTofuCommandCopy = new AddAnimalCommand(tofu);
-        assertTrue(addTofuCommand.equals(addTofuCommandCopy));
+        assertEquals(addTofuCommand, addTofuCommandCopy);
 
         // different types -> returns false
-        assertFalse(addTofuCommand.equals(1));
+        assertNotEquals(1, addTofuCommand);
 
         // null -> returns false
-        assertFalse(addTofuCommand.equals(null));
+        assertNotEquals(null, addTofuCommand);
 
         // different person -> returns false
-        assertFalse(addTofuCommand.equals(addMuffinCommand));
+        assertNotEquals(addTofuCommand, addMuffinCommand);
     }
 
     @Test
@@ -87,84 +86,85 @@ public class AddAnimalCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all its methods failing.
      */
-    private class ModelStub implements AnimalModel {
+    private static class ModelStub implements AnimalModel {
+        private static final String INVALID_METHOD_CALL = "This method should not be called.";
         @Override
-        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-            throw new AssertionError("This method should not be called.");
+        public void setUserPrefs(AnimalReadOnlyUserPrefs userPrefs) {
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
-        public ReadOnlyUserPrefs getUserPrefs() {
-            throw new AssertionError("This method should not be called.");
+        public AnimalReadOnlyUserPrefs getUserPrefs() {
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public GuiSettings getGuiSettings() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void setGuiSettings(GuiSettings guiSettings) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public Path getAnimalCatalogFilePath() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void setAnimalCatalogFilePath(Path addressBookFilePath) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void addAnimal(Animal animal) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void setAnimalCatalog(ReadOnlyAnimalCatalog newData) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public ReadOnlyAnimalCatalog getAnimalCatalog() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public boolean hasAnimal(Animal animal) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void deleteAnimal(Animal target) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void setAnimal(Animal target, Animal editedAnimal) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public ObservableList<Animal> getFilteredAnimalList() {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
 
         @Override
         public void updateFilteredAnimalList(Predicate<Animal> predicate) {
-            throw new AssertionError("This method should not be called.");
+            throw new AssertionError(INVALID_METHOD_CALL);
         }
     }
 
     /**
      * A Model stub that contains a single animal.
      */
-    private class ModelStubWithAnimal extends ModelStub {
+    private static class ModelStubWithAnimal extends ModelStub {
         private final Animal animal;
 
         ModelStubWithAnimal(Animal animal) {
@@ -182,7 +182,7 @@ public class AddAnimalCommandTest {
     /**
      * A Model stub that always accept the animal being added.
      */
-    private class ModelStubAcceptingAnimalAdded extends ModelStub {
+    private static class ModelStubAcceptingAnimalAdded extends ModelStub {
         final ArrayList<Animal> animalAdded = new ArrayList<>();
 
         @Override
