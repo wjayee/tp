@@ -42,8 +42,8 @@ Given below is a quick overview of main components and how they interact with ea
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`AnimalLogic`**](#logic-component): The command executor.
+* [**`AnimalModel`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -59,7 +59,7 @@ Each of the four main components (also shown in the diagram above),
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
-For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `AnimalLogic` component defines its API in the `AnimalLogic.java` interface and implements its functionality using the `AnimalLogicManager.java` class which follows the `AnimalLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -91,13 +91,13 @@ The `UI` component does the following actions:
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`AnimalLogic.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/logic/AnimalLogic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+Here's a (partial) class diagram of the `AnimalLogic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `AnimalLogic` component, taking `execute("delete 1")` API call as an example.
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
@@ -106,20 +106,20 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
-How the `Logic` component works:
+How the `AnimalLogic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+1. When `AnimalLogic` is called upon to execute a command, it is passed to an `AnimalCatalogParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. This results in a `AnimalCommand` object (more precisely, an object of one of its subclasses e.g., `DeleteAnimalCommand`) which is executed by the `AnimalLogicManager`.
+1. The command can communicate with the `AnimalModel` when it is executed (e.g. to delete a person).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `AnimalLogic`.
 
-Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
+Here are the other classes in `AnimalLogic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `AnimalCatalogParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddAnimalCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddAnimalCommand`) which the `AnimalCatalogParser` returns back as a `AnimalCommand` object.
+* All `XYZCommandParser` classes (e.g., `AddAnimalCommandParser`, `DeleteAnimalCommandParser`, ...) inherit from the `AnimalParser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -285,6 +285,32 @@ The following sequence diagram shows how the `DeleteAnimalCommand` works:
     - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
 
 _{more aspects and alternatives to be added}_
+
+### List Feature
+
+#### Implementation
+
+The `ListAnimalCommand` is a command designed to list all animals in the animal catalog. It does not take in any arguments.
+
+Here's a brief outline of its operations and attributes:
+- `ListAnimalCommand#execute(AnimalModel model)` — Executes the command to list all animals in the animal catalog.
+
+Given below is an example usage scenario of the `ListAnimalCommand`:
+1. The user wants to view all animals that are in the catalog on the same page.
+2. The user executes the `list` command.
+3. The command retrieves all animals from the model and returns a successful command result.
+
+The following sequence diagram shows how the `ListAnimalCommand` works:
+<puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
+
+#### Design considerations:
+Aspect: How the listing is handled
+- Alternative 1 (current choice): Use a command to list all animals in the animal catalog.
+    - Pros: Straightforward for the user.
+    - Cons: None.
+- Alternative 2: Display all animals in the animal catalog by default.
+    - Pros: None.
+    - Cons: Might be confusing for the user if the list is long.
 
 ### \[Proposed\] Data archiving
 
