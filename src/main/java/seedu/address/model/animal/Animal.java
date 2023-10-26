@@ -3,8 +3,6 @@ package seedu.address.model.animal;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.animal.healthStatus.HealthStatus;
-import seedu.address.model.animal.notes.Notes;
 
 /**
  * Represents an Animal in the catalog.
@@ -18,9 +16,17 @@ public class Animal {
     private final Species species;
     private final Breed breed;
     private final AdmissionDate admissionDate;
-    private final HealthStatus healthStatus;
-    private final Notes otherNotes;
 
+    /**
+     * Constructs an {@link Animal} object.
+     * @param name the name of the Animal.
+     * @param petId the petId assigned to the Animal.
+     * @param species the species of the Animal.
+     * @param breed the breed of the Animal.
+     * @param sex the sex of the Animal.
+     * @param admissionDate the date the Animal was admitted.
+     * @param dateOfBirth the date of birth of the Animal.
+     */
     public Animal(Name name, PetId petId, Species species, Breed breed, Sex sex,
                   AdmissionDate admissionDate, DateOfBirth dateOfBirth) {
         this.name = name;
@@ -30,8 +36,6 @@ public class Animal {
         this.breed = breed;
         this.admissionDate = admissionDate;
         this.dateOfBirth = dateOfBirth;
-        this.healthStatus = new HealthStatus();
-        this.otherNotes = new Notes();
     }
 
     public Name getName() {
@@ -60,14 +64,6 @@ public class Animal {
 
     public Breed getBreed() {
         return breed;
-    }
-
-    public HealthStatus getHealthStatus() {
-        return healthStatus;
-    }
-
-    public Notes getNotes() {
-        return otherNotes;
     }
 
     // ----------------- These getter methods are used for JSON serialization by JsonAdaptedAnimal--------------
@@ -103,6 +99,11 @@ public class Animal {
     }
 
 
+    /**
+     * Returns the string representation of this Animal.
+     *
+     * @return the string representation of this Animal.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -121,6 +122,13 @@ public class Animal {
         return Objects.hash(name, petId, sex, species, breed, admissionDate, dateOfBirth);
     }
 
+    /**
+     * Returns true if the {@link PetId} of the {@code otherAnimal} is equal to this Animal's petId.
+     * Does not use {@link Animal#equals(Object)} in the event of an Edit.
+     *
+     * @param otherAnimal the other Animal to be compared.
+     * @return true if the PetIds being compared are equal, false otherwise.
+     */
     public boolean isSameAnimal(Animal otherAnimal) {
         if (otherAnimal == this) {
             return true;

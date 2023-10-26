@@ -5,6 +5,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
+/**
+ * Represents the Species of the {@link Animal}.
+ */
 public class Species {
     public static final String MESSAGE_CONSTRAINTS =
         "Species names should only contain alphabetic characters and spaces "

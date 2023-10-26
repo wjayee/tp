@@ -8,8 +8,6 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
-import seedu.address.model.animal.healthStatus.HealthStatus;
-import seedu.address.model.animal.notes.Notes;
 
 /**
  * A utility class to help with building Animal objects.
@@ -31,8 +29,6 @@ public class AnimalBuilder {
     private Species species;
     private Breed breed;
     private AdmissionDate admissionDate;
-    private HealthStatus healthStatus;
-    private Notes otherNotes;
 
     /**
      * Creates a {@code AnimalBuilder} with the default details.
@@ -45,8 +41,6 @@ public class AnimalBuilder {
         species = new Species(DEFAULT_SPECIES);
         breed = new Breed(DEFAULT_BREED);
         admissionDate = new AdmissionDate(DEFAULT_ADMISSION_DATE);
-        healthStatus = new HealthStatus();
-        otherNotes = new Notes();
     }
 
     /**
@@ -60,8 +54,6 @@ public class AnimalBuilder {
         species = animalToCopy.getSpecies();
         breed = animalToCopy.getBreed();
         admissionDate = animalToCopy.getAdmissionDate();
-        healthStatus = animalToCopy.getHealthStatus();
-        otherNotes = animalToCopy.getNotes();
     }
 
     /**

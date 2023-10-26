@@ -7,6 +7,10 @@ import java.util.Objects;
 
 import seedu.address.commons.util.StringUtil;
 
+/**
+ * Represents the Sex of the {@link Animal}.
+ * {@link SexEnum} restricts the valid Sexes.
+ */
 public class Sex {
     public static final String MESSAGE_CONSTRAINTS = "Sex should be MALE | FEMALE";
 

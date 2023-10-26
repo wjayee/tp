@@ -8,6 +8,9 @@ import java.util.Objects;
 
 import seedu.address.commons.util.TimeUtil;
 
+/**
+ * Represents the date that the {@link Animal} was admitted.
+ */
 public class AdmissionDate {
     public static final String MESSAGE_CONSTRAINTS = String.format(
         "Admission Date should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());

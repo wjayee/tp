@@ -9,6 +9,9 @@ import java.util.Objects;
 
 import seedu.address.commons.util.TimeUtil;
 
+/**
+ * Represents the Date of Birth of the {@link Animal}.
+ */
 public class DateOfBirth {
     public static final String MESSAGE_CONSTRAINTS = String.format(
         "Date Of Birth should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
@@ -33,8 +36,8 @@ public class DateOfBirth {
         int age = currentDate.getYear() - dateOfBirth.getYear();
 
         // Adjust if today's date is before the user's birthday this year
-        if (currentDate.getMonthValue() < dateOfBirth.getMonthValue() ||
-            (currentDate.getMonthValue() == dateOfBirth.getMonthValue()
+        if (currentDate.getMonthValue() < dateOfBirth.getMonthValue()
+            || (currentDate.getMonthValue() == dateOfBirth.getMonthValue()
                 && currentDate.getDayOfMonth() < dateOfBirth.getDayOfMonth())) {
             age--;
         }
