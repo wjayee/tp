@@ -244,6 +244,40 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
+## `AddAnimalCommand` Implementation
+
+### Proposed Implementation
+
+The `AddAnimalCommand` is a specific command designed to add an animal to the animal catalog. It identifies the animal to be added with attributes such as its name, ID, species, breed, age, date of birth and date of admission.
+
+Here's a brief outline of its operations and attributes:
+
+- `AddAnimalCommandParser#parse#` — Parses the user input to create an animal with the given attributes.
+- `AddAnimalCommand#execute(AnimalModel model)` — Executes the command to add a specified animal to the model.
+
+Given below is an example usage scenario of the `AddAnimalCommand`:
+
+1. The user types in the `add` command with the proper cli syntax, giving a compulsory input field for each attribute. Note that the position of the cli syntax can be in any order.
+2. The command verifies the validity of the index. If the index is missing any of the required syntax, it throws a `CommandException`. Otherwise, it adds the animal with its inputted attributes to the model and returns a successful command result.
+
+The following sequence diagram shows how the `AddAnimalCommand` works:
+
+<puml src="diagrams/AddSequenceDiagram.puml" alt="AddSequenceDiagram" />
+
+### Design considerations:
+
+**Aspect: How the addition is handled**
+
+- **Alternative 1 (current choice):** Add the animal directly ALL of the attributes specified.
+    - Pros: Straightforward for the user, since all attributes of the animals are handled at the start.
+    - Cons: Requires many error handling in case of an invalid syntax, wrong format, or missing attributes.
+
+- **Alternative 2:** Add the animal with mandatory attributes such as name and id but optional attributes for the rest.
+    - Pros: Can be more intuitive if the user does not know all the information of the animal.
+    - Cons: Have to create an optional field those attributes which require.  This can involve additional development work to allow users to input optional data as needed
+
+_{more aspects and alternatives to be added}_
+
 ## `DeleteAnimalCommand` Implementation
 
 ### Proposed Implementation
