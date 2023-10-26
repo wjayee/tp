@@ -57,7 +57,7 @@ public class MainApp extends Application {
 
         AnimalUserPrefsStorage userPrefsStorage = new JsonAnimalUserPrefsStorage(config.getUserPrefsFilePath());
         AnimalUserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AnimalCatalogStorage animalCatalogStorage = new JsonAnimalCatalogStorage(userPrefs.getCatalogFilePath());
+        AnimalCatalogStorage animalCatalogStorage = new JsonAnimalCatalogStorage(userPrefs.getAnimalCatalogFilePath());
         storage = new AnimalStorageManager(animalCatalogStorage, userPrefsStorage);
 
         animalModel = initModelManager(storage, userPrefs);

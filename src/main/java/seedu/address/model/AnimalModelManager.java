@@ -69,13 +69,13 @@ public class AnimalModelManager implements AnimalModel {
 
     @Override
     public Path getAnimalCatalogFilePath() {
-        return userPrefs.getCatalogFilePath();
+        return userPrefs.getAnimalCatalogFilePath();
     }
 
     @Override
     public void setAnimalCatalogFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setCatalogFilePath(addressBookFilePath);
+        userPrefs.setAnimalCatalogFilePath(addressBookFilePath);
     }
 
     //=========== Animal Catalog ================================================================================

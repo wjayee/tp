@@ -11,6 +11,6 @@ public interface AnimalReadOnlyUserPrefs {
 
     GuiSettings getGuiSettings();
 
-    Path getCatalogFilePath();
+    Path getAnimalCatalogFilePath();
 
 }

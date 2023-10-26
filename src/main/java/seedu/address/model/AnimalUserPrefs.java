@@ -14,7 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 public class AnimalUserPrefs implements AnimalReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path catalogFilePath = Paths.get("data" , "animalcatalog.json");
+    private Path animalCatalogFilePath = Paths.get("data" , "animalcatalog.json");
 
     /**
      * Creates a {@code AnimalUserPrefs} with default values.
@@ -35,7 +35,7 @@ public class AnimalUserPrefs implements AnimalReadOnlyUserPrefs {
     public void resetData(AnimalReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setCatalogFilePath(newUserPrefs.getCatalogFilePath());
+        setAnimalCatalogFilePath(newUserPrefs.getAnimalCatalogFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -47,13 +47,13 @@ public class AnimalUserPrefs implements AnimalReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getCatalogFilePath() {
-        return catalogFilePath;
+    public Path getAnimalCatalogFilePath() {
+        return animalCatalogFilePath;
     }
 
-    public void setCatalogFilePath(Path catalogFilePath) {
-        requireNonNull(catalogFilePath);
-        this.catalogFilePath = catalogFilePath;
+    public void setAnimalCatalogFilePath(Path animalCatalogFilePath) {
+        requireNonNull(animalCatalogFilePath);
+        this.animalCatalogFilePath = animalCatalogFilePath;
     }
 
     @Override
@@ -69,19 +69,19 @@ public class AnimalUserPrefs implements AnimalReadOnlyUserPrefs {
 
         AnimalUserPrefs otherUserPrefs = (AnimalUserPrefs) other;
         return guiSettings.equals(otherUserPrefs.guiSettings)
-                && catalogFilePath.equals(otherUserPrefs.catalogFilePath);
+                && animalCatalogFilePath.equals(otherUserPrefs.animalCatalogFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, catalogFilePath);
+        return Objects.hash(guiSettings, animalCatalogFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + catalogFilePath);
+        sb.append("\nLocal data file location : " + animalCatalogFilePath);
         return sb.toString();
     }
 
