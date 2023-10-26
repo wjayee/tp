@@ -65,4 +65,31 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Converts all the words in the given string to title case, meaning the first letter of each word is
+     * capitalized, and the rest are in lowercase. Words are assumed to be separated by spaces.
+     *
+     * @param toTitleCase the string to convert to title case
+     * @return a string with each word converted to title case
+     */
+    public static String toTitleCase(String toTitleCase) {
+        // Check for null or empty string.
+        if (toTitleCase == null || toTitleCase.isEmpty()) {
+            return toTitleCase;
+        }
+
+        // Split the string into words.
+        String[] words = toTitleCase.split("\\s+");
+
+        // Capitalize the first letter of each word and make the rest lowercase.
+        for (int i = 0; i < words.length; i++) {
+            if (!words[i].isEmpty()) {
+                words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1).toLowerCase();
+            }
+        }
+
+        // Join the words back into a single string.
+        return String.join(" ", words);
+    }
 }

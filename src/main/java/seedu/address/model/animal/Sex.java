@@ -5,6 +5,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
+import seedu.address.commons.util.StringUtil;
+
 public class Sex {
     public static final String MESSAGE_CONSTRAINTS = "Sex should be MALE | FEMALE";
 
@@ -52,7 +54,7 @@ public class Sex {
      */
     @Override
     public String toString() {
-        return sex.getShortForm();
+        return StringUtil.toTitleCase(sex.toString());
     }
 
     public String getSerializableForm() {
