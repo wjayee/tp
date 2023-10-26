@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
@@ -14,7 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.Animal;
-import seedu.address.storage.Storage;
+import seedu.address.storage.AnimalStorage;
 
 /**
  * The main LogicManager of the app.
@@ -28,13 +30,13 @@ public class AnimalLogicManager implements AnimalLogic {
     private final Logger logger = LogsCenter.getLogger(AnimalLogicManager.class);
 
     private final AnimalModel model;
-    private final Storage storage;
+    private final AnimalStorage storage;
     private final AnimalCatalogParser animalCatalogParser;
 
     /**
-     * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
+     * Constructs a {@code LogicManager} with the given {@code Model} and {@code AnimalStorage}.
      */
-    public AnimalLogicManager(AnimalModel model, Storage storage) {
+    public AnimalLogicManager(AnimalModel model, AnimalStorage storage) {
         this.model = model;
         this.storage = storage;
         animalCatalogParser = new AnimalCatalogParser();
@@ -48,13 +50,13 @@ public class AnimalLogicManager implements AnimalLogic {
         AnimalCommand command = animalCatalogParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-        //        try {
-        //            storage.saveAddressBook(model.getAnimalCatalog());
-        //        } catch (AccessDeniedException e) {
-        //            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
-        //        } catch (IOException ioe) {
-        //            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
-        //        }
+        try {
+            storage.saveAnimalCatalog(model.getAnimalCatalog());
+        } catch (AccessDeniedException e) {
+            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
+        } catch (IOException ioe) {
+            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
+        }
 
         return commandResult;
     }

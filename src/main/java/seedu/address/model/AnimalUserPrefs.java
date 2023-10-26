@@ -14,7 +14,8 @@ import seedu.address.commons.core.GuiSettings;
 public class AnimalUserPrefs implements AnimalReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path catalogFilePath = Paths.get("data" , "catalog.json");
+    private Path catalogFilePath = Paths.get("data" , "animalcatalog.json");
+
     /**
      * Creates a {@code AnimalUserPrefs} with default values.
      */
