@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.AnimalModel;
 import seedu.address.model.AnimalModelManager;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.AnimalUserPrefs;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
@@ -20,8 +20,8 @@ public class ListAnimalCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new AnimalModelManager(getTypicalCatalog(), new UserPrefs());
-        expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new UserPrefs());
+        model = new AnimalModelManager(getTypicalCatalog(), new AnimalUserPrefs());
+        expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
     }
 
     @Test
