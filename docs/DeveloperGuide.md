@@ -71,16 +71,23 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts. Some core components include: `CommandBox`, `ResultDisplay`, `AnimalListPanel`, `AnimalDetailPanel`, and `AnimalCard`, along with other components. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 
-The `UI` component,
+Generally, the UI consists of the command box for the user to input commands, a result display to give an output based on the command given, and a main animal display panel consisting of 2 parts:
+1. `AnimalListPanel` which consists of a list of `AnimalCard` objects
+2. `AnimalDetailPanel` which is a detailed view of `Animal` objects, that displays data about an animal only when selected in the `AnimalListPanel`.
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
+The layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+
+The `UI` component does the following actions:
+
+* executes user commands using the 'Logic' component, and this is done through the `CommandBox` class of the UI where users can input a command.
+* listens for changes to `Model` data so that the UI can be updated with the modified data. For example, when an animal is deleted or added to the catalog, the UI is updated through the `AnimalListPanel` class, where the list that is referenced is an `Observable<Animal>` list that is updated live.
+* listens for selecting of `AnimalCard` in the UI to display the selected `Animal` in the `AnimalDetailPanel` through a `ChangeListener` class in the `AnimalListPanel`. It will be initialized as `null`, hence displaying a blank screen. Only upon clicking an `AnimalCard` will the `ChangeListener` update the `AnimalDetailPanel` to reflect the selected animal.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Animal` object residing in the `Model`.
 
 ### Logic component
 
@@ -243,6 +250,73 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
+
+## `AddAnimalCommand` Implementation
+
+### Proposed Implementation
+
+The `AddAnimalCommand` is a specific command designed to add an animal to the animal catalog. It identifies the animal to be added with attributes such as its name, ID, species, breed, age, date of birth and date of admission.
+
+Here's a brief outline of its operations and attributes:
+
+- `AddAnimalCommandParser#parse#` — Parses the user input to create an animal with the given attributes.
+- `AddAnimalCommand#execute(AnimalModel model)` — Executes the command to add a specified animal to the model.
+
+Given below is an example usage scenario of the `AddAnimalCommand`:
+
+1. The user types in the `add` command with the proper cli syntax, giving a compulsory input field for each attribute. Note that the position of the cli syntax can be in any order.
+2. The command verifies the validity of the index. If the index is missing any of the required syntax, it throws a `CommandException`. Otherwise, it adds the animal with its inputted attributes to the model and returns a successful command result.
+
+The following sequence diagram shows how the `AddAnimalCommand` works:
+
+<puml src="diagrams/AddSequenceDiagram.puml" alt="AddSequenceDiagram" />
+
+### Design considerations:
+
+**Aspect: How the addition is handled**
+
+- **Alternative 1 (current choice):** Add the animal directly ALL of the attributes specified.
+    - Pros: Straightforward for the user, since all attributes of the animals are handled at the start.
+    - Cons: Requires many error handling in case of an invalid syntax, wrong format, or missing attributes.
+
+- **Alternative 2:** Add the animal with mandatory attributes such as name and id but optional attributes for the rest.
+    - Pros: Can be more intuitive if the user does not know all the information of the animal.
+    - Cons: Have to create an optional field those attributes which require.  This can involve additional development work to allow users to input optional data as needed
+
+_{more aspects and alternatives to be added}_
+
+## `DeleteAnimalCommand` Implementation
+
+### Proposed Implementation
+
+The `DeleteAnimalCommand` is a specific command designed to remove an animal from the animal catalog. It identifies the animal to be deleted based on its displayed index in the list.
+
+Here's a brief outline of its operations and attributes:
+
+- `DeleteAnimalCommand#execute(AnimalModel model)` — Executes the command to delete a specified animal.
+- `targetIndex` — An attribute that holds the index of the animal to be deleted.
+
+Given below is an example usage scenario of the `DeleteAnimalCommand`:
+
+1. The user views the list of animals in the animal catalog. Note that this can be a filtered list, such as after using the `find` command.
+2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would aim to delete the third animal on the list.
+3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, removes it from the model, and returns a successful command result.
+
+The following sequence diagram shows how the `DeleteAnimalCommand` works:
+
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+
+### Design considerations:
+
+**Aspect: How the deletion is handled**
+
+- **Alternative 1 (current choice):** Use an index to specify which animal to delete.
+    - Pros: Straightforward for the user, especially if the list of animals is displayed.
+    - Cons: Requires error handling in case of an invalid index.
+
+- **Alternative 2:** Delete by specifying the animal's unique identifier or name.
+    - Pros: Can be more intuitive if the user knows the specific animal's details.
+    - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
 
 _{more aspects and alternatives to be added}_
 
