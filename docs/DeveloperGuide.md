@@ -135,6 +135,15 @@ The `AnimalModel` component,
 * does not depend on any of the other three components (as the `AnimalModel` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 
+<box type="info" seamless>
+
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `PetId` list in the `AnimalCatalog`, which `Animal` can reference. This allows `AnimalCatalog` to only require `PetId` object, instead of each `Animal` needing their own `PetId` objects.<br>
+
+<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+
+</box>
+
+
 ### Storage component
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
