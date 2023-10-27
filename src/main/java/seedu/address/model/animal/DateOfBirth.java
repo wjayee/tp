@@ -15,7 +15,7 @@ public class DateOfBirth {
     private final LocalDate dateOfBirth;
 
     /**
-     * Constructs a {@code Age}.
+     * Constructs a {@code DateOfBirth}.
      *
      * @param date a valid date.
      */
@@ -47,6 +47,15 @@ public class DateOfBirth {
      */
     public static boolean isValidDate(String test) {
         return TimeUtil.isValidDate(test);
+    }
+
+    /**
+     * Returns the {@link LocalDate} object representing this DateOfBirth.
+     *
+     * @return the LocalDate representing this DateOfBirth.
+     */
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
     @Override

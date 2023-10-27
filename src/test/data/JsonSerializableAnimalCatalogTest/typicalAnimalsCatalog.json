@@ -1,0 +1,36 @@
+{
+  "_comment": "AnimalCatalog save file which contains the same Animal values as in TypicalAnimals#getTypicalCatalog()",
+  "animals" : [ {
+    "name" : "Tofu",
+    "petId" : "1234",
+    "sex" : "FEMALE",
+    "species" : "Cat",
+    "breed" : "British Shorthair",
+    "dateOfBirth" : "2019-10-10",
+    "admissionDate" : "2019-11-11"
+  }, {
+    "name" : "Muffin",
+    "petId" : "3333",
+    "sex" : "MALE",
+    "species" : "Dog",
+    "breed" : "Jack Russell Terrier",
+    "dateOfBirth" : "2020-10-10",
+    "admissionDate" : "2020-12-12"
+  }, {
+    "name" : "Jaebee",
+    "petId" : "9999",
+    "sex" : "MALE",
+    "species" : "Pookie",
+    "breed" : "Bear",
+    "dateOfBirth" : "2023-01-01",
+    "admissionDate" : "2023-04-04"
+  }, {
+    "name" : "Loyboy",
+    "petId" : "2345",
+    "sex" : "MALE",
+    "species" : "Human",
+    "breed" : "Good Boy",
+    "dateOfBirth" : "2001-01-01",
+    "admissionDate" : "2023-02-02"
+  } ]
+}

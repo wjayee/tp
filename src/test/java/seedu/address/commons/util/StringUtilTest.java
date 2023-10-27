@@ -1,6 +1,8 @@
 package seedu.address.commons.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -140,4 +142,50 @@ public class StringUtilTest {
         assertThrows(NullPointerException.class, () -> StringUtil.getDetails(null));
     }
 
+    @Test
+    public void toTitleCase_standardString_titleCased() {
+        String input = "hello world";
+        String expected = "Hello World";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
+
+    @Test
+    public void toTitleCase_emptyString_emptyString() {
+        String input = "";
+        String expected = "";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
+
+    @Test
+    public void toTitleCase_singleCharacter_titleCased() {
+        String input = "a";
+        String expected = "A";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
+
+    @Test
+    public void toTitleCase_stringWithPunctuation_titleCased() {
+        String input = "it's a wonderful world!";
+        String expected = "It's A Wonderful World!";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
+
+    @Test
+    public void toTitleCase_nullInput_nullOutput() {
+        assertNull(StringUtil.toTitleCase(null));
+    }
+
+    @Test
+    public void toTitleCase_allCaps_normalTitleCase() {
+        String input = "HELLO WORLD";
+        String expected = "Hello World";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
+
+    @Test
+    public void toTitleCase_mixedCase_correctedTitleCase() {
+        String input = "hELLo WoRLD";
+        String expected = "Hello World";
+        assertEquals(expected, StringUtil.toTitleCase(input));
+    }
 }

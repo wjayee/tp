@@ -15,18 +15,19 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.AnimalLogic;
 import seedu.address.logic.AnimalLogicManager;
+import seedu.address.model.AnimalCatalog;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.AnimalModelManager;
+import seedu.address.model.AnimalReadOnlyUserPrefs;
+import seedu.address.model.AnimalUserPrefs;
 import seedu.address.model.ReadOnlyAnimalCatalog;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.Storage;
-import seedu.address.storage.StorageManager;
-import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.AnimalCatalogStorage;
+import seedu.address.storage.AnimalStorage;
+import seedu.address.storage.AnimalStorageManager;
+import seedu.address.storage.AnimalUserPrefsStorage;
+import seedu.address.storage.JsonAnimalCatalogStorage;
+import seedu.address.storage.JsonAnimalUserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -41,23 +42,23 @@ public class MainApp extends Application {
 
     protected Ui ui;
     protected AnimalLogic animalLogic;
-    protected Storage storage;
+    protected AnimalStorage storage;
     protected AnimalModel animalModel;
     protected Config config;
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing Pawfection ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
         config = initConfig(appParameters.getConfigPath());
         initLogging(config);
 
-        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
-        UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        AnimalUserPrefsStorage userPrefsStorage = new JsonAnimalUserPrefsStorage(config.getUserPrefsFilePath());
+        AnimalUserPrefs userPrefs = initPrefs(userPrefsStorage);
+        AnimalCatalogStorage animalCatalogStorage = new JsonAnimalCatalogStorage(userPrefs.getAnimalCatalogFilePath());
+        storage = new AnimalStorageManager(animalCatalogStorage, userPrefsStorage);
 
         animalModel = initModelManager(storage, userPrefs);
 
@@ -67,28 +68,27 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s animal catalog and {@code userPrefs}. <br>
+     * The data from the sample animal catalog will be used instead if {@code storage}'s animal catalog is not found,
+     * or an empty animal catalog will be used instead if errors occur when reading {@code storage}'s animal catalog.
      */
-    private AnimalModel initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        logger.info("Using data file : " + storage.getAddressBookFilePath());
+    private AnimalModel initModelManager(AnimalStorage storage, AnimalReadOnlyUserPrefs userPrefs) {
+        logger.info("Using data file : " + storage.getAnimalCatalogFilePath());
 
         Optional<ReadOnlyAnimalCatalog> animalCatalogOptional;
         ReadOnlyAnimalCatalog initialData;
-        //try {
-        //    animalCatalogOptional = storage.readAddressBook();
-        //    if (!animalCatalogOptional.isPresent()) {
-        //        logger.info("Creating a new data file " + storage.getAddressBookFilePath()
-        //                + " populated with a sample AddressBook.");
-        //    }
-        //    initialData = animalCatalogOptional.orElseGet(SampleDataUtil::getSampleAnimalCatalog);
-        //} catch (DataLoadingException e) {
-        //    logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-        //            + " Will be starting with an empty AddressBook.");
-        //    initialData = new AnimalCatalog();
-        //}
-        initialData = SampleDataUtil.getSampleAnimalCatalog();
+        try {
+            animalCatalogOptional = storage.readAnimalCatalog();
+            if (animalCatalogOptional.isEmpty()) {
+                logger.info("Creating a new data file " + storage.getAnimalCatalogFilePath()
+                        + " populated with a sample Animal Catalog.");
+            }
+            initialData = animalCatalogOptional.orElseGet(SampleDataUtil::getSampleAnimalCatalog);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getAnimalCatalogFilePath() + " could not be loaded."
+                    + " Will be starting with an empty Animal Catalog.");
+            initialData = new AnimalCatalog();
+        }
         return new AnimalModelManager(initialData, userPrefs);
     }
 
@@ -116,7 +116,7 @@ public class MainApp extends Application {
 
         try {
             Optional<Config> configOptional = ConfigUtil.readConfig(configFilePathUsed);
-            if (!configOptional.isPresent()) {
+            if (configOptional.isEmpty()) {
                 logger.info("Creating new config file " + configFilePathUsed);
             }
             initializedConfig = configOptional.orElse(new Config());
@@ -126,7 +126,7 @@ public class MainApp extends Application {
             initializedConfig = new Config();
         }
 
-        //Update config file in case it was missing to begin with or there are new/unused fields
+        // Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);
         } catch (IOException e) {
@@ -136,30 +136,30 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code UserPrefs} using the file at {@code storage}'s user prefs file path,
-     * or a new {@code UserPrefs} with default configuration if errors occur when
+     * Returns a {@code AnimalUserPrefs} using the file at {@code storage}'s user prefs file path,
+     * or a new {@code AnimalUserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected UserPrefs initPrefs(UserPrefsStorage storage) {
-        Path prefsFilePath = storage.getUserPrefsFilePath();
+    protected AnimalUserPrefs initPrefs(AnimalUserPrefsStorage storage) {
+        Path prefsFilePath = storage.getAnimalUserPrefsFilePath();
         logger.info("Using preference file : " + prefsFilePath);
 
-        UserPrefs initializedPrefs;
+        AnimalUserPrefs initializedPrefs;
         try {
-            Optional<UserPrefs> prefsOptional = storage.readUserPrefs();
-            if (!prefsOptional.isPresent()) {
+            Optional<AnimalUserPrefs> prefsOptional = storage.readAnimalUserPrefs();
+            if (prefsOptional.isEmpty()) {
                 logger.info("Creating new preference file " + prefsFilePath);
             }
-            initializedPrefs = prefsOptional.orElse(new UserPrefs());
+            initializedPrefs = prefsOptional.orElse(new AnimalUserPrefs());
         } catch (DataLoadingException e) {
             logger.warning("Preference file at " + prefsFilePath + " could not be loaded."
                     + " Using default preferences.");
-            initializedPrefs = new UserPrefs();
+            initializedPrefs = new AnimalUserPrefs();
         }
 
-        //Update prefs file in case it was missing to begin with or there are new/unused fields
+        // Update prefs file in case it was missing to begin with or there are new/unused fields
         try {
-            storage.saveUserPrefs(initializedPrefs);
+            storage.saveAnimalUserPrefs(initializedPrefs);
         } catch (IOException e) {
             logger.warning("Failed to save config file : " + StringUtil.getDetails(e));
         }
@@ -169,15 +169,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting Pawfection " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping Pawfection ] =============================");
         try {
-            storage.saveUserPrefs(animalModel.getUserPrefs());
+            storage.saveAnimalUserPrefs(animalModel.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

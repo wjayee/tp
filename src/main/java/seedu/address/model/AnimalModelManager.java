@@ -21,7 +21,7 @@ public class AnimalModelManager implements AnimalModel {
 
     private final AnimalCatalog animalCatalog;
 
-    private final UserPrefs userPrefs;
+    private final AnimalUserPrefs userPrefs;
 
     private final FilteredList<Animal> filteredAnimals;
 
@@ -29,30 +29,30 @@ public class AnimalModelManager implements AnimalModel {
      * Initializes an animalCatalog with the given animalCatalog and userPrefs
      *
      * @param animalCatalog Generated animalCatalog
-     * @param userPrefs UserPreferences
+     * @param userPrefs AnimalUserPreferences
      */
-    public AnimalModelManager(ReadOnlyAnimalCatalog animalCatalog, ReadOnlyUserPrefs userPrefs) {
+    public AnimalModelManager(ReadOnlyAnimalCatalog animalCatalog, AnimalReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(animalCatalog, userPrefs);
 
-        logger.fine("Initializing with address book: " + animalCatalog + " and user prefs " + userPrefs);
+        logger.fine("Initializing with animal catalog: " + animalCatalog + " and user prefs " + userPrefs);
 
         this.animalCatalog = new AnimalCatalog(animalCatalog);
-        this.userPrefs = new UserPrefs(userPrefs);
+        this.userPrefs = new AnimalUserPrefs(userPrefs);
         filteredAnimals = new FilteredList<>(this.animalCatalog.getAnimalList());
     }
 
     public AnimalModelManager() {
-        this(new AnimalCatalog(), new UserPrefs());
+        this(new AnimalCatalog(), new AnimalUserPrefs());
     }
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+    public void setUserPrefs(AnimalReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
+    public AnimalReadOnlyUserPrefs getUserPrefs() {
         return userPrefs;
     }
 
@@ -69,13 +69,13 @@ public class AnimalModelManager implements AnimalModel {
 
     @Override
     public Path getAnimalCatalogFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getAnimalCatalogFilePath();
     }
 
     @Override
     public void setAnimalCatalogFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setAnimalCatalogFilePath(addressBookFilePath);
     }
 
     //=========== Animal Catalog ================================================================================

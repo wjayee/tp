@@ -1,0 +1,19 @@
+{
+  "animals" : [ {
+    "name" : "Tofu",
+    "petId" : "1234",
+    "sex" : "FEMALE",
+    "species" : "Cat",
+    "breed" : "Ragdoll",
+    "dateOfBirth" : "2023-03-27",
+    "admissionDate" : "2022-05-07"
+  }, {
+    "name" : "Tofu",
+    "petId" : "1234",
+    "sex" : "FEMALE",
+    "species" : "Cat",
+    "breed" : "Ragdoll",
+    "dateOfBirth" : "2023-03-27",
+    "admissionDate" : "2022-05-07"
+  } ]
+}

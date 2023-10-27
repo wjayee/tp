@@ -1,5 +1,7 @@
 package seedu.address.model.animal;
 
+import java.util.Objects;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.animal.healthStatus.HealthStatus;
 import seedu.address.model.animal.notes.Notes;
@@ -52,12 +54,13 @@ public class Animal {
         return sex;
     }
 
-    public Species getSpecies() {return species;}
+    public Species getSpecies() {
+        return species;
+    }
 
     public Breed getBreed() {
         return breed;
     }
-
 
     public HealthStatus getHealthStatus() {
         return healthStatus;
@@ -66,6 +69,39 @@ public class Animal {
     public Notes getNotes() {
         return otherNotes;
     }
+
+    // ----------------- These getter methods are used for JSON serialization by JsonAdaptedAnimal--------------
+    // NOTE: For Animal attributes that simply stores a string as its underlying implementation, with its toString()
+    // method returning the string as-is, toString() is called to use it for deserialization.
+    // This must be taken into account when modifying the existing toString() methods.
+    public String getNameForSerialization() {
+        return name.toString();
+    }
+
+    public String getPetIdForSerialization() {
+        return petId.toString();
+    }
+
+    public String getDateOfBirthForSerialization() {
+        return dateOfBirth.getDateOfBirth().toString();
+    }
+
+    public String getAdmissionDateForSerialization() {
+        return admissionDate.getAdmissionDate().toString();
+    }
+
+    public String getSexForSerialization() {
+        return sex.getSerializableForm();
+    }
+
+    public String getSpeciesForSerialization() {
+        return species.toString();
+    }
+
+    public String getBreedForSerialization() {
+        return breed.toString();
+    }
+
 
     @Override
     public String toString() {
@@ -82,7 +118,7 @@ public class Animal {
 
     @Override
     public int hashCode() {
-        return 1;
+        return Objects.hash(name, petId, sex, species, breed, admissionDate, dateOfBirth);
     }
 
     public boolean isSameAnimal(Animal otherAnimal) {
