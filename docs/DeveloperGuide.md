@@ -338,6 +338,7 @@ The following sequence diagram shows how the `ListAnimalCommand` works:
 <puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
 
 ### Design considerations:
+
 Aspect: How the listing is handled
 - Alternative 1 (current choice): Use a command to list all animals in the animal catalog.
     - Pros: Straightforward for the user.
