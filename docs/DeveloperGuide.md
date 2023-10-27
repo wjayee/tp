@@ -150,6 +150,7 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `AnimalStorage` component,
+> Note: `AnimalStorage` and `Storage` are used synonymously.
 * can save both animal catalog data and user preference data in JSON format, and read them back into corresponding
 objects.
 
