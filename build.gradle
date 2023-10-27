@@ -26,6 +26,10 @@ test {
     finalizedBy jacocoTestReport
 }
 
+tasks.withType(JavaExec) {
+    enableAssertions = true
+}
+
 tasks.withType(Checkstyle) {
 //    exclude 'seedu/address/model/animal/**'  // Exclude all files within the animal directory
 }
