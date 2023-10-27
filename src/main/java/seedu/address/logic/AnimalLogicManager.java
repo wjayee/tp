@@ -34,7 +34,7 @@ public class AnimalLogicManager implements AnimalLogic {
     private final AnimalCatalogParser animalCatalogParser;
 
     /**
-     * Constructs a {@code LogicManager} with the given {@code Model} and {@code AnimalStorage}.
+     * Constructs a {@code AnimalLogicManager} with the given {@code AnimalModel} and {@code AnimalStorage}.
      */
     public AnimalLogicManager(AnimalModel model, AnimalStorage storage) {
         this.model = model;

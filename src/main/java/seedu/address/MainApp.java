@@ -68,9 +68,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s animal catalog and {@code userPrefs}. <br>
+     * The data from the sample animal catalog will be used instead if {@code storage}'s animal catalog is not found,
+     * or an empty animal catalog will be used instead if errors occur when reading {@code storage}'s animal catalog.
      */
     private AnimalModel initModelManager(AnimalStorage storage, AnimalReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAnimalCatalogFilePath());
@@ -126,7 +126,7 @@ public class MainApp extends Application {
             initializedConfig = new Config();
         }
 
-        //Update config file in case it was missing to begin with or there are new/unused fields
+        // Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);
         } catch (IOException e) {
@@ -157,7 +157,7 @@ public class MainApp extends Application {
             initializedPrefs = new AnimalUserPrefs();
         }
 
-        //Update prefs file in case it was missing to begin with or there are new/unused fields
+        // Update prefs file in case it was missing to begin with or there are new/unused fields
         try {
             storage.saveAnimalUserPrefs(initializedPrefs);
         } catch (IOException e) {

@@ -99,7 +99,7 @@ public class JsonAdaptedAnimal {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted animal object into the model's {@code Animal} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
@@ -121,7 +121,7 @@ public class JsonAdaptedAnimal {
 
     /**
      * Checks the attributes for any null values.
-     * Collates the list of null/missing attributes and throws a descriptive error message.\
+     * Collates the list of null/missing attributes and throws a descriptive error message.
      *
      * @throws IllegalValueException if there were any missing fields.
      */
