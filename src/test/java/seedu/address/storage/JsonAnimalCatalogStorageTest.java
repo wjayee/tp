@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAnimals.JAEBEE;
 import static seedu.address.testutil.TypicalAnimals.LOYBOY;
 import static seedu.address.testutil.TypicalAnimals.MUFFIN;
-import static seedu.address.testutil.TypicalAnimals.POOKIE;
 import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class JsonAnimalCatalogStorageTest {
         assertEquals(original, new AnimalCatalog(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addAnimal(POOKIE);
+        original.addAnimal(JAEBEE);
         original.removeAnimal(MUFFIN);
         jsonAnimalCatalogStorage.saveAnimalCatalog(original, filePath);
         readBack = jsonAnimalCatalogStorage.readAnimalCatalog(filePath).get();

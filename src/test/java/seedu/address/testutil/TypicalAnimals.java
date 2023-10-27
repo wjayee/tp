@@ -32,11 +32,11 @@ public class TypicalAnimals {
         .withAdmissionDate("2020-12-12")
         .build();
 
-    public static final Animal POOKIE = new AnimalBuilder()
-        .withName("Pookie")
+    public static final Animal JAEBEE = new AnimalBuilder()
+        .withName("Jaebee")
         .withPetId("9999")
         .withSex("MALE")
-        .withSpecies("Wookie")
+        .withSpecies("Pookie")
         .withBreed("Bear")
         .withDateOfBirth("2023-01-01")
         .withAdmissionDate("2023-04-04")
@@ -64,6 +64,6 @@ public class TypicalAnimals {
     }
 
     public static List<Animal> getTypicalAnimals() {
-        return new ArrayList<>(Arrays.asList(TOFU, MUFFIN, POOKIE, LOYBOY));
+        return new ArrayList<>(Arrays.asList(TOFU, MUFFIN, JAEBEE, LOYBOY));
     }
 }

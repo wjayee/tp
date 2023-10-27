@@ -17,10 +17,10 @@
     "dateOfBirth" : "2020-10-10",
     "admissionDate" : "2020-12-12"
   }, {
-    "name" : "Pookie",
+    "name" : "Jaebee",
     "petId" : "9999",
     "sex" : "MALE",
-    "species" : "Wookie",
+    "species" : "Pookie",
     "breed" : "Bear",
     "dateOfBirth" : "2023-01-01",
     "admissionDate" : "2023-04-04"
