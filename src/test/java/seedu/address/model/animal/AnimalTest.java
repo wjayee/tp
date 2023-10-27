@@ -7,6 +7,7 @@ import static seedu.address.testutil.TypicalAnimals.MUFFIN;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.AnimalBuilder;
 
 public class AnimalTest {

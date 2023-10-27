@@ -17,7 +17,7 @@ import seedu.address.model.animal.Animal;
  * Represents the in-memory model of the AnimalCatalog Data
  */
 public class AnimalModelManager implements AnimalModel {
-    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    private static final Logger logger = LogsCenter.getLogger(AnimalModelManager.class);
 
     private final AnimalCatalog animalCatalog;
 

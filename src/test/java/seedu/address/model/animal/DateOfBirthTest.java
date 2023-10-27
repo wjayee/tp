@@ -1,13 +1,17 @@
 package seedu.address.model.animal;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class DateOfBirthTest {
     @Test
@@ -104,19 +108,19 @@ public class DateOfBirthTest {
     @Test
     public void testEquals_withNull() {
         DateOfBirth dateOfBirth = new DateOfBirth("2023-01-01");
-        assertFalse(dateOfBirth.equals(null));
+        assertNotEquals(null, dateOfBirth);
     }
 
     @Test
     public void testEquals_withEqualDate() {
         DateOfBirth dateOfBirth = new DateOfBirth("2023-01-01");
-        assertTrue(dateOfBirth.equals(new DateOfBirth("2023-01-01")));
+        assertEquals(dateOfBirth, new DateOfBirth("2023-01-01"));
     }
 
     @Test
     public void testEquals_withNotEqualDate() {
         DateOfBirth dateOfBirth = new DateOfBirth("2023-01-01");
-        assertFalse(dateOfBirth.equals(new DateOfBirth("2023-10-10")));
+        assertNotEquals(dateOfBirth, new DateOfBirth("2023-10-10"));
     }
 
     @Test

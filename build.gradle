@@ -4,6 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'application'
     id 'jacoco'
+    id "com.adarshr.test-logger" version "3.2.0"
 }
 
 mainClassName = 'seedu.address.Main'
@@ -26,7 +27,7 @@ test {
 }
 
 tasks.withType(Checkstyle) {
-    exclude 'seedu/address/model/animal/**'  // Exclude all files within the animal directory
+//    exclude 'seedu/address/model/animal/**'  // Exclude all files within the animal directory
 }
 
 task coverage(type: JacocoReport) {

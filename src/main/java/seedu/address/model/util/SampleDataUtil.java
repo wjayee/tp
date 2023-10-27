@@ -1,9 +1,5 @@
 package seedu.address.model.util;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import seedu.address.model.AnimalCatalog;
 import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.AdmissionDate;
@@ -14,7 +10,6 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -46,15 +41,6 @@ public class SampleDataUtil {
             sampleAc.addAnimal(sampleAnimal);
         }
         return sampleAc;
-    }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
     }
 
 }

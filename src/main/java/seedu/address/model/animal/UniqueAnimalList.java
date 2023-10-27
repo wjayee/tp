@@ -13,10 +13,10 @@ import seedu.address.model.animal.exceptions.DuplicateAnimalException;
 
 /**
  * A list of animals that enforces uniqueness between its elements and does not allow nulls.
- * An animal is considered unique by comparing using {@code Animal#isSameAnimal(Animal)}. As such, adding and updating of
- * animals uses Animal#isSameAnimal(Animal) for equality so as to ensure that the animal being added or updated is
- * unique in terms of identity in the UniqueAnimalList. However, the removal of an animal uses Animal#equals(Object) so
- * as to ensure that the animal with exactly the same fields will be removed.
+ * An animal is considered unique by comparing using {@code Animal#isSameAnimal(Animal)}. As such, adding and
+ * updating of animals uses Animal#isSameAnimal(Animal) for equality to ensure that the animal being added or
+ * updated is unique in terms of identity in the UniqueAnimalList. However, the removal of an animal uses
+ * Animal#equals(Object) to ensure that the animal with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -63,7 +63,7 @@ public class UniqueAnimalList implements Iterable<Animal> {
      * @throws DuplicateAnimalException if editedAnimal is equivalent to another existing animal in the list.
      * @throws AnimalNotFoundException if {@code target} does not exist in the list.
      */
-    public void setAnimal(Animal target, Animal editedAnimal) throws DuplicateAnimalException, AnimalNotFoundException{
+    public void setAnimal(Animal target, Animal editedAnimal) throws DuplicateAnimalException, AnimalNotFoundException {
         requireAllNonNull(target, editedAnimal);
 
         int index = internalList.indexOf(target);

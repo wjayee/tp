@@ -6,7 +6,7 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
@@ -37,7 +37,7 @@ public class DeleteAnimalCommand extends AnimalCommand {
         List<Animal> lastShownList = model.getFilteredAnimalList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(AnimalMessages.MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX);
         }
 
         Animal animalToDelete = lastShownList.get(targetIndex.getZeroBased());

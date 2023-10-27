@@ -1,10 +1,16 @@
 package seedu.address.model.animal;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 public class AdmissionDateTest {
 
@@ -24,15 +30,15 @@ public class AdmissionDateTest {
     @Test
     public void testConstructor_withInvalidDate() {
         List<String> invalidDateInputs = List.of(
-                " ", //space
-                "", //empty
-                "abc123", //alphaNumeric
-                "1*1*2*", //NumericAndSymbols
-                "01012023", //DDMMYYYY
-                "01-01-2023", //DD-MM-YYYY
-                "12302023", //MMDDYYYY
-                "12-30-2023", //MM-DD-YYYY
-                "40309999"); //Out of calendar
+                " ", // space
+                "", // empty
+                "abc123", // alphaNumeric
+                "1*1*2*", // NumericAndSymbols
+                "01012023", // DDMMYYYY
+                "01-01-2023", // DD-MM-YYYY
+                "12302023", // MMDDYYYY
+                "12-30-2023", // MM-DD-YYYY
+                "40309999"); // Out of calendar
         for (String invalidDate : invalidDateInputs) {
             assertThrows(IllegalArgumentException.class, () -> new AdmissionDate(invalidDate));
         }
@@ -54,15 +60,15 @@ public class AdmissionDateTest {
     @Test
     public void testIsValidDate_withInvalidDates() {
         List<String> invalidDateInputs = List.of(
-                " ", //space
-                "", //empty
-                "abc123", //alphaNumeric
-                "1*1*2*", //NumericAndSymbols
-                "01012023", //DDMMYYYY
-                "01-01-2023", //DD-MM-YYYY
-                "12302023", //MMDDYYYY
-                "12-30-2023", //MM-DD-YYYY
-                "40309999"); //Out of calendar
+                " ", // space
+                "", // empty
+                "abc123", // alphaNumeric
+                "1*1*2*", // NumericAndSymbols
+                "01012023", // DDMMYYYY
+                "01-01-2023", // DD-MM-YYYY
+                "12302023", // MMDDYYYY
+                "12-30-2023", // MM-DD-YYYY
+                "40309999"); // Out of calendar
         for (String invalidDate : invalidDateInputs) {
             assertFalse(() -> AdmissionDate.isValidDate(invalidDate));
         }
@@ -71,19 +77,19 @@ public class AdmissionDateTest {
     @Test
     public void testEquals_withNull() {
         AdmissionDate admissionDate = new AdmissionDate("2023-01-01");
-        assertFalse(admissionDate.equals(null));
+        assertNotEquals(null, admissionDate);
     }
 
     @Test
     public void testEquals_withEqualDate() {
         AdmissionDate admissionDate = new AdmissionDate("2023-01-01");
-        assertTrue(admissionDate.equals(new AdmissionDate("2023-01-01")));
+        assertEquals(admissionDate, new AdmissionDate("2023-01-01"));
     }
 
     @Test
     public void testEquals_withNotEqualDate() {
         AdmissionDate admissionDate = new AdmissionDate("2023-01-01");
-        assertFalse(admissionDate.equals(new AdmissionDate("2023-10-10")));
+        assertNotEquals(admissionDate, new AdmissionDate("2023-10-10"));
     }
 
     @Test
