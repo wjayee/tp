@@ -320,9 +320,9 @@ The following sequence diagram shows how the `DeleteAnimalCommand` works:
 
 _{more aspects and alternatives to be added}_
 
-### List Feature
+## `ListAnimalCommand` Implementation
 
-#### Implementation
+### Proposed Implementation
 
 The `ListAnimalCommand` is a command designed to list all animals in the animal catalog. It does not take in any arguments.
 
@@ -337,7 +337,7 @@ Given below is an example usage scenario of the `ListAnimalCommand`:
 The following sequence diagram shows how the `ListAnimalCommand` works:
 <puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
 
-#### Design considerations:
+### Design considerations:
 Aspect: How the listing is handled
 - Alternative 1 (current choice): Use a command to list all animals in the animal catalog.
     - Pros: Straightforward for the user.
