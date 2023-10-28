@@ -11,7 +11,7 @@ package "Parser classes"{
 Class "<<interface>>\nAnimalParser" as AnimalParser
 Class AnimalCatalogParser
 Class XYZCommandParser
-Class CliSyntax
+Class CliAnimalSyntax
 Class AnimalParserUtil
 Class ArgumentMultimap
 Class ArgumentTokenizer
@@ -29,8 +29,8 @@ XYZCommandParser .up.|> AnimalParser
 XYZCommandParser ..> ArgumentMultimap
 XYZCommandParser ..> ArgumentTokenizer
 ArgumentTokenizer .left.> ArgumentMultimap
-XYZCommandParser ..> CliSyntax
-CliSyntax ..> Prefix
+XYZCommandParser ..> CliAnimalSyntax
+CliAnimalSyntax ..> Prefix
 XYZCommandParser ..> AnimalParserUtil
 AnimalParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix

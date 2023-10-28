@@ -7,7 +7,7 @@
 Package " "<<Rectangle>>{
     Class UI UI_COLOR
     Class AnimalLogic LOGIC_COLOR
-    Class Storage STORAGE_COLOR
+    Class AnimalStorage STORAGE_COLOR
     Class AnimalModel MODEL_COLOR
     Class Main #grey
     Class Commons LOGIC_COLOR_T2
@@ -19,15 +19,15 @@ Class "<$documents>" as File UI_COLOR_T1
 
 UI -[#green]> AnimalLogic
 UI -right[#green]-> AnimalModel
-AnimalLogic -[#blue]-> Storage
+AnimalLogic -[#blue]-> AnimalStorage
 AnimalLogic -down[#blue]-> AnimalModel
 Main -[#grey]-> UI
 Main -[#grey]-> AnimalLogic
-Main -[#grey]-> Storage
+Main -[#grey]-> AnimalStorage
 Main -up[#grey]-> AnimalModel
 Main -down[hidden]-> Commons
 
-Storage -up[STORAGE_COLOR].> AnimalModel
-Storage .right[STORAGE_COLOR].>File
+AnimalStorage -up[STORAGE_COLOR].> AnimalModel
+AnimalStorage .right[STORAGE_COLOR].>File
 User ..> UI
 @enduml
