@@ -2,13 +2,13 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_BREED;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_ADMISSION;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_BIRTH;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SEX;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
+import static seedu.address.logic.parser.CliAnimalSyntax.BREED;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_ADMISSION;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_BIRTH;
+import static seedu.address.logic.parser.CliAnimalSyntax.NAME;
+import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
+import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
+import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -44,31 +44,35 @@ public class AnimalCommandTestUtil {
 
 
 
-    public static final String INDEX_NAME_POOKIE = " " + PREFIX_NAME + VALID_NAME_POOKIE;
-    public static final String INDEX_NAME_TOFU = " " + PREFIX_NAME + VALID_NAME_TOFU;
-    public static final String INDEX_ID_POOKIE = " " + PREFIX_ID + VALID_ID_POOKIE;
-    public static final String INDEX_ID_TOFU = " " + PREFIX_ID + VALID_ID_TOFU;
-    public static final String INDEX_DATE_OF_BIRTH_POOKIE = " " + PREFIX_DATE_OF_BIRTH + VALID_DATE_OF_BIRTH_POOKIE;
-    public static final String INDEX_DATE_OF_BIRTH_TOFU = " " + PREFIX_DATE_OF_BIRTH + VALID_DATE_OF_BIRTH_TOFU;
-    public static final String INDEX_ADMISSION_DATE_POOKIE = " " + PREFIX_DATE_OF_ADMISSION
+    public static final String INDEX_NAME_POOKIE = " " + NAME.getPrefix() + VALID_NAME_POOKIE;
+    public static final String INDEX_NAME_TOFU = " " + NAME.getPrefix() + VALID_NAME_TOFU;
+    public static final String INDEX_ID_POOKIE = " " + PET_ID.getPrefix() + VALID_ID_POOKIE;
+    public static final String INDEX_ID_TOFU = " " + PET_ID.getPrefix() + VALID_ID_TOFU;
+    public static final String INDEX_DATE_OF_BIRTH_POOKIE = " " + DATE_OF_BIRTH.getPrefix()
+        + VALID_DATE_OF_BIRTH_POOKIE;
+    public static final String INDEX_DATE_OF_BIRTH_TOFU = " " + DATE_OF_BIRTH.getPrefix()
+        + VALID_DATE_OF_BIRTH_TOFU;
+    public static final String INDEX_ADMISSION_DATE_POOKIE = " " + DATE_OF_ADMISSION.getPrefix()
             + VALID_ADMISSION_DATE_POOKIE;
-    public static final String INDEX_ADMISSION_DATE_TOFU = " " + PREFIX_DATE_OF_ADMISSION + VALID_ADMISSION_DATE_TOFU;
-    public static final String INDEX_SEX_POOKIE = " " + PREFIX_SEX + VALID_SEX_POOKIE;
-    public static final String INDEX_SEX_TOFU = " " + PREFIX_SEX + VALID_SEX_TOFU;
-    public static final String INDEX_SPECIES_POOKIE = " " + PREFIX_SPECIES + VALID_SPECIES_POOKIE;
-    public static final String INDEX_SPECIES_TOFU = " " + PREFIX_SPECIES + VALID_SPECIES_TOFU;
-    public static final String INDEX_BREED_POOKIE = " " + PREFIX_BREED + VALID_BREED_POOKIE;
-    public static final String INDEX_BREED_TOFU = " " + PREFIX_BREED + VALID_BREED_TOFU;
+    public static final String INDEX_ADMISSION_DATE_TOFU =
+        " " + DATE_OF_ADMISSION.getPrefix() + VALID_ADMISSION_DATE_TOFU;
+    public static final String INDEX_SEX_POOKIE = " " + SEX.getPrefix() + VALID_SEX_POOKIE;
+    public static final String INDEX_SEX_TOFU = " " + SEX.getPrefix() + VALID_SEX_TOFU;
+    public static final String INDEX_SPECIES_POOKIE = " " + SPECIES.getPrefix() + VALID_SPECIES_POOKIE;
+    public static final String INDEX_SPECIES_TOFU = " " + SPECIES.getPrefix() + VALID_SPECIES_TOFU;
+    public static final String INDEX_BREED_POOKIE = " " + BREED.getPrefix() + VALID_BREED_POOKIE;
+    public static final String INDEX_BREED_TOFU = " " + BREED.getPrefix() + VALID_BREED_TOFU;
 
-    public static final String INDEX_INVALID_NAME = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
-    public static final String INDEX_INVALID_ID = " " + PREFIX_ID + "911a"; // 'a' not allowed in ID
-    public static final String INDEX_INVALID_DATE_OF_BIRTH = " " + PREFIX_DATE_OF_BIRTH + "2022-13-10"; // no such date
+    public static final String INDEX_INVALID_NAME = " " + NAME.getPrefix() + "James&"; // '&' not allowed in names
+    public static final String INDEX_INVALID_ID = " " + PET_ID.getPrefix() + "911a"; // 'a' not allowed in ID
+    public static final String INDEX_INVALID_DATE_OF_BIRTH =
+        " " + DATE_OF_BIRTH.getPrefix() + "2022-13-10"; // no such date
     public static final String INDEX_INVALID_DATE_OF_ADMISSION = " "
-            + PREFIX_DATE_OF_ADMISSION + "22-13-2022"; // wrong date format
-    public static final String INDEX_INVALID_SEX = " " + PREFIX_SEX + "others"; // Can only be male or female
-    public static final String INDEX_INVALID_SPECIES = " " + PREFIX_SPECIES
+            + DATE_OF_ADMISSION.getPrefix() + "22-12-2022"; // wrong date format dd-mm-yyyy
+    public static final String INDEX_INVALID_SEX = " " + SEX.getPrefix() + "others"; // Can only be male or female
+    public static final String INDEX_INVALID_SPECIES = " " + SPECIES.getPrefix()
             + "Waterboard2"; // '2' not allowed in species
-    public static final String INDEX_INVALID_BREED = " " + PREFIX_BREED + "Water-board"; // '-' not allowed in breed
+    public static final String INDEX_INVALID_BREED = " " + BREED.getPrefix() + "lil-bear"; // '-' not allowed in breed
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
