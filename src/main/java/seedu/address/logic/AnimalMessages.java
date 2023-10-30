@@ -12,12 +12,19 @@ import seedu.address.model.animal.Animal;
  */
 public class AnimalMessages {
 
+    // ------------------------------------- Message Strings ---------------------------------------------
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
-    public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%s";
+    public static final String MESSAGE_INVALID_COMMAND = "Invalid command!";
     public static final String MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX = "The animal index provided is invalid";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%d animals listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESSAGE_INVALID_PREAMBLE = "Command should not have preamble!";
+
+    // ------------------------------------- Format Strings -----------------------------------------------
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW_FORMAT = "%d animals listed!";
+    public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%s";
+    public static final String MESSAGE_MISSING_PREFIXES_FORMAT = "Missing prefixes: %s";
+
     public static final String PET_ID = "ID";
     public static final String SEX = "Sex";
     public static final String SPECIES = "Species";
@@ -25,6 +32,19 @@ public class AnimalMessages {
     public static final String DATE_OF_BIRTH = "Date of Birth";
     public static final String ADMISSION_DATE = "Date of Admission";
     public static final String DISPLAY_FORMAT = "; %s:";
+
+
+    /**
+     * Returns a String formed from the given messages, separated by new lines. Filters empty strings out.
+     *
+     * @param messages the messages to be formatted.
+     * @return a new String consisting of the messages, where each message is separated by new lines.
+     */
+    public static String getFormattedHelpMessage(String... messages) {
+        return Stream.of(messages)
+            .filter(msg -> !msg.isEmpty())
+            .collect(Collectors.joining("\n"));
+    }
 
 
     /**
