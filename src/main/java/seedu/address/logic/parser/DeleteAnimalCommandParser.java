@@ -20,7 +20,7 @@ public class DeleteAnimalCommandParser {
      */
     public DeleteAnimalCommand parse(String args) throws ParseException {
         try {
-            Index index = ParserUtil.parseIndex(args);
+            Index index = AnimalParserUtil.parseIndex(args);
             return new DeleteAnimalCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
