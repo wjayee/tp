@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -50,6 +51,11 @@ public class DeleteAnimalCommand extends AnimalCommand {
         return other == this // short circuit if same object
                 || (other instanceof DeleteAnimalCommand // instanceof handles nulls
                 && targetIndex.equals(((DeleteAnimalCommand) other).targetIndex));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(targetIndex);
     }
 
     @Override

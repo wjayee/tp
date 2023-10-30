@@ -95,6 +95,13 @@ public class ArgumentMultimap {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+    /**
+     * Returns the list of missing Prefixes in the {@code ArgumentMultimap}, based on the provided prefixes.
+     *
+     * @param argumentMultimap the ArgumentMultimap to check for missing prefixes.
+     * @param prefixes the list of prefixes to check against.
+     * @return the list containing the missing prefixes. If all prefixes are present, then return an empty list.
+     */
     public static List<Prefix> getMissingPrefixes(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes)
             .filter(prefix -> argumentMultimap.getValue(prefix).isEmpty())
