@@ -94,7 +94,7 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneMonth = currentDate.minusMonths(1);
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneMonth.toString());
-        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1 ,0));
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1, 0));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneYear = currentDate.minusYears(1);
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneYear.toString());
-        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 1, 0 ,0));
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 1, 0, 0));
     }
 
     @Test
@@ -135,6 +135,6 @@ public class DateOfBirthTest {
     public void testToString() {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         DateOfBirth dateOfBirth = new DateOfBirth(currentDate.toString());
-        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 0 ,0));
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 0, 0));
     }
 }
