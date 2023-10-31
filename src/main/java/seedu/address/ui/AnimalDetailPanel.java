@@ -47,9 +47,9 @@ public class AnimalDetailPanel extends UiPart<Region> {
         name.setText("Name: " + animal.getName().fullName);
         petId.setText("ID: " + animal.getPetId().toString());
         sex.setText("Sex: " + animal.getSex().toString());
-        species.setText("Species " + animal.getSpecies().toString());
-        breed.setText("Breed " + animal.getBreed().toString());
-        dateOfBirth.setText("Age: " + animal.getDateOfBirth().toString());
+        species.setText("Species: " + animal.getSpecies().toString());
+        breed.setText("Breed: " + animal.getBreed().toString());
+        dateOfBirth.setText(animal.getDateOfBirth().toString());
         admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
         if (animal.getTaskList().isEmptyTaskList()) {
             tasks.setText("Tasks: None");
