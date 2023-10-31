@@ -63,15 +63,6 @@ public class Task {
     }
 
     /**
-     * Returns the status of the task in a String. X indicates completed, whitespace indicates otherwise.
-     *
-     * @return A String that indicates whether a task has been done.
-     */
-    public String getStausIcon() {
-        return (isDone ? "X" : " ");
-    }
-
-    /**
      * Checks whether the description of the task is valid using the regex expression. A task should not be empty,
      * and should not only contain whitespace characters.
      *
@@ -107,7 +98,7 @@ public class Task {
      */
     @Override
     public String toString() {
-        return String.format("[%s] %s", getStausIcon(), description);
+        return String.format("[%s] %s", (isDone ? "X" : " "), description);
     }
 
 }

@@ -77,12 +77,6 @@ public class TaskTest {
     }
 
     @Test
-    public void testGetStatusIcon() {
-        assertEquals(INCOMPLETE_STATUS_ICON, incompleteTask.getStausIcon());
-        assertEquals(COMPLETED_STATUS_ICON, completeTask.getStausIcon());
-    }
-
-    @Test
     public void testIsValidTask_withValidInputs() {
         List<String> testInputs = List.of(ALPHA_NUMERIC,
                 ALPHA_WHITESPACE,

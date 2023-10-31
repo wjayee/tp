@@ -13,14 +13,14 @@ import seedu.address.model.animal.Task;
  */
 public class JsonAdaptedTask {
     private final String description;
-    private final String taskStatus;
+    private final boolean taskStatus;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given Task details.
      * This constructor is used internally by Jackson to deserialize {@link Task} JSON objects.
      */
     @JsonCreator
-    public JsonAdaptedTask(String description, String taskStatus) {
+    public JsonAdaptedTask(String description, boolean taskStatus) {
         this.description = description;
         this.taskStatus = taskStatus;
     }
@@ -31,7 +31,7 @@ public class JsonAdaptedTask {
      */
     public JsonAdaptedTask(Task source) {
         description = source.getDescription();
-        taskStatus = source.getStausIcon();
+        taskStatus = source.checkIsDone();
     }
 
     @JsonValue
@@ -40,7 +40,7 @@ public class JsonAdaptedTask {
     }
 
     @JsonValue
-    public String getIsDone() {
+    public boolean getIsDone() {
         return taskStatus;
     }
 
@@ -53,8 +53,7 @@ public class JsonAdaptedTask {
         if (!Task.isValidTask(description)) {
             throw new IllegalValueException(Task.MESSAGE_CONSTRAINTS);
         }
-        boolean isDone = (taskStatus.equals("X"));
-        return new Task(description, isDone);
+        return new Task(description, taskStatus);
     }
 
 }
