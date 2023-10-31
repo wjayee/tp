@@ -56,6 +56,7 @@ public class JsonAdaptedAnimal {
     public static final String BREED_KEY = "breed";
     public static final String ADMISSION_DATE_KEY = "admissionDate";
 
+
     // Attributes of Animal that are implemented. Omission of HealthStatus and Notes is intentional.
     private final String name;
     private final String petId;
