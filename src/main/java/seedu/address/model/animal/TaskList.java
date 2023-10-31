@@ -36,6 +36,10 @@ public class TaskList {
                 .collect(Collectors.joining("\n"));
     }
 
+    public boolean isEmptyTaskList() {
+        return taskList.isEmpty();
+    }
+
     public boolean equals(Object o) {
         if (this == o) {
             return true;

@@ -10,6 +10,7 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
+import seedu.address.model.animal.TaskList;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -19,6 +20,7 @@ public class SampleDataUtil {
      * A list of sample animals to show in the default app.
      * @return A list of Animals
      */
+
     public static Animal[] getSampleAnimals() {
         return new Animal[] {
             new Animal(new Name("Pookie"), new PetId("1234"), new Species("Dog"),
