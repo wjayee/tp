@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 public class DateOfBirthTest {
     @Test
     public void testConstructor_withValidDates() {
-        assertDoesNotThrow(() -> new DateOfBirth("2023-10-23")); //ISO_LOCAL_DATE
-        assertDoesNotThrow(() -> new DateOfBirth("20231023")); //BASIC_ISO_DATE
-        assertDoesNotThrow(() -> new DateOfBirth("1 Jan 2023")); //d MMM yyyy
-        assertDoesNotThrow(() -> new DateOfBirth("1 January 2023")); //d MMMM YYYY
+        assertDoesNotThrow(() -> new DateOfBirth("2023-10-23")); // ISO_LOCAL_DATE
+        assertDoesNotThrow(() -> new DateOfBirth("20231023")); // BASIC_ISO_DATE
+        assertDoesNotThrow(() -> new DateOfBirth("1 Jan 2023")); // d MMM yyyy
+        assertDoesNotThrow(() -> new DateOfBirth("1 January 2023")); // d MMMM YYYY
     }
 
     @Test
@@ -30,15 +30,15 @@ public class DateOfBirthTest {
     @Test
     public void testConstructor_withInvalidDate() {
         List<String> invalidDateInputs = List.of(
-                " ", //space
-                "", //empty
-                "abc123", //alphaNumeric
-                "1*1*2*", //NumericAndSymbols
-                "01012023", //DDMMYYYY
-                "01-01-2023", //DD-MM-YYYY
-                "12302023", //MMDDYYYY
-                "12-30-2023", //MM-DD-YYYY
-                "40309999"); //Out of calendar
+                " ", // space
+                "", // empty
+                "abc123", // alphaNumeric
+                "1*1*2*", // NumericAndSymbols
+                "01012023", // DDMMYYYY
+                "01-01-2023", // DD-MM-YYYY
+                "12302023", // MMDDYYYY
+                "12-30-2023", // MM-DD-YYYY
+                "40309999"); // Out of calendar
         for (String invalidDate : invalidDateInputs) {
             assertThrows(IllegalArgumentException.class, () -> new DateOfBirth(invalidDate));
         }
@@ -47,9 +47,9 @@ public class DateOfBirthTest {
     @Test
     public void testIsValidDate_withValidDates() {
         assertTrue(DateOfBirth.isValidDate("2023-10-23")); //ISO_LOCAL_DATE
-        assertTrue(DateOfBirth.isValidDate("20231023")); //BASIC_ISO_DATE
-        assertTrue(DateOfBirth.isValidDate("1 Jan 2023")); //d MMM yyyy
-        assertTrue(DateOfBirth.isValidDate("1 January 2023")); //d MMMM YYYY
+        assertTrue(DateOfBirth.isValidDate("20231023")); // BASIC_ISO_DATE
+        assertTrue(DateOfBirth.isValidDate("1 Jan 2023")); // d MMM yyyy
+        assertTrue(DateOfBirth.isValidDate("1 January 2023")); // d MMMM YYYY
     }
 
     @Test
@@ -60,15 +60,15 @@ public class DateOfBirthTest {
     @Test
     public void testIsValidDate_withInvalidDates() {
         List<String> invalidDateInputs = List.of(
-                " ", //space
-                "", //empty
-                "abc123", //alphaNumeric
-                "1*1*2*", //numericAndSymbols
-                "01012023", //DDMMYYYY
-                "01-01-2023", //DD-MM-YYYY
-                "12302023", //MMDDYYYY
-                "12-30-2023", //MM-DD-YYYY
-                "40309999"); //Out of calendar
+                " ", // space
+                "", // empty
+                "abc123", // alphaNumeric
+                "1*1*2*", // numericAndSymbols
+                "01012023", // DDMMYYYY
+                "01-01-2023", // DD-MM-YYYY
+                "12302023", // MMDDYYYY
+                "12-30-2023", // MM-DD-YYYY
+                "40309999"); // Out of calendar
         for (String invalidDate : invalidDateInputs) {
             assertFalse(() -> DateOfBirth.isValidDate(invalidDate));
         }
@@ -78,7 +78,7 @@ public class DateOfBirthTest {
     public void testGetAge_withEqualDate() {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         DateOfBirth dateOfBirth = new DateOfBirth(currentDate.toString());
-        assertEquals(dateOfBirth.getAge(), 0);
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 0 , 0));
     }
 
     @Test
@@ -86,7 +86,7 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneDay = currentDate.minusDays(1);
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneDay.toString());
-        assertEquals(dateOfBirth.getAge(), 0);
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 0 , 1));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneMonth = currentDate.minusMonths(1);
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneMonth.toString());
-        assertEquals(dateOfBirth.getAge(), 0);
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1, 0));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneYear = currentDate.minusYears(1);
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneYear.toString());
-        assertEquals(dateOfBirth.getAge(), 1);
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 1, 0, 0));
     }
 
     @Test
@@ -135,6 +135,6 @@ public class DateOfBirthTest {
     public void testToString() {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         DateOfBirth dateOfBirth = new DateOfBirth(currentDate.toString());
-        assertEquals(dateOfBirth.toString(), "0");
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 0, 0));
     }
 }

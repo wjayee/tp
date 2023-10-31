@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.Objects;
 
@@ -15,6 +16,9 @@ import seedu.address.commons.util.TimeUtil;
 public class DateOfBirth {
     public static final String MESSAGE_CONSTRAINTS = String.format(
         "Date Of Birth should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
+
+    public static final String DISPLAY_FORMAT = "Date of Birth: %s%n" + "Age: %s";
+    public static final String AGE_FORMAT = "%s Year(s), %s Month(s), %s Day(s)";
     private final LocalDate dateOfBirth;
 
     /**
@@ -28,22 +32,17 @@ public class DateOfBirth {
         this.dateOfBirth = TimeUtil.parseDateString(date);
     }
 
-    public int getAge() {
+    public String getAge() {
         // Current date in Singapore time zone
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
 
-        // Calculate the age as the difference in years between the current date and the dateOfBirth
-        int age = currentDate.getYear() - dateOfBirth.getYear();
+        // Calculate the age using Period class
+        Period age = Period.between(dateOfBirth, currentDate);
 
-        // Adjust if today's date is before the user's birthday this year
-        if (currentDate.getMonthValue() < dateOfBirth.getMonthValue()
-            || (currentDate.getMonthValue() == dateOfBirth.getMonthValue()
-                && currentDate.getDayOfMonth() < dateOfBirth.getDayOfMonth())) {
-            age--;
-        }
-
-        return age;
+        // Construct and return the result
+        return String.format(AGE_FORMAT, age.getYears(), age.getMonths(), age.getDays());
     }
+
 
     /**
      * Returns true if a given string is a valid date.
@@ -80,6 +79,6 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return String.valueOf(getAge());
+        return String.format(DISPLAY_FORMAT, getDateOfBirth(), getAge());
     }
 }

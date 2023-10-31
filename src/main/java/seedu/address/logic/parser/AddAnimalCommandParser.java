@@ -1,14 +1,15 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_BREED;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_ADMISSION;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_BIRTH;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SEX;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
+import static seedu.address.logic.parser.CliAnimalSyntax.BREED;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_ADMISSION;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_BIRTH;
+import static seedu.address.logic.parser.CliAnimalSyntax.NAME;
+import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
+import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
+import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.AddAnimalCommand;
@@ -27,46 +28,64 @@ import seedu.address.model.animal.Species;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddAnimalCommandParser implements AnimalParser<AddAnimalCommand> {
+    public static final Prefix[] MANDATORY_PREFIXES = CliAnimalSyntax.getMandatoryPrefixes().toArray(Prefix[]::new);
+
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
+     * Parses the given {@code String} of arguments in the context of the AddCommand.
      * and returns an AddCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     *
+     * @throws ParseException if the user input does not conform to the expected format.
      */
     public AddAnimalCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH,
-                                            PREFIX_DATE_OF_ADMISSION, PREFIX_SPECIES, PREFIX_SEX, PREFIX_BREED);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, MANDATORY_PREFIXES);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH,
-                PREFIX_DATE_OF_ADMISSION, PREFIX_SPECIES, PREFIX_SEX, PREFIX_BREED)
-                || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(AnimalMessages.MESSAGE_INVALID_COMMAND_FORMAT,
-                                                    AddAnimalCommand.MESSAGE_USAGE));
+        if (!argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(AnimalMessages.MESSAGE_INVALID_PREAMBLE);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ID, PREFIX_DATE_OF_BIRTH, PREFIX_DATE_OF_ADMISSION,
-                                                PREFIX_SPECIES, PREFIX_SEX, PREFIX_BREED);
-        Name name = AnimalParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        PetId id = AnimalParserUtil.parsePetId(argMultimap.getValue(PREFIX_ID).get());
-        DateOfBirth dob = AnimalParserUtil.parseDateOfBirth(argMultimap.getValue(PREFIX_DATE_OF_BIRTH).get());
-        AdmissionDate doa = AnimalParserUtil.parseAdmissionDate(argMultimap.getValue(PREFIX_DATE_OF_ADMISSION).get());
-        Species species = AnimalParserUtil.parseSpecies(argMultimap.getValue(PREFIX_SPECIES).get());
-        Sex sex = AnimalParserUtil.parseSex(argMultimap.getValue(PREFIX_SEX).get());
-        Breed breed = AnimalParserUtil.parseBreed(argMultimap.getValue(PREFIX_BREED).get());
+        if (!ArgumentMultimap.arePrefixesPresent(argMultimap, MANDATORY_PREFIXES)) {
+            // Gets the prefix usage string.
+            List<String> missingPrefixesUsage = ArgumentMultimap.getMissingPrefixes(argMultimap, MANDATORY_PREFIXES)
+                .stream()
+                .map(CliAnimalSyntax::getCliSyntaxFromPrefix)
+                .map(CliAnimalSyntax::getUsage)
+                .collect(Collectors.toList());
+
+            throw new ParseException(getHelpMessage(missingPrefixesUsage));
+        }
+
+        // ParseException containing the duplicated prefixes separated by whitespace is thrown.
+        argMultimap.verifyNoDuplicatePrefixesFor(MANDATORY_PREFIXES);
+
+        // Optional::orElseThrow should never throw a NoSuchElementException given the checks done above.
+        Name name = AnimalParserUtil.parseName(argMultimap.getValue(NAME).orElseThrow());
+        PetId id = AnimalParserUtil.parsePetId(argMultimap.getValue(PET_ID).orElseThrow());
+        DateOfBirth dob = AnimalParserUtil.parseDateOfBirth(argMultimap.getValue(DATE_OF_BIRTH).orElseThrow());
+        AdmissionDate doa = AnimalParserUtil.parseAdmissionDate(argMultimap.getValue(DATE_OF_ADMISSION).orElseThrow());
+        Species species = AnimalParserUtil.parseSpecies(argMultimap.getValue(SPECIES).orElseThrow());
+        Sex sex = AnimalParserUtil.parseSex(argMultimap.getValue(SEX).orElseThrow());
+        Breed breed = AnimalParserUtil.parseBreed(argMultimap.getValue(BREED).orElseThrow());
 
         Animal animal = new Animal(name, id, species, breed, sex, doa, dob);
-
 
         return new AddAnimalCommand(animal);
     }
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
+     * Returns the formatted help message.
+     * Displays the following Help string:
+     *         Invalid Command:
+     *         Missing prefixes: n/ [NAME], i/ [PET_ID]
+     *         Example: add n/ Pookie ...
+     *
+     * @param missingPrefixesUsage the missing prefixes' usage string.
+     * @return a formatted help message consisting of the content specified above.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    public static String getHelpMessage(List<String> missingPrefixesUsage) {
+        return AnimalMessages.getFormattedHelpMessage(
+            AnimalMessages.MESSAGE_INVALID_COMMAND,
+            String.format(AnimalMessages.MESSAGE_MISSING_PREFIXES_FORMAT, String.join(", ", missingPrefixesUsage)),
+            AddAnimalCommand.EXAMPLE_USAGE
+        );
     }
-
-
 }

@@ -1,13 +1,13 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_BREED;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_ADMISSION;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_DATE_OF_BIRTH;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SEX;
-import static seedu.address.logic.parser.CliAnimalSyntax.PREFIX_SPECIES;
+import static seedu.address.logic.parser.CliAnimalSyntax.BREED;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_ADMISSION;
+import static seedu.address.logic.parser.CliAnimalSyntax.DATE_OF_BIRTH;
+import static seedu.address.logic.parser.CliAnimalSyntax.NAME;
+import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
+import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
+import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.AnimalMessages;
@@ -23,27 +23,28 @@ public class AddAnimalCommand extends AnimalCommand {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an animal to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an animal to the Catalog. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_ID + "PetID "
-            + PREFIX_DATE_OF_BIRTH + "DATE_OF_BIRTH "
-            + PREFIX_DATE_OF_ADMISSION + "DATE_OF_ADMISSION "
-            + PREFIX_SPECIES + "SPECIES "
-            + PREFIX_SEX + "SEX "
-            + PREFIX_BREED + "BREED "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "Pookie "
-            + PREFIX_ID + "1234"
-            + PREFIX_DATE_OF_BIRTH + "01/01/2019 "
-            + PREFIX_DATE_OF_ADMISSION + "01/01/2019 "
-            + PREFIX_SPECIES + "Dog "
-            + PREFIX_SEX + "M "
-            + PREFIX_BREED + "Poodle";
+            + NAME.getUsage() + " "
+            + PET_ID.getUsage() + " "
+            + DATE_OF_BIRTH.getUsage() + " "
+            + DATE_OF_ADMISSION.getUsage() + " "
+            + SPECIES.getUsage() + " "
+            + SEX.getUsage() + " "
+            + BREED.getUsage();
 
-    public static final String MESSAGE_SUCCESS = "New animal added: %1$s";
+    public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " "
+        + NAME.getPrefix() + "Pookie "
+        + PET_ID.getPrefix() + "1234 "
+        + SEX.getPrefix() + "MALE "
+        + DATE_OF_BIRTH.getPrefix() + "01/01/2019 "
+        + DATE_OF_ADMISSION.getPrefix() + "01/01/2019 "
+        + SPECIES.getPrefix() + "Dog "
+        + BREED.getPrefix() + "Poodle";
 
-    public static final String MESSAGE_DUPLICATE_ANIMAL = "This animal already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New animal added: %s";
+
+    public static final String MESSAGE_DUPLICATE_ANIMAL = "This animal already exists in the Catalog";
 
     private final Animal toAdd;
 
