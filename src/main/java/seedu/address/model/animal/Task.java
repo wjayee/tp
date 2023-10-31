@@ -7,11 +7,11 @@ import java.util.Objects;
 
 /**
  * Represents the Task addressed to the {@link Animal}
- *
  */
 public class Task {
 
-    public static final String MESSAGE_CONSRAINTS = "Description should not be empty!";
+    public static final String MESSAGE_CONSTRAINTS = "Description should not be empty, "
+            + "and should not contain only whitespaces ";
     public static final String VALIDATION_REGEX = "^.*\\S.*$";
 
     public final boolean isDone;
@@ -25,7 +25,7 @@ public class Task {
      */
     public Task(String description) {
         requireNonNull(description);
-        checkArgument(isValidTask(description), MESSAGE_CONSRAINTS);
+        checkArgument(isValidTask(description), MESSAGE_CONSTRAINTS);
         this.description = description;
         this.isDone = false;
     }
@@ -39,7 +39,7 @@ public class Task {
      */
     public Task(String description, boolean isDone) {
         requireNonNull(description);
-        checkArgument(isValidTask(description), MESSAGE_CONSRAINTS);
+        checkArgument(isValidTask(description), MESSAGE_CONSTRAINTS);
         this.description = description;
         this.isDone = isDone;
     }
@@ -50,7 +50,7 @@ public class Task {
      * @return The description of the task.
      */
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Task {
      * @return A boolean value that indicates whether a task has been done.
      */
     public boolean checkIsDone() {
-        return this.isDone;
+        return isDone;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Task {
      * @return A String that indicates whether a task has been done.
      */
     public String getStausIcon() {
-        return (this.isDone ? "X" : " ");
+        return (isDone ? "X" : " ");
     }
 
     /**
@@ -76,7 +76,7 @@ public class Task {
      * and should not only contain whitespace characters.
      *
      * @param test Description of task to be tested.
-     * @return Boolean value taht indicates whether a task is valid.
+     * @return Boolean value that indicates whether a task is valid.
      */
     public static boolean isValidTask(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -107,7 +107,7 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "[" + getStausIcon() + "] " + this.description;
+        return String.format("[%s] %s", getStausIcon(), description);
     }
 
 }

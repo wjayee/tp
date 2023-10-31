@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.animal.Task;
-import seedu.address.model.animal.TaskList;
 
 
 
 /**
- * A Jackson-friendly adapted version of the {@link TaskList} model class.
+ * A Jackson-friendly adapted version of the {@link Task} model class.
  */
 public class JsonAdaptedTask {
     private final String description;
@@ -52,7 +51,7 @@ public class JsonAdaptedTask {
      */
     public Task toTaskType() throws IllegalValueException {
         if (!Task.isValidTask(description)) {
-            throw new IllegalValueException(Task.MESSAGE_CONSRAINTS);
+            throw new IllegalValueException(Task.MESSAGE_CONSTRAINTS);
         }
         boolean isDone = (taskStatus.equals("X"));
         return new Task(description, isDone);

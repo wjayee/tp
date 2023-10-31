@@ -49,10 +49,10 @@ public class AnimalDetailPanel extends UiPart<Region> {
         breed.setText("Breed: " + animal.getBreed().toString());
         dateOfBirth.setText(animal.getDateOfBirth().toString());
         admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
-        if (animal.getTaskList().isEmptyTaskList()) {
+        if (animal.getTaskList().isEmpty()) {
             tasks.setText("Tasks: None");
         } else {
-            tasks.setText("Tasks: \n" + animal.getTaskList().getTasksAsString());
+            tasks.setText("Tasks: \n" + animal.getTaskList().toString());
         }
     }
 

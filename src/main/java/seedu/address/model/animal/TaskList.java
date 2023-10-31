@@ -1,6 +1,7 @@
 package seedu.address.model.animal;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ import java.util.stream.Collectors;
  *
  */
 public class TaskList {
-    private ArrayList<Task> taskList;
+    private final List<Task> taskList;
 
     /**
      * Constructs a TaskList that stores Tasks.
@@ -22,18 +23,8 @@ public class TaskList {
      * Returns the taskList.
      * @return the taskList containing tasks.
      */
-    public ArrayList<Task> getTaskList() {
+    public List<Task> getTaskList() {
         return this.taskList;
-    }
-
-    /**
-     * Returns all tasks in the TaskList as a string, separated by a newline
-     * @return A string of tasks, separated by a newline
-     */
-    public String getTasksAsString() {
-        return taskList.stream()
-                .map(Task::toString)
-                .collect(Collectors.joining("\n"));
     }
 
     /**
@@ -41,7 +32,7 @@ public class TaskList {
      *
      * @return A boolean indicating whether taskList is empty or not.
      */
-    public boolean isEmptyTaskList() {
+    public boolean isEmpty() {
         return taskList.isEmpty();
     }
 
@@ -61,4 +52,14 @@ public class TaskList {
         return Objects.hash(taskList);
     }
 
+    /**
+     * Returns all tasks in the TaskList as a string, separated by a newline
+     * @return A string of tasks, separated by a newline
+     */
+    @Override
+    public String toString() {
+        return taskList.stream()
+                .map(Task::toString)
+                .collect(Collectors.joining("\n"));
+    }
 }

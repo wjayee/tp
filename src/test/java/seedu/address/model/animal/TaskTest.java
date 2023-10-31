@@ -127,7 +127,7 @@ public class TaskTest {
 
     @Test
     public void testToString() {
-        assertEquals("[" + COMPLETED_STATUS_ICON + "] " + TEST_DESCRIPTION, completeTask.toString());
-        assertEquals("[" + INCOMPLETE_STATUS_ICON + "] " + TEST_DESCRIPTION, incompleteTask.toString());
+        assertEquals(String.format("[%s] %s", COMPLETED_STATUS_ICON, TEST_DESCRIPTION), completeTask.toString());
+        assertEquals(String.format("[%s] %s", INCOMPLETE_STATUS_ICON, TEST_DESCRIPTION), incompleteTask.toString());
     }
 }
