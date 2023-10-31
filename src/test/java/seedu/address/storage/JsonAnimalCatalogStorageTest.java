@@ -109,4 +109,10 @@ public class JsonAnimalCatalogStorageTest {
     public void saveAnimalCatalog_nullFilePath_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> saveAnimalCatalog(new AnimalCatalog(), null));
     }
+
+    @Test
+    public void getAnimalCatalogFilePathTest() {
+        JsonAnimalCatalogStorage testStorage = new JsonAnimalCatalogStorage(TEST_DATA_FOLDER);
+        assertEquals(testStorage.getAnimalCatalogFilePath(), TEST_DATA_FOLDER);
+    }
 }

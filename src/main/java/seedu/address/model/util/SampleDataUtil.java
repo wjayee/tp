@@ -10,7 +10,6 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
-import seedu.address.model.animal.TaskList;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.

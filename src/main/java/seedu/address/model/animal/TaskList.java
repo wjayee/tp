@@ -36,10 +36,16 @@ public class TaskList {
                 .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * Checks if the taskList does not contain any tasks.
+     *
+     * @return A boolean indicating whether taskList is empty or not.
+     */
     public boolean isEmptyTaskList() {
         return taskList.isEmpty();
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

@@ -5,8 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.model.animal.Animal;
 
-import java.util.Optional;
-
 /**
  * UI component that displays detailed animal information when selected.
  */

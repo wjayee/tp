@@ -1,8 +1,9 @@
 package seedu.address.model.animal;
-import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.util.Objects;
 
 /**
  * Represents the Task addressed to the {@link Animal}
@@ -10,11 +11,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Task {
 
-    public final boolean isDone;
-    public final String description;
-
     public static final String MESSAGE_CONSRAINTS = "Description should not be empty!";
     public static final String VALIDATION_REGEX = "^.*\\S.*$";
+
+    public final boolean isDone;
+    public final String description;
 
 
     /**

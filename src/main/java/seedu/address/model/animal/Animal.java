@@ -67,7 +67,10 @@ public class Animal {
     public Breed getBreed() {
         return breed;
     }
-    public TaskList getTaskList() {return taskList;}
+
+    public TaskList getTaskList() {
+        return taskList;
+    }
 
     // ----------------- These getter methods are used for JSON serialization by JsonAdaptedAnimal--------------
     // NOTE: For Animal attributes that simply stores a string as its underlying implementation, with its toString()

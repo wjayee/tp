@@ -124,4 +124,10 @@ public class JsonAnimalUserPrefsStorageTest {
         assertEquals(original, readBack);
     }
 
+    @Test
+    public void getUserPrefsFilePathTest() {
+        JsonAnimalUserPrefsStorage testStorage = new JsonAnimalUserPrefsStorage(TEST_DATA_FOLDER);
+        assertEquals(testStorage.getAnimalUserPrefsFilePath(), TEST_DATA_FOLDER);
+    }
+
 }
