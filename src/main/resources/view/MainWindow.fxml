@@ -43,7 +43,7 @@
 
         <!-- Box to output remark of command -->
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
-                   minHeight="40" prefHeight="40" maxHeight="40">
+                   minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
             <Insets top="5" bottom="5"/>
           </padding>
