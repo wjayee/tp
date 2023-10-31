@@ -29,9 +29,9 @@ public class AnimalMessages {
     public static final String SEX = "Sex";
     public static final String SPECIES = "Species";
     public static final String BREED = "Breed";
-    public static final String DATE_OF_BIRTH = "Date of Birth";
+    public static final String DATE_OF_BIRTH = "; "; // to maintain SLAP
     public static final String ADMISSION_DATE = "Date of Admission";
-    public static final String DISPLAY_FORMAT = "; %s:";
+    public static final String DISPLAY_FORMAT = "; %s: ";
 
 
     /**
@@ -73,7 +73,7 @@ public class AnimalMessages {
                 .append(animal.getSpecies())
                 .append(String.format(DISPLAY_FORMAT, BREED))
                 .append(animal.getBreed())
-                .append(String.format(DISPLAY_FORMAT, DATE_OF_BIRTH))
+                .append(DATE_OF_BIRTH)
                 .append(animal.getDateOfBirth())
                 .append(String.format(DISPLAY_FORMAT, ADMISSION_DATE))
                 .append(animal.getAdmissionDate());

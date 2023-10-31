@@ -13,7 +13,7 @@ import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes an animal identified using it's displayed index from the address book.
  */
 public class DeleteAnimalCommand extends AnimalCommand {
 
@@ -43,7 +43,7 @@ public class DeleteAnimalCommand extends AnimalCommand {
 
         Animal animalToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteAnimal(animalToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_ANIMAL_SUCCESS, animalToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_ANIMAL_SUCCESS, AnimalMessages.format(animalToDelete)));
     }
 
     @Override

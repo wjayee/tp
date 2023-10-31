@@ -16,7 +16,7 @@ import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 
 /**
- * Adds a animal to the catalog.
+ * Adds an animal to the catalog.
  */
 
 public class AddAnimalCommand extends AnimalCommand {
