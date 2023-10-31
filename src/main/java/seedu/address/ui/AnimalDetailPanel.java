@@ -42,14 +42,14 @@ public class AnimalDetailPanel extends UiPart<Region> {
      * Update the UI with the details of the provided person.
      */
     public void updateDetails(Animal animal) {
-        name.setText(animal.getName().fullName);
-        petId.setText(animal.getPetId().toString());
-        sex.setText(animal.getSex().toString());
-        species.setText(animal.getSpecies().toString());
-        breed.setText(animal.getBreed().toString());
+        name.setText("Name: " + animal.getName().fullName);
+        petId.setText("ID: " + animal.getPetId().toString());
+        sex.setText("Sex: " + animal.getSex().toString());
+        species.setText("Species " + animal.getSpecies().toString());
+        breed.setText("Breed " + animal.getBreed().toString());
         dateOfBirth.setText("Age: " + animal.getDateOfBirth().toString());
         admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
-        tasks.setText(animal.getTaskList().getTasksAsString());
+        tasks.setText("Tasks: " + animal.getTaskList().getTasksAsString());
     }
 
     /**
@@ -62,6 +62,6 @@ public class AnimalDetailPanel extends UiPart<Region> {
         sex.setText("");
         breed.setText("");
         admissionDate.setText("");
-        tasks.setText(animal.getTaskList().getTasksAsString());
+        tasks.setText("");
     }
 }
