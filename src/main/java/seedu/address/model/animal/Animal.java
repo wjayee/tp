@@ -16,6 +16,7 @@ public class Animal {
     private final Species species;
     private final Breed breed;
     private final AdmissionDate admissionDate;
+    private final TaskList taskList;
 
     /**
      * Constructs an {@link Animal} object.
@@ -36,6 +37,7 @@ public class Animal {
         this.breed = breed;
         this.admissionDate = admissionDate;
         this.dateOfBirth = dateOfBirth;
+        this.taskList = new TaskList();
     }
 
     public Name getName() {
@@ -64,6 +66,10 @@ public class Animal {
 
     public Breed getBreed() {
         return breed;
+    }
+
+    public TaskList getTaskList() {
+        return taskList;
     }
 
     // ----------------- These getter methods are used for JSON serialization by JsonAdaptedAnimal--------------

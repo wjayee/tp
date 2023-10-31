@@ -78,7 +78,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'addressbook.jar'
+    archiveFileName = 'pawfection.jar'
 }
 
 defaultTasks 'clean', 'test'

@@ -93,8 +93,9 @@ public class DateOfBirthTest {
     public void testGetAge_withMonthDifference() {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneMonth = currentDate.minusMonths(1);
+        int differenceInDays = currentDate.lengthOfMonth() - currentDateMinusOneMonth.lengthOfMonth();
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneMonth.toString());
-        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1, 0));
+        assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1, differenceInDays));
     }
 
     @Test
