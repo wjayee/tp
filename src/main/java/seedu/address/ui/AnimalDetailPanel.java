@@ -27,6 +27,9 @@ public class AnimalDetailPanel extends UiPart<Region> {
     @FXML
     private Label admissionDate;
 
+    @FXML
+    private Label tasks;
+
     /**
      * Creates an empty detailed view panel upon initialization.
      */
@@ -46,6 +49,7 @@ public class AnimalDetailPanel extends UiPart<Region> {
         breed.setText(animal.getBreed().toString());
         dateOfBirth.setText("Age: " + animal.getDateOfBirth().toString());
         admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
+        tasks.setText(animal.getTaskList().getTasksAsString());
     }
 
     /**
@@ -58,5 +62,6 @@ public class AnimalDetailPanel extends UiPart<Region> {
         sex.setText("");
         breed.setText("");
         admissionDate.setText("");
+        tasks.setText(animal.getTaskList().getTasksAsString());
     }
 }

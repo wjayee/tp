@@ -2,16 +2,38 @@ package seedu.address.model.animal;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
+/**
+ * Represents the TaskList containing tasks that are addressed to the {@link Animal}
+ *
+ */
 public class TaskList {
     private ArrayList<Task> taskList;
 
+    /**
+     * Constructs a TaskList that stores Tasks.
+     */
     public TaskList() {
         this.taskList = new ArrayList<Task>();
     }
 
+    /**
+     * Returns the taskList.
+     * @return the taskList containing tasks.
+     */
     public ArrayList<Task> getTaskList() {
         return this.taskList;
+    }
+
+    /**
+     * Returns all tasks in the TaskList as a string, separated by a newline
+     * @return A string of tasks, separated by a newline
+     */
+    public String getTasksAsString() {
+        return taskList.stream()
+                .map(Task::toString)
+                .collect(Collectors.joining("\n"));
     }
 
     public boolean equals(Object o) {

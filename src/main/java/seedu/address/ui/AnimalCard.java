@@ -40,6 +40,8 @@ public class AnimalCard extends UiPart<Region> {
     @FXML
     private Label breed;
 
+
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */

@@ -38,7 +38,6 @@ public class Animal {
         this.admissionDate = admissionDate;
         this.dateOfBirth = dateOfBirth;
         this.taskList = new TaskList();
-
     }
 
     public Name getName() {
@@ -101,8 +100,6 @@ public class Animal {
     public String getBreedForSerialization() {
         return breed.toString();
     }
-
-    public String getTaskListForSerialization() {return taskList.toString();}
 
 
     /**
