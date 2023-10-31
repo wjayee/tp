@@ -70,7 +70,8 @@ public class AnimalCatalogParser {
         //        case HelpAnimalCommand.COMMAND_WORD:
         //            return new HelpCommand();
 
-
+        case AddTaskCommand.COMMAND_WORD:
+            return new AddTaskCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
