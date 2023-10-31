@@ -37,8 +37,8 @@ public class AddAnimalCommand extends AnimalCommand {
         + NAME.getPrefix() + "Pookie "
         + PET_ID.getPrefix() + "1234 "
         + SEX.getPrefix() + "MALE "
-        + DATE_OF_BIRTH.getPrefix() + "01/01/2019 "
-        + DATE_OF_ADMISSION.getPrefix() + "01/01/2019 "
+        + DATE_OF_BIRTH.getPrefix() + "2023-01-01 "
+        + DATE_OF_ADMISSION.getPrefix() + "2023-02-02 "
         + SPECIES.getPrefix() + "Dog "
         + BREED.getPrefix() + "Poodle";
 
