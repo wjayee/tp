@@ -40,12 +40,12 @@ public class AnimalMessagesTest {
     public void format_validAnimal_returnsFormattedString() {
         Animal animal = new AnimalBuilder().build(); // Builds an Animal with default values.
 
-        String expectedOutput = animal.getName() + "; ID:" + animal.getPetId()
-            + "; Sex:" + animal.getSex()
-            + "; Species:" + animal.getSpecies()
-            + "; Breed:" + animal.getBreed()
+        String expectedOutput = animal.getName() + "; ID: " + animal.getPetId()
+            + "; Sex: " + animal.getSex()
+            + "; Species: " + animal.getSpecies()
+            + "; Breed: " + animal.getBreed()
             + "; " + animal.getDateOfBirth() // Remove repeat Date of Birth prefix
-            + "; Date of Admission:" + animal.getAdmissionDate();
+            + "; Date of Admission: " + animal.getAdmissionDate();
 
         String formattedAnimal = AnimalMessages.format(animal);
 
