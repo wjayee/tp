@@ -40,6 +40,31 @@ public class Animal {
         this.taskList = new TaskList();
     }
 
+    /**
+     * Constructs an {@link Animal} object. This constructor is used in to convert
+     * a Jackson friendly adapted animal into the Animal object.
+     *
+     * @param name the name of the Animal.
+     * @param petId the petId assigned to the Animal.
+     * @param species the species of the Animal.
+     * @param breed the breed of the Animal.
+     * @param sex the sex of the Animal.
+     * @param admissionDate the date the Animal was admitted.
+     * @param dateOfBirth the date of birth of the Animal.
+     * @param taskList the taskList of the Animal.
+     */
+    public Animal(Name name, PetId petId, Species species, Breed breed, Sex sex,
+                  AdmissionDate admissionDate, DateOfBirth dateOfBirth, TaskList taskList) {
+        this.name = name;
+        this.petId = petId;
+        this.sex = sex;
+        this.species = species;
+        this.breed = breed;
+        this.admissionDate = admissionDate;
+        this.dateOfBirth = dateOfBirth;
+        this.taskList = taskList;
+    }
+
     public Name getName() {
         return name;
     }
