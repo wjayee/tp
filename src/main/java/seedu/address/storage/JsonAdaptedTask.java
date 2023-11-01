@@ -37,16 +37,6 @@ public class JsonAdaptedTask {
         taskStatus = source.checkIsDone();
     }
 
-    @JsonProperty("description")
-    public String getDescription() {
-        return description;
-    }
-
-    @JsonProperty("isDone")
-    public boolean getIsDone() {
-        return taskStatus;
-    }
-
     /**
      * Converts this Jackson-friendly adapted task object into the model's {@code Task} object.
      *
