@@ -21,6 +21,7 @@ import seedu.address.model.AnimalCatalog;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.NameContainsKeywordsPredicate;
+import seedu.address.testutil.EditAnimalDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -76,17 +77,23 @@ public class AnimalCommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    //    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    //    public static final EditCommand.EditPersonDescriptor DESC_BOB;
-    //
-    //    static {
-    //        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-    //                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-    //                .withTags(VALID_TAG_FRIEND).build();
-    //        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-    //                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-    //                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
-    //    }
+    public static final EditAnimalCommand.EditAnimalDescriptor DESC_POOKIE =
+            new EditAnimalDescriptorBuilder().withName(VALID_NAME_POOKIE)
+                    .withBreed(VALID_BREED_POOKIE)
+                    .withDateOfBirth(VALID_DATE_OF_BIRTH_POOKIE)
+                    .withSex(VALID_SEX_POOKIE)
+                    .withSpecies(VALID_SPECIES_POOKIE)
+                    .withAdmissionDate(VALID_ADMISSION_DATE_POOKIE)
+                    .build();
+    public static final EditAnimalCommand.EditAnimalDescriptor DESC_TOFU =
+            new EditAnimalDescriptorBuilder().withName(VALID_NAME_TOFU)
+                    .withBreed(VALID_BREED_TOFU)
+                    .withDateOfBirth(VALID_DATE_OF_BIRTH_TOFU)
+                    .withSex(VALID_SEX_TOFU)
+                    .withSpecies(VALID_SPECIES_TOFU)
+                    .withAdmissionDate(VALID_ADMISSION_DATE_TOFU)
+                    .build();
+
 
     /**
      * Executes the given {@code command}, confirms that <br>
