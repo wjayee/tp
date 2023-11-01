@@ -46,6 +46,7 @@ public class TaskList {
 
     /**
      * Adds all Tasks in the specified input taskList into this taskList.
+     *
      * @param toCopyTaskList List of Tasks to copy from.
      */
     public void addAllTasks(List<Task> toCopyTaskList) {
