@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ADMISSION_DATE_POOKIE;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ADMISSION_DATE_TOFU;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_BREED_POOKIE;
@@ -21,8 +23,6 @@ import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SEX_POOK
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SEX_TOFU;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SPECIES_POOKIE;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SPECIES_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_NON_EMPTY;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.parser.AnimalCommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.AnimalCommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.CliAnimalSyntax.BREED;

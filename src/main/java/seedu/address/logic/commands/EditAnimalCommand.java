@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
 import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
@@ -204,12 +205,12 @@ public class EditAnimalCommand extends AnimalCommand {
         public boolean equals(Object other) {
             return this == other
                     || (other instanceof EditAnimalDescriptor
-                    && name.equals(((EditAnimalDescriptor) other).name)
-                    && dateOfBirth.equals(((EditAnimalDescriptor) other).dateOfBirth)
-                    && admissionDate.equals(((EditAnimalDescriptor) other).admissionDate)
-                    && species.equals(((EditAnimalDescriptor) other).species)
-                    && breed.equals(((EditAnimalDescriptor) other).breed)
-                    && sex.equals(((EditAnimalDescriptor) other).sex));
+                    && Objects.equals(name, ((EditAnimalDescriptor) other).name)
+                    && Objects.equals(dateOfBirth, ((EditAnimalDescriptor) other).dateOfBirth)
+                    && Objects.equals(admissionDate, ((EditAnimalDescriptor) other).admissionDate)
+                    && Objects.equals(species, ((EditAnimalDescriptor) other).species)
+                    && Objects.equals(breed, ((EditAnimalDescriptor) other).breed)
+                    && Objects.equals(sex, ((EditAnimalDescriptor) other).sex));
         }
 
         @Override
