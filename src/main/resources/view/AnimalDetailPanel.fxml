@@ -10,5 +10,6 @@
     <Label fx:id="breed" styleClass="cell_small_label"/>
     <Label fx:id="admissionDate" styleClass="cell_small_label"/>
     <Label fx:id="dateOfBirth" styleClass="cell_small_label"/>
+    <Label fx:id="age" styleClass="cell_small_label"/>
     <Label fx:id="tasks" styleClass="cell_small_label"/>
 </VBox>

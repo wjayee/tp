@@ -2,7 +2,6 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.animal.Task;
@@ -14,7 +13,7 @@ import seedu.address.model.animal.Task;
  */
 public class JsonAdaptedTask {
     public static final String DESCRIPTION_KEY = "description";
-    public static final String TASK_STATUS_KEY = "taskStatus";
+    public static final String TASK_STATUS_KEY = "isDone";
     private final String description;
     private final boolean taskStatus;
 
@@ -23,7 +22,8 @@ public class JsonAdaptedTask {
      * This constructor is used internally by Jackson to deserialize {@link Task} JSON objects.
      */
     @JsonCreator
-    public JsonAdaptedTask(@JsonProperty(DESCRIPTION_KEY) String description, @JsonProperty(TASK_STATUS_KEY) boolean taskStatus) {
+    public JsonAdaptedTask(@JsonProperty(DESCRIPTION_KEY) String description,
+                           @JsonProperty(TASK_STATUS_KEY) boolean taskStatus) {
         this.description = description;
         this.taskStatus = taskStatus;
     }
@@ -37,12 +37,12 @@ public class JsonAdaptedTask {
         taskStatus = source.checkIsDone();
     }
 
-    @JsonValue
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
 
-    @JsonValue
+    @JsonProperty("isDone")
     public boolean getIsDone() {
         return taskStatus;
     }

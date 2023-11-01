@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.util.List;
+
 import seedu.address.model.animal.AdmissionDate;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Breed;
@@ -11,7 +13,7 @@ import seedu.address.model.animal.Species;
 import seedu.address.model.animal.Task;
 import seedu.address.model.animal.TaskList;
 
-import java.util.List;
+
 
 /**
  * A utility class to help with building Animal objects.
@@ -120,6 +122,10 @@ public class AnimalBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code taskList} of the {@code Animal} that we are building.
+     *
+     */
     public AnimalBuilder withTaskList(List<Task> taskList) {
         this.taskList = new TaskList();
         this.taskList.getTaskList().addAll(taskList);

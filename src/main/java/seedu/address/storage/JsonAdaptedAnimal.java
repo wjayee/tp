@@ -124,15 +124,12 @@ public class JsonAdaptedAnimal {
         Breed animalBreed = new Breed(breed);
         DateOfBirth animalDateOfBirth = new DateOfBirth(dateOfBirth);
         AdmissionDate animalAdmissionDate = new AdmissionDate(admissionDate);
-
-        final TaskList animalTasks = new TaskList();
+        TaskList animalTaskList = new TaskList();
         for (JsonAdaptedTask task : tasks) {
-            animalTasks.getTaskList().add(task.toTaskType());
+            animalTaskList.getTaskList().add(task.toTaskType());
         }
-
-
         return new Animal(animalName, animalPetId, animalSpecies, animalBreed, animalSex,
-            animalAdmissionDate, animalDateOfBirth, animalTasks);
+            animalAdmissionDate, animalDateOfBirth, animalTaskList);
     }
 
     /**

@@ -50,9 +50,9 @@ public class AnimalCard extends UiPart<Region> {
         this.animal = animal;
         id.setText(displayedIndex + ". ");
         name.setText(animal.getName().fullName);
-        petId.setText(animal.getPetId().toString());
-        sex.setText(animal.getSex().toString());
-        species.setText(animal.getSpecies().toString());
-        breed.setText(animal.getBreed().toString());
+        petId.setText("ID: " + animal.getPetId().toString());
+        sex.setText("Sex: " + animal.getSex().toString());
+        species.setText("Species: " + animal.getSpecies().toString());
+        breed.setText("Breed: " + animal.getBreed().toString());
     }
 }

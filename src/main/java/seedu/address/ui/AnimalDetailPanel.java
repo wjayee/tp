@@ -17,6 +17,9 @@ public class AnimalDetailPanel extends UiPart<Region> {
     private Label petId;
     @FXML
     private Label dateOfBirth;
+
+    @FXML
+    private Label age;
     @FXML
     private Label sex;
     @FXML
@@ -47,7 +50,8 @@ public class AnimalDetailPanel extends UiPart<Region> {
         sex.setText("Sex: " + animal.getSex().toString());
         species.setText("Species: " + animal.getSpecies().toString());
         breed.setText("Breed: " + animal.getBreed().toString());
-        dateOfBirth.setText(animal.getDateOfBirth().toString());
+        dateOfBirth.setText("Date of Birth: " + animal.getDateOfBirth().toString());
+        age.setText("Age: " + animal.getDateOfBirth().getAge());
         admissionDate.setText("Date of Admission: " + animal.getAdmissionDate().toString());
         if (animal.getTaskList().isEmpty()) {
             tasks.setText("Tasks: None");
@@ -63,6 +67,7 @@ public class AnimalDetailPanel extends UiPart<Region> {
         name.setText("");
         petId.setText("");
         dateOfBirth.setText("");
+        age.setText("");
         sex.setText("");
         breed.setText("");
         admissionDate.setText("");

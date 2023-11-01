@@ -6,6 +6,8 @@ import static seedu.address.storage.JsonAdaptedAnimal.MISSING_FIELDS_MESSAGE_FOR
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -16,9 +18,11 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
-import seedu.address.model.animal.Task;
 
-import java.util.List;
+
+
+
+
 
 public class JsonAdaptedAnimalTest {
     private static final String INVALID_NAME = "Pookie Be@r";
