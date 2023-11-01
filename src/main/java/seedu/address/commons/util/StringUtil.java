@@ -46,9 +46,9 @@ public class StringUtil {
         }
 
         // iterate through the sentence
-        for(int i = 0; i < wordsInPreppedSentence.length; i++) {
+        for (int i = 0; i < wordsInPreppedSentence.length; i++) {
             if (wordsInPreppedSentence[i].equalsIgnoreCase(wordsInPreppedPhrase[0])) {
-                for(int j = 1; j < wordsInPreppedPhrase.length; j++) {
+                for (int j = 1; j < wordsInPreppedPhrase.length; j++) {
 
                     // if the sentence ends before the word does, return false
                     if (i + j >= wordsInPreppedSentence.length) {
@@ -61,8 +61,8 @@ public class StringUtil {
                     }
 
                     // if the last word matches, return true
-                    if (j == wordsInPreppedPhrase.length - 1 &&
-                            wordsInPreppedSentence[i + j].equalsIgnoreCase(wordsInPreppedPhrase[j])) {
+                    if (j == wordsInPreppedPhrase.length - 1
+                            && wordsInPreppedSentence[i + j].equalsIgnoreCase(wordsInPreppedPhrase[j])) {
                         return true;
                     }
                 }
