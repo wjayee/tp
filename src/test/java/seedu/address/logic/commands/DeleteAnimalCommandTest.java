@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
@@ -31,7 +32,8 @@ public class DeleteAnimalCommandTest {
 
         DeleteAnimalCommand deleteAnimalCommand = new DeleteAnimalCommand(Index.fromOneBased(1));
 
-        String expectedMessage = String.format(DeleteAnimalCommand.MESSAGE_DELETE_ANIMAL_SUCCESS, dummyAnimal);
+        String expectedMessage = String.format(DeleteAnimalCommand.MESSAGE_DELETE_ANIMAL_SUCCESS,
+                AnimalMessages.format(dummyAnimal));
 
         // Execute the command
         CommandResult result = deleteAnimalCommand.execute(model);
