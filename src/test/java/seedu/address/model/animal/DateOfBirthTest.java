@@ -94,6 +94,9 @@ public class DateOfBirthTest {
         LocalDate currentDate = LocalDate.now(ZoneId.of("Asia/Singapore"));
         LocalDate currentDateMinusOneMonth = currentDate.minusMonths(1);
         int differenceInDays = currentDate.lengthOfMonth() - currentDateMinusOneMonth.lengthOfMonth();
+        if (differenceInDays < 0) {
+            differenceInDays = 0;
+        }
         DateOfBirth dateOfBirth = new DateOfBirth(currentDateMinusOneMonth.toString());
         assertEquals(dateOfBirth.getAge(), String.format(DateOfBirth.AGE_FORMAT, 0, 1, differenceInDays));
     }
