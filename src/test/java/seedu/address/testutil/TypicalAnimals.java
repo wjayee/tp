@@ -63,6 +63,16 @@ public class TypicalAnimals {
             new Task("Wash Jaebee")).collect(Collectors.toList()))
         .build();
 
+    public static final Animal BEAR = new AnimalBuilder()
+            .withName("Bear")
+            .withPetId("1111")
+            .withSex("Female")
+            .withSpecies("Dog")
+            .withBreed("Poodle")
+            .withDateOfBirth("2019-01-01")
+            .withAdmissionDate("2019-01-01")
+            .build();
+
     public static AnimalCatalog getTypicalCatalog() {
         AnimalCatalog ac = new AnimalCatalog();
         for (Animal animal : getTypicalAnimals()) {
@@ -72,6 +82,6 @@ public class TypicalAnimals {
     }
 
     public static List<Animal> getTypicalAnimals() {
-        return new ArrayList<>(Arrays.asList(TOFU, MUFFIN, JAEBEE, LOYBOY));
+        return new ArrayList<>(Arrays.asList(TOFU, MUFFIN, JAEBEE, LOYBOY, BEAR));
     }
 }

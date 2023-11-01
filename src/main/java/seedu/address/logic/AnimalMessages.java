@@ -20,6 +20,10 @@ public class AnimalMessages {
             "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_PREAMBLE = "Command should not have preamble!";
 
+    public static final String MESSAGE_INVALID_SEARCH_KEYWORDS = "Search keywords cannot be empty! At least one "
+            + "prefix must be provided.";
+
+
     // ------------------------------------- Format Strings -----------------------------------------------
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW_FORMAT = "%d animals listed!";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%s";

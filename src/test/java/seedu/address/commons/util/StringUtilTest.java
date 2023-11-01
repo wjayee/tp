@@ -51,7 +51,7 @@ public class StringUtilTest {
     //---------------- Tests for containsWordIgnoreCase --------------------------------------
 
     /*
-     * Invalid equivalence partitions for word: null, empty, multiple words
+     * Invalid equivalence partitions for word: null, empty
      * Invalid equivalence partitions for sentence: null
      * The four test cases below test one invalid input at a time.
      */
@@ -63,14 +63,8 @@ public class StringUtilTest {
 
     @Test
     public void containsWordIgnoreCase_emptyWord_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, "Word parameter cannot be empty", ()
+        assertThrows(IllegalArgumentException.class, "Phrase parameter cannot be empty", ()
             -> StringUtil.containsWordIgnoreCase("typical sentence", "  "));
-    }
-
-    @Test
-    public void containsWordIgnoreCase_multipleWords_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, "Word parameter should be a single word", ()
-            -> StringUtil.containsWordIgnoreCase("typical sentence", "aaa BBB"));
     }
 
     @Test
@@ -79,7 +73,7 @@ public class StringUtilTest {
     }
 
     /*
-     * Valid equivalence partitions for word:
+     * Valid equivalence partitions for word/phrase:
      *   - any word
      *   - word containing symbols/numbers
      *   - word with leading/trailing spaces
@@ -123,6 +117,28 @@ public class StringUtilTest {
 
         // Matches multiple words in sentence
         assertTrue(StringUtil.containsWordIgnoreCase("AAA bBb ccc  bbb", "bbB"));
+
+        //Matches partial phrase in sentence
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "bbb cc")); //Sentence phrase bigger then query phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "cccc bb")); //Query phrase bigger then sentence phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "bb ccc")); //Query phrase is part of sentence phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("bb",
+                "bb cc")); //Sentence phrase is shorter than query phrase
+
+        // Matches phrase in sentence
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb! ccc bb", "aAa BBB!")); //First phrase
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb c1c bb", "C1C bB")); //Last phrase
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa    bbb    ccc  bb",
+                "aaa bbb ccc bb")); //Sentence has extra spaces
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "aaa bbb ccc bb")); //Only one phrase in sentence
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "   bb  ")); //Leading/trailing spaces
+
+        //Matches multiple phrases in sentence
+        assertTrue(StringUtil.containsWordIgnoreCase("AAA bbb ccc  bbb   CCC   ", "bbB cCc"));
+
     }
 
     //---------------- Tests for getDetails --------------------------------------
