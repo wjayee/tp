@@ -21,21 +21,54 @@ public class StringUtil {
      *       containsWordIgnoreCase("ABc def", "AB") == false //not a full word match
      *       </pre>
      * @param sentence cannot be null
-     * @param word cannot be null, cannot be empty, must be a single word
+     * @param phrase cannot be null, cannot be empty, must be a single word
      */
-    public static boolean containsWordIgnoreCase(String sentence, String word) {
+    public static boolean containsWordIgnoreCase(String sentence, String phrase) {
         requireNonNull(sentence);
-        requireNonNull(word);
+        requireNonNull(phrase);
 
-        String preppedWord = word.trim();
-        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
-        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+        String preppedPhrase = phrase.trim();
+        checkArgument(!preppedPhrase.isEmpty(), "Phrase parameter cannot be empty");
+        String[] wordsInPreppedPhrase = preppedPhrase.split("\\s+");
 
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
-        return Arrays.stream(wordsInPreppedSentence)
-                .anyMatch(preppedWord::equalsIgnoreCase);
+        // if the word is longer than the sentence, return false
+        if (wordsInPreppedPhrase.length > wordsInPreppedSentence.length) {
+            return false;
+        }
+
+        // if the phrase is one word long, check if the word is in the sentence
+        if (wordsInPreppedPhrase.length == 1) {
+            return Arrays.stream(wordsInPreppedSentence)
+                    .anyMatch(preppedPhrase::equalsIgnoreCase);
+        }
+
+        // iterate through the sentence
+        for(int i = 0; i < wordsInPreppedSentence.length; i++) {
+            if (wordsInPreppedSentence[i].equalsIgnoreCase(wordsInPreppedPhrase[0])) {
+                for(int j = 1; j < wordsInPreppedPhrase.length; j++) {
+
+                    // if the sentence ends before the word does, return false
+                    if (i + j >= wordsInPreppedSentence.length) {
+                        break;
+                    }
+
+                    // check if the subsequent words match
+                    if (!wordsInPreppedSentence[i + j].equalsIgnoreCase(wordsInPreppedPhrase[j])) {
+                        break;
+                    }
+
+                    // if the last word matches, return true
+                    if (j == wordsInPreppedPhrase.length - 1 &&
+                            wordsInPreppedSentence[i + j].equalsIgnoreCase(wordsInPreppedPhrase[j])) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /**
