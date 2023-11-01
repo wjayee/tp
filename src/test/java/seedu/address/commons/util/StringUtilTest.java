@@ -119,13 +119,16 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsWordIgnoreCase("AAA bBb ccc  bbb", "bbB"));
 
         //Matches partial phrase in sentence
-        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "bbb cc")); //Sentence phrase bigger then query phrase
-        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "cccc bb")); //Query phrase bigger then sentence phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "bbb cc")); //Sentence phrase bigger then query phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "cccc bb")); //Query phrase bigger then sentence phrase
 
         // Matches phrase in sentence
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb! ccc bb", "aAa BBB!")); //First phrase
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb c1c bb", "C1C bB")); //Last phrase
-        assertTrue(StringUtil.containsWordIgnoreCase("aaa    bbb    ccc  bb", "aaa bbb ccc bb")); //Sentence has extra spaces
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa    bbb    ccc  bb",
+                "aaa bbb ccc bb")); //Sentence has extra spaces
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "aaa bbb ccc bb")); //Only one phrase in sentence
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb", "   bb  ")); //Leading/trailing spaces
 
