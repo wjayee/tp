@@ -1,6 +1,7 @@
 package seedu.address.model.animal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -22,12 +23,10 @@ public class TaskList {
     }
 
     /**
-     * Returns the taskList.
-     * @return the taskList containing tasks.
+     * Returns the list of tasks.
+     * @return a list of tasks.
      */
-    public List<Task> getTaskList() {
-        return this.taskList;
-    }
+    public List<Task> getTasks() { return Collections.unmodifiableList(taskList); }
 
     public void addTask(Task task) { taskList.add(task); }
 
