@@ -67,7 +67,7 @@ public class JsonAdaptedAnimal {
     private final String breed;
     private final String dateOfBirth;
     private final String admissionDate;
-    private final List<JsonAdaptedTask> tasks = new ArrayList<>();
+    private final List<JsonAdaptedTask> tasks;
 
     /**
      * Constructs a {@code JsonAdaptedAnimal} with the given Animal details.
@@ -87,6 +87,7 @@ public class JsonAdaptedAnimal {
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.admissionDate = admissionDate;
+        this.tasks = new ArrayList<>();
         if (tasks != null) {
             this.tasks.addAll(tasks);
         }
@@ -104,11 +105,7 @@ public class JsonAdaptedAnimal {
         this.breed = source.getBreedForSerialization();
         this.dateOfBirth = source.getDateOfBirthForSerialization();
         this.admissionDate = source.getAdmissionDateForSerialization();
-        this.tasks.addAll(source.getTaskList()
-                .getTaskList()
-                .stream()
-                .map(JsonAdaptedTask::new)
-                .collect(Collectors.toList()));
+        this.tasks = source.getTaskListForSerialization();
     }
 
     /**

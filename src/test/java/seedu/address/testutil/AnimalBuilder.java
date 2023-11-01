@@ -8,6 +8,10 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
+import seedu.address.model.animal.Task;
+import seedu.address.model.animal.TaskList;
+
+import java.util.List;
 
 /**
  * A utility class to help with building Animal objects.
@@ -22,6 +26,7 @@ public class AnimalBuilder {
     public static final String DEFAULT_BREED = "Poodle";
     public static final String DEFAULT_ADMISSION_DATE = "2023-12-12";
 
+
     private Name name;
     private PetId petId;
     private DateOfBirth dateOfBirth;
@@ -29,6 +34,7 @@ public class AnimalBuilder {
     private Species species;
     private Breed breed;
     private AdmissionDate admissionDate;
+    private TaskList taskList;
 
     /**
      * Creates a {@code AnimalBuilder} with the default details.
@@ -41,6 +47,7 @@ public class AnimalBuilder {
         species = new Species(DEFAULT_SPECIES);
         breed = new Breed(DEFAULT_BREED);
         admissionDate = new AdmissionDate(DEFAULT_ADMISSION_DATE);
+        taskList = new TaskList();
     }
 
     /**
@@ -54,6 +61,7 @@ public class AnimalBuilder {
         species = animalToCopy.getSpecies();
         breed = animalToCopy.getBreed();
         admissionDate = animalToCopy.getAdmissionDate();
+        taskList = animalToCopy.getTaskList();
     }
 
     /**
@@ -109,6 +117,12 @@ public class AnimalBuilder {
      */
     public AnimalBuilder withAdmissionDate(String admissionDate) {
         this.admissionDate = new AdmissionDate(admissionDate);
+        return this;
+    }
+
+    public AnimalBuilder withTaskList(List<Task> taskList) {
+        this.taskList = new TaskList();
+        this.taskList.getTaskList().addAll(taskList);
         return this;
     }
 

@@ -1,8 +1,11 @@
 package seedu.address.model.animal;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.storage.JsonAdaptedTask;
 
 /**
  * Represents an Animal in the catalog.
@@ -127,6 +130,13 @@ public class Animal {
 
     public String getBreedForSerialization() {
         return breed.toString();
+    }
+
+    public List<JsonAdaptedTask> getTaskListForSerialization() {
+        return taskList.getTaskList()
+                .stream()
+                .map(JsonAdaptedTask::new)
+                .collect(Collectors.toList());
     }
 
 

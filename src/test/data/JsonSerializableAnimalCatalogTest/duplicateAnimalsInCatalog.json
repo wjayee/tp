@@ -6,7 +6,9 @@
     "species" : "Cat",
     "breed" : "Ragdoll",
     "dateOfBirth" : "2023-03-27",
-    "admissionDate" : "2022-05-07"
+    "admissionDate" : "2022-05-07",
+    "taskList" : [{"description":  "Walk Pookie around the Park",
+      "isDone":  false}]
   }, {
     "name" : "Tofu",
     "petId" : "1234",
@@ -14,6 +16,8 @@
     "species" : "Cat",
     "breed" : "Ragdoll",
     "dateOfBirth" : "2023-03-27",
-    "admissionDate" : "2022-05-07"
+    "admissionDate" : "2022-05-07",
+    "taskList" : [{"description":  "Walk Pookie around the Park",
+      "isDone":  false}]
   } ]
 }
