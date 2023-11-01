@@ -53,7 +53,7 @@ public enum CliAnimalSyntax {
      *
      * @return the list of mandatory Prefix.
      */
-    public static List<Prefix> getMandatoryPrefixes() {
+    public static List<Prefix> getAnimalAttributePrefixes() {
         return Stream.of(NAME, PET_ID, SEX, SPECIES, BREED, DATE_OF_BIRTH, DATE_OF_ADMISSION)
             .map(CliAnimalSyntax::getPrefix)
             .collect(Collectors.toList());

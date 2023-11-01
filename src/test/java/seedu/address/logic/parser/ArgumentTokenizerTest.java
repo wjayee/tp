@@ -206,19 +206,19 @@ public class ArgumentTokenizerTest {
         String argsString = "SomePreambleString p/pSlash -t dashT ^Q hatQ";
         ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
 
-        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+        assertTrue(ArgumentMultimap.areAnyPrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
 
         // Some prefixes present
         argsString = "SomePreambleString p/pSlash ^Q hatQ";
         argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
 
-        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+        assertTrue(ArgumentMultimap.areAnyPrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
 
         // Only one prefix present
         argsString = "SomePreambleString p/pSlash";
         argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
 
-        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+        assertTrue(ArgumentMultimap.areAnyPrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
     }
 
     @Test
@@ -227,13 +227,13 @@ public class ArgumentTokenizerTest {
         String argsString = "SomePreambleString";
         ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
 
-        assertFalse(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+        assertFalse(ArgumentMultimap.areAnyPrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
 
         // Only unknown prefix present
         argsString = "SomePreambleString --u";
         argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
 
-        assertFalse(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+        assertFalse(ArgumentMultimap.areAnyPrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
     }
 
 

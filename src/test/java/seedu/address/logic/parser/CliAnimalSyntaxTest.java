@@ -51,7 +51,7 @@ public class CliAnimalSyntaxTest {
         List<Prefix> expectedList = List.of(NAME_PREFIX, PET_ID_PREFIX, SEX_PREFIX, SPECIES_PREFIX, BREED_PREFIX,
             DATE_OF_BIRTH_PREFIX, DATE_OF_ADMISSION_PREFIX);
 
-        List<Prefix> actualList = CliAnimalSyntax.getMandatoryPrefixes();
+        List<Prefix> actualList = CliAnimalSyntax.getAnimalAttributePrefixes();
 
         boolean result = actualList.containsAll(expectedList);
 

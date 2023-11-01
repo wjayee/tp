@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
 import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
 import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.logic.AnimalMessages;
@@ -21,7 +20,8 @@ import seedu.address.model.animal.KeywordPredicate;
  */
 public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalCommand> {
 
-    private static final Prefix[] MANDATORY_PREFIXES = CliAnimalSyntax.getMandatoryPrefixes().toArray(Prefix[]::new);
+    private static final Prefix[] PREFIXES =
+            CliAnimalSyntax.getAnimalAttributePrefixes().toArray(Prefix[]::new);
 
     /**
      * Parses the given {@code String} of arguments in the context of the SearchAnimalCommand
@@ -32,14 +32,14 @@ public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalComma
      */
     public SearchAnimalCommand parse(String args) throws ParseException {
 
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, MANDATORY_PREFIXES);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIXES);
 
-        if (!ArgumentMultimap.areSomePrefixesPresent(argMultimap, MANDATORY_PREFIXES)) {
+        if (!ArgumentMultimap.areAnyPrefixesPresent(argMultimap, PREFIXES)) {
             throw new ParseException(getHelpMessage());
         }
 
         // ParseException containing the duplicated prefixes separated by whitespace is thrown.
-        argMultimap.verifyNoDuplicatePrefixesFor(MANDATORY_PREFIXES);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIXES);
 
         //Obtain values of the different fields
         String name = argMultimap.getValue(NAME).orElse("");
@@ -51,7 +51,7 @@ public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalComma
         String breed = argMultimap.getValue(BREED).orElse("");
 
 
-        List<String> keywords = Arrays.asList(name, id, dob, doa, species, sex, breed);
+        List<String> keywords = List.of(name, id, dob, doa, species, sex, breed);
 
 
         return new SearchAnimalCommand(new KeywordPredicate(keywords));

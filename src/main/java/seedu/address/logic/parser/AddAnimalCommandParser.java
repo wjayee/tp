@@ -28,7 +28,8 @@ import seedu.address.model.animal.Species;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddAnimalCommandParser implements AnimalParser<AddAnimalCommand> {
-    public static final Prefix[] MANDATORY_PREFIXES = CliAnimalSyntax.getMandatoryPrefixes().toArray(Prefix[]::new);
+    public static final Prefix[] MANDATORY_PREFIXES =
+            CliAnimalSyntax.getAnimalAttributePrefixes().toArray(Prefix[]::new);
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand.

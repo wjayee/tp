@@ -21,8 +21,14 @@ public class SearchAnimalCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Searches for animals in the catalog based on keyword given (case insensitive). "
-            + "Parameters: KEYWORD\n"
-            + "Example: " + COMMAND_WORD + " Pookie";
+            + "Parameters: "
+            + NAME.getUsage() + " "
+            + PET_ID.getUsage() + " "
+            + DATE_OF_BIRTH.getUsage() + " "
+            + DATE_OF_ADMISSION.getUsage() + " "
+            + SPECIES.getUsage() + " "
+            + SEX.getUsage() + " "
+            + BREED.getUsage();
 
     public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " "
             + NAME.getPrefix() + "Pookie "

@@ -22,22 +22,14 @@ public class KeywordPredicate implements Predicate<Animal> {
     @Override
     public boolean test(Animal animal) {
 
-        List<String> stringAttributes = new ArrayList<>(List.of(
-                animal.getNameForSerialization(),
-                animal.getPetIdForSerialization(),
-                animal.getDateOfBirthForSerialization(),
-                animal.getAdmissionDateForSerialization(),
-                animal.getSpeciesForSerialization(),
-                animal.getSexForSerialization(),
-                animal.getBreedForSerialization()
-        ));
+        List<String> stringAttributes = new ArrayList<>(animal.attributes());
 
-        assert(keywords.size() == stringAttributes.size());
+        assert(keywords.size() == stringAttributes.size()) : "keywords was not parsed properly";
 
         List<String> keywordsCopy = new ArrayList<>(keywords);
         keywordsCopy = keywordsCopy.stream()
                 .filter(keyword -> !keyword.isEmpty()).collect(Collectors.toList());
-        assert(!keywordsCopy.isEmpty());
+        assert(!keywordsCopy.isEmpty()) : "keywords is not supposed to be empty";
 
         return keywords.stream().allMatch(keyword -> {
             if (keyword.isEmpty()) {
@@ -45,7 +37,7 @@ public class KeywordPredicate implements Predicate<Animal> {
                 return true;
             } else {
                 String attribute = stringAttributes.remove(0);
-                return StringUtil.containsWordIgnoreCase(attribute, keyword);
+                return StringUtil.containsPhraseIgnoreCase(attribute, keyword);
             }
         });
     }
