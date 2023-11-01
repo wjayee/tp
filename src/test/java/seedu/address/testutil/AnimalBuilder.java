@@ -128,7 +128,7 @@ public class AnimalBuilder {
      */
     public AnimalBuilder withTaskList(List<Task> taskList) {
         this.taskList = new TaskList();
-        this.taskList.getTaskList().addAll(taskList);
+        this.taskList.addAllTasks(taskList);
         return this;
     }
 

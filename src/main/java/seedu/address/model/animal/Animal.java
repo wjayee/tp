@@ -2,7 +2,6 @@ package seedu.address.model.animal;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.storage.JsonAdaptedTask;
@@ -133,10 +132,7 @@ public class Animal {
     }
 
     public List<JsonAdaptedTask> getTaskListForSerialization() {
-        return taskList.getTaskList()
-                .stream()
-                .map(JsonAdaptedTask::new)
-                .collect(Collectors.toList());
+        return taskList.getSerializedTaskList();
     }
 
 

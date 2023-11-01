@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import seedu.address.storage.JsonAdaptedTask;
+
 /**
  * Represents the TaskList containing tasks that are addressed to the {@link Animal}
  *
@@ -34,6 +36,20 @@ public class TaskList {
      */
     public boolean isEmpty() {
         return taskList.isEmpty();
+    }
+
+    public List<JsonAdaptedTask> getSerializedTaskList() {
+        return taskList.stream()
+                .map(JsonAdaptedTask::new)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Adds all Tasks in the specified input taskList into this taskList.
+     * @param toCopyTaskList List of Tasks to copy from.
+     */
+    public void addAllTasks(List<Task> toCopyTaskList) {
+        taskList.addAll(toCopyTaskList);
     }
 
     @Override
