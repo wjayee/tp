@@ -32,5 +32,13 @@
     "breed" : "Good Boy",
     "dateOfBirth" : "2001-01-01",
     "admissionDate" : "2023-02-02"
+  }, {
+    "name" : "Bear",
+    "petId" : "1111",
+    "sex" : "FEMALE",
+    "species" : "Dog",
+    "breed" : "Poodle",
+    "dateOfBirth" : "2019-01-01",
+    "admissionDate" : "2019-01-01"
   } ]
 }

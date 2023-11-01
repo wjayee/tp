@@ -200,6 +200,42 @@ public class ArgumentTokenizerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void areSomePrefixesPresent_withPresentPrefixes_returnTrue() {
+        // All prefixes present
+        String argsString = "SomePreambleString p/pSlash -t dashT ^Q hatQ";
+        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
+
+        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+
+        // Some prefixes present
+        argsString = "SomePreambleString p/pSlash ^Q hatQ";
+        argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
+
+        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+
+        // Only one prefix present
+        argsString = "SomePreambleString p/pSlash";
+        argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
+
+        assertTrue(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+    }
+
+    @Test
+    public void areSomePrefixesPresent_missingPrefix_returnFalse() {
+        // No prefixes present
+        String argsString = "SomePreambleString";
+        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
+
+        assertFalse(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+
+        // Only unknown prefix present
+        argsString = "SomePreambleString --u";
+        argMultiMap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
+
+        assertFalse(ArgumentMultimap.areSomePrefixesPresent(argMultiMap, pSlash, dashT, hatQ));
+    }
+
 
     @Test
     public void equalsMethod() {
