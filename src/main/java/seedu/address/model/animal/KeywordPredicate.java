@@ -1,8 +1,10 @@
 package seedu.address.model.animal;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
@@ -19,15 +21,33 @@ public class KeywordPredicate implements Predicate<Animal> {
 
     @Override
     public boolean test(Animal animal) {
-        return keywords.stream().allMatch(keyword ->
-                StringUtil.containsWordIgnoreCase(animal.getNameForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getPetIdForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getDateOfBirthForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getAdmissionDateForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getSpeciesForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getSexForSerialization(), keyword)
-                        || StringUtil.containsWordIgnoreCase(animal.getBreedForSerialization(), keyword)
-        );
+
+        List<String> stringAttributes = new ArrayList<>(List.of(
+                animal.getNameForSerialization(),
+                animal.getPetIdForSerialization(),
+                animal.getDateOfBirthForSerialization(),
+                animal.getAdmissionDateForSerialization(),
+                animal.getSpeciesForSerialization(),
+                animal.getSexForSerialization(),
+                animal.getBreedForSerialization()
+        ));
+
+        assert(keywords.size() == stringAttributes.size());
+
+        List<String> keywordsCopy = new ArrayList<>(keywords);
+        keywordsCopy = keywordsCopy.stream()
+                .filter(keyword -> !keyword.isEmpty()).collect(Collectors.toList());
+        assert(!keywordsCopy.isEmpty());
+
+        return keywords.stream().allMatch(keyword -> {
+            if (keyword.isEmpty()) {
+                stringAttributes.remove(0);
+                return true;
+            } else {
+                String attribute = stringAttributes.remove(0);
+                return StringUtil.containsWordIgnoreCase(attribute, keyword);
+            }
+        });
     }
 
     @Override

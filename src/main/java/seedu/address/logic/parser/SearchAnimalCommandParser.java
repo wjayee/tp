@@ -10,7 +10,6 @@ import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.SearchAnimalCommand;
@@ -54,12 +53,6 @@ public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalComma
 
         List<String> keywords = Arrays.asList(name, id, dob, doa, species, sex, breed);
 
-        //Remove empty fields
-        keywords = keywords.stream()
-                .filter(keyword -> !keyword.isEmpty()).collect(Collectors.toList());
-
-        //keywords should not be empty
-        assert(!keywords.isEmpty());
 
         return new SearchAnimalCommand(new KeywordPredicate(keywords));
     }
