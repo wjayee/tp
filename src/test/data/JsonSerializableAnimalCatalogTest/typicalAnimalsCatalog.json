@@ -7,7 +7,9 @@
     "species" : "Cat",
     "breed" : "British Shorthair",
     "dateOfBirth" : "2019-10-10",
-    "admissionDate" : "2019-11-11"
+    "admissionDate" : "2019-11-11",
+    "taskList" : [{"description":  "Feed Tofu",
+      "isDone":  false}, {"description":  "Wash Tofu", "isDone":  false}]
   }, {
     "name" : "Muffin",
     "petId" : "3333",
@@ -15,7 +17,9 @@
     "species" : "Dog",
     "breed" : "Jack Russell Terrier",
     "dateOfBirth" : "2020-10-10",
-    "admissionDate" : "2020-12-12"
+    "admissionDate" : "2020-12-12",
+    "taskList" : [{"description":  "Feed Muffin",
+      "isDone":  false}, {"description":  "Wash Muffin", "isDone":  false}]
   }, {
     "name" : "Jaebee",
     "petId" : "9999",
@@ -23,7 +27,9 @@
     "species" : "Pookie",
     "breed" : "Bear",
     "dateOfBirth" : "2023-01-01",
-    "admissionDate" : "2023-04-04"
+    "admissionDate" : "2023-04-04",
+    "taskList" : [{"description":  "Feed Jaebee",
+      "isDone":  false}, {"description":  "Wash Jaebee", "isDone":  false}]
   }, {
     "name" : "Loyboy",
     "petId" : "2345",
@@ -31,7 +37,9 @@
     "species" : "Human",
     "breed" : "Good Boy",
     "dateOfBirth" : "2001-01-01",
-    "admissionDate" : "2023-02-02"
+    "admissionDate" : "2023-02-02",
+    "taskList" : [{"description":  "Feed Loyboy",
+      "isDone":  false}, {"description":  "Wash Loyboy", "isDone":  false}]
   }, {
     "name" : "Bear",
     "petId" : "1111",
@@ -39,6 +47,8 @@
     "species" : "Dog",
     "breed" : "Poodle",
     "dateOfBirth" : "2019-01-01",
-    "admissionDate" : "2019-01-01"
+    "admissionDate" : "2019-01-01",
+    "taskList" : [{"description":  "Feed Bear",
+      "isDone":  false}, {"description":  "Wash Bear", "isDone":  false}]
   } ]
 }

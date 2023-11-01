@@ -41,15 +41,15 @@ public class AnimalListPanel extends UiPart<Region> {
     }
 
     /**
-     * Updates the detailed view panel with the selected person.
+     * Updates the detailed view panel with the selected animal.
      *
-     * @param selectedAnimal
+     * @param selectedAnimal Animal that was selected from the AnimalListPanel
      */
     private void showAnimalDetails(Animal selectedAnimal) {
         animalDetailPanel.updateDetails(selectedAnimal);
     }
 
-    class AnimalListViewCell extends ListCell<Animal> {
+    static class AnimalListViewCell extends ListCell<Animal> {
         @Override
         protected void updateItem(Animal animal, boolean empty) {
             super.updateItem(animal, empty);

@@ -79,6 +79,6 @@ public class DateOfBirth {
 
     @Override
     public String toString() {
-        return String.format(DISPLAY_FORMAT, getDateOfBirth(), getAge());
+        return dateOfBirth.toString();
     }
 }

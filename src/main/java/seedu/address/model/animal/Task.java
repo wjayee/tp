@@ -91,7 +91,7 @@ public class Task {
     }
 
     /**
-     * Returns the status of the task from the getStatusIcon enclosed within squre brackets,
+     * Returns the status of the task from the getStatusIcon enclosed within square brackets,
      * along with a description of the task.
      *
      * @return A string containing Task status and description of task.

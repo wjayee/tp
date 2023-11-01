@@ -16,6 +16,7 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
+import seedu.address.model.animal.TaskList;
 
 /**
  * A Jackson-friendly adapted version of the {@link Animal} model class.
@@ -55,6 +56,7 @@ public class JsonAdaptedAnimal {
     public static final String SPECIES_KEY = "species";
     public static final String BREED_KEY = "breed";
     public static final String ADMISSION_DATE_KEY = "admissionDate";
+    public static final String TASK_LIST_KEY = "taskList";
 
 
     // Attributes of Animal that are implemented. Omission of HealthStatus and Notes is intentional.
@@ -65,6 +67,7 @@ public class JsonAdaptedAnimal {
     private final String breed;
     private final String dateOfBirth;
     private final String admissionDate;
+    private final List<JsonAdaptedTask> tasks;
 
     /**
      * Constructs a {@code JsonAdaptedAnimal} with the given Animal details.
@@ -75,7 +78,8 @@ public class JsonAdaptedAnimal {
                              @JsonProperty(SEX_KEY) String sex, @JsonProperty(SPECIES_KEY) String species,
                              @JsonProperty(BREED_KEY) String breed,
                              @JsonProperty(DATE_OF_BIRTH_KEY) String dateOfBirth,
-                             @JsonProperty(ADMISSION_DATE_KEY) String admissionDate) {
+                             @JsonProperty(ADMISSION_DATE_KEY) String admissionDate,
+                             @JsonProperty(TASK_LIST_KEY) List<JsonAdaptedTask> tasks) {
         this.name = name;
         this.petId = petId;
         this.sex = sex;
@@ -83,6 +87,10 @@ public class JsonAdaptedAnimal {
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.admissionDate = admissionDate;
+        this.tasks = new ArrayList<>();
+        if (tasks != null) {
+            this.tasks.addAll(tasks);
+        }
     }
 
     /**
@@ -97,6 +105,7 @@ public class JsonAdaptedAnimal {
         this.breed = source.getBreedForSerialization();
         this.dateOfBirth = source.getDateOfBirthForSerialization();
         this.admissionDate = source.getAdmissionDateForSerialization();
+        this.tasks = source.getTaskListForSerialization();
     }
 
     /**
@@ -115,9 +124,12 @@ public class JsonAdaptedAnimal {
         Breed animalBreed = new Breed(breed);
         DateOfBirth animalDateOfBirth = new DateOfBirth(dateOfBirth);
         AdmissionDate animalAdmissionDate = new AdmissionDate(admissionDate);
-
+        TaskList animalTaskList = new TaskList();
+        for (JsonAdaptedTask task : tasks) {
+            animalTaskList.getTaskList().add(task.toTaskType());
+        }
         return new Animal(animalName, animalPetId, animalSpecies, animalBreed, animalSex,
-            animalAdmissionDate, animalDateOfBirth);
+            animalAdmissionDate, animalDateOfBirth, animalTaskList);
     }
 
     /**

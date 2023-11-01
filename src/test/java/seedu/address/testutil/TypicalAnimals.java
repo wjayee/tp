@@ -3,9 +3,12 @@ package seedu.address.testutil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import seedu.address.model.AnimalCatalog;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Task;
 
 /**
  * A utility class containing a list of {@code Animal} objects to be used in tests.
@@ -20,6 +23,8 @@ public class TypicalAnimals {
         .withSpecies("Cat")
         .withBreed("British Shorthair")
         .withAdmissionDate("2019-11-11")
+        .withTaskList(Stream.of(new Task("Feed Tofu"),
+                new Task("Wash Tofu")).collect(Collectors.toList()))
         .build();
 
     public static final Animal MUFFIN = new AnimalBuilder()
@@ -30,6 +35,8 @@ public class TypicalAnimals {
         .withBreed("Jack Russell Terrier")
         .withDateOfBirth("2020-10-10")
         .withAdmissionDate("2020-12-12")
+        .withTaskList(Stream.of(new Task("Feed Muffin"),
+                new Task("Wash Muffin")).collect(Collectors.toList()))
         .build();
 
     public static final Animal JAEBEE = new AnimalBuilder()
@@ -40,6 +47,8 @@ public class TypicalAnimals {
         .withBreed("Bear")
         .withDateOfBirth("2023-01-01")
         .withAdmissionDate("2023-04-04")
+        .withTaskList(Stream.of(new Task("Feed Jaebee"),
+                new Task("Wash Jaebee")).collect(Collectors.toList()))
         .build();
 
     public static final Animal LOYBOY = new AnimalBuilder()
@@ -50,6 +59,8 @@ public class TypicalAnimals {
         .withBreed("Good Boy")
         .withDateOfBirth("2001-01-01")
         .withAdmissionDate("2023-02-02")
+        .withTaskList(Stream.of(new Task("Feed Jaebee"),
+            new Task("Wash Jaebee")).collect(Collectors.toList()))
         .build();
 
     public static final Animal BEAR = new AnimalBuilder()
@@ -60,6 +71,8 @@ public class TypicalAnimals {
             .withBreed("Poodle")
             .withDateOfBirth("2019-01-01")
             .withAdmissionDate("2019-01-01")
+            .withTaskList(Stream.of(new Task("Feed Bear"),
+                new Task("Wash Bear")).collect(Collectors.toList()))
             .build();
 
     public static AnimalCatalog getTypicalCatalog() {

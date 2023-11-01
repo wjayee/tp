@@ -6,6 +6,8 @@
     "species" : "Valid Species",
     "breed" : "Valid Breed",
     "dateOfBirth" : "2022-09-32",
-    "admissionDate" : "2022-09-10"
+    "admissionDate" : "2022-09-10",
+    "taskList" : [{"description":  "Walk Pookie around the Park",
+      "isDone":  false}]
   } ]
 }
