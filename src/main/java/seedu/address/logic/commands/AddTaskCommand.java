@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Task;
+import seedu.address.model.animal.TaskList;
 
 /**
  * Adds a task to the task list of an animal.
@@ -84,9 +85,8 @@ public class AddTaskCommand extends AnimalCommand {
     }
 
     private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
-        for (Task existingTask : source.getTasks()) {
-            target.addTask(existingTask);
-        }
+        TaskList targetTaskList = target.getTaskList();
+        targetTaskList.addAllTasks(source.getTasks());
     }
 
     @Override

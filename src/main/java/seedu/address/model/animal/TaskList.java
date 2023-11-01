@@ -23,12 +23,16 @@ public class TaskList {
     }
 
     /**
-     * Returns the list of tasks.
-     * @return a list of tasks.
+     * Returns an unmodifiable list of tasks for copying.
+     * @return an unmodifiable list of tasks.
      */
-    public List<Task> getTasks() { return Collections.unmodifiableList(taskList); }
+    public List<Task> getTasks() {
+        return Collections.unmodifiableList(taskList);
+    }
 
-    public void addTask(Task task) { taskList.add(task); }
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
 
     /**
      * Checks if the taskList does not contain any tasks.

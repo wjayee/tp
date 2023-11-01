@@ -17,8 +17,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
 
-import java.util.Objects;
-
 /**
  * Adds an animal to the catalog.
  */

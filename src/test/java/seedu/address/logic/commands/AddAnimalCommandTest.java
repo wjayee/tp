@@ -152,7 +152,9 @@ public class AddAnimalCommandTest {
         }
 
         @Override
-        public void addTask(Task newTask, Animal animal) { throw new AssertionError(INVALID_METHOD_CALL); }
+        public void addTask(Task newTask, Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
 
         @Override
         public ObservableList<Animal> getFilteredAnimalList() {
