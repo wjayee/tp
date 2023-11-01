@@ -98,7 +98,7 @@ public class ArgumentMultimap {
     /**
      * Returns true if at least one of the prefixes contains non-empty {@code Optional} values in the given.
      */
-    public static boolean areSomePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    public static boolean areAnyPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 

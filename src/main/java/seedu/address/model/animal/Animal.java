@@ -154,6 +154,23 @@ public class Animal {
                 .toString();
     }
 
+    /**
+     * Returns a list of the attributes of this Animal.
+     *
+     * @return a list of the attributes of this Animal.
+     */
+    public List<String> attributes() {
+        return List.of(
+                name.toString(),
+                petId.toString(),
+                dateOfBirth.toString(),
+                admissionDate.toString(),
+                species.toString(),
+                sex.toString(),
+                breed.toString()
+        );
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, petId, sex, species, breed, admissionDate, dateOfBirth);

@@ -32,7 +32,7 @@ import static seedu.address.logic.parser.CliAnimalSyntax.NAME;
 import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
 import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
 import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
-import static seedu.address.logic.parser.CliAnimalSyntax.getMandatoryPrefixes;
+import static seedu.address.logic.parser.CliAnimalSyntax.getAnimalAttributePrefixes;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 
 import java.util.List;
@@ -145,7 +145,7 @@ public class AddAnimalCommandParserTest {
             + INDEX_SEX_POOKIE, missingDoaExpectedMessage);
 
         // all prefixes missing
-        String missingAllExpectedMessage = AddAnimalCommandParser.getHelpMessage(getMandatoryPrefixes().stream()
+        String missingAllExpectedMessage = AddAnimalCommandParser.getHelpMessage(getAnimalAttributePrefixes().stream()
                 .map(CliAnimalSyntax::getCliSyntaxFromPrefix)
                 .map(CliAnimalSyntax::getUsage)
                 .collect(Collectors.toList()));
