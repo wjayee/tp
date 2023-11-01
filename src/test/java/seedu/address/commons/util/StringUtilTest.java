@@ -63,7 +63,7 @@ public class StringUtilTest {
 
     @Test
     public void containsWordIgnoreCase_emptyWord_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, "Word parameter cannot be empty", ()
+        assertThrows(IllegalArgumentException.class, "Phrase parameter cannot be empty", ()
             -> StringUtil.containsWordIgnoreCase("typical sentence", "  "));
     }
 
@@ -123,6 +123,10 @@ public class StringUtilTest {
                 "bbb cc")); //Sentence phrase bigger then query phrase
         assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
                 "cccc bb")); //Query phrase bigger then sentence phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc bb",
+                "bb ccc")); //Query phrase is part of sentence phrase
+        assertFalse(StringUtil.containsWordIgnoreCase("bb",
+                "bb cc")); //Sentence phrase is shorter than query phrase
 
         // Matches phrase in sentence
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb! ccc bb", "aAa BBB!")); //First phrase

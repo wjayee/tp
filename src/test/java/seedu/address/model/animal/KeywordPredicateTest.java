@@ -54,154 +54,178 @@ public class KeywordPredicateTest {
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
         // One word
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("Tofu"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("Tofu", "", "", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withName("Tofu").build()));
 
         // Multiple words
-        predicate = new KeywordPredicate(Arrays.asList("Tofu", "Muffin"));
+        predicate = new KeywordPredicate(Arrays.asList("Tofu Muffin", "", "", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withName("Tofu Muffin").build()));
 
         // Mixed-case keywords
-        predicate = new KeywordPredicate(Arrays.asList("tOfU", "mUfFin"));
+        predicate = new KeywordPredicate(Arrays.asList("tOfU mUfFin", "", "", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withName("Tofu Muffin").build()));
 
         // Trailing spaces in keywords
-        predicate = new KeywordPredicate(Arrays.asList("Tofu ", " Muffin"));
+        predicate = new KeywordPredicate(Arrays.asList("Tofu  Muffin", "", "", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withName("Tofu Muffin").build()));
     }
 
     @Test
     public void test_nameDoesNotContainKeywords_returnsFalse() {
         // Partial keywords
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("Tofu Muffin"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("Tofu Muffin", "", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withName("Tofu Muff").build()));
 
         // Only one matching keyword
-        predicate = new KeywordPredicate(Arrays.asList("Tofu", "Muffin"));
+        predicate = new KeywordPredicate(Arrays.asList("Tofu Muffin", "", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withName("Tofu").build()));
 
         // Non-matching keywords
-        predicate = new KeywordPredicate(Arrays.asList("Tofu"));
+        predicate = new KeywordPredicate(Arrays.asList("Tofu", "", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withName("Muffin").build()));
     }
 
     @Test
     public void test_petIdContainsKeywords_returnTrue() {
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("1234"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("", "1234", "", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withPetId("1234").build()));
     }
 
     @Test
     public void test_petIdDoesNotContainKeywords_returnFalse() {
         // Partial keywords
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("123"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("", "123", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withPetId("1234").build()));
 
         // Non-matching keywords
-        predicate = new KeywordPredicate(Arrays.asList("9876"));
+        predicate = new KeywordPredicate(Arrays.asList("", "9876", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withPetId("1234").build()));
 
-        predicate = new KeywordPredicate(Arrays.asList("nonInteger"));
+        predicate = new KeywordPredicate(Arrays.asList("", "nonInteger", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withPetId("1234").build()));
 
         // Longer keyword
-        predicate = new KeywordPredicate(Arrays.asList("12345"));
+        predicate = new KeywordPredicate(Arrays.asList("", "12345", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withPetId("1234").build()));
 
         // Spaces in keyword
-        predicate = new KeywordPredicate(Arrays.asList("1 2 3 4"));
+        predicate = new KeywordPredicate(Arrays.asList("", "1 2 3 4", "", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withPetId("1234").build()));
     }
 
     @Test
     public void test_dateContainsKeywords_returnTrue() {
         // Matching date
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("2020-01-01"));
+        KeywordPredicate predicate = new KeywordPredicate(
+                Arrays.asList("", "", "2020-01-01", "", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-01").build()));
+
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "2020-01-01", "", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-01").build()));
     }
 
     @Test
     public void test_dateDoesNotContainKeywords_returnFalse() {
         // Non-matching date
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("2020-01-01"));
+        KeywordPredicate predicate = new KeywordPredicate(
+                Arrays.asList("", "", "2020-01-01", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-02").build()));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "2020-01-01", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-02").build()));
 
         // Partial keywords
-        predicate = new KeywordPredicate(Arrays.asList("2020-01"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "2020-01", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-02").build()));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "2020-01", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-02").build()));
 
         // Longer keyword
-        predicate = new KeywordPredicate(Arrays.asList("2020-01-01-01"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "2020-01-01-01", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-01").build()));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "2020-01-01-01", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-01").build()));
 
         // Spaces in keyword
-        predicate = new KeywordPredicate(Arrays.asList("2020- 01- 01"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "2020 -01 -01", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-01").build()));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "2020 -01 -01", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-01").build()));
 
         // Non-date keyword
-        predicate = new KeywordPredicate(Arrays.asList("nonDate"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "nonDate", "", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withDateOfBirth("2020-01-01").build()));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "nonDate", "", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withAdmissionDate("2020-01-01").build()));
     }
 
     @Test
     public void test_speciesContainsKeywords_returnTrue() {
         // Matching species
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("cat"));
+        KeywordPredicate predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "", "cat", "", ""));
         assertTrue(predicate.test(new AnimalBuilder().withSpecies("cat").build()));
     }
 
     @Test
     public void test_speciesDoesNotContainKeyword_returnFalse() {
         // Non-matching species
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("cat"));
+        KeywordPredicate predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "", "cat", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withSpecies("dog").build()));
 
         // Partial keywords
-        predicate = new KeywordPredicate(Arrays.asList("ca"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "", "ca", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withSpecies("cat").build()));
 
         // Longer keyword
-        predicate = new KeywordPredicate(Arrays.asList("cats"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "", "cats", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withSpecies("cat").build()));
 
         // Spaces in keyword
-        predicate = new KeywordPredicate(Arrays.asList("c a t"));
+        predicate = new KeywordPredicate(
+                Arrays.asList("", "", "", "", "c a t", "", ""));
         assertFalse(predicate.test(new AnimalBuilder().withSpecies("cat").build()));
     }
 
     @Test
     public void test_breedContainsKeywords_returnTrue() {
         // Matching breed
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("persian"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "persian"));
         assertTrue(predicate.test(new AnimalBuilder().withBreed("persian").build()));
 
         // Matching breed with multiple words
-        predicate = new KeywordPredicate(Arrays.asList("golden retriever"));
+        predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "golden retriever"));
         assertTrue(predicate.test(new AnimalBuilder().withBreed("golden retriever").build()));
     }
 
     @Test
     public void test_breedDoesNotContainKeywords_returnFalse() {
         // Non-matching breed
-        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("persian"));
+        KeywordPredicate predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "persian"));
         assertFalse(predicate.test(new AnimalBuilder().withBreed("ragdoll").build()));
 
         // Partial keywords
-        predicate = new KeywordPredicate(Arrays.asList("persi"));
+        predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "persi"));
         assertFalse(predicate.test(new AnimalBuilder().withBreed("persian").build()));
 
         // Longer keyword
-        predicate = new KeywordPredicate(Arrays.asList("persians"));
+        predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "persians"));
         assertFalse(predicate.test(new AnimalBuilder().withBreed("persian").build()));
 
         // Spaces in keyword
-        predicate = new KeywordPredicate(Arrays.asList("p e r s i a n"));
+        predicate = new KeywordPredicate(Arrays.asList("", "", "", "", "", "", "p e r s i a n"));
         assertFalse(predicate.test(new AnimalBuilder().withBreed("persian").build()));
     }
 
