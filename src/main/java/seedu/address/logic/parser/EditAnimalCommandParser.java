@@ -18,7 +18,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new EditAnimalCommand object
  */
 public class EditAnimalCommandParser implements AnimalParser<EditAnimalCommand> {
-    protected static final Prefix[] OPTIONAL_PREFIXES =
+    private static final Prefix[] OPTIONAL_PREFIXES =
             CliAnimalSyntax.getAnimalAttributePrefixes().toArray(Prefix[]::new);
 
     /**

@@ -65,19 +65,10 @@ public class AnimalCatalogParser {
 
         case EditAnimalCommand.COMMAND_WORD:
             return new EditAnimalCommandParser().parse(arguments);
-        //
-        //        case ClearAnimalCommand.COMMAND_WORD:
-        //            return new ClearCommand();
-        //
-        //        case ExitAnimalCommand.COMMAND_WORD:
-        //            return new ExitCommand();
-        //
-        //        case HelpAnimalCommand.COMMAND_WORD:
-        //            return new HelpCommand();
 
         case AddTaskCommand.COMMAND_WORD:
             return new AddTaskCommandParser().parse(arguments);
-            
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

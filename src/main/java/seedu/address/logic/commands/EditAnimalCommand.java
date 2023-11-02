@@ -50,7 +50,7 @@ public class EditAnimalCommand extends AnimalCommand {
     public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " "
             + "1 "
             + NAME.getPrefix() + "ChangGoose "
-            + DATE_OF_ADMISSION.getPrefix() + "01/01/2019 "
+            + DATE_OF_ADMISSION.getPrefix() + "2019-01-01 "
             + SPECIES.getPrefix() + "Dog ";
 
     public static final String MESSAGE_SUCCESS = "Animal has been edited from: \n%s to: \n%s";
