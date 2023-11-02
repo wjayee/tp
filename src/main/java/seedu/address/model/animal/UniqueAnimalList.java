@@ -114,6 +114,13 @@ public class UniqueAnimalList implements Iterable<Animal> {
     }
 
     /**
+     * Returns the list of animals with their tasks reset.
+     */
+    public void resetTasks() {
+        internalList.forEach(Animal::resetTasks);
+    }
+
+    /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Animal> asUnmodifiableObservableList() {

@@ -1,5 +1,7 @@
 package seedu.address.model.animal;
 
+import static java.util.Arrays.stream;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,6 +58,41 @@ public class TaskList {
      */
     public void addAllTasks(List<Task> toCopyTaskList) {
         taskList.addAll(toCopyTaskList);
+    }
+
+    /**
+     * Returns the number of tasks in the taskList.
+     *
+     * @return The number of tasks in the taskList.
+     */
+    public TaskList updateTaskList(int[] indexes, boolean isDone) throws IndexOutOfBoundsException {
+        try {
+            stream(indexes)
+                    .forEach(index -> {
+                        Task task = taskList.get(index);
+                        Task updatedTask = task.updateTask(isDone);
+                        taskList.set(index, updatedTask);
+                    });
+
+            return this;
+        } catch (IndexOutOfBoundsException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * Returns the number of tasks in the taskList.
+     *
+     * @return The number of tasks in the taskList.
+     */
+    public TaskList resetTasks() {
+        taskList.forEach(task -> {
+            int index = taskList.indexOf(task);
+            Task updatedTask = task.updateTask(false);
+            taskList.set(index, updatedTask);
+        });
+
+        return this;
     }
 
     @Override

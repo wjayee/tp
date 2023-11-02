@@ -140,6 +140,13 @@ public class Animal {
         return taskList.getSerializedTaskList();
     }
 
+    public TaskList updateTaskList(int[] taskIndex, boolean isDone) throws IndexOutOfBoundsException {
+        return taskList.updateTaskList(taskIndex, isDone);
+    }
+
+    public void resetTasks() {
+        taskList.resetTasks();
+    }
 
     /**
      * Returns the string representation of this Animal.
