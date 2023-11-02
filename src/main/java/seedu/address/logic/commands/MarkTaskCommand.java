@@ -7,6 +7,7 @@ import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_ANIMAL_DISPLAYE
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.AdmissionDate;
@@ -51,6 +52,15 @@ public class MarkTaskCommand extends AnimalCommand {
     public MarkTaskCommand(Index targetIndex, Index... taskIndex) {
         this.targetIndex = targetIndex;
         this.taskIndex = taskIndex;
+    }
+
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
     }
 
     @Override

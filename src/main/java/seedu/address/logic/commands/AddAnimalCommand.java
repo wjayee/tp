@@ -58,6 +58,15 @@ public class AddAnimalCommand extends AnimalCommand {
         toAdd = animal;
     }
 
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
+    }
+
     @Override
     public CommandResult execute(AnimalModel model) throws CommandException {
         requireNonNull(model);

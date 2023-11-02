@@ -5,6 +5,7 @@ import seedu.address.model.AnimalModel;
 
 /**
  * Represents a command with hidden internal logic and the ability to be executed.
+ * Developers must implement {@link AnimalCommand#execute(AnimalModel)} which contains the logic of the command.
  */
 public abstract class AnimalCommand {
 

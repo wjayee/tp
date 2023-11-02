@@ -31,6 +31,7 @@ public class AnimalMessages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW_FORMAT = "%d animals listed!";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%s";
     public static final String MESSAGE_MISSING_PREFIXES_FORMAT = "Missing prefixes: %s";
+    public static final String MESSAGE_HELP_FORMAT = "%s\n%s";
 
     public static final String PET_ID = "ID";
     public static final String SEX = "Sex";
