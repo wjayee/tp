@@ -21,8 +21,9 @@ public class DeleteAnimalCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the animal identified by the index number used in the displayed animal list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: INDEX (must be a positive integer)";
+
+    public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_ANIMAL_SUCCESS = "Deleted Animal: %1$s";
 
@@ -30,6 +31,15 @@ public class DeleteAnimalCommand extends AnimalCommand {
 
     public DeleteAnimalCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+    }
+
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
     }
 
     @Override

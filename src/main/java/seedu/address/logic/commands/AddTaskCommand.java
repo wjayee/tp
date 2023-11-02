@@ -22,12 +22,11 @@ public class AddTaskCommand extends AnimalCommand {
 
     public static final String COMMAND_WORD = "addtask";
 
-    public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " 1 Feed";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a task to the animal identified by the index number used in the displayed animal list.\n"
-            + "Parameters: INDEX (must be a positive integer) TASK\n"
-            + EXAMPLE_USAGE;
+            + "Parameters: INDEX (must be a positive integer) TASK";
+
+    public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " 1 Feed";
 
     public static final String MESSAGE_SUCCESS = "New task added for %s: %s";
 
@@ -45,6 +44,15 @@ public class AddTaskCommand extends AnimalCommand {
 
         this.targetIndex = targetIndex;
         this.task = task;
+    }
+
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
     }
 
     @Override

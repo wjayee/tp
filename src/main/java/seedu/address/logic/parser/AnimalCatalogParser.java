@@ -13,6 +13,7 @@ import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.AnimalCommand;
 import seedu.address.logic.commands.DeleteAnimalCommand;
 import seedu.address.logic.commands.EditAnimalCommand;
+import seedu.address.logic.commands.HelpAnimalCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.commands.MarkTaskCommand;
 import seedu.address.logic.commands.ResetTaskCommand;
@@ -41,7 +42,7 @@ public class AnimalCatalogParser {
     public AnimalCommand parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, "Placeholder"));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpAnimalCommand.MESSAGE_USAGE));
         }
 
         final String commandWord = matcher.group("commandWord");
@@ -80,6 +81,9 @@ public class AnimalCatalogParser {
 
         case ResetTaskCommand.COMMAND_WORD:
             return new ResetTaskCommand();
+
+        case HelpAnimalCommand.COMMAND_WORD:
+            return new HelpAnimalCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliAnimalSyntax.PET_ID;
 import static seedu.address.logic.parser.CliAnimalSyntax.SEX;
 import static seedu.address.logic.parser.CliAnimalSyntax.SPECIES;
 
+import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.KeywordPredicate;
@@ -49,6 +50,15 @@ public class SearchAnimalCommand extends AnimalCommand {
         requireAllNonNull(predicate);
 
         this.predicate = predicate;
+    }
+
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
     }
 
     @Override
