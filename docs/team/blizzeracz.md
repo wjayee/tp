@@ -3,7 +3,7 @@ layout: default.md
 title: "Loysius's Project Portfolio Page"
 ---
 
-### Project: Y2Direct
+### Project: Pawfection
 
 Y2Direct is a desktop address book application used for students to store work/school-related
 contacts. It will elevate user experience through organized contact categorization and task tagging.
@@ -17,7 +17,8 @@ Given below are my contributions to the project:
     * Created milestones and assigned issues to team members for v1.1
 
 * **Enhancements to existing features**
-* to be added
+    * Added "Edit" feature for Animal Catalog
+    * Added "Add" feature for Animal Catalog
 
 * **Documentation**:
     * User Guide:

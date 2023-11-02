@@ -53,13 +53,10 @@ about animals in a shelter easily.
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/NOTES]` can be used as `n/Pookie t/Aggressive towards DOGS` or as `n/Pookie`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/NOTES]…​` can be used as `t/friendly towards human`, `t/friendly towards human t/hates walking` etc.
-
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -100,6 +97,21 @@ Examples:
 
 #### Editing an animal: `Edit`
 Edits animals specified by the index with the newly specified prefix attributes.
+
+Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
+
+* PetID cannot be edited.
+* At least one prefix must be provided.
+* Prefixes that are not provided will not be edited.
+* The `INDEX` refers to the animal of the `INDEX` on the animal list view.
+* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
+* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will edit the animal with ID `1234` to be named `Pookie`
+
+
+Examples:
+* `edit 2 n/Pookie` edits the name of the second animal to be `Pookie`.
+* `edit 1 s/Dog b/Poodle` edits the species of the first animal to be `Dog` and the breed to be `Poodle`.
+
 
 #### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
@@ -188,16 +200,15 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action           | Format, Examples                                                                                                               |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**          | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                                        |
-| **AddHealth**    | `addhealth ID [s/STERERILIZATION_STATUS]... [v/VACCINATION_STATUS]... [a/ALLERGY]... [d/DIETRY_RESTRICTION]...`                |
-| **RemoveHealth** | `removehealth ID [s/STERERILIZATION_STATUS_INDEX] [v/VACCINATION_STATUS_INDEX] [a/ALLERGY_INDEX] [d/DIETRY_RESTRICTION_INDEX]` |
-| **Clear**        | `clear`                                                                                                                        |
-| **Delete**       | `delete ID`<br> e.g., `delete 3`                                                                                               |
-| **List**         | `list`                                                                                                                         |
-| **Search**       | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g., `search n/Pookie b/Poodle`                  |
-| **Mark**         | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                                              |
-| **Unmark**       | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                                          |
-| **Reset**        | `reset`                                                                                                                        |
-| **Help**         | `help`                                                                                                                         |
+| Action    | Format, Examples                                                                                            |
+|-----------|-------------------------------------------------------------------------------------------------------------|
+| **Add**   | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                     |
+| **Edit**  | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                        |
+| **Clear** | `clear`                                                                                                     |
+| **Delete** | `delete ID`<br> e.g., `delete 3`                                                                            |
+| **List**  | `list`                                                                                                      |
+| **Search** | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g., `search n/Pookie b/Poodle` |
+| **Mark**  | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                           |
+| **Unmark** | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                       |
+| **Reset** | `reset`                                                                                                     |
+| **Help**  | `help`                                                                                                      |
