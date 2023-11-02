@@ -105,8 +105,7 @@ Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 * Prefixes that are not provided will not be edited.
 * The `INDEX` refers to the animal of the `INDEX` on the animal list view.
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will edit the 
-   animal with ID `1234` to be named `Pookie`
+* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will edit the animal with ID `1234` to be named `Pookie`
 
 
 Examples:
