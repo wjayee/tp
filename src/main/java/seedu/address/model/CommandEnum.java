@@ -5,12 +5,16 @@ import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.DeleteAnimalCommand;
 import seedu.address.logic.commands.EditAnimalCommand;
+import seedu.address.logic.commands.HelpAnimalCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.commands.MarkTaskCommand;
 import seedu.address.logic.commands.ResetTaskCommand;
 import seedu.address.logic.commands.SearchAnimalCommand;
 import seedu.address.logic.commands.UnmarkTaskCommand;
 
+/**
+ * Encapsulates a Command's name and help message. Used primarily in {@link HelpAnimalCommand}.
+ */
 public enum CommandEnum {
     ADD_ANIMAL_COMMAND(AddAnimalCommand.COMMAND_WORD, AddAnimalCommand.getHelp()),
     ADD_TASK_COMMAND(AddTaskCommand.COMMAND_WORD, AddTaskCommand.getHelp()),
