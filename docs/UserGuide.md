@@ -26,7 +26,9 @@ about animals in a shelter easily.
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
+Typing the name of a command typing `help`, like `help add` will display the usage guide of the [add](#adding-an-animal-add) command.
+For more details, see [help](#program-usage-help-help)<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -56,8 +58,8 @@ about animals in a shelter easily.
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+* Extraneous parameters for commands that do not take in parameters (such as `list`) will be ignored.<br>
+  e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
@@ -74,6 +76,18 @@ Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 Examples:
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/25-5-2022 s/cat b/British Shorthair`
+
+### Program usage help: `help`
+Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
+
+Format: `help [COMMAND_NAME]`
+
+* COMMAND_NAME is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
+
+Examples:
+* `help`
+* `help add`
+* `help dele` (equivalent to `help delete`)
 
 #### Listing all animals: `list`
 Shows a list of all animals in the address book.
@@ -200,15 +214,15 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action    | Format, Examples                                                                                            |
-|-----------|-------------------------------------------------------------------------------------------------------------|
-| **Add**   | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                     |
-| **Edit**  | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                        |
-| **Clear** | `clear`                                                                                                     |
-| **Delete** | `delete ID`<br> e.g., `delete 3`                                                                            |
-| **List**  | `list`                                                                                                      |
+| Action    | Format, Examples                                                                                              |
+|-----------|---------------------------------------------------------------------------------------------------------------|
+| **Add**   | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                       |
+| **Edit**  | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                         |
+| **Clear** | `clear`                                                                                                       |
+| **Delete** | `delete ID`<br> e.g., `delete 3`                                                                              |
+| **List**  | `list`                                                                                                        |
 | **Search** | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g., `search n/Pookie b/Poodle` |
-| **Mark**  | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                           |
-| **Unmark** | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                       |
-| **Reset** | `reset`                                                                                                     |
-| **Help**  | `help`                                                                                                      |
+| **Mark**  | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                             |
+| **Unmark** | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                         |
+| **Reset** | `reset`                                                                                                       |
+| **Help**  | `help [COMMAND_NAME]`                                                                                         |
