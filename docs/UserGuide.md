@@ -84,8 +84,7 @@ Shows a list of all animals in the address book.
 Format: `list`
 
 * The list is sorted by the name of the animal in alphabetical order.
-* Can be use after using the `find` command to list all animals again.
-
+* Can be use after using the `search` command to list all animals again.
 
 #### Deleting an animal: `delete`
 Deletes the specified animal from the address book.
@@ -105,14 +104,52 @@ Edits animals specified by the index with the newly specified prefix attributes.
 #### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
 
-Format: `search KEYWORD [MORE_KEYWORDS]…​`
+Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 
-* Searches for animals whose attributes contain any of the specified search values in the prefix filter.
-* The search is case-insensitive. e.g `pookie` will match `Pookie`
+* Searches for animals whose attributes contain the specified search values in the prefix filter.
+* The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
+* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will match animals named `Pookie` with ID `1234`
+* There must be at least 1 prefix specified.
+* If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
 
 Examples:
-* `find n/Pookie` returns all animals with the name `Pookie`
-* `find n/1234` returns `Pookie`
+* `search n/Pookie` returns all animals with the name `Pookie`
+* `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
+* `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
+
+#### Marking a task as done: `mark`
+Marks the specified task as done.
+
+Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
+* Marks the task at the specified `TASKINDEX` as done for the animal at the specified `ANIMALINDEX`.
+* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
+* The `TASKINDEX` refers to the index of the task on the task list of the animal.
+* If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as done.
+* `TASKINDEX` must be separated by a space.
+
+Examples:
+* `mark 1 1` marks the first task of the first animal as done.
+* `mark 2 1 2` marks the first and second task of the second animal as done.
+
+#### Unmarking a task as done: `unmark`
+Marks the specified task as uncompleted.
+
+Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
+* Marks the task at the specified `TASKINDEX` as uncompleted for the animal at the specified `ANIMALINDEX`.
+* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
+* The `TASKINDEX` refers to the index of the task on the task list of the animal.
+* If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as uncompleted.
+* `TASKINDEX` must be separated by a space.
+
+Examples:
+* `unmark 1 1` marks the first task of the first animal as uncompleted.
+* `unmark 2 1 2` marks the first and second task of the second animal as uncompleted.
+
+#### Reset all tasks: `reset`
+Resets all tasks of all animals as uncompleted.
+
+Format: `reset`
+* Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
 
 #### Exiting the program : `exit`
 Exits the program.
@@ -151,13 +188,16 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`
-**AddHealth** | `addhealth ID [s/STERERILIZATION_STATUS]... [v/VACCINATION_STATUS]... [a/ALLERGY]... [d/DIETRY_RESTRICTION]...`
-**RemoveHealth** | `removehealth ID [s/STERERILIZATION_STATUS_INDEX] [v/VACCINATION_STATUS_INDEX] [a/ALLERGY_INDEX] [d/DIETRY_RESTRICTION_INDEX]`
-**Clear**  | `clear`
-**Delete** | `delete ID`<br> e.g., `delete 3`
-**List**   | `list`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g., `find Pookie`
-**Help**   | `help`
+| Action           | Format, Examples                                                                                                               |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Add**          | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                                        |
+| **AddHealth**    | `addhealth ID [s/STERERILIZATION_STATUS]... [v/VACCINATION_STATUS]... [a/ALLERGY]... [d/DIETRY_RESTRICTION]...`                |
+| **RemoveHealth** | `removehealth ID [s/STERERILIZATION_STATUS_INDEX] [v/VACCINATION_STATUS_INDEX] [a/ALLERGY_INDEX] [d/DIETRY_RESTRICTION_INDEX]` |
+| **Clear**        | `clear`                                                                                                                        |
+| **Delete**       | `delete ID`<br> e.g., `delete 3`                                                                                               |
+| **List**         | `list`                                                                                                                         |
+| **Search**       | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g., `search n/Pookie b/Poodle`                  |
+| **Mark**         | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                                              |
+| **Unmark**       | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                                          |
+| **Reset**        | `reset`                                                                                                                        |
+| **Help**         | `help`                                                                                                                         |
