@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Task;
 
 /**
  * Container for user visible messages.
@@ -81,6 +82,15 @@ public class AnimalMessages {
                 .append(animal.getDateOfBirth())
                 .append(String.format(DISPLAY_FORMAT, ADMISSION_DATE))
                 .append(animal.getAdmissionDate());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code task} for display to the user.
+     */
+    public static String format(Task task) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(task.getDescription());
         return builder.toString();
     }
 
