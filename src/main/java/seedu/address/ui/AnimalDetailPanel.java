@@ -70,6 +70,7 @@ public class AnimalDetailPanel extends UiPart<Region> {
         age.setText("");
         sex.setText("");
         breed.setText("");
+        species.setText("");
         admissionDate.setText("");
         tasks.setText("");
     }

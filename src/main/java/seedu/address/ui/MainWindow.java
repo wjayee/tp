@@ -35,6 +35,8 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
+    private AnimalDetailPanel animalDetailPanel;
+
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -116,7 +118,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        AnimalDetailPanel animalDetailPanel = new AnimalDetailPanel();
+        animalDetailPanel = new AnimalDetailPanel();
         animalDetailPanelPlaceholder.getChildren().add(animalDetailPanel.getRoot());
 
         animalListPanel = new AnimalListPanel(logic.getFilteredAnimalList(), animalDetailPanel);
@@ -196,7 +198,7 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
-
+            animalDetailPanel.clearDetails();
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
