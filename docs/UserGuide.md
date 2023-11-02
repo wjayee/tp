@@ -31,11 +31,9 @@ about animals in a shelter easily.
 
    * `list` : Lists all contacts.
 
-   * `add n/Pookie i/1234 db/28-2-2022 s/male b/Golden Retriver da/23-5-2022` : Adds a dog named 'Pookie' to the Address Book.
+   * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle` : Adds a dog named 'Pookie' to the Address Book.
 
    * `delete 3` : Deletes the animal with ID 3.
-
-   * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
 
@@ -72,40 +70,13 @@ about animals in a shelter easily.
 #### Adding an animal: `add`
 Adds an animal to the address book.
 
-Format: `add n/NAME i/ID db/DOB b/BREED da/DOA g/SEX s/SPECIES `
+Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 
 * ID must be a unique 4 digit number.
 
 Examples:
-* `add n/Pookie i/1234 db/28-2-2022 g/male b/Golden Retriver da/23-5-2022 s/dog`
-* `add n/Tofu i/1242 db/21-4-2023 g/female b/British Shorthair da/25-5-2022 s/cat`
-
-
-#### Adding healthStatus to animal: `addhealth`
-Adds a health status to an animal in the address book.
-
-Format: `addhealth ID [s/STERERILIZATION_STATUS]... [v/VACCINATION_STATUS]... [a/ALLERGY]... [d/DIETRY_RESTRICTION]...`
-
-* Adds a health status to the animal at the specified `ID`.
-* At least one of the parameters must be provided.
-* Input values will be added on to the existing health status of the animal.
-
-Examples:
-* `addhealth 1 s/sterilized  v/Feline Lukeimia Virus v/Feline Calcivirus a/grass d/chocolate` adds sterilization status, two vaccination status, allergy and dietary restriction to the animal with ID 1.
-* `addhealth 2 s/unsterilized` adds sterilization status to the animal with ID 2.
-
-#### Removing healthStatus from animal: `removehealth`
-Removes a health status from an animal in the address book.
-
-Format: `removehealth ID [s/STERERILIZATION_STATUS_INDEX] [v/VACCINATION_STATUS_INDEX] [a/ALLERGY_INDEX] [d/DIETRY_RESTRICTION_INDEX`]
-
-* Removes a status of the specified health status from the animal at the specified `ID`.
-* At least one of the parameters must be provided.
-* Input values will be removed from the existing health status of the animal.
-
-Examples:
-* `removehealth 1 s/1 v/1 a/1 d/1` removes the first sterilization status, vaccination status, allergy and dietary restriction from the animal with ID 1.
-* `removehealth 2 s/3` removes the third sterilization status from the animal with ID 2.
+* `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
+* `add n/Tofu i/1242 g/female db/2023-04-01 da/25-5-2022 s/cat b/British Shorthair`
 
 #### Listing all animals: `list`
 Shows a list of all animals in the address book.
@@ -119,55 +90,47 @@ Format: `list`
 #### Deleting an animal: `delete`
 Deletes the specified animal from the address book.
 
-Format: `delete ID`
+Format: `delete INDEX`
 
-* Deletes the animal at the specified `ID`.
-* The ID refers to the Animal ID number.
+* Deletes the animal at the specified `INDEX`.
+* The `INDEX` refers to the animal of the `INDEX` on the animal list view.
+* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
 
 Examples:
-* `list` followed by `delete 2` still deletes the animal with ID 2.
-* `find Tofu` followed by `delete 1` still deletes the animal with ID 1 which might not be the same as the animal in the find list.
+* `delete 2` deletes the animal at `INDEX 2`.
 
-#### Finding an animal: `find`
-Finds animals whose names/ID contain any of the given keywords.
+#### Editing an animal: `Edit`
+Edits animals specified by the index with the newly specified prefix attributes.
 
-Format: `findn KEYWORD [MORE_KEYWORDS]…​` OR `findi KEYWORD [MORE_KEYWORDS]…​`
+#### Searching an animal: `Search`
+Searches animals that are filtered using the specified prefixes.
 
-* findn searches for animals whose names contain any of the given keywords while findi searches for animals whose ID
-contain any of the given keywords.
+Format: `search KEYWORD [MORE_KEYWORDS]…​`
+
+* Searches for animals whose attributes contain any of the specified search values in the prefix filter.
 * The search is case-insensitive. e.g `pookie` will match `Pookie`
-* Animals matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `pookie tofu` will return `Pookie` and `Tofu`
-
 
 Examples:
-* `findn Pookie` returns `Pookie`
-* `findi 1234` returns `Pookie`
-
-#### Clearing all entries : `clear`
-Clears all entries from the address book.
-
-Format: `clear`
+* `find n/Pookie` returns all animals with the name `Pookie`
+* `find n/1234` returns `Pookie`
 
 #### Exiting the program : `exit`
 Exits the program.
 
 Format: `exit`
 
-
 #### Saving the data
 
-PawFection data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Pawfection data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 #### Editing the data file
 
-PawFection data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+Pawfection data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
-
 
 _Details coming soon ..._
 
