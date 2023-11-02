@@ -26,7 +26,7 @@ public class DeleteTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a specific task from an animal's task list.\n"
-            + "Parameters: ANIMALINDEX (must be a positive integer) TASKINDEX\n"
+            + "Parameters: ANIMALINDEX TASKINDEX (must both be positive integers)\n"
             + EXAMPLE_USAGE;
 
     public static final String MESSAGE_SUCCESS = "Task deleted for %s: %s";
@@ -63,11 +63,13 @@ public class DeleteTaskCommand extends AnimalCommand {
             throw new CommandException(AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
+        Task taskToDelete = taskList.get(targetTaskIndex.getZeroBased());
         Animal editedAnimal = createUpdatedTaskAnimal(animalToEdit, targetTaskIndex);
 
         model.setAnimal(animalToEdit, editedAnimal);
         model.updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(), AnimalMessages.format(targetTaskIndex)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(),
+                AnimalMessages.format(taskToDelete)));
     }
 
     /**
@@ -78,6 +80,7 @@ public class DeleteTaskCommand extends AnimalCommand {
         assert animalToEdit != null;
 
         Animal editedAnimal = createAnimalWithSameAttributes(animalToEdit);
+        copyTasksFromAnimalToAnimal(animalToEdit, editedAnimal);
         editedAnimal.deleteTaskByIndex(targetTaskIndex);
 
         return editedAnimal;
@@ -87,6 +90,11 @@ public class DeleteTaskCommand extends AnimalCommand {
         return new Animal(source.getName(), source.getPetId(), source.getSpecies(),
                 source.getBreed(), source.getSex(), source.getAdmissionDate(),
                 source.getDateOfBirth());
+    }
+
+    private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
+        TaskList targetTaskList = target.getTaskList();
+        targetTaskList.addAllTasks(source.getTasks());
     }
 
     @Override

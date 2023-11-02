@@ -69,7 +69,8 @@ public class AddTaskCommand extends AnimalCommand {
 
         model.setAnimal(animalToEdit, editedAnimal);
         model.updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(), AnimalMessages.format(task)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(),
+                AnimalMessages.format(task)));
     }
 
     /**

@@ -26,7 +26,8 @@ public class DeleteTaskCommandParser implements AnimalParser<DeleteTaskCommand> 
 
             return new DeleteTaskCommand(targetAnimalIndex, targetTaskIndex);
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTaskCommand.MESSAGE_USAGE),
+                    pe);
         }
     }
 }

@@ -268,6 +268,12 @@ public class AnimalParserUtil {
         private final Index firstIndex;
         private final Index secondIndex;
 
+        /**
+         * Constructs a {@code ParsedTwoIndices} object with the given indices.
+         *
+         * @param firstIndex  The first index.
+         * @param secondIndex The second index.
+         */
         public ParsedTwoIndices(Index firstIndex, Index secondIndex) {
             this.firstIndex = firstIndex;
             this.secondIndex = secondIndex;
