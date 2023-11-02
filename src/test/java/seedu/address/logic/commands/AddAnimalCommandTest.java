@@ -157,6 +157,11 @@ public class AddAnimalCommandTest {
         }
 
         @Override
+        public void resetTasks() {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
         public ObservableList<Animal> getFilteredAnimalList() {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
