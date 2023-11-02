@@ -119,6 +119,10 @@ public class AnimalCatalog implements ReadOnlyAnimalCatalog {
         }
     }
 
+    public void resetTasks() {
+        animals.resetTasks();
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

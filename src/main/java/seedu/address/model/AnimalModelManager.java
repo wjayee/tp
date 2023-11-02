@@ -118,8 +118,10 @@ public class AnimalModelManager implements AnimalModel {
     @Override
     public void addTask(Task newTask, Animal animal) {
         requireAllNonNull(newTask, animal);
+    }
 
-
+    public void resetTasks() {
+        animalCatalog.resetTasks();
     }
 
     //=========== Filtered Animal List Accessors =============================================================

@@ -79,6 +79,8 @@ public interface AnimalModel {
 
     void addTask(Task newTask, Animal animal);
 
+    void resetTasks();
+
     /** Returns an unmodifiable view of the filtered animal list */
     ObservableList<Animal> getFilteredAnimalList();
 

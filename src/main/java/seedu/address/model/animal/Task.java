@@ -73,6 +73,10 @@ public class Task {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public Task updateTask(boolean isDone) {
+        return new Task(description, isDone);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
