@@ -26,6 +26,7 @@ import seedu.address.model.animal.Name;
 import seedu.address.model.animal.PetId;
 import seedu.address.model.animal.Sex;
 import seedu.address.model.animal.Species;
+import seedu.address.model.animal.TaskList;
 
 /**
  * Edits the details of an existing animal in the catalog.
@@ -99,9 +100,10 @@ public class EditAnimalCommand extends AnimalCommand {
         Breed updatedBreed = animalDescriptor.getBreed().orElse(animalToEdit.getBreed());
         Sex updatedSex = animalDescriptor.getSex().orElse(animalToEdit.getSex());
         PetId currentPetId = animalToEdit.getPetId();
+        TaskList currentTaskList = animalToEdit.getTaskList();
 
         return new Animal(updatedName, currentPetId, updatedSpecies, updatedBreed, updatedSex,
-                 updatedAdmissionDate, updatedDateOfBirth);
+                 updatedAdmissionDate, updatedDateOfBirth, currentTaskList);
     }
 
 
