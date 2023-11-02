@@ -126,7 +126,7 @@ public class JsonAdaptedAnimal {
         AdmissionDate animalAdmissionDate = new AdmissionDate(admissionDate);
         TaskList animalTaskList = new TaskList();
         for (JsonAdaptedTask task : tasks) {
-            animalTaskList.getTaskList().add(task.toTaskType());
+            animalTaskList.addTask(task.toTaskType());
         }
         return new Animal(animalName, animalPetId, animalSpecies, animalBreed, animalSex,
             animalAdmissionDate, animalDateOfBirth, animalTaskList);

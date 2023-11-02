@@ -43,9 +43,7 @@ public class Animal {
     }
 
     /**
-     * Constructs an {@link Animal} object. This constructor is used in to convert
-     * a Jackson friendly adapted animal into the Animal object.
-     *
+     * Constructs an {@link Animal} object.
      * @param name the name of the Animal.
      * @param petId the petId assigned to the Animal.
      * @param species the species of the Animal.
@@ -53,7 +51,6 @@ public class Animal {
      * @param sex the sex of the Animal.
      * @param admissionDate the date the Animal was admitted.
      * @param dateOfBirth the date of birth of the Animal.
-     * @param taskList the taskList of the Animal.
      */
     public Animal(Name name, PetId petId, Species species, Breed breed, Sex sex,
                   AdmissionDate admissionDate, DateOfBirth dateOfBirth, TaskList taskList) {
@@ -99,6 +96,10 @@ public class Animal {
         return taskList;
     }
 
+    public List<Task> getTasks() {
+        return taskList.getTasks();
+    }
+
     // ----------------- These getter methods are used for JSON serialization by JsonAdaptedAnimal--------------
     // NOTE: For Animal attributes that simply stores a string as its underlying implementation, with its toString()
     // method returning the string as-is, toString() is called to use it for deserialization.
@@ -129,6 +130,10 @@ public class Animal {
 
     public String getBreedForSerialization() {
         return breed.toString();
+    }
+
+    public void addTask(Task task) {
+        taskList.addTask(task);
     }
 
     public List<JsonAdaptedTask> getTaskListForSerialization() {
