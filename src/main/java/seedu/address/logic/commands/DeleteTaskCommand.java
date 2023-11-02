@@ -78,7 +78,7 @@ public class DeleteTaskCommand extends AnimalCommand {
         assert animalToEdit != null;
 
         Animal editedAnimal = createAnimalWithSameAttributes(animalToEdit);
-        editedAnimal.deleteTask(targetTaskIndex);
+        editedAnimal.deleteTaskByIndex(targetTaskIndex);
 
         return editedAnimal;
     }
