@@ -12,6 +12,7 @@ import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.AnimalCommand;
 import seedu.address.logic.commands.DeleteAnimalCommand;
+import seedu.address.logic.commands.EditAnimalCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
 import seedu.address.logic.commands.SearchAnimalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -61,15 +62,9 @@ public class AnimalCatalogParser {
 
         case SearchAnimalCommand.COMMAND_WORD:
             return new SearchAnimalCommandParser().parse(arguments);
-        //
-        //        case ClearAnimalCommand.COMMAND_WORD:
-        //            return new ClearCommand();
-        //
-        //        case ExitAnimalCommand.COMMAND_WORD:
-        //            return new ExitCommand();
-        //
-        //        case HelpAnimalCommand.COMMAND_WORD:
-        //            return new HelpCommand();
+
+        case EditAnimalCommand.COMMAND_WORD:
+            return new EditAnimalCommandParser().parse(arguments);
 
         case AddTaskCommand.COMMAND_WORD:
             return new AddTaskCommandParser().parse(arguments);

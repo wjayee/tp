@@ -1,28 +1,28 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_ADMISSION_DATE_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_ADMISSION_DATE_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_BREED_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_BREED_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_DATE_OF_BIRTH_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_DATE_OF_BIRTH_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_ID_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_ID_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_BREED;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_DATE_OF_ADMISSION;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_DATE_OF_BIRTH;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_ID;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_NAME;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_SEX;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_INVALID_SPECIES;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_NAME_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_NAME_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_SEX_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_SEX_TOFU;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_SPECIES_POOKIE;
-import static seedu.address.logic.commands.AnimalCommandTestUtil.INDEX_SPECIES_TOFU;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ADMISSION_DATE_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ADMISSION_DATE_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_BREED_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_BREED_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_DATE_OF_BIRTH_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_DATE_OF_BIRTH_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ID_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ID_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_BREED;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_DATE_OF_ADMISSION;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_DATE_OF_BIRTH;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_ID;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_NAME;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_SEX;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_INVALID_SPECIES;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_NAME_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_NAME_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SEX_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SEX_TOFU;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SPECIES_POOKIE;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_SPECIES_TOFU;
 import static seedu.address.logic.parser.AnimalCommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.AnimalCommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.CliAnimalSyntax.BREED;
@@ -60,44 +60,44 @@ public class AddAnimalCommandParserTest {
         Animal expectedAnimal = new AnimalBuilder(TOFU).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + INDEX_NAME_TOFU + INDEX_ID_TOFU
-                + INDEX_BREED_TOFU + INDEX_DATE_OF_BIRTH_TOFU + INDEX_ADMISSION_DATE_TOFU
-                + INDEX_SEX_TOFU + INDEX_SPECIES_TOFU, new AddAnimalCommand(expectedAnimal));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + PREFIX_NAME_TOFU + PREFIX_ID_TOFU
+                + PREFIX_BREED_TOFU + PREFIX_DATE_OF_BIRTH_TOFU + PREFIX_ADMISSION_DATE_TOFU
+                + PREFIX_SEX_TOFU + PREFIX_SPECIES_TOFU, new AddAnimalCommand(expectedAnimal));
 
     }
 
     @Test
     public void parse_repeatedValue_failure() {
-        String validAnimalInput = INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE;
+        String validAnimalInput = PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE;
 
         // repeated name
-        assertParseFailure(parser, validAnimalInput + INDEX_NAME_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_NAME_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(NAME.getPrefix()));
 
         // repeated id
-        assertParseFailure(parser, validAnimalInput + INDEX_ID_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_ID_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(PET_ID.getPrefix()));
 
         // repeated sex
-        assertParseFailure(parser, validAnimalInput + INDEX_SEX_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_SEX_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(SEX.getPrefix()));
 
         // repeated breed
-        assertParseFailure(parser, validAnimalInput + INDEX_BREED_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_BREED_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(BREED.getPrefix()));
 
         // repeated species
-        assertParseFailure(parser, validAnimalInput + INDEX_SPECIES_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_SPECIES_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(SPECIES.getPrefix()));
 
         // repeated date of birth
-        assertParseFailure(parser, validAnimalInput + INDEX_DATE_OF_BIRTH_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_DATE_OF_BIRTH_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(DATE_OF_BIRTH.getPrefix()));
 
         // repeated date of admission
-        assertParseFailure(parser, validAnimalInput + INDEX_ADMISSION_DATE_POOKIE,
+        assertParseFailure(parser, validAnimalInput + PREFIX_ADMISSION_DATE_POOKIE,
                 AnimalMessages.getErrorMessageForDuplicatePrefixes(DATE_OF_ADMISSION.getPrefix()));
 
     }
@@ -106,43 +106,43 @@ public class AddAnimalCommandParserTest {
     public void parse_compulsoryFieldMissing_failure() {
         // missing name prefix
         String missingNameExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(NAME.getUsage()));
-        assertParseFailure(parser, INDEX_ID_POOKIE + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE
-            + INDEX_ADMISSION_DATE_POOKIE + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, missingNameExpectedMessage);
+        assertParseFailure(parser, PREFIX_ID_POOKIE + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE
+            + PREFIX_ADMISSION_DATE_POOKIE + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, missingNameExpectedMessage);
 
         // missing id prefix
         String missingPetIdExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(PET_ID.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE
-            + INDEX_ADMISSION_DATE_POOKIE + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, missingPetIdExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE
+            + PREFIX_ADMISSION_DATE_POOKIE + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, missingPetIdExpectedMessage);
 
         // missing sex prefix
         String missingSexExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(SEX.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE + INDEX_BREED_POOKIE
-            + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-            + INDEX_SPECIES_POOKIE, missingSexExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE + PREFIX_BREED_POOKIE
+            + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+            + PREFIX_SPECIES_POOKIE, missingSexExpectedMessage);
 
         // missing species prefix
         String missingSpeciesExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(SPECIES.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE + INDEX_BREED_POOKIE
-            + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-            + INDEX_SEX_POOKIE, missingSpeciesExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE + PREFIX_BREED_POOKIE
+            + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+            + PREFIX_SEX_POOKIE, missingSpeciesExpectedMessage);
 
         // missing breed prefix
         String missingBreedExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(BREED.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE + INDEX_SPECIES_POOKIE
-            + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-            + INDEX_SEX_POOKIE, missingBreedExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE + PREFIX_SPECIES_POOKIE
+            + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+            + PREFIX_SEX_POOKIE, missingBreedExpectedMessage);
 
         // missing date of birth prefix
         String missingDobExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(DATE_OF_BIRTH.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE + INDEX_SPECIES_POOKIE + INDEX_BREED_POOKIE
-            + INDEX_ADMISSION_DATE_POOKIE
-            + INDEX_SEX_POOKIE, missingDobExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE + PREFIX_SPECIES_POOKIE + PREFIX_BREED_POOKIE
+            + PREFIX_ADMISSION_DATE_POOKIE
+            + PREFIX_SEX_POOKIE, missingDobExpectedMessage);
 
         // missing date of admission prefix
         String missingDoaExpectedMessage = AddAnimalCommandParser.getHelpMessage(List.of(DATE_OF_ADMISSION.getUsage()));
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE + INDEX_SPECIES_POOKIE + INDEX_BREED_POOKIE
-            + INDEX_DATE_OF_BIRTH_POOKIE
-            + INDEX_SEX_POOKIE, missingDoaExpectedMessage);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE + PREFIX_SPECIES_POOKIE + PREFIX_BREED_POOKIE
+            + PREFIX_DATE_OF_BIRTH_POOKIE
+            + PREFIX_SEX_POOKIE, missingDoaExpectedMessage);
 
         // all prefixes missing
         String missingAllExpectedMessage = AddAnimalCommandParser.getHelpMessage(getAnimalAttributePrefixes().stream()
@@ -154,49 +154,49 @@ public class AddAnimalCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
-        assertParseFailure(parser, INDEX_INVALID_NAME + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_INVALID_NAME + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, Name.MESSAGE_CONSTRAINTS);
 
         // invalid id
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_INVALID_ID
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, PetId.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_INVALID_ID
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, PetId.MESSAGE_CONSTRAINTS);
 
         // invalid breed
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_INVALID_BREED + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, Breed.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_INVALID_BREED + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, Breed.MESSAGE_CONSTRAINTS);
 
         // invalid species
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_INVALID_SPECIES, Species.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_INVALID_SPECIES, Species.MESSAGE_CONSTRAINTS);
 
         // invalid date of birth
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_INVALID_DATE_OF_BIRTH + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, DateOfBirth.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_INVALID_DATE_OF_BIRTH + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, DateOfBirth.MESSAGE_CONSTRAINTS);
 
         // invalid date of admission
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_INVALID_DATE_OF_ADMISSION
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, AdmissionDate.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_INVALID_DATE_OF_ADMISSION
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, AdmissionDate.MESSAGE_CONSTRAINTS);
 
         // invalid sex
-        assertParseFailure(parser, INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_INVALID_SEX + INDEX_SPECIES_POOKIE, Sex.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_INVALID_SEX + PREFIX_SPECIES_POOKIE, Sex.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported, invalid name and date of birth
-        assertParseFailure(parser, INDEX_INVALID_NAME + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_INVALID_DATE_OF_BIRTH + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, PREFIX_INVALID_NAME + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_INVALID_DATE_OF_BIRTH + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE, Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + INDEX_NAME_POOKIE + INDEX_ID_POOKIE
-                + INDEX_BREED_POOKIE + INDEX_DATE_OF_BIRTH_POOKIE + INDEX_ADMISSION_DATE_POOKIE
-                + INDEX_SEX_POOKIE + INDEX_SPECIES_POOKIE,
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+                + PREFIX_BREED_POOKIE + PREFIX_DATE_OF_BIRTH_POOKIE + PREFIX_ADMISSION_DATE_POOKIE
+                + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE,
                 AnimalMessages.MESSAGE_INVALID_PREAMBLE);
 
     }
