@@ -64,9 +64,7 @@ For more details, see [help](#program-usage-help-help)<br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
-### Entry Management
-
-#### Adding an animal: `add`
+### Adding an animal: `add`
 Adds an animal to the address book.
 
 Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
@@ -89,7 +87,7 @@ Examples:
 * `help add`
 * `help dele` (equivalent to `help delete`)
 
-#### Listing all animals: `list`
+### Listing all animals: `list`
 Shows a list of all animals in the address book.
 
 Format: `list`
@@ -97,7 +95,7 @@ Format: `list`
 * The list is sorted by the name of the animal in alphabetical order.
 * Can be use after using the `search` command to list all animals again.
 
-#### Deleting an animal: `delete`
+### Deleting an animal: `delete`
 Deletes the specified animal from the address book.
 
 Format: `delete INDEX`
@@ -109,7 +107,7 @@ Format: `delete INDEX`
 Examples:
 * `delete 2` deletes the animal at `INDEX 2`.
 
-#### Editing an animal: `Edit`
+### Editing an animal: `Edit`
 Edits animals specified by the index with the newly specified prefix attributes.
 
 Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
@@ -127,7 +125,7 @@ Examples:
 * `edit 1 s/Dog b/Poodle` edits the species of the first animal to be `Dog` and the breed to be `Poodle`.
 
 
-#### Searching an animal: `Search`
+### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
 
 Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
@@ -143,7 +141,33 @@ Examples:
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
 
-#### Marking a task as done: `mark`
+### Adds a task to an animal: `addtask`
+Adds a specific new task to the task list of an animal.
+
+Format: `addtask ANIMALINDEX TASK`
+* Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
+* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
+* The `TASK` refers to the task that you want to add into the task list of the animal.
+* `TASK` can consist of spaces.
+* `ANIMALINDEX` is based on 1-indexing, i.e first animal will be at index 1.
+
+Examples:
+* `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
+
+### Deletes a task of an animal: `deletetask`
+Deletes a specific task from the task list of an animal.
+
+Format: `deletetask ANIMALINDEX TASKINDEX`
+* Deletes the task at the specified `TASKINDEX` from the task list of the animal at the specified `ANIMALINDEX`.
+* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
+* The `TASKINDEX` refers to the index of the task on the task list of the animal.
+* `ANIMALINDEX` and `TASKINDEX` are based on 1-indexing, i.e first animal will be at index 1.
+* `ANIMALINDEX` and `TASKINDEX` must be separated by a space.
+
+Examples:
+* `deletetask 1 1` deletes the first task of the first animal.
+
+### Marking a task as done: `mark`
 Marks the specified task as done.
 
 Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
@@ -157,7 +181,7 @@ Examples:
 * `mark 1 1` marks the first task of the first animal as done.
 * `mark 2 1 2` marks the first and second task of the second animal as done.
 
-#### Unmarking a task as done: `unmark`
+### Unmarking a task as done: `unmark`
 Marks the specified task as uncompleted.
 
 Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
@@ -171,22 +195,22 @@ Examples:
 * `unmark 1 1` marks the first task of the first animal as uncompleted.
 * `unmark 2 1 2` marks the first and second task of the second animal as uncompleted.
 
-#### Reset all tasks: `reset`
+### Reset all tasks: `reset`
 Resets all tasks of all animals as uncompleted.
 
 Format: `reset`
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
 
-#### Exiting the program : `exit`
+### Exiting the program : `exit`
 Exits the program.
 
 Format: `exit`
 
-#### Saving the data
+### Saving the data
 
 Pawfection data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-#### Editing the data file
+### Editing the data file
 
 Pawfection data are saved automatically as a JSON file `[JAR file location]/data/animalcatalog.json`. Advanced users are welcome to update data directly by editing that data file.
 
@@ -214,15 +238,17 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action    | Format, Examples                                                                                              |
-|-----------|---------------------------------------------------------------------------------------------------------------|
-| **Add**   | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                       |
-| **Edit**  | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                         |
-| **Clear** | `clear`                                                                                                       |
-| **Delete** | `delete ID`<br> e.g., `delete 3`                                                                              |
-| **List**  | `list`                                                                                                        |
-| **Search** | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g., `search n/Pookie b/Poodle` |
-| **Mark**  | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                             |
-| **Unmark** | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                         |
-| **Reset** | `reset`                                                                                                       |
-| **Help**  | `help [COMMAND_NAME]`                                                                                         |
+| Action         | Format, Examples                                                                                             |
+|----------------|--------------------------------------------------------------------------------------------------------------|
+| **Add**        | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                      |
+| **Edit**       | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                        |
+| **Clear**      | `clear`                                                                                                      |
+| **Delete**     | `delete ID`<br> e.g., `delete 3`                                                                             |
+| **List**       | `list`                                                                                                       |
+| **Search**     | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g. `search n/Pookie b/Poodle` |
+| **Addtask**    | `addtask ANIMALINDEX TASK`<br> e.g. `addtask 1 Feed Pookie`                                                  |
+| **Deletetask** | `deletetask ANIMALINDEX TASKINDEX`<br> e.g. `deletetask 1 1`                                                  |
+| **Mark**       | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                            |
+| **Unmark**     | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                        |
+| **Reset**      | `reset`                                                                                                      |
+| **Help**       | `help [COMMAND_NAME]`                                                                                        |

@@ -24,7 +24,7 @@ public class AddTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a task to the animal identified by the index number used in the displayed animal list.\n"
-            + "Parameters: INDEX (must be a positive integer) TASK";
+            + "Parameters: ANIMALINDEX (must be a positive integer) [TASK]";
 
     public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD + " 1 Feed";
 
