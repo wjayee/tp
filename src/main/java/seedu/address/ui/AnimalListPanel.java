@@ -40,6 +40,10 @@ public class AnimalListPanel extends UiPart<Region> {
         );
     }
 
+    public void clearSelectedAnimal() {
+        animalListView.getSelectionModel().clearSelection();
+    }
+
     /**
      * Updates the detailed view panel with the selected animal.
      *
