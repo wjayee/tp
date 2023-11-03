@@ -18,7 +18,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
 
-    private static final Logger logger = LogsCenter.getLogger(UnmarkTaskCommandParser.class);
+    private static final Logger logger = LogsCenter.getLogger(MarkTaskCommandParser.class);
 
     @Override
     public MarkTaskCommand parse(String args) throws ParseException {
