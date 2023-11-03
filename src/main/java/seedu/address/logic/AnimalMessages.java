@@ -25,6 +25,7 @@ public class AnimalMessages {
     public static final String MESSAGE_INVALID_SEARCH_KEYWORDS = "Search keywords cannot be empty! At least one "
             + "prefix must be provided.";
 
+    public static final String MESSAGE_MISSING_ANIMAL_INDEX = "Animal index is missing!";
     public static final String MESSAGE_MISSING_TASK_INDEX = "Task index(s) is/are missing!";
 
 
