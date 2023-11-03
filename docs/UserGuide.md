@@ -94,6 +94,7 @@ Format: `list`
 
 * The list is sorted by the name of the animal in alphabetical order.
 * Can be use after using the `search` command to list all animals again.
+* Any words after `list` will be ignored.
 
 ### Deleting an animal: `delete`
 Deletes the specified animal from the address book.
@@ -200,6 +201,7 @@ Resets all tasks of all animals as uncompleted.
 
 Format: `reset`
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
+* Any words after `reset` will be ignored.
 
 ### Exiting the program : `exit`
 Exits the program.
@@ -242,12 +244,11 @@ _Details coming soon ..._
 |----------------|--------------------------------------------------------------------------------------------------------------|
 | **Add**        | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                      |
 | **Edit**       | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                        |
-| **Clear**      | `clear`                                                                                                      |
 | **Delete**     | `delete ID`<br> e.g., `delete 3`                                                                             |
 | **List**       | `list`                                                                                                       |
 | **Search**     | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g. `search n/Pookie b/Poodle` |
 | **Addtask**    | `addtask ANIMALINDEX TASK`<br> e.g. `addtask 1 Feed Pookie`                                                  |
-| **Deletetask** | `deletetask ANIMALINDEX TASKINDEX`<br> e.g. `deletetask 1 1`                                                  |
+| **Deletetask** | `deletetask ANIMALINDEX TASKINDEX`<br> e.g. `deletetask 1 1`                                                 |
 | **Mark**       | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                            |
 | **Unmark**     | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                        |
 | **Reset**      | `reset`                                                                                                      |
