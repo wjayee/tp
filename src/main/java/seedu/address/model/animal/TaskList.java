@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.storage.JsonAdaptedTask;
 
 /**
@@ -34,6 +35,10 @@ public class TaskList {
 
     public void addTask(Task task) {
         taskList.add(task);
+    }
+
+    public void deleteTaskByIndex(Index index) {
+        taskList.remove(index.getZeroBased());
     }
 
     /**

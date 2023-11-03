@@ -17,6 +17,7 @@ public class AnimalMessages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND = "Invalid command!";
     public static final String MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX = "The animal index provided is invalid";
+    public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_PREAMBLE = "Command should not have preamble!";

@@ -3,6 +3,7 @@ package seedu.address.model.animal;
 import java.util.List;
 import java.util.Objects;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.storage.JsonAdaptedTask;
 
@@ -134,6 +135,10 @@ public class Animal {
 
     public void addTask(Task task) {
         taskList.addTask(task);
+    }
+
+    public void deleteTaskByIndex(Index targetTaskIndex) {
+        taskList.deleteTaskByIndex(targetTaskIndex);
     }
 
     public List<JsonAdaptedTask> getTaskListForSerialization() {

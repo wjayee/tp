@@ -26,6 +26,12 @@ public class AnimalParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
+    public static final String MESSAGE_INVALID_ADD_TASK_FORMAT =
+            "Invalid input format. Expected: <index> <task description>";
+
+    public static final String MESSAGE_INVALID_DELETE_TASK_FORMAT =
+            "Invalid input format. Expected: <animalIndex> <taskIndex>";
+
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -166,7 +172,7 @@ public class AnimalParserUtil {
         Matcher matcher = pattern.matcher(trimmedInput);
 
         if (!matcher.matches()) {
-            throw new ParseException("Invalid input format. Expected: <index> <task description>");
+            throw new ParseException(MESSAGE_INVALID_ADD_TASK_FORMAT);
         }
 
         String indexStr = matcher.group(1);
@@ -179,6 +185,41 @@ public class AnimalParserUtil {
         Index index = Index.fromOneBased(Integer.parseInt(indexStr));
         return new ParsedTaskInput(index, taskDescription);
     }
+
+    /**
+     * Parses the given {@code input} into a {@code ParsedTwoIndices} object.
+     * <p>
+     * The input is expected to be in the format: animalIndex taskIndex,
+     * where animalIndex represents the target animal's position in the list (as a positive integer)
+     * and taskIndex represents the target task's position in the animal's task list (as a positive integer).
+     * </p>
+     * <p>
+     * The method uses regular expressions to extract the index parts
+     * and then constructs a {@code ParsedTwoIndices} object.
+     * </p>
+     *
+     * @param input The string input to be parsed.
+     * @return A {@code ParsedTwoIndices} object containing the parsed target indices.
+     * @throws ParseException if the given {@code input} is invalid or does not conform to the expected format.
+     */
+    public static ParsedTwoIndices parseTwoIndices(String input) throws ParseException {
+        String[] splitArgs = input.trim().split("\\s+", 2);
+
+        if (splitArgs.length != 2) {
+            throw new ParseException(MESSAGE_INVALID_DELETE_TASK_FORMAT);
+        }
+
+        String firstIndex = splitArgs[0];
+        String secondIndex = splitArgs[1];
+
+        if (!StringUtil.isNonZeroUnsignedInteger(firstIndex) || !StringUtil.isNonZeroUnsignedInteger(secondIndex)) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+
+        return new ParsedTwoIndices(Index.fromOneBased(Integer.parseInt(firstIndex)),
+                Index.fromOneBased(Integer.parseInt(secondIndex)));
+    }
+
 
     /**
      * Represents the result of parsing the user input for adding a task.
@@ -220,6 +261,31 @@ public class AnimalParserUtil {
         }
     }
 
+    /**
+     * Represents the result of parsing two indices.
+     */
+    public static class ParsedTwoIndices {
+        private final Index firstIndex;
+        private final Index secondIndex;
 
+        /**
+         * Constructs a {@code ParsedTwoIndices} object with the given indices.
+         *
+         * @param firstIndex  The first index.
+         * @param secondIndex The second index.
+         */
+        public ParsedTwoIndices(Index firstIndex, Index secondIndex) {
+            this.firstIndex = firstIndex;
+            this.secondIndex = secondIndex;
+        }
+
+        public Index getFirstIndex() {
+            return firstIndex;
+        }
+
+        public Index getSecondIndex() {
+            return secondIndex;
+        }
+    }
 }
 
