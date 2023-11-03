@@ -5,8 +5,8 @@ title: "Jason's Project Portfolio Page"
 
 ### Project: PawFection
 
-PawFection is a desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface (CLI) 
-while still having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to 
+PawFection is a desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to
 store and retrieve information about animals in a shelter easily.
 
 Given below are my contributions to the project:
