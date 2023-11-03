@@ -3,10 +3,11 @@ layout: default.md
 title: "Ja Yee's Project Portfolio Page"
 ---
 
-### Project: Y2Direct
+### Project: PawFection
 
-Y2Direct is a desktop address book application used for students to store work/school-related
-contacts. It will elevate user experience through organized contact categorization and task tagging.
+PawFection is a desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to
+store and retrieve information about animals in a shelter easily.
 
 Given below are my contributions to the project:
 
