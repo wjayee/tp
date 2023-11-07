@@ -53,7 +53,7 @@ For more details, see [help](#program-usage-help-help)<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Pookie`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/NOTES]` can be used as `n/Pookie t/Aggressive towards DOGS` or as `n/Pookie`.
+  e.g `n/NAME [s/Dog]` can be used as `n/Pookie s/Dog` or as `n/Pookie`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
@@ -70,6 +70,9 @@ Adds an animal to the address book.
 Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 
 * ID must be a unique 4 digit number.
+* SEX must be either `male` or `female`.
+* DOB and DOA must be in the format `YYYYMMDD`.
+* Species and breed can only be alphabetic with only a single space between words.
 
 Examples:
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
@@ -118,7 +121,8 @@ Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 * Prefixes that are not provided will not be edited.
 * The `INDEX` refers to the animal of the `INDEX` on the animal list view.
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will edit the animal with ID `1234` to be named `Pookie`
+* `INDEX` must be a positive integer 1, 2, 3, ...
+* The order of prefixes does not matter. e.g. both `1 n/Pookie s/Cat` and `1 s/Cat n/Pookie `will edit the animal at index 1 to species `Cat` and name `Pookie`
 
 
 Examples:
@@ -202,11 +206,6 @@ Resets all tasks of all animals as uncompleted.
 Format: `reset`
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
 * Any words after `reset` will be ignored.
-
-### Exiting the program : `exit`
-Exits the program.
-
-Format: `exit`
 
 ### Saving the data
 
