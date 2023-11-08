@@ -1,8 +1,11 @@
 package seedu.address.logic.parser;
 
 import static java.util.Arrays.stream;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_DOUBLE_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_STRING_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_ANIMAL_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_TASK_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_NEGATIVE_INDEX;
 
 import java.util.logging.Logger;
 
@@ -37,14 +40,55 @@ public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
 
         String[] indexLists = trimmedArgs.split("\\s+", 2);
 
+        // checks if animal index is a number
+        if (!indexLists[0].matches("\\d+")) {
+            throw new ParseException("Animal " + MESSAGE_INVALID_STRING_INDEX);
+        }
+
+        // checks if animal index is an integer
+        if (Double.parseDouble(indexLists[0]) % 1 != 0) {
+            throw new ParseException("Animal " + MESSAGE_INVALID_DOUBLE_INDEX);
+        }
+
+        int animalIntIndex = Integer.parseInt(indexLists[0]);
+
+        // checks if animal index provided is negative
+        if (animalIntIndex <= 0) {
+            throw new ParseException("Animal " + MESSAGE_NEGATIVE_INDEX);
+        }
+
+
+        // checks to ensure task indexes provided are valid
+
+        // checks if task indexes provided are numbers
+        if (!indexLists[1].matches("\\d+(\\s+\\d+)*")) {
+            throw new ParseException("Task " + MESSAGE_INVALID_STRING_INDEX);
+        }
+
+        double[] checkTaskIndexes = stream(indexLists[1].split("\\s+"))
+                .map(Double::parseDouble)
+                .mapToDouble(Double::doubleValue)
+                .toArray();
+
+        // check if indexes provided are negative
+        if (stream(checkTaskIndexes).anyMatch(index -> index <= 0)) {
+            throw new ParseException("Task " + MESSAGE_NEGATIVE_INDEX);
+        }
+
+        // check if indexes provided are integers
+        if (stream(checkTaskIndexes).anyMatch(index -> index % 1 != 0)) {
+            throw new ParseException("Task " + MESSAGE_INVALID_DOUBLE_INDEX);
+        }
+
+
         Index animalIndex = Index.fromOneBased(Integer.parseInt(indexLists[0]));
-        Index[] taskIndex = stream(indexLists[1].split("\\s+"))
+        Index[] taskIndexes = stream(indexLists[1].split("\\s+"))
                 .map(Integer::parseInt)
                 .map(Index::fromOneBased)
                 .toArray(Index[]::new);
 
 
-        return new MarkTaskCommand(animalIndex, taskIndex);
+        return new MarkTaskCommand(animalIndex, taskIndexes);
     }
 
     private static String getAnimalHelpMessage() {

@@ -16,8 +16,7 @@ public class ResetTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Resets all tasks of the animal, identified by the index number "
-            + "used in the displayed animal list, as uncompleted. "
-            + "\nParameters: ANIMAL_INDEX (must be a positive integer)";
+            + "used in the displayed animal list, as uncompleted. ";
 
     public static final String EXAMPLE_USAGE = "Example: " + COMMAND_WORD;
 
