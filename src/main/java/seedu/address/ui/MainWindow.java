@@ -199,8 +199,12 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
             commandResult.getAnimalResult().ifPresentOrElse(x -> {
+                animalListPanel.selectAnimal(x);
                 animalDetailPanel.updateDetails(x);
-            }, () -> animalDetailPanel.clearDetails());
+            }, () -> {
+                animalListPanel.clearSelection();
+                animalDetailPanel.clearDetails();
+            });
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);

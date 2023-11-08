@@ -43,13 +43,12 @@ public class AnimalListPanel extends UiPart<Region> {
                 )));
     }
 
-    /**
-     * Updates the detailed view panel with the selected animal.
-     *
-     * @param selectedAnimal Animal that was selected from the AnimalListPanel
-     */
-    private void showAnimalDetails(Animal selectedAnimal) {
-        animalDetailPanel.updateDetails(selectedAnimal);
+    public void selectAnimal(Animal animal) {
+        animalListView.getSelectionModel().select(animal);
+    }
+
+    public void clearSelection() {
+        animalListView.getSelectionModel().clearSelection();
     }
 
     static class AnimalListViewCell extends ListCell<Animal> {
