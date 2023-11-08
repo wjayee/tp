@@ -76,7 +76,7 @@ public class AddAnimalCommand extends AnimalCommand {
         }
 
         model.addAnimal(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, AnimalMessages.format(toAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, AnimalMessages.format(toAdd)), toAdd);
     }
 
     @Override

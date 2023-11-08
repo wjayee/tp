@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -32,16 +33,14 @@ public class AnimalListPanel extends UiPart<Region> {
         this.animalDetailPanel = detailPanel;
         animalListView.setItems(animalList);
         animalListView.setCellFactory(listView -> new AnimalListViewCell());
-        animalListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                showAnimalDetails(newValue);
+        animalListView.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        detailPanel.updateDetails(newValue);
+                    }
                 }
-            }
-        );
-    }
-
-    public void clearSelectedAnimal() {
-        animalListView.getSelectionModel().clearSelection();
+                )));
     }
 
     /**

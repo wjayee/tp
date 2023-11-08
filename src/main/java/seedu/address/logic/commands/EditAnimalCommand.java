@@ -97,7 +97,7 @@ public class EditAnimalCommand extends AnimalCommand {
         model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, AnimalMessages.format(animalToEdit),
-                AnimalMessages.format(editedAnimal)));
+                AnimalMessages.format(editedAnimal)), editedAnimal);
     }
 
     private static Animal createEditedAnimal(Animal animalToEdit, EditAnimalDescriptor animalDescriptor) {

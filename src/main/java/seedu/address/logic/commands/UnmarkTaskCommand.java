@@ -86,7 +86,7 @@ public class UnmarkTaskCommand extends AnimalCommand {
             model.setAnimal(animalToMark, editedAnimal);
             model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
 
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, editedAnimal);
 
 
         } catch (IndexOutOfBoundsException e) {
