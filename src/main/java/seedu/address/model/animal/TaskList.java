@@ -100,6 +100,15 @@ public class TaskList {
         return this;
     }
 
+    /**
+     * Returns the number of tasks in the taskList.
+     *
+     * @return The number of tasks in the taskList.
+     */
+    public int getNumberOfTasks() {
+        return taskList.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

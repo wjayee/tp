@@ -153,6 +153,10 @@ public class Animal {
         taskList.resetTasks();
     }
 
+    public int getNumberOfTasks() {
+        return taskList.getNumberOfTasks();
+    }
+
     /**
      * Returns the string representation of this Animal.
      *
