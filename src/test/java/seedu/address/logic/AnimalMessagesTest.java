@@ -44,7 +44,7 @@ public class AnimalMessagesTest {
             + "; Sex: " + animal.getSex()
             + "; Species: " + animal.getSpecies()
             + "; Breed: " + animal.getBreed()
-            + "; " + animal.getDateOfBirth() // Remove repeat Date of Birth prefix
+            + "; Date of Birth: " + animal.getDateOfBirth() // Remove repeat Date of Birth prefix
             + "; Date of Admission: " + animal.getAdmissionDate();
 
         String formattedAnimal = AnimalMessages.format(animal);
