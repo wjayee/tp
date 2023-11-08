@@ -70,9 +70,9 @@ Adds an animal to the address book.
 Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 
 * ID must be a unique 4 digit number.
-* SEX must be either `male` or `female`.
-* DOB and DOA must be in the format `YYYYMMDD`.
-* Species and breed can only be alphabetic with only a single space between words.
+* SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
+* DOB and DOA must be in the format `YYYYMMDD`. e.g. `20190101` for 1st January 2019.
+* Species and breed can only be alphabetic with only a single space between words. There can only be a maximum of 2 words in the species and breed.
 
 Examples:
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
