@@ -29,9 +29,7 @@ public class AnimalMessages {
     public static final String MESSAGE_MISSING_TASK_INDEX = "Task index(s) is/are missing!";
     public static final String MESSAGE_NEGATIVE_INDEX = "Index cannot be negative! "
             + "Please provide a positive integer index.";
-    public static final String MESSAGE_INVALID_DOUBLE_INDEX = "Index must be an integer! "
-            + "Please provide a positive integer index.";
-    public static final String MESSAGE_INVALID_STRING_INDEX = "Index cannot be a word! "
+    public static final String MESSAGE_INVALID_STRING_INDEX = "Index provided is not an integer! "
             + "Please provide a positive integer index.";
 
 

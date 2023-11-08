@@ -4,7 +4,9 @@ import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
@@ -119,5 +121,25 @@ public class UnmarkTaskCommand extends AnimalCommand {
         TaskList taskList = animalToMark.updateTaskList(taskIndex, false);
 
         return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, taskList);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof UnmarkTaskCommand)) {
+            return false;
+        }
+
+        UnmarkTaskCommand otherCommand = (UnmarkTaskCommand) other;
+        return targetIndex.equals(otherCommand.targetIndex)
+                && Arrays.equals(taskIndex, otherCommand.taskIndex);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(targetIndex, taskIndex);
     }
 }
