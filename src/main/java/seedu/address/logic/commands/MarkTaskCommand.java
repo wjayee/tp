@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
 import java.util.List;
 
@@ -77,7 +78,17 @@ public class MarkTaskCommand extends AnimalCommand {
             int[] taskIndexes = stream(taskIndex)
                     .map(Index::getZeroBased)
                     .mapToInt(Integer::intValue)
+                    .sorted()
                     .toArray();
+
+            assert taskIndexes.length > 0 : "taskIndexes should not be empty";
+
+            assert taskIndexes[0] >= 0 : "taskIndexes should not be negative";
+
+            // check if index provided exceeds number of tasks
+            if (taskIndexes[taskIndex.length - 1] > animalToMark.getNumberOfTasks() - 1) {
+                throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            }
 
             Animal markedAnimal = createEditedAnimal(animalToMark, taskIndexes);
 
@@ -85,6 +96,7 @@ public class MarkTaskCommand extends AnimalCommand {
             model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
 
             return new CommandResult(MESSAGE_SUCCESS);
+
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
