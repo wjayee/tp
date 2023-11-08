@@ -24,17 +24,20 @@ public class CommandResult {
     private final Optional<Animal> animal;
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields.
+     * Constructs a {@code CommandResult} with the specified fields, and the animal to be updated in detailView.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, showHelp, exit, null);
-    }
-
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, Animal animal) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
         this.animal = Optional.ofNullable(animal);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields, and animal as null.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+        this(feedbackToUser, showHelp, exit, null);
     }
 
     /**
