@@ -98,7 +98,8 @@ public class MarkTaskCommand extends AnimalCommand {
             model.setAnimal(animalToMark, markedAnimal);
             model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
 
-            return new CommandResult(MESSAGE_SUCCESS);
+
+            return new CommandResult(MESSAGE_SUCCESS, markedAnimal);
 
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);

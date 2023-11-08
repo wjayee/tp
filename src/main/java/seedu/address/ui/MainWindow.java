@@ -159,11 +159,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show();
     }
 
-    public void showAnimalDetail(AnimalDetailPanel animalDetailPanel) {
-        animalDetailPanelPlaceholder.getChildren().setAll(animalDetailPanel.getRoot());
-    }
-
-
     /**
      * Closes the application.
      */
@@ -174,10 +169,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public AnimalListPanel getAnimalListPanel() {
-        return animalListPanel;
     }
 
     /**
@@ -198,8 +189,13 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
-            animalDetailPanel.clearDetails();
-            animalListPanel.clearSelectedAnimal();
+            commandResult.getAnimalResult().ifPresentOrElse(x -> {
+                animalListPanel.selectAnimal(x);
+                animalDetailPanel.updateDetails(x);
+            }, () -> {
+                animalListPanel.clearSelection();
+                animalDetailPanel.clearDetails();
+            });
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);

@@ -32,25 +32,22 @@ public class AnimalListPanel extends UiPart<Region> {
         this.animalDetailPanel = detailPanel;
         animalListView.setItems(animalList);
         animalListView.setCellFactory(listView -> new AnimalListViewCell());
-        animalListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                showAnimalDetails(newValue);
+        animalListView.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        detailPanel.updateDetails(newValue);
+                    }
                 }
-            }
-        );
+                )));
     }
 
-    public void clearSelectedAnimal() {
+    public void selectAnimal(Animal animal) {
+        animalListView.getSelectionModel().select(animal);
+    }
+
+    public void clearSelection() {
         animalListView.getSelectionModel().clearSelection();
-    }
-
-    /**
-     * Updates the detailed view panel with the selected animal.
-     *
-     * @param selectedAnimal Animal that was selected from the AnimalListPanel
-     */
-    private void showAnimalDetails(Animal selectedAnimal) {
-        animalDetailPanel.updateDetails(selectedAnimal);
     }
 
     static class AnimalListViewCell extends ListCell<Animal> {
