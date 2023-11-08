@@ -74,6 +74,7 @@ public class MarkTaskCommand extends AnimalCommand {
         requireNonNull(model);
         List<Animal> lastShownList = model.getFilteredAnimalList();
 
+        // check if animal index provided exceeds number of animals
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_EXCESS_ANIMAL_INDEX);
         }

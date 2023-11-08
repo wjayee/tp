@@ -231,6 +231,7 @@ public class Animal {
                 && sex.equals(otherAnimal.sex)
                 && species.equals(otherAnimal.species)
                 && breed.equals(otherAnimal.breed)
-                && admissionDate.equals(otherAnimal.admissionDate);
+                && admissionDate.equals(otherAnimal.admissionDate)
+                && taskList.equals(otherAnimal.taskList);
     }
 }

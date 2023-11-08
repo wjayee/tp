@@ -12,8 +12,10 @@ import seedu.address.model.animal.Task;
 public class TypicalTasks {
 
     public static final Task FEED = new Task("Feed Animal");
+    public static final Task FED = new Task("Feed Animal").updateTask(true);
 
     public static final Task WALK = new Task("Walk Animal");
+    public static final Task WALKED = new Task("Walk Animal").updateTask(true);
 
     public static final Task MEDICATE = new Task("Medicate Animal");
 

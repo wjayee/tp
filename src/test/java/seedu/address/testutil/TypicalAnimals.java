@@ -10,6 +10,9 @@ import seedu.address.model.AnimalCatalog;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Task;
 
+import static seedu.address.testutil.TypicalTasks.FEED;
+import static seedu.address.testutil.TypicalTasks.WALK;
+
 /**
  * A utility class containing a list of {@code Animal} objects to be used in tests.
  */
@@ -23,8 +26,7 @@ public class TypicalAnimals {
         .withSpecies("Cat")
         .withBreed("British Shorthair")
         .withAdmissionDate("2019-11-11")
-        .withTaskList(Stream.of(new Task("Feed Tofu"),
-                new Task("Wash Tofu")).collect(Collectors.toList()))
+        .withTaskList(List.of(FEED, WALK))
         .build();
 
     public static final Animal MUFFIN = new AnimalBuilder()
