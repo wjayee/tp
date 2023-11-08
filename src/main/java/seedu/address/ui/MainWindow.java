@@ -159,11 +159,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show();
     }
 
-    public void showAnimalDetail(AnimalDetailPanel animalDetailPanel) {
-        animalDetailPanelPlaceholder.getChildren().setAll(animalDetailPanel.getRoot());
-    }
-
-
     /**
      * Closes the application.
      */
@@ -174,10 +169,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public AnimalListPanel getAnimalListPanel() {
-        return animalListPanel;
     }
 
     /**
