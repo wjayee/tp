@@ -72,7 +72,7 @@ public class UnmarkTaskCommand extends AnimalCommand {
         requireNonNull(model);
         List<Animal> lastShownList = model.getFilteredAnimalList();
 
-
+        // check if animal index provided exceeds number of animals
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_EXCESS_ANIMAL_INDEX);
         }
@@ -92,7 +92,7 @@ public class UnmarkTaskCommand extends AnimalCommand {
 
             // check if index provided exceeds number of tasks
             if (taskIndexes[taskIndex.length - 1] > animalToMark.getNumberOfTasks() - 1) {
-                throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+                throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
             Animal editedAnimal = createEditedAnimal(animalToMark, taskIndexes);

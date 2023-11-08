@@ -1,7 +1,11 @@
 package seedu.address.logic.parser;
 
 import static java.util.Arrays.stream;
-import static seedu.address.logic.AnimalMessages.*;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_DOUBLE_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_STRING_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_ANIMAL_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_TASK_INDEX;
+import static seedu.address.logic.AnimalMessages.MESSAGE_NEGATIVE_INDEX;
 
 import java.util.logging.Logger;
 

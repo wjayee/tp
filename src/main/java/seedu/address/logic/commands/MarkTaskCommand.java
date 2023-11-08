@@ -2,8 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX;
-import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
 import java.util.List;
 
@@ -43,6 +41,11 @@ public class MarkTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
 
+    public static final String MESSAGE_EXCESS_TASK_INDEX =
+            "The task index(es) provided exceeds the number of tasks in the animal!";
+
+    public static final String MESSAGE_EXCESS_ANIMAL_INDEX = "The animal index provided exceeds the number of animals!";
+
     private final Index targetIndex;
     private final Index[] taskIndex;
 
@@ -70,7 +73,7 @@ public class MarkTaskCommand extends AnimalCommand {
         List<Animal> lastShownList = model.getFilteredAnimalList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(MESSAGE_INVALID_ANIMAL_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_EXCESS_ANIMAL_INDEX);
         }
 
         Animal animalToMark = lastShownList.get(targetIndex.getZeroBased());
@@ -87,7 +90,7 @@ public class MarkTaskCommand extends AnimalCommand {
 
             // check if index provided exceeds number of tasks
             if (taskIndexes[taskIndex.length - 1] > animalToMark.getNumberOfTasks() - 1) {
-                throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+                throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
             Animal markedAnimal = createEditedAnimal(animalToMark, taskIndexes);
