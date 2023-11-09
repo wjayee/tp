@@ -1,7 +1,9 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.AnimalCommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.AnimalCommandTestUtil.showAnimalAtIndex;
 import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +34,7 @@ public class ListAnimalCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
+        showAnimalAtIndex(model, INDEX_FIRST);
         assertCommandSuccess(new ListAnimalCommand(), model, ListAnimalCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
