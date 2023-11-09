@@ -57,12 +57,12 @@ public class AddAnimalCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Animal expectedAnimal = new AnimalBuilder(TOFU).build();
+        Animal expectedAnimal = new AnimalBuilder(TOFU).withTaskList(List.of()).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + PREFIX_NAME_TOFU + PREFIX_ID_TOFU
                 + PREFIX_BREED_TOFU + PREFIX_DATE_OF_BIRTH_TOFU + PREFIX_ADMISSION_DATE_TOFU
-                + PREFIX_SEX_TOFU + PREFIX_SPECIES_TOFU, new AddAnimalCommand(expectedAnimal));
+                + PREFIX_SEX_TOFU + PREFIX_SPECIES_TOFU , new AddAnimalCommand(expectedAnimal));
 
     }
 
