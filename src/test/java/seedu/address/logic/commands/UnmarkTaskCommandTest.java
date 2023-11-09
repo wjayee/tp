@@ -7,19 +7,22 @@ import static seedu.address.testutil.TypicalAnimals.TOFU;
 import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SIXTH;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 import static seedu.address.testutil.TypicalTasks.FED;
 import static seedu.address.testutil.TypicalTasks.WALKED;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
+
+import seedu.address.model.AnimalCatalog;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.AnimalModelManager;
 import seedu.address.model.AnimalUserPrefs;
 import seedu.address.model.animal.Animal;
 import seedu.address.testutil.AnimalBuilder;
 
-import java.util.List;
 
 public class UnmarkTaskCommandTest {
 
@@ -34,7 +37,8 @@ public class UnmarkTaskCommandTest {
 
         String expectedMessage = UnmarkTaskCommand.MESSAGE_SUCCESS;
 
-        AnimalModel expectedModel = new AnimalModelManager(new seedu.address.model.AnimalCatalog(model.getAnimalCatalog()), new AnimalUserPrefs());
+        AnimalModel expectedModel = new AnimalModelManager(
+                new AnimalCatalog(model.getAnimalCatalog()), new AnimalUserPrefs());
 
         assertCommandSuccess(unmarkTaskCommand, model, expectedMessage, expectedModel);
     }

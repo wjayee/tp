@@ -1,5 +1,8 @@
 package seedu.address.testutil;
 
+import static seedu.address.testutil.TypicalTasks.FEED;
+import static seedu.address.testutil.TypicalTasks.WALK;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +12,6 @@ import java.util.stream.Stream;
 import seedu.address.model.AnimalCatalog;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Task;
-
-import static seedu.address.testutil.TypicalTasks.FEED;
-import static seedu.address.testutil.TypicalTasks.WALK;
 
 /**
  * A utility class containing a list of {@code Animal} objects to be used in tests.
