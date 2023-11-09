@@ -1,8 +1,10 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAnimals.TOFU;
 import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -27,6 +29,39 @@ import seedu.address.testutil.AnimalBuilder;
 public class UnmarkTaskCommandTest {
 
     private AnimalModel model = new AnimalModelManager(getTypicalCatalog(), new AnimalUserPrefs());
+    private UnmarkTaskCommand unmarkAllTaskCommand = new UnmarkTaskCommand(INDEX_FIRST, INDEX_FIRST, INDEX_SECOND);
+    private UnmarkTaskCommand unmarkOneTaskCommand = new UnmarkTaskCommand(INDEX_FIRST, INDEX_FIRST);
+
+    @Test
+    public void equals_sameCommand_returnsTrue() {
+        assertTrue(unmarkAllTaskCommand.equals(unmarkAllTaskCommand));
+    }
+
+    @Test
+    public void equals_sameValues_returnsTrue() {
+        UnmarkTaskCommand unmarkTaskCommandCopy = new UnmarkTaskCommand(INDEX_FIRST, INDEX_FIRST, INDEX_SECOND);
+        assertTrue(unmarkAllTaskCommand.equals(unmarkTaskCommandCopy));
+    }
+
+    @Test
+    public void equals_differentCommand_returnsFalse() {
+        assertFalse(unmarkAllTaskCommand.equals(unmarkOneTaskCommand));
+    }
+
+    @Test
+    public void equals_differentTypes_returnsFalse() {
+        assertFalse(unmarkAllTaskCommand.equals(1));
+    }
+
+    @Test
+    public void equals_nullCommand_returnsFalse() {
+        assertFalse(unmarkAllTaskCommand.equals(null));
+    }
+
+    @Test
+    public void equals_nullOtherCommand_returnsFalse() {
+        assertThrows(NullPointerException.class, () -> ((UnmarkTaskCommand) null).equals(unmarkAllTaskCommand));
+    }
 
     @Test
     public void execute_validAnimalTaskIndex_success() {
