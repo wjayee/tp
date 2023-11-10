@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Arrays.stream;
-import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_DOUBLE_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_STRING_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_ANIMAL_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_TASK_INDEX;
@@ -45,11 +44,6 @@ public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
             throw new ParseException("Animal " + MESSAGE_INVALID_STRING_INDEX);
         }
 
-        // checks if animal index is an integer
-        if (Double.parseDouble(indexLists[0]) % 1 != 0) {
-            throw new ParseException("Animal " + MESSAGE_INVALID_DOUBLE_INDEX);
-        }
-
         int animalIntIndex = Integer.parseInt(indexLists[0]);
 
         // checks if animal index provided is negative
@@ -75,13 +69,8 @@ public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
             throw new ParseException("Task " + MESSAGE_NEGATIVE_INDEX);
         }
 
-        // check if indexes provided are integers
-        if (stream(checkTaskIndexes).anyMatch(index -> index % 1 != 0)) {
-            throw new ParseException("Task " + MESSAGE_INVALID_DOUBLE_INDEX);
-        }
 
-
-        Index animalIndex = Index.fromOneBased(Integer.parseInt(indexLists[0]));
+        Index animalIndex = Index.fromOneBased(animalIntIndex);
         Index[] taskIndexes = stream(indexLists[1].split("\\s+"))
                 .map(Integer::parseInt)
                 .map(Index::fromOneBased)

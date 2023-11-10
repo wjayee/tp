@@ -2,8 +2,11 @@ package seedu.address.logic.commands;
 
 import static java.util.Arrays.stream;
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
@@ -39,7 +42,6 @@ public class MarkTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_SUCCESS = "Task(s) marked as done";
 
-    public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
 
     public static final String MESSAGE_EXCESS_TASK_INDEX =
             "The task index(es) provided exceeds the number of tasks in the animal!";
@@ -72,6 +74,7 @@ public class MarkTaskCommand extends AnimalCommand {
         requireNonNull(model);
         List<Animal> lastShownList = model.getFilteredAnimalList();
 
+        // check if animal index provided exceeds number of animals
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_EXCESS_ANIMAL_INDEX);
         }
@@ -118,5 +121,25 @@ public class MarkTaskCommand extends AnimalCommand {
         TaskList taskList = animalToMark.updateTaskList(taskIndex, true);
 
         return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, taskList);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof MarkTaskCommand)) {
+            return false;
+        }
+
+        MarkTaskCommand otherCommand = (MarkTaskCommand) other;
+        return targetIndex.equals(otherCommand.targetIndex)
+                && Arrays.equals(taskIndex, otherCommand.taskIndex);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(targetIndex, taskIndex);
     }
 }

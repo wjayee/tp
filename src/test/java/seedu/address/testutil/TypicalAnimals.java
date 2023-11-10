@@ -1,5 +1,8 @@
 package seedu.address.testutil;
 
+import static seedu.address.testutil.TypicalTasks.FEED;
+import static seedu.address.testutil.TypicalTasks.WALK;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,8 +26,7 @@ public class TypicalAnimals {
         .withSpecies("Cat")
         .withBreed("British Shorthair")
         .withAdmissionDate("2019-11-11")
-        .withTaskList(Stream.of(new Task("Feed Tofu"),
-                new Task("Wash Tofu")).collect(Collectors.toList()))
+        .withTaskList(List.of(FEED, WALK))
         .build();
 
     public static final Animal MUFFIN = new AnimalBuilder()
@@ -59,8 +61,8 @@ public class TypicalAnimals {
         .withBreed("Good Boy")
         .withDateOfBirth("2001-01-01")
         .withAdmissionDate("2023-02-02")
-        .withTaskList(Stream.of(new Task("Feed Jaebee"),
-            new Task("Wash Jaebee")).collect(Collectors.toList()))
+        .withTaskList(Stream.of(new Task("Feed Loyboy"),
+            new Task("Wash Loyboy")).collect(Collectors.toList()))
         .build();
 
     public static final Animal BEAR = new AnimalBuilder()

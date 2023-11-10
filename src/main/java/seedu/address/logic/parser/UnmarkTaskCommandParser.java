@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Arrays.stream;
-import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_DOUBLE_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_INVALID_STRING_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_ANIMAL_INDEX;
 import static seedu.address.logic.AnimalMessages.MESSAGE_MISSING_TASK_INDEX;
@@ -41,12 +40,7 @@ public class UnmarkTaskCommandParser implements AnimalParser<UnmarkTaskCommand> 
 
         // checks if animal index is a number
         if (!indexLists[0].matches("\\d+")) {
-            throw new ParseException("Animal " + MESSAGE_INVALID_DOUBLE_INDEX);
-        }
-
-        // checks if animal index is an integer
-        if (Double.parseDouble(indexLists[0]) % 1 != 0) {
-            throw new ParseException("Animal " + MESSAGE_INVALID_DOUBLE_INDEX);
+            throw new ParseException("Animal " + MESSAGE_INVALID_STRING_INDEX);
         }
 
         int animalIntIndex = Integer.parseInt(indexLists[0]);
@@ -72,11 +66,6 @@ public class UnmarkTaskCommandParser implements AnimalParser<UnmarkTaskCommand> 
         // check if indexes provided are negative
         if (stream(checkTaskIndexes).anyMatch(index -> index <= 0)) {
             throw new ParseException("Task " + MESSAGE_NEGATIVE_INDEX);
-        }
-
-        // check if indexes provided are integers
-        if (stream(checkTaskIndexes).anyMatch(index -> index % 1 != 0)) {
-            throw new ParseException("Task " + MESSAGE_INVALID_DOUBLE_INDEX);
         }
 
 

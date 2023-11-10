@@ -132,8 +132,7 @@ public class AnimalBuilder {
         return this;
     }
 
-
     public Animal build() {
-        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth);
+        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, taskList);
     }
 }

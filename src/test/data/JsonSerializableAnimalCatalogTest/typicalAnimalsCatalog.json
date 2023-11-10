@@ -8,8 +8,8 @@
     "breed" : "British Shorthair",
     "dateOfBirth" : "2019-10-10",
     "admissionDate" : "2019-11-11",
-    "taskList" : [{"description":  "Feed Tofu",
-      "isDone":  false}, {"description":  "Wash Tofu", "isDone":  false}]
+    "taskList" : [{"description":  "Feed Animal",
+      "isDone":  false}, {"description":  "Walk Animal", "isDone":  false}]
   }, {
     "name" : "Muffin",
     "petId" : "3333",
