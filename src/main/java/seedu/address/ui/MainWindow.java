@@ -189,6 +189,10 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
+            //@@author bkjwjason-reused
+            //Reused from https://github.com/AY2324S1-CS2103T-W17-2/tp
+            //(src/main/java/seedu/letsgethired/ui/MainWindow.java) Lines 191-194
+            //with minor modifications
             commandResult.getAnimalResult().ifPresentOrElse(x -> {
                 animalListPanel.selectAnimal(x);
                 animalDetailPanel.updateDetails(x);
@@ -196,6 +200,7 @@ public class MainWindow extends UiPart<Stage> {
                 animalListPanel.clearSelection();
                 animalDetailPanel.clearDetails();
             });
+            //@@author
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);

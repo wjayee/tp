@@ -16,11 +16,13 @@ Given below are my contributions to the project:
 * **Project management**:
     * Designed and added UI mockup
     * Assigned Issues for v1.2 and v1.3
+    * Did issue Triaging for PE-D Issues, and assigned issues accordingly
 
 * **Enhancements to existing features**:
     * Added Detailed View for Animal Catalog
     * Added Task and TaskList Attributes for Animal
     * Add Task to Storage as JSONAdaptedTask
+    * Minor UI additions (Orange on selected cells)
 
 * **Documentation**:
     * User Guide:
@@ -30,6 +32,9 @@ Given below are my contributions to the project:
 
 * **Team Tasks**:
     * Updated AboutUs
+    * Assigned issues for v1.2 and v1.3
+    * Gave feedback for PRs
+    * Completed issue triaging for PE-D, and assigned issues accordingly
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments): *To be added soon...*
