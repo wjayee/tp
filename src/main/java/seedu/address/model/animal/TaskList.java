@@ -33,6 +33,10 @@ public class TaskList {
         return Collections.unmodifiableList(taskList);
     }
 
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
     public void addTask(Task task) {
         taskList.add(task);
     }
@@ -66,9 +70,9 @@ public class TaskList {
     }
 
     /**
-     * Returns the number of tasks in the taskList.
+     * Updates the isDone state of Tasks in a TaskList
      *
-     * @return The number of tasks in the taskList.
+     * @return The updated Task List
      */
     public TaskList updateTaskList(int[] indexes, boolean isDone) throws IndexOutOfBoundsException {
         try {
