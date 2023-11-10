@@ -7,7 +7,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.animal.Task;
 
 
-
 /**
  * A Jackson-friendly adapted version of the {@link Task} model class.
  */
@@ -47,6 +46,19 @@ public class JsonAdaptedTask {
             throw new IllegalValueException(Task.MESSAGE_CONSTRAINTS);
         }
         return new Task(description, taskStatus);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        JsonAdaptedTask that = (JsonAdaptedTask) o;
+        return description.equals(that.description)
+                && taskStatus == that.taskStatus;
     }
 
 }
