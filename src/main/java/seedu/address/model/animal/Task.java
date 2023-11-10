@@ -14,8 +14,8 @@ public class Task {
             + "and should not contain only whitespaces ";
     public static final String VALIDATION_REGEX = "^.*\\S.*$";
 
-    public final boolean isDone;
-    public final String description;
+    private final boolean isDone;
+    private final String description;
 
 
     /**

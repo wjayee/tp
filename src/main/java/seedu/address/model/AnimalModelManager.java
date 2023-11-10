@@ -127,8 +127,8 @@ public class AnimalModelManager implements AnimalModel {
     //=========== Filtered Animal List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Animal} backed by the internal list of
+     * {@code animalCatalog}
      */
     @Override
     public ObservableList<Animal> getFilteredAnimalList() {
