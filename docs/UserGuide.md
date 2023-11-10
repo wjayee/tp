@@ -12,6 +12,24 @@ about animals in a shelter easily.
 
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
+- [Features](#features)
+  - [Adding an animal: `add`](#adding-an-animal-add)
+  - [Program usage help: `help`](#program-usage-help-help)
+  - [Listing all animals: `list`](#listing-all-animals-list)
+  - [Deleting an animal: `delete`](#deleting-an-animal-delete)
+  - [Editing an animal: `edit`](#editing-an-animal-edit)
+  - [Searching an animal: `search`](#searching-an-animal-search)
+  - [Adds a task to an animal: `addtask`](#adds-a-task-to-an-animal-addtask)
+  - [Deletes a task of an animal: `deletetask`](#deletes-a-task-of-an-animal-deletetask)
+  - [Marking a task as done: `mark`](#marking-a-task-as-done-mark)
+  - [Unmarking a task as done: `unmark`](#unmarking-a-task-as-done-unmark)
+  - [Reset all tasks: `reset`](#reset-all-tasks-reset)
+  - [Saving the data](#saving-the-data)
+  - [Editing the data file](#editing-the-data-file)
+- [Planned Enhancements](#planned-enhancements)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
@@ -256,6 +274,12 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 </box>
 
 _Details coming soon ..._
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Planned Enhancements
+
+1. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
 
 --------------------------------------------------------------------------------------------------------------------
 
