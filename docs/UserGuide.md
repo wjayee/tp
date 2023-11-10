@@ -138,7 +138,7 @@ Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 * Searches for animals whose attributes contain the specified search values in the prefix filter.
 * The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
 * The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will match animals named `Pookie` with ID `1234`
-* Searching for `n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are exactly `ear`.
+* Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
 * If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
 * Any characters or words after `search` and before any recognized prefixes will be ignored.
 * Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
@@ -151,6 +151,9 @@ Examples:
 ![Search_success](images/Search_eg1.png)
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
 ![Search_success](images/Search_eg2.png)
+* `search something n/Bear` is equivalent to `search n/Bear`
+* `search nil/something n/Bear etc/else` is equivalent to `search n/Bear`
+* `search something` and `search nil/other else/other` is equivalent to `search`
 
 <box type="warning" seamless>
 If no valid inputs are provided, the search will return an error message.
@@ -196,7 +199,7 @@ Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 * If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as done.
 * `TASKINDEX` must be separated by a space.
 * If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as done.
-* An error would not be thrown if the task(s) was previously marked as done, it would remain as marked.
+* Executing the `mark` command on task(s) previously marked as done will not cause an error to be thrown, and the task(s) would remain as marked.
 
 Examples:
 * `mark 1 1` marks the first task of the first animal as done.
@@ -219,7 +222,7 @@ Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 * If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as uncompleted.
 * `TASKINDEX` must be separated by a space.
 * If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as uncompleted.
-* An error would not be thrown if the task(s) was previously marked as uncompleted or was still uncompleted, it would remain as uncompleted.
+* Executing the `unmark` command on task(s) previously marked as uncomplete will not cause an error to be thrown, and the task(s) would remain as uncomplete (unmarked).
 
 Examples:
 * `unmark 1 1` marks the first task of the first animal as uncompleted.
