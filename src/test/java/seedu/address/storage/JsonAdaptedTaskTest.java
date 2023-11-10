@@ -45,7 +45,7 @@ public class JsonAdaptedTaskTest {
     @Test
     public void testEquals_withNull() {
         JsonAdaptedTask feedTask = new JsonAdaptedTask(FEED);
-        assertNotEquals(null, feedTask);
+        assertNotEquals(feedTask, null);
     }
 
     @Test
