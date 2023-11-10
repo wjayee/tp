@@ -35,7 +35,7 @@ For more details, see [help](#program-usage-help-help)<br>
 
    * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle` : Adds a dog named 'Pookie' to the Address Book.
 
-   * `delete 3` : Deletes the animal with ID 3.
+   * `delete 3` : Deletes the animal with INDEX 3 in the displayed animal list.
 
    * `exit` : Exits the app.
 
@@ -116,7 +116,7 @@ Edits animals specified by the index with the newly specified prefix attributes.
 
 Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 
-* PetID cannot be edited.
+* ID cannot be edited.
 * At least one prefix must be provided.
 * Prefixes that are not provided will not be edited.
 * The `INDEX` refers to the animal of the `INDEX` on the animal list view.
@@ -243,7 +243,7 @@ _Details coming soon ..._
 |----------------|--------------------------------------------------------------------------------------------------------------|
 | **Add**        | `add n/NAME i/ID db/DOB da/DOA g/SEX b/BREED s/SPECIES`                                                      |
 | **Edit**       | `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`                                        |
-| **Delete**     | `delete ID`<br> e.g., `delete 3`                                                                             |
+| **Delete**     | `delete INDEX`<br> e.g., `delete 3`                                                                          |
 | **List**       | `list`                                                                                                       |
 | **Search**     | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g. `search n/Pookie b/Poodle` |
 | **Addtask**    | `addtask ANIMALINDEX TASK`<br> e.g. `addtask 1 Feed Pookie`                                                  |
