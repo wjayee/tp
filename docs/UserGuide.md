@@ -153,7 +153,7 @@ Format: `addtask ANIMALINDEX TASK`
 * Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
 * The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
 * The `TASK` refers to the task that you want to add into the task list of the animal.
-* `TASK` can consist of spaces.
+* `TASK` can include spaces.
 * `ANIMALINDEX` is based on 1-indexing, i.e first animal will be at index 1.
 
 Examples:
