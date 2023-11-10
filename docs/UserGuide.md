@@ -12,6 +12,24 @@ about animals in a shelter easily.
 
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
+- [Features](#features)
+  - [Adding an animal: `add`](#adding-an-animal-add)
+  - [Program usage help: `help`](#program-usage-help-help)
+  - [Listing all animals: `list`](#listing-all-animals-list)
+  - [Deleting an animal: `delete`](#deleting-an-animal-delete)
+  - [Editing an animal: `edit`](#editing-an-animal-edit)
+  - [Searching an animal: `search`](#searching-an-animal-search)
+  - [Adds a task to an animal: `addtask`](#adds-a-task-to-an-animal-addtask)
+  - [Deletes a task of an animal: `deletetask`](#deletes-a-task-of-an-animal-deletetask)
+  - [Marking a task as done: `mark`](#marking-a-task-as-done-mark)
+  - [Unmarking a task as done: `unmark`](#unmarking-a-task-as-done-unmark)
+  - [Reset all tasks: `reset`](#reset-all-tasks-reset)
+  - [Saving the data](#saving-the-data)
+  - [Editing the data file](#editing-the-data-file)
+- [Planned Enhancements](#planned-enhancements)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
@@ -95,7 +113,7 @@ Shows a list of all animals in the address book.
 
 Format: `list`
 
-* The list is sorted by the name of the animal in alphabetical order.
+* The list is sorted by the order in which the animals were added.
 * Can be use after using the `search` command to list all animals again.
 * Any words after `list` will be ignored.
 
@@ -138,13 +156,28 @@ Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 * Searches for animals whose attributes contain the specified search values in the prefix filter.
 * The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
 * The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will match animals named `Pookie` with ID `1234`
-* There must be at least 1 prefix specified.
+* Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
 * If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
+* Any characters or words after `search` and before any recognized prefixes will be ignored.
+* Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
+* Valid prefixes include: `n/`, `i/`, `g/`, `s/`, `b/`, `db/`, `da/`
+* There must be at least 1 prefix specified.
+* For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
 
 Examples:
-* `search n/Pookie` returns all animals with the name `Pookie`
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
+![Search_success](images/Search_eg1.png)
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
+![Search_success](images/Search_eg2.png)
+* `search something n/Bear` is equivalent to `search n/Bear`
+* `search nil/something n/Bear etc/else` is equivalent to `search n/Bear`
+* `search something` and `search nil/other else/other` is equivalent to `search`
+
+<box type="warning" seamless>
+If no valid inputs are provided, the search will return an error message.
+</box>
+
+![Search_error](images/Search_error.png)
 
 ### Adds a task to an animal: `addtask`
 Adds a specific new task to the task list of an animal.
@@ -158,6 +191,7 @@ Format: `addtask ANIMALINDEX TASK`
 
 Examples:
 * `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
+![Add_task](images/Add_task_eg.png)
 
 ### Deletes a task of an animal: `deletetask`
 Deletes a specific task from the task list of an animal.
@@ -171,6 +205,7 @@ Format: `deletetask ANIMALINDEX TASKINDEX`
 
 Examples:
 * `deletetask 1 1` deletes the first task of the first animal.
+![Delete_task](images/Delete_task_eg.png)
 
 ### Marking a task as done: `mark`
 Marks the specified task as done.
@@ -181,10 +216,19 @@ Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 * The `TASKINDEX` refers to the index of the task on the task list of the animal.
 * If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as done.
 * `TASKINDEX` must be separated by a space.
+* If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as done.
+* Executing the `mark` command on task(s) previously marked as done will not cause an error to be thrown, and the task(s) would remain as marked.
 
 Examples:
 * `mark 1 1` marks the first task of the first animal as done.
 * `mark 2 1 2` marks the first and second task of the second animal as done.
+![Mark_tasks](images/Mark_tasks_eg.png)
+
+<box type="warning" seamless>
+If invalid inputs/no inputs are provided, the mark command will return an error message.
+</box>
+
+![Mark_error](images/Mark_error.png)
 
 ### Unmarking a task as done: `unmark`
 Marks the specified task as uncompleted.
@@ -195,10 +239,19 @@ Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 * The `TASKINDEX` refers to the index of the task on the task list of the animal.
 * If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as uncompleted.
 * `TASKINDEX` must be separated by a space.
+* If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as uncompleted.
+* Executing the `unmark` command on task(s) previously marked as uncomplete will not cause an error to be thrown, and the task(s) would remain as uncomplete (unmarked).
 
 Examples:
 * `unmark 1 1` marks the first task of the first animal as uncompleted.
-* `unmark 2 1 2` marks the first and second task of the second animal as uncompleted.
+* `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
+![Unmark_tasks](images/Unmark_tasks_eg.png)
+
+<box type="warning" seamless>
+If invalid inputs/no inputs are provided, the unmark command will return an error message.
+</box>
+
+![Unmark_error](images/Unmark_error.png)
 
 ### Reset all tasks: `reset`
 Resets all tasks of all animals as uncompleted.
@@ -221,6 +274,12 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 </box>
 
 _Details coming soon ..._
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Planned Enhancements
+
+1. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
 
 --------------------------------------------------------------------------------------------------------------------
 
