@@ -266,7 +266,7 @@ Format: `reset`
 The detailed view panel on the right shows greater details about the selected animal. There are 2 ways to view the details of a certain animal:
 * Left-click on the animal cell in the list of animals.
 * Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`.
-* The animal cell whose details are currently being displayed in the detail view will be highlighted in orange. 
+* The animal cell whose details are currently being displayed in the detail view will be highlighted in orange.
 * Note that certain commands will cause the selected animal and the detailed view to reset, and these include `list`, `delete`, `search`, and `help` commands.
 
 e.g. Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
