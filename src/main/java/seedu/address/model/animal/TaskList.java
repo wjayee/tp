@@ -91,10 +91,11 @@ public class TaskList {
      * @return The number of tasks in the taskList.
      */
     public TaskList resetTasks() {
+        int[] index = new int[1];
         taskList.forEach(task -> {
-            int index = taskList.indexOf(task);
             Task updatedTask = task.updateTask(false);
-            taskList.set(index, updatedTask);
+            taskList.set(index[0], updatedTask);
+            index[0]++;
         });
 
         return this;
