@@ -38,6 +38,8 @@ public class AnimalMessages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%s";
     public static final String MESSAGE_MISSING_PREFIXES_FORMAT = "Missing prefixes: %s";
     public static final String MESSAGE_HELP_FORMAT = "%s\n%s";
+    public static final String MESSAGE_INVALID_DOB_AND_DOA_COMBINATION_FORMAT = "Date of Birth: %s should not be "
+        + "chronologically after Date of Admission: %s!";
 
     public static final String PET_ID = "ID";
     public static final String SEX = "Sex";
