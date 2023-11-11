@@ -37,7 +37,6 @@ public class ResetTaskCommand extends AnimalCommand {
 
         model.resetTasks();
 
-        model.updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

@@ -145,8 +145,10 @@ public class Animal {
         return taskList.getSerializedTaskList();
     }
 
-    public TaskList updateTaskList(int[] taskIndex, boolean isDone) throws IndexOutOfBoundsException {
-        return taskList.updateTaskList(taskIndex, isDone);
+    public Animal updateTaskList(int[] taskIndex, boolean isDone) throws IndexOutOfBoundsException {
+        TaskList updatedList = taskList.updateTaskList(taskIndex, isDone);
+
+        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, updatedList);
     }
 
     public void resetTasks() {

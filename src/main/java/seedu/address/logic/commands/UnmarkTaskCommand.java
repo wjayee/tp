@@ -97,30 +97,14 @@ public class UnmarkTaskCommand extends AnimalCommand {
                 throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
-            Animal editedAnimal = createEditedAnimal(animalToMark, taskIndexes);
-            model.setAnimal(animalToMark, editedAnimal);
-            model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
+            model.updateTask(animalToMark, taskIndexes, false);
 
-            return new CommandResult(MESSAGE_SUCCESS, editedAnimal);
+            return new CommandResult(MESSAGE_SUCCESS);
 
 
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
-    }
-
-    private static Animal createEditedAnimal(Animal animalToMark, int[] taskIndex)
-            throws IndexOutOfBoundsException {
-        Name name = animalToMark.getName();
-        PetId petId = animalToMark.getPetId();
-        Species species = animalToMark.getSpecies();
-        Breed breed = animalToMark.getBreed();
-        Sex sex = animalToMark.getSex();
-        AdmissionDate admissionDate = animalToMark.getAdmissionDate();
-        DateOfBirth dateOfBirth = animalToMark.getDateOfBirth();
-        TaskList taskList = animalToMark.updateTaskList(taskIndex, false);
-
-        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, taskList);
     }
 
     @Override

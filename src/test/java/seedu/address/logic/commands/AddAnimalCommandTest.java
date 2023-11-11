@@ -170,6 +170,11 @@ public class AddAnimalCommandTest {
         public void updateFilteredAnimalList(Predicate<Animal> predicate) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
+
+        @Override
+        public void updateTask(Animal animal, int[] taskIndexes, boolean isDone) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
     }
 
     /**

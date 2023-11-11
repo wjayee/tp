@@ -120,8 +120,19 @@ public class AnimalModelManager implements AnimalModel {
         requireAllNonNull(newTask, animal);
     }
 
+    @Override
+    public void updateTask(Animal animal, int[] taskIndexes, boolean isCompleted) {
+        requireAllNonNull(animal, taskIndexes, isCompleted);
+
+        Animal updatedAnimal = animal.updateTaskList(taskIndexes, isCompleted);
+        animalCatalog.setAnimal(animal, updatedAnimal);
+
+        updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
+    }
+
     public void resetTasks() {
         animalCatalog.resetTasks();
+        updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
     }
 
     //=========== Filtered Animal List Accessors =============================================================
