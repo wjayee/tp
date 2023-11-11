@@ -14,20 +14,26 @@ Given below are my contributions to the project:
 * **Code contributed**: [Ja Yee's RepoSense Link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=wjayee&breakdown=true)
 
 * **Project management**:
-    * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+    * Managed releases for `v1.2` - `v1.4` on GitHub
 
 * **Enhancements to existing features**:
-  to be added
+    * Modify `list` command
+    * Add `search` command for animals in the Catalog
+    * Add `mark`, `unmark` and `reset` commands for tasks for animals in the Catalog
+    * Wrote tests for `search`, `mark`, `unmark` and `reset` commands to increase test coverage
 *
 
 * **Documentation**:
     * User Guide:
-      to be added
+      - Added documentation for the features `list`, `search`, `mark`, `unmark` and `reset`
     * Developer Guide:
-      to be added
+      - Added implementation details of following features: `list`, `search`, `mark`, `unmark` and `reset`
+      - Modified implementation details of the Architecture and Logic component
 
 * **Team Tasks**:
-    * Updated AboutUs
+    * Gave feedback for PRs
+    * Updated DG and UG
+    * Refactored code for PawFection
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments): *To be added soon...*
