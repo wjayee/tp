@@ -75,7 +75,7 @@ public class AddAnimalCommandTest {
         // null -> returns false
         assertNotEquals(null, addTofuCommand);
 
-        // different person -> returns false
+        // different animal -> returns false
         assertNotEquals(addTofuCommand, addMuffinCommand);
     }
 
