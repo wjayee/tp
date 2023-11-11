@@ -26,8 +26,7 @@ public class DeleteTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a specific task from an animal's task list.\n"
-            + "Parameters: ANIMALINDEX TASKINDEX (must both be positive integers)\n"
-            + EXAMPLE_USAGE;
+            + "Parameters: ANIMAL_INDEX TASK_INDEX (must both be positive integers)";
 
     public static final String MESSAGE_SUCCESS = "Task deleted for %s: %s";
 
@@ -45,6 +44,15 @@ public class DeleteTaskCommand extends AnimalCommand {
 
         this.targetAnimalIndex = targetAnimalIndex;
         this.targetTaskIndex = targetTaskIndex;
+    }
+
+    /**
+     * Returns the help message of this command.
+     *
+     * @return a string containing the help message of this command.
+     */
+    public static String getHelp() {
+        return String.format(AnimalMessages.MESSAGE_HELP_FORMAT, MESSAGE_USAGE, EXAMPLE_USAGE);
     }
 
     @Override
