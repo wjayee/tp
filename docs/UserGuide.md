@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# PawFection User Guide
+# Pawfection User Guide
 
-PawFection is a **desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface** (CLI) while still
+Pawfection is a **desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface** (CLI) while still
 having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to store and retrieve information
 about animals in a shelter easily.
 
@@ -24,6 +24,7 @@ about animals in a shelter easily.
   - [Marking a task as done: `mark`](#marking-a-task-as-done-mark)
   - [Unmarking a task as done: `unmark`](#unmarking-a-task-as-done-unmark)
   - [Reset all tasks: `reset`](#reset-all-tasks-reset)
+  - [Viewing animal details](#viewing-animal-details)
   - [Saving the data](#saving-the-data)
   - [Editing the data file](#editing-the-data-file)
 - [Planned Enhancements](#planned-enhancements)
