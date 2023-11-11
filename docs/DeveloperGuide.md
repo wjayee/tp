@@ -270,6 +270,117 @@ Aspect: How the listing is handled
     - Pros: None.
     - Cons: Might be confusing for the user if the list is long.
 
+## `SearchAnimalCommand` Implementation
+
+### Proposed Implementation
+
+The `SearchAnimalCommand` is a command designed to search for animals in the animal catalog. It takes in at least one prefix as an argument.
+
+Here's a brief outline of its operations and attributes:
+- `SearchAnimalCommandParser#parse(String args)` — Parses the user input to create a `SearchAnimalCommand` object with the given predicates based on the prefixes.
+- `SearchAnimalCommand#execute(AnimalModel model)` — Executes the command to filter animals in the animal catalog based on the predicate.
+
+Given below is an example usage scenario of the `SearchAnimalCommand`:
+1. The user wants to search for animals of breed Poodle in the animal catalog.
+2. The user executes the `search` command with the prefixes of the attributes to be searched. For instance, `search b/Poodle` would search for animals of breed Poodle.
+3. The command verifies the validity of the prefixes. If all the prefixes are invalid, it throws a `CommandException`. Otherwise, it retrieves the animals that match the valid prefixes, and returns a successful command result.
+
+The following sequence diagram shows how the `SearchAnimalCommand` works:
+<puml src="diagrams/SearchSequenceDiagram.puml" alt="SearchSequenceDiagram" />
+
+### Design considerations:
+
+Aspect: How the search is handled
+- Alternative 1 (current choice): Searches for animals based on complete matches of prefixes.
+    - Pros: Easy to find specific animals
+    - Cons: Might be harder for users to find animals if they do not know the exact prefixes.
+- Alternative 2: Searches for animals based on partial matches of prefixes.
+    - Pros: Easy to find animals even if the user does not know the exact prefixes.
+    - Cons: Might be harder for users to find specific animals.
+
+## `MarkTaskCommand` Implementation
+
+### Proposed Implementation
+
+The `MarkTaskCommand` is a command designed to mark task(s) as done for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
+
+Here's a brief outline of its operations and attributes:
+- `MarkTaskCommandParser#parse(String args)` — Parses the user input to create a `MarkTaskCommand` object with the given animal index and task index(s).
+- `MarkTaskCommand#execute(AnimalModel model)` — Executes the command to mark task(s) as done for an animal in the animal catalog.
+
+Given below is an example usage scenario of the `MarkTaskCommand`:
+1. The user wants to mark a few tasks as done for an animal in the animal catalog.
+2. The user executes the `mark` command with the animal index and task indexes. For instance, `mark 1 2 3` would mark tasks 2 and 3 as done for the animal at index 1.
+3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as done, and returns a successful command result.
+
+The following sequence diagram shows how the `MarkTaskCommand` works:
+<puml src="diagrams/MarkSequenceDiagram.puml" alt="MarkSequenceDiagram" />
+
+### Design considerations:
+
+Aspect: How the marking is handled
+- Alternative 1 (current choice): Marks tasks as done only when all indexes provided are valid.
+    - Pros: Easy to keep track which tasks are marked as done.
+    - Cons: Users have to ensure that all indexes provided are valid.
+- Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as done.
+    - Pros: Easy for users to mark tasks as done.
+    - Cons: Users might not be fully aware of which tasks are marked as done.
+
+## `UnmarkTaskCommand` Implementation
+
+### Proposed Implementation
+
+The `UnmarkTaskCommand` is a command designed to mark task(s) as uncompleted for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
+
+Here's a brief outline of its operations and attributes:
+- `UnmarkTaskCommandParser#parse(String args)` — Parses the user input to create a `UnmarkTaskCommand` object with the given animal index and task index(s).
+- `UnmarkTaskCommand#execute(AnimalModel model)` — Executes the command to mark task(s) as uncompleted for an animal in the animal catalog.
+
+Given below is an example usage scenario of the `UnmarkTaskCommand`:
+1. The user wants to mark a few tasks as uncompleted for an animal in the animal catalog.
+2. The user executes the `unmark` command with the animal index and task indexes. For instance, `unmark 1 2 3` would mark tasks 2 and 3 as uncompleted for the animal at index 1.
+3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as uncompleted, and returns a successful command result.
+
+The following sequence diagram shows how the `UnmarkTaskCommand` works:
+<puml src="diagrams/UnmarkSequenceDiagram.puml" alt="UnmarkSequenceDiagram" />
+
+### Design considerations:
+
+Aspect: How the unmarking is handled
+- Alternative 1 (current choice): Marks tasks as uncompleted only when all indexes provided are valid.
+    - Pros: Easy to keep track which tasks are marked as uncompleted.
+    - Cons: Users have to ensure that all indexes provided are valid.
+- Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as uncompleted.
+  - Pros: Easy for users to mark tasks as uncompleted.
+  - Cons: Users might not be fully aware of which tasks are marked as uncompleted.
+
+## `ResetTaskCommand` Implementation
+
+### Proposed Implementation
+
+The `ResetTaskCommand` is a command designed to reset all tasks as uncompleted for all animals in the animal catalog. It does not take in any arguments.
+
+Here's a brief outline of its operations and attributes:
+- `ResetTaskCommand#execute(AnimalModel model)` — Executes the command to reset all tasks as uncompleted for all animals in the animal catalog.
+
+Given below is an example usage scenario of the `ResetTaskCommand`:
+1. The user wants to reset all tasks as uncompleted for all animals in the animal catalog.
+2. The user executes the `reset` command.
+3. The command retrieves all animals and tasks from the model, marks all tasks as uncompleted, and returns a successful command result.
+
+The following sequence diagram shows how the `ResetTaskCommand` works:
+<puml src="diagrams/ResetSequenceDiagram.puml" alt="ResetSequenceDiagram" />
+
+### Design considerations:
+
+Aspect: How the resetting is handled
+- Alternative 1 (current choice): Resets all tasks as uncompleted for all animals in the animal catalog.
+    - Pros: Easy to reset all tasks as uncompleted.
+    - Cons: None.
+- Alternative 2: Resets all tasks as uncompleted for only one animal in the animal catalog.
+    - Pros: Easy to reset all tasks as uncompleted for a specific animal.
+    - Cons: Might be harder for users to reset all tasks as uncompleted for all animals.
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
