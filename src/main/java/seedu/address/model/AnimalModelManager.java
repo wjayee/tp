@@ -130,6 +130,7 @@ public class AnimalModelManager implements AnimalModel {
         updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
     }
 
+    @Override
     public void resetTasks() {
         animalCatalog.resetTasks();
         updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);

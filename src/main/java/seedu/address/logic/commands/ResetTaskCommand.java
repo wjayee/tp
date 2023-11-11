@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.AnimalModel.PREDICATE_SHOW_ALL_ANIMALS;
 
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;

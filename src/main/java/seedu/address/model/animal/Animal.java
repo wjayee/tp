@@ -145,6 +145,14 @@ public class Animal {
         return taskList.getSerializedTaskList();
     }
 
+    /**
+     * Returns a new Animal object with the updated task list.
+     *
+     * @param taskIndex the indexes of the task to be updated.
+     * @param isDone the status of the task to be updated.
+     * @return a new Animal object with the updated task list.
+     * @throws IndexOutOfBoundsException if the taskIndex is invalid.
+     */
     public Animal updateTaskList(int[] taskIndex, boolean isDone) throws IndexOutOfBoundsException {
         TaskList updatedList = taskList.updateTaskList(taskIndex, isDone);
 

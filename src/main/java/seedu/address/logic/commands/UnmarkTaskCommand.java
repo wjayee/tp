@@ -12,15 +12,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
-import seedu.address.model.animal.AdmissionDate;
 import seedu.address.model.animal.Animal;
-import seedu.address.model.animal.Breed;
-import seedu.address.model.animal.DateOfBirth;
-import seedu.address.model.animal.Name;
-import seedu.address.model.animal.PetId;
-import seedu.address.model.animal.Sex;
-import seedu.address.model.animal.Species;
-import seedu.address.model.animal.TaskList;
+
 
 /**
  * Marks a task of an animal as uncompleted.
