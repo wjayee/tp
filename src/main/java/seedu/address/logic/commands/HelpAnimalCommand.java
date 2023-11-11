@@ -1,8 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.CommandEnum;
 
@@ -24,7 +28,14 @@ public class HelpAnimalCommand extends AnimalCommand {
     public static final String MESSAGE_UNRECOGNIZED_COMMAND_FORMAT = "Command: %s not recognized!";
     private final String targetCommandWord;
 
+    /**
+     * Constructs an instance of {@code HelpAnimalCommand}, with a specified
+     * {@code targetCommandWord}.
+     *
+     * @param targetCommandWord the command to search for. Must not be null.
+     */
     public HelpAnimalCommand(String targetCommandWord) {
+        requireNonNull(targetCommandWord);
         this.targetCommandWord = targetCommandWord;
     }
 
@@ -46,5 +57,24 @@ public class HelpAnimalCommand extends AnimalCommand {
         }
 
         return new CommandResult(helpMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(targetCommandWord);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof HelpAnimalCommand // instanceof handles nulls
+            && targetCommandWord.equals(((HelpAnimalCommand) other).targetCommandWord));
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+            .add("toSearch", targetCommandWord)
+            .toString();
     }
 }
