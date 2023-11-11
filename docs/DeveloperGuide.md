@@ -432,4 +432,10 @@ testers are expected to do more *exploratory* testing.
 
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
+
+## **Appendix: Planned Enhancements** ##
+## Planned Enhancements
+
+1. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
+
