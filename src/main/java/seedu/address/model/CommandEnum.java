@@ -4,6 +4,7 @@ package seedu.address.model;
 import seedu.address.logic.commands.AddAnimalCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.DeleteAnimalCommand;
+import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditAnimalCommand;
 import seedu.address.logic.commands.HelpAnimalCommand;
 import seedu.address.logic.commands.ListAnimalCommand;
@@ -19,6 +20,7 @@ public enum CommandEnum {
     ADD_ANIMAL_COMMAND(AddAnimalCommand.COMMAND_WORD, AddAnimalCommand.getHelp()),
     ADD_TASK_COMMAND(AddTaskCommand.COMMAND_WORD, AddTaskCommand.getHelp()),
     DELETE_ANIMAL_COMMAND(DeleteAnimalCommand.COMMAND_WORD, DeleteAnimalCommand.getHelp()),
+    DELETE_TASK_COMMAND(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.getHelp()),
     EDIT_ANIMAL_COMMAND(EditAnimalCommand.COMMAND_WORD, EditAnimalCommand.getHelp()),
     LIST_ANIMAL_COMMAND(ListAnimalCommand.COMMAND_WORD, ListAnimalCommand.getHelp()),
     MARK_TASK_COMMAND(MarkTaskCommand.COMMAND_WORD, MarkTaskCommand.getHelp()),
