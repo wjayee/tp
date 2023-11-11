@@ -17,9 +17,6 @@ public class DateOfBirthTest {
     @Test
     public void testConstructor_withValidDates() {
         assertDoesNotThrow(() -> new DateOfBirth("2023-10-23")); // ISO_LOCAL_DATE
-        assertDoesNotThrow(() -> new DateOfBirth("20231023")); // BASIC_ISO_DATE
-        assertDoesNotThrow(() -> new DateOfBirth("1 Jan 2023")); // d MMM yyyy
-        assertDoesNotThrow(() -> new DateOfBirth("1 January 2023")); // d MMMM YYYY
     }
 
     @Test
@@ -30,15 +27,19 @@ public class DateOfBirthTest {
     @Test
     public void testConstructor_withInvalidDate() {
         List<String> invalidDateInputs = List.of(
-                " ", // space
-                "", // empty
-                "abc123", // alphaNumeric
-                "1*1*2*", // NumericAndSymbols
-                "01012023", // DDMMYYYY
-                "01-01-2023", // DD-MM-YYYY
-                "12302023", // MMDDYYYY
-                "12-30-2023", // MM-DD-YYYY
-                "40309999"); // Out of calendar
+            " ", // space
+            "", // empty
+            "abc123", // alphaNumeric
+            "1*1*2*", // NumericAndSymbols
+            "01012023", // DDMMYYYY
+            "01-01-2023", // DD-MM-YYYY
+            "12302023", // MMDDYYYY
+            "12-30-2023", // MM-DD-YYYY
+            "40309999", // Out of calendar
+            "20230928", // invalid format
+            "28 September 2023", // invalid format
+            "28 Sep 2023" // invalid format
+        );
         for (String invalidDate : invalidDateInputs) {
             assertThrows(IllegalArgumentException.class, () -> new DateOfBirth(invalidDate));
         }
@@ -47,9 +48,6 @@ public class DateOfBirthTest {
     @Test
     public void testIsValidDate_withValidDates() {
         assertTrue(DateOfBirth.isValidDate("2023-10-23")); //ISO_LOCAL_DATE
-        assertTrue(DateOfBirth.isValidDate("20231023")); // BASIC_ISO_DATE
-        assertTrue(DateOfBirth.isValidDate("1 Jan 2023")); // d MMM yyyy
-        assertTrue(DateOfBirth.isValidDate("1 January 2023")); // d MMMM YYYY
     }
 
     @Test
@@ -60,15 +58,19 @@ public class DateOfBirthTest {
     @Test
     public void testIsValidDate_withInvalidDates() {
         List<String> invalidDateInputs = List.of(
-                " ", // space
-                "", // empty
-                "abc123", // alphaNumeric
-                "1*1*2*", // numericAndSymbols
-                "01012023", // DDMMYYYY
-                "01-01-2023", // DD-MM-YYYY
-                "12302023", // MMDDYYYY
-                "12-30-2023", // MM-DD-YYYY
-                "40309999"); // Out of calendar
+            " ", // space
+            "", // empty
+            "abc123", // alphaNumeric
+            "1*1*2*", // numericAndSymbols
+            "01012023", // DDMMYYYY
+            "01-01-2023", // DD-MM-YYYY
+            "12302023", // MMDDYYYY
+            "12-30-2023", // MM-DD-YYYY
+            "40309999", // out of calendar
+            "20230928", // invalid format
+            "28 September 2023", // invalid format
+            "28 Sep 2023" // invalid format
+        );
         for (String invalidDate : invalidDateInputs) {
             assertFalse(() -> DateOfBirth.isValidDate(invalidDate));
         }

@@ -17,9 +17,6 @@ public class AdmissionDateTest {
     @Test
     public void testConstructor_withValidDates() {
         assertDoesNotThrow(() -> new AdmissionDate("2023-10-23"));
-        assertDoesNotThrow(() -> new AdmissionDate("20231023"));
-        assertDoesNotThrow(() -> new AdmissionDate("1 Jan 2023"));
-        assertDoesNotThrow(() -> new AdmissionDate("1 January 2023"));
     }
 
     @Test
@@ -30,15 +27,19 @@ public class AdmissionDateTest {
     @Test
     public void testConstructor_withInvalidDate() {
         List<String> invalidDateInputs = List.of(
-                " ", // space
-                "", // empty
-                "abc123", // alphaNumeric
-                "1*1*2*", // NumericAndSymbols
-                "01012023", // DDMMYYYY
-                "01-01-2023", // DD-MM-YYYY
-                "12302023", // MMDDYYYY
-                "12-30-2023", // MM-DD-YYYY
-                "40309999"); // Out of calendar
+            " ", // space
+            "", // empty
+            "abc123", // alphaNumeric
+            "1*1*2*", // NumericAndSymbols
+            "01012023", // DDMMYYYY
+            "01-01-2023", // DD-MM-YYYY
+            "12302023", // MMDDYYYY
+            "12-30-2023", // MM-DD-YYYY
+            "40309999", // Out of calendar
+            "20230928", // invalid format
+            "28 September 2023", // invalid format
+            "28 Sep 2023" // invalid format
+        );
         for (String invalidDate : invalidDateInputs) {
             assertThrows(IllegalArgumentException.class, () -> new AdmissionDate(invalidDate));
         }
@@ -47,9 +48,6 @@ public class AdmissionDateTest {
     @Test
     public void testIsValidDate_withValidDates() {
         assertTrue(AdmissionDate.isValidDate("2023-10-23"));
-        assertTrue(AdmissionDate.isValidDate("20231023"));
-        assertTrue(AdmissionDate.isValidDate("1 Jan 2023"));
-        assertTrue(AdmissionDate.isValidDate("1 January 2023"));
     }
 
     @Test
@@ -60,15 +58,19 @@ public class AdmissionDateTest {
     @Test
     public void testIsValidDate_withInvalidDates() {
         List<String> invalidDateInputs = List.of(
-                " ", // space
-                "", // empty
-                "abc123", // alphaNumeric
-                "1*1*2*", // NumericAndSymbols
-                "01012023", // DDMMYYYY
-                "01-01-2023", // DD-MM-YYYY
-                "12302023", // MMDDYYYY
-                "12-30-2023", // MM-DD-YYYY
-                "40309999"); // Out of calendar
+            " ", // space
+            "", // empty
+            "abc123", // alphaNumeric
+            "1*1*2*", // NumericAndSymbols
+            "01012023", // DDMMYYYY
+            "01-01-2023", // DD-MM-YYYY
+            "12302023", // MMDDYYYY
+            "12-30-2023", // MM-DD-YYYY
+            "40309999", // Out of calendar
+            "20230928", // invalid format
+            "28 September 2023", // invalid format
+            "28 Sep 2023" // invalid format
+        );
         for (String invalidDate : invalidDateInputs) {
             assertFalse(() -> AdmissionDate.isValidDate(invalidDate));
         }
