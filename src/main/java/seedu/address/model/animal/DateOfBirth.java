@@ -17,6 +17,7 @@ public class DateOfBirth {
     public static final String MESSAGE_CONSTRAINTS = String.format(
         "Date Of Birth should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
 
+    public static final String MESSAGE_DATE_CONSTRAINTS_FORMAT = "Date Of Birth: %s is in the future!";
     public static final String DISPLAY_FORMAT = "Date of Birth: %s%n" + "Age: %s";
     public static final String AGE_FORMAT = "%s Year(s), %s Month(s), %s Day(s)";
     private final LocalDate dateOfBirth;
@@ -29,7 +30,11 @@ public class DateOfBirth {
     public DateOfBirth(String date) {
         requireNonNull(date);
         checkArgument(TimeUtil.isValidDate(date), MESSAGE_CONSTRAINTS);
-        this.dateOfBirth = TimeUtil.parseDateString(date);
+
+        LocalDate parsedDate = TimeUtil.parseDateString(date);
+        checkArgument(!TimeUtil.isFutureDate(parsedDate), String.format(MESSAGE_DATE_CONSTRAINTS_FORMAT, parsedDate));
+
+        this.dateOfBirth = parsedDate;
     }
 
     public String getAge() {

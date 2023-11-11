@@ -26,7 +26,7 @@ public class AnimalBuilder {
     public static final String DEFAULT_SEX = "MALE";
     public static final String DEFAULT_SPECIES = "Dog";
     public static final String DEFAULT_BREED = "Poodle";
-    public static final String DEFAULT_ADMISSION_DATE = "2023-12-12";
+    public static final String DEFAULT_ADMISSION_DATE = "2023-05-05";
 
 
     private Name name;

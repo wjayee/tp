@@ -55,6 +55,16 @@ public class TimeUtil {
     }
 
     /**
+     * Checks if the given date is in the future.
+     *
+     * @param test the given date to test for
+     * @return true if the given date is in the future, false if its before.
+     */
+    public static boolean isFutureDate(LocalDate test) {
+        return test.isAfter(LocalDate.now());
+    }
+
+    /**
      * Generates a string message detailing the valid date formats supported.
      * <p>
      * This method creates a formatted string containing examples of valid date representations. It is useful

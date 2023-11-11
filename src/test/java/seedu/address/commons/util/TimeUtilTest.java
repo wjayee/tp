@@ -122,4 +122,16 @@ public class TimeUtilTest {
         // Check that the formatsString contains all expected date strings
         assertTrue(formatsString.contains(expectedDate), "Formats string should contain " + expectedDate);
     }
+
+    @Test
+    public void testIsInFuture_withFutureDate_returnsTrue() {
+        LocalDate futureDate = LocalDate.now().plusDays(1);
+        assertTrue(TimeUtil.isFutureDate(futureDate));
+    }
+
+    @Test
+    public void testIsInFuture_withPastDate_returnsFalse() {
+        LocalDate pastDate = LocalDate.now().minusDays(1);
+        assertFalse(TimeUtil.isFutureDate(pastDate));
+    }
 }

@@ -34,7 +34,7 @@ public class AnimalCommandTestUtil {
     public static final String VALID_ID_TOFU = "1234";
     public static final String VALID_DATE_OF_BIRTH_POOKIE = "2020-12-12";
     public static final String VALID_DATE_OF_BIRTH_TOFU = "2019-10-10";
-    public static final String VALID_ADMISSION_DATE_POOKIE = "2023-12-12";
+    public static final String VALID_ADMISSION_DATE_POOKIE = "2023-05-05";
     public static final String VALID_ADMISSION_DATE_TOFU = "2019-11-11";
     public static final String VALID_SEX_POOKIE = "MALE";
     public static final String VALID_SEX_TOFU = "FEMALE";
