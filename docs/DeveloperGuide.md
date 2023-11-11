@@ -437,5 +437,20 @@ testers are expected to do more *exploratory* testing.
 ## **Appendix: Planned Enhancements** ##
 ## Planned Enhancements
 
-1. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
+1. Implement more detailed error messages for `search` command. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
+
+
+2. Include `INDEX` numbers of tasks in the detailedView. Currently, tasks are listed in the detailedView without the `INDEX`. While usable, it can get inconvenient to figure out which `INDEX` a task is when the task list gets longer, as users have to manually count up/down. It will be improved by displaying the `INDEX` of the task beside each task, e.g <br>1. [ ] Task 1 <br>2. [ ] Task 2 <br>3. [X] Task 3
+
+
+3. Add a `view` command, to view details of animals. Currently, to view the details of an animal, users have two approaches: <br> <br> 3.1. Click on an animal entry in the animal list to see the detailed view. <br> <br>3.2. Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`. <br><br>While intuitive, it was an oversight to not include a `view` animal command to make it more CLI-friendly. We plan on adding a `view INDEX` command in the future, where the detailed view will show the details of the animal at the specified `INDEX` of the `view INDEX` command.
+
+
+4. Implement persistent `search` status. Currently, the `search` command filters the animals based on the tags passed in. If the user follows up with any command other than `delete`, the filtered list will reset to show all animals. <br><br>For example, `search s/Dog` will show all animals whose species is Dog. If user uses the following command (`add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`, `reset`) right after the `search` command, the list will reset and show all animals. <br><br>To implement the persistent `search` status, we plan to keep track of the last `FilteredAnimalList` #######ADD HERE#######
+
+
+5. Accommodate extreme length inputs for Animal `name` and Task `description`. Currently, when a user inputs an animal `name` and task `description` of extreme length, the text will be cut off in the UI. While it's highly unlikely to have such extreme length `name` and task `description`, it will still be good to include a horizontal scrollbar in the JavaFX `AnimalDetailPanel` component to accommodate such scenarios. 
+
+
+6. Implement more detailed error messages for `add` command. Currently, our AnimalCatalog prevents adding of identical animals, and this identity is tracked using the primary key `ID` of the animal. When a user tries to add an animal and specifies an `ID` that already exists in the AnimalCatalog, the error message states that `This animal already exists in the Catalog`. While performing as expected, it can be further enhanced with the animal `ID`, such as `Animal with ID: 1111 already exists in the Catalog`.
 

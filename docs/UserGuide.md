@@ -91,6 +91,8 @@ Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 * SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
 * DOB and DOA must be in the format `YYYYMMDD`. e.g. `20190101` for 1st January 2019.
 * Species and breed can only be alphabetic with only a single space between words. There can only be a maximum of 2 words in the species and breed.
+* Animals are uniquely identified by their `ID`, and hence adding a new animal that has an `ID` that already exists in the AnimalCatalog is not valid.
+* Attempts to `add` an animal with an `ID` that already exists in the AnimalCatalog will produce the error message: `"This animal already exists in the Catalog"`
 
 Examples:
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
@@ -259,6 +261,16 @@ Resets all tasks of all animals as uncompleted.
 Format: `reset`
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
 * Any words after `reset` will be ignored.
+
+### Viewing animal details
+The detailed view panel on the right shows greater details about the selected animal. There are 2 ways to view the details of a certain animal:
+* Left-click on the animal cell in the list of animals.
+* Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`.
+* The animal cell whose details are currently being displayed in the detail view will be highlighted in orange. 
+* Note that certain commands will cause the selected animal and the detailed view to reset, and these include `list`, `delete`, `search`, and `help` commands.
+
+e.g. Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
+![Selected_Animal](images/Selected_Animal.png)
 
 ### Saving the data
 
