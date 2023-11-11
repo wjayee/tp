@@ -67,6 +67,11 @@ public class AddAnimalCommandParser implements AnimalParser<AddAnimalCommand> {
         Sex sex = AnimalParserUtil.parseSex(argMultimap.getValue(SEX).orElseThrow());
         Breed breed = AnimalParserUtil.parseBreed(argMultimap.getValue(BREED).orElseThrow());
 
+        if (dob.getDateOfBirth().isAfter(doa.getAdmissionDate())) {
+            throw new ParseException(String.format(AnimalMessages.MESSAGE_INVALID_DOB_AND_DOA_COMBINATION_FORMAT,
+                dob.getDateOfBirth(), doa.getAdmissionDate()));
+        }
+
         Animal animal = new Animal(name, id, species, breed, sex, doa, dob);
 
         return new AddAnimalCommand(animal);

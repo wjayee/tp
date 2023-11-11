@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.AnimalCommandTestUtil.PREFIX_ADMISSION_DATE_POOKIE;
@@ -42,6 +43,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.AddAnimalCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.animal.AdmissionDate;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Breed;
@@ -199,5 +201,17 @@ public class AddAnimalCommandParserTest {
                 + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE,
                 AnimalMessages.MESSAGE_INVALID_PREAMBLE);
 
+    }
+
+    @Test
+    public void parse_withDateOfBirthBeforeDateOfAdmission_throwsParseException() {
+        String validAnimalInputWithoutDates = PREFIX_NAME_POOKIE + PREFIX_ID_POOKIE
+            + PREFIX_BREED_POOKIE + PREFIX_SEX_POOKIE + PREFIX_SPECIES_POOKIE;
+
+        // Date of birth after date of admission
+        String dob = " db/ 2018-05-05";
+        String doa = " da/ 2015-01-01";
+
+        assertThrows(ParseException.class, () -> parser.parse(validAnimalInputWithoutDates + dob + doa));
     }
 }
