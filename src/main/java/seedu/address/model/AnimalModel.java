@@ -79,6 +79,8 @@ public interface AnimalModel {
 
     void addTask(Task newTask, Animal animal);
 
+    void updateTask(Animal animal, int[] taskIndexes, boolean isDone);
+
     void resetTasks();
 
     /** Returns an unmodifiable view of the filtered animal list */

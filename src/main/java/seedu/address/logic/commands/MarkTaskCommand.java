@@ -12,15 +12,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
-import seedu.address.model.animal.AdmissionDate;
 import seedu.address.model.animal.Animal;
-import seedu.address.model.animal.Breed;
-import seedu.address.model.animal.DateOfBirth;
-import seedu.address.model.animal.Name;
-import seedu.address.model.animal.PetId;
-import seedu.address.model.animal.Sex;
-import seedu.address.model.animal.Species;
-import seedu.address.model.animal.TaskList;
 
 /**
  * Marks a task of an animal as done.
@@ -96,31 +88,13 @@ public class MarkTaskCommand extends AnimalCommand {
                 throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
-            Animal markedAnimal = createEditedAnimal(animalToMark, taskIndexes);
+            model.updateTask(animalToMark, taskIndexes, true);
 
-            model.setAnimal(animalToMark, markedAnimal);
-            model.updateFilteredAnimalList(AnimalModel.PREDICATE_SHOW_ALL_ANIMALS);
-
-
-            return new CommandResult(MESSAGE_SUCCESS, markedAnimal);
+            return new CommandResult(MESSAGE_SUCCESS);
 
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
-    }
-
-    private static Animal createEditedAnimal(Animal animalToMark, int[] taskIndex)
-            throws IndexOutOfBoundsException {
-        Name name = animalToMark.getName();
-        PetId petId = animalToMark.getPetId();
-        Species species = animalToMark.getSpecies();
-        Breed breed = animalToMark.getBreed();
-        Sex sex = animalToMark.getSex();
-        AdmissionDate admissionDate = animalToMark.getAdmissionDate();
-        DateOfBirth dateOfBirth = animalToMark.getDateOfBirth();
-        TaskList taskList = animalToMark.updateTaskList(taskIndex, true);
-
-        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, taskList);
     }
 
     @Override
