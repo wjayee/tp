@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -43,6 +44,12 @@ public class AdmissionDateTest {
         for (String invalidDate : invalidDateInputs) {
             assertThrows(IllegalArgumentException.class, () -> new AdmissionDate(invalidDate));
         }
+    }
+
+    @Test
+    public void testConstructor_withFutureDate_throwsIllegalArgumentException() {
+        String futureDate = LocalDate.now().plusDays(1).toString();
+        assertThrows(IllegalArgumentException.class, () -> new AdmissionDate(futureDate));
     }
 
     @Test

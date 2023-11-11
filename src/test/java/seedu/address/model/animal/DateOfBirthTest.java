@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class DateOfBirthTest {
@@ -22,6 +23,12 @@ public class DateOfBirthTest {
     @Test
     public void testConstructor_withNull() {
         assertThrows(NullPointerException.class, () -> new DateOfBirth(null));
+    }
+
+    @Test
+    public void testConstructor_withFutureDate_throwsIllegalArgumentException() {
+        String futureDate = LocalDate.now().plusDays(1).toString();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new DateOfBirth(futureDate));
     }
 
     @Test
