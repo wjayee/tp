@@ -5,8 +5,8 @@
     "sex" : "FEMALE",
     "species" : "Cat",
     "breed" : "Ragdoll",
-    "dateOfBirth" : "2023-03-27",
-    "admissionDate" : "2022-05-07",
+    "dateOfBirth" : "2022-05-07",
+    "admissionDate" : "2023-03-27",
     "taskList" : [{"description":  "Walk Pookie around the Park",
       "isDone":  false}]
   }, {
@@ -15,8 +15,8 @@
     "sex" : "FEMALE",
     "species" : "Cat",
     "breed" : "Ragdoll",
-    "dateOfBirth" : "2023-03-27",
-    "admissionDate" : "2022-05-07",
+    "dateOfBirth" : "2022-05-07",
+    "admissionDate" : "2023-03-27",
     "taskList" : [{"description":  "Walk Pookie around the Park",
       "isDone":  false}]
   } ]

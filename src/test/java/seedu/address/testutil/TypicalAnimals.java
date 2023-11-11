@@ -72,7 +72,7 @@ public class TypicalAnimals {
             .withSpecies("Dog")
             .withBreed("Poodle")
             .withDateOfBirth("2019-01-01")
-            .withAdmissionDate("2019-01-01")
+            .withAdmissionDate("2019-01-02")
             .withTaskList(Stream.of(new Task("Feed Bear"),
                 new Task("Wash Bear")).collect(Collectors.toList()))
             .build();

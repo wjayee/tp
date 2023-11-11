@@ -3,7 +3,6 @@ package seedu.address.commons.util;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -16,10 +15,7 @@ import java.util.Optional;
  */
 public class TimeUtil {
     private static final DateTimeFormatter[] VALID_DATE_FORMATS = {
-        DateTimeFormatter.ISO_LOCAL_DATE,
-        DateTimeFormatter.BASIC_ISO_DATE,
-        DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH),
-        DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH)
+        DateTimeFormatter.ISO_LOCAL_DATE
     };
 
     // Private constructor to prevent instantiation
@@ -56,6 +52,16 @@ public class TimeUtil {
      */
     public static boolean isValidDate(String test) {
         return findFormatter(test).isPresent();
+    }
+
+    /**
+     * Checks if the given date is in the future.
+     *
+     * @param test the given date to test for
+     * @return true if the given date is in the future, false if its before.
+     */
+    public static boolean isFutureDate(LocalDate test) {
+        return test.isAfter(LocalDate.now());
     }
 
     /**
