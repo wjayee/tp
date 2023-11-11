@@ -277,12 +277,6 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Planned Enhancements
-
-1. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
-
---------------------------------------------------------------------------------------------------------------------
-
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
