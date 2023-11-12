@@ -110,6 +110,10 @@ public class TaskList {
         return taskList.size();
     }
 
+    public boolean contains(Task task) {
+        return taskList.contains(task);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

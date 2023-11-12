@@ -42,6 +42,7 @@ public class AnimalCommandTestUtil {
     public static final String VALID_SPECIES_TOFU = "Cat";
     public static final String VALID_BREED_POOKIE = "Poodle";
     public static final String VALID_BREED_TOFU = "British Shorthair";
+    public static final String VALID_TASK_DESCRIPTION = "Feed dog";
 
 
 
