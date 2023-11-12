@@ -3,9 +3,9 @@ layout: default.md
 title: "Jason's Project Portfolio Page"
 ---
 
-### Project: PawFection
+### Project: Pawfection
 
-PawFection is a desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface (CLI)
+Pawfection is a desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to
 store and retrieve information about animals in a shelter easily.
 
@@ -15,24 +15,26 @@ Given below are my contributions to the project:
 
 * **Project management**:
     * Designed and added UI mockup
-    * Assigned Issues for v1.2 and v1.3
+    * Assigned Issues for v1.2, v1.3 and v1.4
     * Did issue Triaging for PE-D Issues, and assigned issues accordingly
 
 * **Enhancements to existing features**:
     * Added Detailed View for Animal Catalog
+    * Integrate Detailed View to work with Animal-Specific Commands
     * Added Task and TaskList Attributes for Animal
     * Add Task to Storage as JSONAdaptedTask
     * Minor UI additions (Orange on selected cells)
+    * Wrote tests for Name, Sex, PetId, AdmissionDate, DateofBirth, Task, TaskList, JSONAdaptedTask, and AnimalModelManager
 
 * **Documentation**:
     * User Guide:
-      to be added
+      Wrote the portion regarding detailed view, and added screenshots of examples for most commands. Also added error cases for commands
     * Developer Guide:
-      to be added
+      Wrote the portion regarding UI, and Planned Enhancements
 
 * **Team Tasks**:
     * Updated AboutUs
-    * Assigned issues for v1.2 and v1.3
+    * Assigned issues for v1.2, v1.3 and v1.4
     * Gave feedback for PRs
     * Completed issue triaging for PE-D, and assigned issues accordingly
 
