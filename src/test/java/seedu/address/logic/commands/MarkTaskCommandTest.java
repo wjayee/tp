@@ -104,5 +104,4 @@ public class MarkTaskCommandTest {
                 .getTaskList()
                 .equals(TOFU.getTaskList()));
     }
-
 }
