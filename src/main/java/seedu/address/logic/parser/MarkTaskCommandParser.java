@@ -41,7 +41,11 @@ public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
 
         // checks if animal index is a number
         if (!indexLists[0].matches("\\d+")) {
-            throw new ParseException("Animal " + MESSAGE_INVALID_STRING_INDEX);
+            try {
+                Integer.parseInt(indexLists[0]);
+            } catch (NumberFormatException e) {
+                throw new ParseException("Animal " + MESSAGE_INVALID_STRING_INDEX);
+            }
         }
 
         int animalIntIndex = Integer.parseInt(indexLists[0]);
@@ -56,7 +60,14 @@ public class MarkTaskCommandParser implements AnimalParser<MarkTaskCommand> {
 
         // checks if task indexes provided are numbers
         if (!indexLists[1].matches("\\d+(\\s+\\d+)*")) {
-            throw new ParseException("Task " + MESSAGE_INVALID_STRING_INDEX);
+            try {
+                String[] indexes = indexLists[1].split("\\s+");
+                for (int i = 0; i < indexes.length; i++) {
+                    Integer.parseInt(indexes[i]);
+                }
+            } catch (NumberFormatException e) {
+                throw new ParseException("Task " + MESSAGE_INVALID_STRING_INDEX);
+            }
         }
 
         double[] checkTaskIndexes = stream(indexLists[1].split("\\s+"))
