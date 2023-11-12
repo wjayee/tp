@@ -80,6 +80,10 @@ about animals in a shelter easily.
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
+**Notes about commands**<br>
+* For all valid format commands that require to specify an animal `INDEX`, if the `INDEX` provided is out of range, the following error message will be produced: `"The animal index provided is invalid"`.
+* For longer error messages stated in the user guide, they have been shortened for brevity by displaying only the first few words followed by ellipsis.
+
 ### Adding an animal: `add`
 Adds an animal to the address book.
 
@@ -91,22 +95,15 @@ Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 * DOB must come chronologically before DOA.
 * Species and breed can only be alphabetic with only a single space between words. There can only be a maximum of 2 words in the species and breed.
 * Animals are uniquely identified by their ID, and hence adding a new animal that has an ID that already exists in the AnimalCatalog is not valid.
+* Attempts to `add` an animal with missing fields will produce the following error message listing the missing fields: `"Invalid Command! Missing prefixes:..."`
+* Attempts to `add` an animal with an ID that already exists in the AnimalCatalog will produce the following error message: `"This animal already exists in the Catalog"`
+* Attempts to `add` an animal with a wrong chronological DOB and DOA will produce the following error message: `"Date of Birth:{DOB} should not be chronologically after Date of Admission:{DOA}!"`, where {DOB} and {DOA} are inputted fields.
+* Attempts to `add` an animal with a wrong date format, or a date that does not exist e.g. `2019-02-31` will produce the following error message: `"Admission Date should be in one of the following formats: '2023-10-15'"`
 
 Examples:
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair`
 ![add_eg1](images/add_eg1.png)
-* Attempts to `add` an animal with an ID that already exists in the AnimalCatalog will produce the following error message.
-![add_duplicate_anima](images/add_duplicate_animal.png)
-
-* Attempts to `add` an animal with missing fields will produce the following error message listing the missing fields.
-![add_error](images/add_error.png)
-
-* Attempts to `add` an animal with a wrong chronological DOB and DOA will produce the following error message.
-![add_error_eg2](images/add_error_eg2.png)
-
-* Attempts to `add` an animal with a wrong date format, or a date that does not exist e.g. `2019-02-31` will produce the following error message.
-![add_error_eg3](images/add_error_eg3.png)
 
 ### Program usage help: `help`
 Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
@@ -114,7 +111,7 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 Format: `help [COMMAND_NAME]`
 
 * COMMAND_NAME is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
-* Inputs that result in no partial matches will produce an error message.
+* Inputs that result in no partial matches will produce the following error message: `"Command: {COMMAND_NAME} not recognized!"`, where {COMMAND_NAME} is the inputted field.
 
 Examples:
 * `help` will produce a link to the User Guide in a pop-up.
@@ -122,9 +119,6 @@ Examples:
 * `help add` will show usage guide of all commands that partial match with `add`.
 ![help_add](images/help_add.png)
 * `help dele` will show usage guide of all commands that partial match with `dele`.
-![help_dele](images/help_dele.png)
-* `help test` will produce the following error message due to no partial matches.
-![help_error](images/help_error.png)
 
 ### Listing all animals: `list`
 Shows a list of all animals in the address book.
@@ -143,14 +137,12 @@ Format: `delete INDEX`
 * Deletes the animal at the specified `INDEX`.
 * The `INDEX` refers to the animal of the `INDEX` on the animal list view, and is a positive number.
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
+* Invalid command formats will produce the following error message: `"Invalid command format! delete: Deletes the animal identified by..."`
 
 Examples:
 * `delete 2` deletes the animal at `INDEX 2`.
 ![delete_eg](images/delete_eg.png)
-* `delete -1` is not a valid command format due to `INDEX` not being positive and will produce the following error message.
-![delete_invalid](images/delete_invalid.png)
-* `delete 100` is out of range for `INDEX` of the example address book and will produce the following error message.
-![delete_outofrange](images/delete_outofrange.png)
+* `delete -1` is not a valid command format due to `INDEX` not being positive and will produce the following error message: `"Invalid command format! delete: Deletes the animal..."`
 
 ### Editing an animal: `Edit`
 Edits animals specified by the index with the newly specified prefix attributes.
@@ -171,12 +163,8 @@ Examples:
 ![edit_eg1](images/edit_eg1.png)
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
 ![edit_eg2](images/edit_eg2.png)
-* `edit -1` is an invalid command format due to `INDEX` not being positive and will produce the following error message.
-![edit_error_eg1](images/edit_error_eg1.png)
-* `edit 100` is an invalid command format due to missing prefix and will produce the following error message.
-![edit_error_eg2](images/edit_error_eg2.png)
-* `edit 100 n/Dawg` is out of range for `INDEX` of the example address book and will produce the following error message.
-![edit_error_eg3](images/edit_error_eg3.png)
+* `edit -1` is an invalid command format due to `INDEX` not being positive and will produce the following error message: `"Invalid command format! Example: edit 1..."`
+* `edit 100` is an invalid command format due to missing prefix and will produce the following error message: `"At least one field to edit must be provided"`
 
 ### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
@@ -218,11 +206,6 @@ Format: `addtask ANIMALINDEX TASK`
 Examples:
 * `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
 ![addtask_eg1](images/addtask_eg1.png)
-* `addtask 1` is an invalid command format due to missing `TASK` field and will produce the following error message.
-![addtask_error_eg1](images/addtask_error_eg1.png)
-* `addtask 100 Feed Pookie` is out of range for `ANIMALINDEX` of the example address book and will produce the following error message.
-![addtask_error_eg2](images/addtask_error_eg2.png)
-
 
 ### Deletes a task of an animal: `deletetask`
 Deletes a specific task from the task list of an animal.
