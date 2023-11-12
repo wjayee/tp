@@ -79,7 +79,7 @@ public interface AnimalModel {
 
     void addTask(Task newTask, Animal animal);
 
-    void updateTask(Animal animal, int[] taskIndexes, boolean isDone);
+    Animal updateTask(Animal animal, int[] taskIndexes, boolean isDone);
 
     void resetTasks();
 
