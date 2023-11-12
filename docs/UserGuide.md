@@ -27,7 +27,6 @@ about animals in a shelter easily.
     - [Viewing animal details](#viewing-animal-details)
     - [Saving the data](#saving-the-data)
     - [Editing the data file](#editing-the-data-file)
-- [Planned Enhancements](#planned-enhancements)
 - [FAQ](#faq)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
