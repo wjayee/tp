@@ -11,7 +11,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SIXTH;
 import static seedu.address.testutil.TypicalTasks.FED;
-import static seedu.address.testutil.TypicalTasks.WALKED;
 
 import java.util.List;
 
@@ -77,13 +76,17 @@ public class AddTaskCommandTest {
     @Test
     public void execute_addTaskToAnimalWithExistingTasks_success() {
         // Assume TOFU already has some tasks
-        Animal animalWithTasks = new AnimalBuilder(TOFU).withTaskList(List.of(FED, WALKED)).build();
+        Animal animalWithTasks = new AnimalBuilder(TOFU).withTaskList(List.of(FED)).build();
         model.setAnimal(TOFU, animalWithTasks);
 
         Task newTask = new Task(VALID_TASK_DESCRIPTION);
         AddTaskCommand addTaskCommand = new AddTaskCommand(INDEX_FIRST, newTask);
 
         String expectedMessage = String.format(AddTaskCommand.MESSAGE_SUCCESS, TOFU.getName(), VALID_TASK_DESCRIPTION);
+
+        AnimalModel expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
+        Animal expectedAnimal = new AnimalBuilder(animalWithTasks).withTaskList(List.of(FED, newTask)).build();
+        expectedModel.setAnimal(TOFU, expectedAnimal);
 
         // Execute the command
         assertCommandSuccess(addTaskCommand, model, expectedMessage, model);
