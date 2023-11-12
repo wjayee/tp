@@ -90,9 +90,9 @@ public class UnmarkTaskCommand extends AnimalCommand {
                 throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
-            model.updateTask(animalToMark, taskIndexes, false);
+            Animal updatedAnimal = model.updateTask(animalToMark, taskIndexes, false);
 
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, updatedAnimal);
 
 
         } catch (IndexOutOfBoundsException e) {

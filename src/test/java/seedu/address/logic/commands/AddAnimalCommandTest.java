@@ -172,7 +172,7 @@ public class AddAnimalCommandTest {
         }
 
         @Override
-        public void updateTask(Animal animal, int[] taskIndexes, boolean isDone) {
+        public Animal updateTask(Animal animal, int[] taskIndexes, boolean isDone) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
     }

@@ -88,9 +88,9 @@ public class MarkTaskCommand extends AnimalCommand {
                 throw new CommandException(MESSAGE_EXCESS_TASK_INDEX);
             }
 
-            model.updateTask(animalToMark, taskIndexes, true);
+            Animal updatedAnimal = model.updateTask(animalToMark, taskIndexes, true);
 
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, updatedAnimal);
 
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
