@@ -23,9 +23,9 @@ Given below are my contributions to the project:
       * Integrate Detailed View to work with Animal-Specific Commands [#182](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/182)
     * Added Task and TaskList Attributes for Animal [#95](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/95)
     * Add persistent Task storage through usage of JSONAdaptedTask [#108](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/108)
-    * UI Changes [#52](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/52), 
+    * UI Changes [#52](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/52)
     * Refactoring of AB3 code to Animal Class [#61](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/61)
-    * Wrote tests for Name, Sex, PetId, AdmissionDate, DateofBirth, Task, TaskList, JSONAdaptedTask, and AnimalModelManager [#79](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/79), [#95](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/95), [#113](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/113), [#184](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/184), [#190](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/190) 
+    * Wrote tests for Name, Sex, PetId, AdmissionDate, DateofBirth, Task, TaskList, JSONAdaptedTask, and AnimalModelManager [#79](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/79), [#95](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/95), [#113](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/113), [#184](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/184), [#190](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/190)
 
 * **Documentation**:
     * User Guide:
