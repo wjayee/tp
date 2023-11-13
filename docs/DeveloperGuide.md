@@ -259,9 +259,16 @@ Note that the position of the cli syntax can be in any order.
 the prefixes are invalid, a `CommandException` describing the error is thrown. Otherwise, it adds the animal with its
 inputted attributes to the model and returns a successful command result.
 
-The following sequence diagram shows how the `AddAnimalCommand` works:
+The following sequence diagrams shows how the `AddAnimalCommand` works:
 
-<puml src="diagrams/AddSequenceDiagram.puml" alt="AddSequenceDiagram" />
+In the logic component:
+<puml src="diagrams/AddLogicSequenceDiagram.puml" alt="AddLogicSequenceDiagram" />
+
+> [!NOTE]
+> All commands (except `list`, `search` and `reset`) have similar logic sequence diagrams, and hence only `AddAnimalCommand` will be explained in detail.
+
+In the model component:
+<puml src="diagrams/AddModelSequenceDiagram.puml" alt="AddModelSequenceDiagram" />
 
 ### Design considerations:
 
@@ -297,9 +304,8 @@ Given below is an example usage scenario of the `DeleteAnimalCommand`:
 2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would attempt to delete the third animal on the list.
 3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, removes it from the model, and returns a successful command result.
 
-The following sequence diagram shows how the `DeleteAnimalCommand` works:
-
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
+> [!NOTE]\
+> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `DeleteAnimalCommand` as they are largely similar.
 
 ### Design considerations:
 
@@ -325,9 +331,9 @@ Given below is an example usage scenario of the `EditAnimalCommand`:
 2. The user executes the `edit` command with the animal index and the prefixes of the attribute to be edited. For instance, `edit 1 n/Boo s/Cat` will edit the first animal's name to "Boo" and the species to "Cat".
 3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result.
 
-The following sequence diagram shows how the `EditAnimalCommand` works:
+> [!NOTE]\
+> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `EditAnimalCommand` as they are largely similar.
 
-<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
 
 ### Design considerations:
 
@@ -355,6 +361,7 @@ Given below is an example usage scenario of the `ListAnimalCommand`:
 
 The following sequence diagram shows how the `ListAnimalCommand` works:
 
+In the logic component:
 <puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
 
 ### Design considerations:
@@ -382,9 +389,9 @@ Given below is an example usage scenario of the `SearchAnimalCommand`:
 2. The user executes the `search` command with the prefixes of the attributes to be searched. For instance, `search b/Poodle` would search for animals of breed Poodle.
 3. The command verifies the validity of the prefixes. If all the prefixes are invalid, it throws a `CommandException`. Otherwise, it retrieves the animals that match the valid prefixes, and returns a successful command result.
 
-The following sequence diagram shows how the `SearchAnimalCommand` works:
+> [!NOTE]
+> Refer to `ListAnimalCommand` for the sequence diagrams of the model component of `SearchAnimalCommand` as they are largely similar, except for the predicate passed into updateFilteredAnimalList.
 
-<puml src="diagrams/SearchSequenceDiagram.puml" alt="SearchSequenceDiagram" />
 
 ### Design considerations:
 
@@ -396,11 +403,33 @@ Aspect: How the search is handled
     - Pros: Easy to find animals even if the user does not know the exact prefixes.
     - Cons: Might be harder for users to find specific animals.
 
-## `MarkTaskCommand` Feature
+## `AddTaskCommand` Feature
+
+CONTINUE IMPLEMENTATION
+
+The following sequence diagram shows how the `AddTaskCommand` works:
+
+> [!NOTE]\
+> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `AddTaskCommand` as they are largely similar.
+
+## `DeleteTaskCommand` Feature
+
+CONTINUE IMPLEMENTATION
+
+> [!NOTE]\
+> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `DeleteTaskCommand` as they are largely similar.
+
+
+## `MarkTaskCommand` and `UnmarkTaskCommand` Feature
 
 ### Implementation
 
-The `MarkTaskCommand` is a command designed to mark task(s) as done for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
+The `MarkTaskCommand` is a command designed to mark task(s) as done for an animal in the animal catalog.
+The `UnmarkTaskCommand` is a command designed to mark task(s) as uncompleted for an animal in the animal catalog.
+
+Both commands take in one animal index and at least one task index as arguments.
+
+> Note: `MarkTaskCommand` and `UnmarkTaskCommand` have very similar implementations, and hence only `MarkTaskCommand` will be explained in detail.
 
 Here's a brief outline of its operations and attributes:
 - `MarkTaskCommandParser#parse(String args)` — Parses the user input to create a `MarkTaskCommand` object with the given animal index and task index(s).
@@ -411,48 +440,26 @@ Given below is an example usage scenario of the `MarkTaskCommand`:
 2. The user executes the `mark` command with the animal index and task indexes. For instance, `mark 1 2 3` would mark tasks 2 and 3 as done for the animal at index 1.
 3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as done, and returns a successful command result.
 
-The following sequence diagram shows how the `MarkTaskCommand` works:
+The following sequence diagrams shows how the `MarkTaskCommand` works:
 
-<puml src="diagrams/MarkSequenceDiagram.puml" alt="MarkSequenceDiagram" />
+In the logic component:
+<puml src="diagrams/MarkLogicSequenceDiagram.puml" alt="MarkLogicSequenceDiagram" />
+
+In the model component:
+<puml src="diagrams/MarkModelSequenceDiagram.puml" alt="MarkModelSequenceDiagram" />
+
+> Note: `UnmarkTaskCommand` works similarly to `MarkTaskCommand`, except that `updateTask` takes in `false` instead of `true`.
 
 ### Design considerations:
 
 Aspect: How the marking is handled
 - Alternative 1 (current choice): Marks tasks as done only when all indexes provided are valid.
-    - Pros: Easy to keep track which tasks are marked as done. Invalid task indices are not silently handled.
+    - Pros: Easy to keep track which tasks are marked as done.
     - Cons: Users have to ensure that all indexes provided are valid.
 - Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as done.
     - Pros: Easy for users to mark tasks as done.
     - Cons: Users might not be fully aware of which tasks are marked as done.
 
-## `UnmarkTaskCommand` Feature
-
-### Implementation
-
-The `UnmarkTaskCommand` is a command designed to mark task(s) as uncompleted for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
-
-Here's a brief outline of its operations and attributes:
-- `UnmarkTaskCommandParser#parse(String args)` — Parses the user input to create a `UnmarkTaskCommand` object with the given animal index and task index(s).
-- `UnmarkTaskCommand#execute(AnimalModel model)` — Executes the command to mark task(s) as uncompleted for an animal in the animal catalog.
-
-Given below is an example usage scenario of the `UnmarkTaskCommand`:
-1. The user wants to mark a few tasks as uncompleted for an animal in the animal catalog.
-2. The user executes the `unmark` command with the animal index and task indexes. For instance, `unmark 1 2 3` would mark tasks 2 and 3 as uncompleted for the animal at index 1.
-3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as uncompleted, and returns a successful command result.
-
-The following sequence diagram shows how the `UnmarkTaskCommand` works:
-
-<puml src="diagrams/UnmarkSequenceDiagram.puml" alt="UnmarkSequenceDiagram" />
-
-### Design considerations:
-
-Aspect: How the unmarking is handled
-- Alternative 1 (current choice): Marks tasks as uncompleted only when all indexes provided are valid.
-    - Pros: Easy to keep track which tasks are marked as uncompleted. Invalid task indices are not silently handled.
-    - Cons: Users have to ensure that all indexes provided are valid.
-- Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as uncompleted.
-  - Pros: Easy for users to mark tasks as uncompleted.
-  - Cons: Users might not be fully aware of which tasks are marked as uncompleted.
 
 ## `ResetTaskCommand` Feature
 
@@ -470,7 +477,11 @@ Given below is an example usage scenario of the `ResetTaskCommand`:
 
 The following sequence diagram shows how the `ResetTaskCommand` works:
 
-<puml src="diagrams/ResetSequenceDiagram.puml" alt="ResetSequenceDiagram" />
+In the logic component:
+<puml src="diagrams/ResetLogicSequenceDiagram.puml" alt="ResetLogicSequenceDiagram" />
+
+In the model component:
+<puml src="diagrams/ResetModelSequenceDiagram.puml" alt="ResetModelSequenceDiagram" />
 
 ### Design considerations:
 
