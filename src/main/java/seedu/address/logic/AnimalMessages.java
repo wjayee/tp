@@ -20,7 +20,7 @@ public class AnimalMessages {
     public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
-    public static final String MESSAGE_INVALID_PREAMBLE = "Command should not have preamble!";
+    public static final String MESSAGE_INVALID_PREAMBLE = "Command should not have preamble/invalid prefixes!";
 
     public static final String MESSAGE_INVALID_SEARCH_KEYWORDS = "Search keywords cannot be empty! At least one "
             + "prefix must be provided.";

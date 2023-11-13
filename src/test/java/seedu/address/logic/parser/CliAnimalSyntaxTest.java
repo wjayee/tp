@@ -62,23 +62,23 @@ public class CliAnimalSyntaxTest {
 
     @Test
     public void getUsage_returnsCorrectUsageString() {
-        assertEquals("n/[NAME]", CliAnimalSyntax.NAME.getUsage());
-        assertEquals("i/[PET_ID]", CliAnimalSyntax.PET_ID.getUsage());
-        assertEquals("g/[SEX]", CliAnimalSyntax.SEX.getUsage());
-        assertEquals("s/[SPECIES]", CliAnimalSyntax.SPECIES.getUsage());
-        assertEquals("b/[BREED]", CliAnimalSyntax.BREED.getUsage());
-        assertEquals("db/[DATE_OF_BIRTH]", CliAnimalSyntax.DATE_OF_BIRTH.getUsage());
-        assertEquals("da/[DATE_OF_ADMISSION]", CliAnimalSyntax.DATE_OF_ADMISSION.getUsage());
+        assertEquals("n/NAME", CliAnimalSyntax.NAME.getUsage());
+        assertEquals("i/PET_ID", CliAnimalSyntax.PET_ID.getUsage());
+        assertEquals("g/SEX", CliAnimalSyntax.SEX.getUsage());
+        assertEquals("s/SPECIES", CliAnimalSyntax.SPECIES.getUsage());
+        assertEquals("b/BREED", CliAnimalSyntax.BREED.getUsage());
+        assertEquals("db/DATE_OF_BIRTH", CliAnimalSyntax.DATE_OF_BIRTH.getUsage());
+        assertEquals("da/DATE_OF_ADMISSION", CliAnimalSyntax.DATE_OF_ADMISSION.getUsage());
     }
 
     @Test
     public void toString_returnsCorrectString() {
-        assertEquals("[NAME]", CliAnimalSyntax.NAME.toString());
-        assertEquals("[PET_ID]", CliAnimalSyntax.PET_ID.toString());
-        assertEquals("[SEX]", CliAnimalSyntax.SEX.toString());
-        assertEquals("[SPECIES]", CliAnimalSyntax.SPECIES.toString());
-        assertEquals("[BREED]", CliAnimalSyntax.BREED.toString());
-        assertEquals("[DATE_OF_BIRTH]", CliAnimalSyntax.DATE_OF_BIRTH.toString());
-        assertEquals("[DATE_OF_ADMISSION]", CliAnimalSyntax.DATE_OF_ADMISSION.toString());
+        assertEquals("NAME", CliAnimalSyntax.NAME.toString());
+        assertEquals("PET_ID", CliAnimalSyntax.PET_ID.toString());
+        assertEquals("SEX", CliAnimalSyntax.SEX.toString());
+        assertEquals("SPECIES", CliAnimalSyntax.SPECIES.toString());
+        assertEquals("BREED", CliAnimalSyntax.BREED.toString());
+        assertEquals("DATE_OF_BIRTH", CliAnimalSyntax.DATE_OF_BIRTH.toString());
+        assertEquals("DATE_OF_ADMISSION", CliAnimalSyntax.DATE_OF_ADMISSION.toString());
     }
 }
