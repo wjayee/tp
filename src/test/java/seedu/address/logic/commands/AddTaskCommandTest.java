@@ -65,8 +65,12 @@ public class AddTaskCommandTest {
 
         String expectedMessage = String.format(AddTaskCommand.MESSAGE_SUCCESS, TOFU.getName(), VALID_TASK_DESCRIPTION);
 
+        AnimalModel expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
+        Animal expectedAnimal = new AnimalBuilder(TOFU).withTaskList(List.of(newTask)).build();
+        expectedModel.setAnimal(TOFU, expectedAnimal);
+
         // Execute the command
-        assertCommandSuccess(addTaskCommand, model, expectedMessage, model);
+        assertCommandSuccess(addTaskCommand, model, expectedMessage, expectedModel);
 
         // Verify the task has been added
         Animal animalInModel = model.getFilteredAnimalList().get(INDEX_FIRST.getZeroBased());
@@ -89,7 +93,7 @@ public class AddTaskCommandTest {
         expectedModel.setAnimal(TOFU, expectedAnimal);
 
         // Execute the command
-        assertCommandSuccess(addTaskCommand, model, expectedMessage, model);
+        assertCommandSuccess(addTaskCommand, model, expectedMessage, expectedModel);
 
         // Verify the task has been added
         Animal animalInModel = model.getFilteredAnimalList().get(INDEX_FIRST.getZeroBased());

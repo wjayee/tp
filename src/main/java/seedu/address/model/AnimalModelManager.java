@@ -116,8 +116,14 @@ public class AnimalModelManager implements AnimalModel {
     }
 
     @Override
-    public void addTask(Task newTask, Animal animal) {
+    public Animal addTask(Task newTask, Animal animal) {
         requireAllNonNull(newTask, animal);
+
+        Animal updatedAnimal = animal.addTask(newTask);
+        setAnimal(animal, updatedAnimal);
+        updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
+
+        return updatedAnimal;
     }
 
     @Override

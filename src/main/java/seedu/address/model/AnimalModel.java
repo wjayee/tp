@@ -77,7 +77,7 @@ public interface AnimalModel {
      */
     void setAnimal(Animal target, Animal editedAnimal);
 
-    void addTask(Task newTask, Animal animal);
+    Animal addTask(Task newTask, Animal animal);
 
     Animal updateTask(Animal animal, int[] taskIndexes, boolean isDone);
 

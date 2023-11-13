@@ -7,6 +7,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.storage.JsonAdaptedTask;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Represents an Animal in the catalog.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -133,8 +135,25 @@ public class Animal {
         return breed.toString();
     }
 
-    public void addTask(Task task) {
-        taskList.addTask(task);
+    /**
+     * Returns a new Animal object with the added task.
+     *
+     * @param task the task to be added.
+     * @return a new Animal object with the added task.
+     */
+    public Animal addTask(Task task) {
+        requireNonNull(task);
+
+        Animal updatedAnimal = new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth);
+        copyTasksFromAnimalToAnimal(this, updatedAnimal);
+        updatedAnimal.getTaskList().addTask(task);
+
+        return updatedAnimal;
+    }
+
+    private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
+        TaskList targetTaskList = target.getTaskList();
+        targetTaskList.addAllTasks(source.getTasks());
     }
 
     public void deleteTaskByIndex(Index targetTaskIndex) {
