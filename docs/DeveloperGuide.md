@@ -80,7 +80,7 @@ Generally, the UI consists of the command box for the user to input commands, a 
 2. `AnimalDetailPanel` which is a detailed view of `Animal` objects.
 
 
-The layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/resources/view/HelpWindow.fxml)
+The layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/resources/view/HelpWindow.fxml)
 
 The `UI` component does the following actions:
 
@@ -91,7 +91,7 @@ The `UI` component does the following actions:
 
 ### Logic component
 
-**API** : [`AnimalLogic.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/logic/AnimalLogic.java)
+**API** : [`AnimalLogic.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/logic/AnimalLogic.java)
 
 Here's a (partial) class diagram of the `AnimalLogic` component:
 
@@ -122,7 +122,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddAnimalCommandParser`, `DeleteAnimalCommandParser`, ...) inherit from the `AnimalParser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`AnimalModel.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/model/AnimalModel.java)
+**API** : [`AnimalModel.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/model/AnimalModel.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -249,7 +249,7 @@ The `EditAnimalCommand` is a specific command designed to edit the field(s) of a
 Given below is an example usage scenario of the `EditAnimalCommand`:
 1. The user wants to update erratas in the animal detail of an animal.
 2. The user executes the `edit` command with the animal index and the prefixes of the attribute to be edited. For instance, `edit 1 n/Boo s/Cat` will edit the first animal's name to "Boo" and the species to "Cat".
-3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result. 
+3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result.
 
 The following sequence diagram shows how the `EditAnimalCommand` works:
 <puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
@@ -419,7 +419,7 @@ Here's a brief outline of its operations:
 
 For update of `AnimalDetailPanel` by clicking, this is handled in the `AnimalListPanel` class using a `Listener`. The `Listener` will listen to changes in selected cell, and update the animal details to show the selected animal.
 
-For update of `AnimalDetailPanel` by animal-specific commands, animal-specific commands that automatically update the `Detailed View` with the targeted animal include `add`, `edit`, `addtask`, 
+For update of `AnimalDetailPanel` by animal-specific commands, animal-specific commands that automatically update the `Detailed View` with the targeted animal include `add`, `edit`, `addtask`,
 `deletetask`, `mark`, and `unmark`. For such animal-specific commands, the `CommandResult` will accept an additional argument `Animal`,
 and this is retrieved by the `AnimalDetailView` in the `MainWindow` class. To differentiate between `CommandResult` that contains an `Animal` (animal-specific commands) and non-animal-specific commands, Optional<Animal> was used as the Type stored in the `CommandResult` class.
 

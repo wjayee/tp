@@ -29,7 +29,7 @@ Given below are my contributions to the project:
 * **Documentation**:
     * User Guide:
       Wrote the portion regarding detailed view
-      Added screenshots of examples for most commands. 
+      Added screenshots of examples for most commands.
       Added error cases for commands
     * Developer Guide:
       Wrote the portion regarding UI, and Planned Enhancements
