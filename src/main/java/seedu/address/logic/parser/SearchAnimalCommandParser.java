@@ -54,7 +54,7 @@ public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalComma
         List<String> keywords = List.of(name, id, dob, doa, species, sex, breed);
 
         // Check if keywords are empty
-        if (keywords.stream().anyMatch(String::isEmpty)) {
+        if (keywords.stream().allMatch(String::isEmpty)) {
             throw new ParseException(getHelpMessage());
         }
 
