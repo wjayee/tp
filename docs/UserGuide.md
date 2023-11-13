@@ -44,7 +44,7 @@ about animals in a shelter easily.
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
@@ -134,12 +134,12 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 
 `help` will produce a link to the User Guide in a pop-up.
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/help.png" alt="Pop-up" style="height: 200px; width: 300px; margin-bottom: 16px;">
+  <img src="images/help.png" alt="Pop-up" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 `help add` will show usage guide of all commands that partial match with `add`.
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/help_add.png" alt="help add" style="height: 200px; width: 300px; margin-bottom: 16px;">
+  <img src="images/help_add.png" alt="help add" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -176,7 +176,7 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/add_eg1.png" alt="Add animal example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/add_eg1.png" alt="Add animal example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -226,7 +226,7 @@ Deletes the specified animal from the animal catalog.
 * `delete 2` deletes the animal at `INDEX 2`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/delete_eg.png" alt="Delete animal example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/delete_eg.png" alt="Delete animal example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -263,13 +263,13 @@ Edits animals specified by the index with the newly specified prefix attributes.
 * `edit 2 n/Pookie` edits the name of the animal at `INDEX 2` to be `Pookie`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/edit_eg2.png" alt="Edit animal species and breed" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/edit_eg2.png" alt="Edit animal species and breed" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -310,14 +310,14 @@ Searches animals that are filtered using the specified prefixes.
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Search_eg1.png" alt="Search for animals named 'Bear'" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Search_eg1.png" alt="Search for animals named 'Bear'" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Search_eg2.png" alt="Search for animals with multiple prefixes" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Search_eg2.png" alt="Search for animals with multiple prefixes" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -347,7 +347,7 @@ Adds a specific new task to the task list of an animal.
 * `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/addtask_eg1.png" alt="Add task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/addtask_eg1.png" alt="Add task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -388,7 +388,7 @@ from animal with index 12, but because there is a missing `TASK_INDEX`, the comm
 * `deletetask 1 1` deletes the first task from the first animal in the list
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Delete_task_eg.png" alt="Delete task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Delete_task_eg.png" alt="Delete task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
@@ -435,7 +435,7 @@ Marks the specified task as done.
 * `mark 2 1 2` marks the first and second task of the second animal as done.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Mark_tasks_eg.png" alt="Mark task example" style="height: 300px; width: 400px; : margin-bottom: 16px;">
+  <img src="images/Mark_tasks_eg.png" alt="Mark task example" style="height: 300px; width: 550px; : margin-bottom: 16px;">
 </div>
 
 
@@ -485,7 +485,7 @@ Marks the specified task as uncompleted.
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Unmark_tasks_eg.png" alt="Unmark task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Unmark_tasks_eg.png" alt="Unmark task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
@@ -534,14 +534,14 @@ The animal cell whose details are currently being displayed in the detail view w
 * Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Selected_Animal.png" alt="Selected animal view" style="height: 300px; width: 400px; margin-bottom: 16px;">
+  <img src="images/Selected_Animal.png" alt="Selected animal view" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
 * `edit 2 n/Pooh` will automatically cause the animal at `INDEX 2` to show in the detailed view, since it is a command in the list of animal-specific commands.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/detailView_eg2.png" alt="Detailed view" style="height: 300px; width: 400px; : margin-bottom: 16px;">
+  <img src="images/detailView_eg2.png" alt="Detailed view" style="height: 300px; width: 550px; : margin-bottom: 16px;">
 </div>
 
 
@@ -558,6 +558,7 @@ Pawfection data are saved in the hard disk automatically after any command that 
 Pawfection data are saved automatically as a JSON file `[JAR file location]/data/animalcatalog.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
+
 *Caution:*
 If your changes to the data file makes its format invalid, Pawfection will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
