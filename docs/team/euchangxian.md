@@ -20,7 +20,7 @@ Given below are my contributions to the project:
   - Implemented an improved `Help` command [#117](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/117).
     - What it does: Allow users to specify a command name as argument
     - Justification: This additional feature allows users to quickly look up the usage guide of a specific command.
-      This is especially helpful and improves the user experience, since the generic help message would just be
+      This gitis especially helpful and improves the user experience, since the generic help message would just be
       redirecting the user to the User Guide webpage, which makes for an incredibly frustrating experience.
     - Highlights: This implementation will be affected if new commands are added. `CommandEnum` will have to be updated
       with the newly added command's name and help message.
