@@ -13,6 +13,7 @@ about animals in a shelter easily.
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
 - [Features](#features)
+    - [Attributes of `Animal`](#attributes-of-animal)
     - [Program usage help: `help`](#program-usage-help-help)
     - [Adding an animal: `add`](#adding-an-animal-add)
     - [Listing all animals: `list`](#listing-all-animals-list)
@@ -93,6 +94,10 @@ about animals in a shelter easily.
 
 </box>
 
+<box type="warning">
+For longer error messages stated in the user guide, they have been shortened for brevity by displaying only the first few words followed by ellipsis.
+</box>
+
 ### Attributes of `Animal`
 Summarized in the table below are the attributes of `Animal` along with their constraints. Users are encouraged to read through
 this table for an idea of what the attributes are supposed to look like, and refer to this table if they are unsure.
@@ -111,10 +116,6 @@ this table for an idea of what the attributes are supposed to look like, and ref
 | `da/DOA`    | `yyyy-MM-dd` format. Not in the future.<br/>Not chronologically earlier than `DOB` | <ul><li>✅ <code>da/2023-05-05</code></li></ul>                                                                                          |
 
 </details>
-
-<box type="warning">
-For longer error messages stated in the user guide, they have been shortened for brevity by displaying only the first few words followed by ellipsis.
-</box>
 
 ### Program usage help: `help`
 Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
