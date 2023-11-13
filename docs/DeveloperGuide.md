@@ -80,7 +80,7 @@ Generally, the UI consists of the command box for the user to input commands, a 
 2. `AnimalDetailPanel` which is a detailed view of `Animal` objects.
 
 
-The layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/resources/view/HelpWindow.fxml)
 
 The `UI` component does the following actions:
 
@@ -174,9 +174,9 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-## `AddAnimalCommand` Implementation
+## `AddAnimalCommand` Feature
 
-### Proposed Implementation
+### Implementation
 
 The `AddAnimalCommand` is a specific command designed to add an animal to the animal catalog. It identifies the animal to be added with attributes such as its name, ID, species, breed, age, date of birth and date of admission.
 
@@ -206,13 +206,11 @@ The following sequence diagram shows how the `AddAnimalCommand` works:
     - Pros: Can be more intuitive if the user does not know all the information of the animal.
     - Cons: Have to create an optional field those attributes which require.  This can involve additional development work to allow users to input optional data as needed
 
-_{more aspects and alternatives to be added}_
+## `DeleteAnimalCommand` Feature
 
-## `DeleteAnimalCommand` Implementation
+### Implementation
 
-### Proposed Implementation
-
-The `DeleteAnimalCommand` is a specific command designed to remove an animal from the animal catalog. It identifies the animal to be deleted based on its displayed index in the list.
+The `DeleteAnimalCommand` is a specific command designed to remove an animal from the animal catalog. It identifies the animal to be deleted based on its displayed index in the animal list.
 
 Here's a brief outline of its operations and attributes:
 
@@ -241,11 +239,36 @@ The following sequence diagram shows how the `DeleteAnimalCommand` works:
     - Pros: Can be more intuitive if the user knows the specific animal's details.
     - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
 
-_{more aspects and alternatives to be added}_
+## `EditAnimalCommand` Feature
 
-## `ListAnimalCommand` Implementation
+The `EditAnimalCommand` is a specific command designed to edit the field(s) of a selected animal from the animal catalog. It identifies the animal to be edited based on its displayed index in the animal list.
 
-### Proposed Implementation
+- `EditAnimalCommandParser#parse(String args)` — Parses the user input to create a `EditAnimalCommand` object with the given animal index.
+- `EditAnimalCommand#execute(AnimalModel model)` — Executes the command to edit an animal's attribute(s) for an animal in the animal catalog.
+
+Given below is an example usage scenario of the `EditAnimalCommand`:
+1. The user wants to update erratas in the animal detail of an animal.
+2. The user executes the `edit` command with the animal index and the prefixes of the attribute to be edited. For instance, `edit 1 n/Boo s/Cat` will edit the first animal's name to "Boo" and the species to "Cat".
+3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result. 
+
+The following sequence diagram shows how the `EditAnimalCommand` works:
+<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
+
+### Design considerations:
+
+Aspect: Choices of attributes to edit
+- Alternative 1 (current choice): Restrict the editing of animal `ID`.
+    - Pros: Primary key constraint is maintained, and animals can be uniquely identified by their `ID`.
+    - Cons: If user inputs the wrong `ID` when adding animal, user has to delete the entry and add again.
+- Alternative 2: Allow all attributes to be edited.
+    - Pros: Animal `ID` can be edited, user does not have to delete the entry and add a new animal.
+    - Cons: Might bring about cases where 2 entries for animal share exact same fields, and it becomes impossible to identify which is which animal.
+
+
+
+## `ListAnimalCommand` Feature
+
+### Implementation
 
 The `ListAnimalCommand` is a command designed to list all animals in the animal catalog. It does not take in any arguments.
 
@@ -270,9 +293,9 @@ Aspect: How the listing is handled
     - Pros: None.
     - Cons: Might be confusing for the user if the list is long.
 
-## `SearchAnimalCommand` Implementation
+## `SearchAnimalCommand` Feature
 
-### Proposed Implementation
+### Implementation
 
 The `SearchAnimalCommand` is a command designed to search for animals in the animal catalog. It takes in at least one prefix as an argument.
 
@@ -298,9 +321,9 @@ Aspect: How the search is handled
     - Pros: Easy to find animals even if the user does not know the exact prefixes.
     - Cons: Might be harder for users to find specific animals.
 
-## `MarkTaskCommand` Implementation
+## `MarkTaskCommand` Feature
 
-### Proposed Implementation
+### Implementation
 
 The `MarkTaskCommand` is a command designed to mark task(s) as done for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
 
@@ -326,9 +349,9 @@ Aspect: How the marking is handled
     - Pros: Easy for users to mark tasks as done.
     - Cons: Users might not be fully aware of which tasks are marked as done.
 
-## `UnmarkTaskCommand` Implementation
+## `UnmarkTaskCommand` Feature
 
-### Proposed Implementation
+### Implementation
 
 The `UnmarkTaskCommand` is a command designed to mark task(s) as uncompleted for an animal in the animal catalog. It takes in one animal index and at least one task index as arguments.
 
@@ -354,9 +377,9 @@ Aspect: How the unmarking is handled
   - Pros: Easy for users to mark tasks as uncompleted.
   - Cons: Users might not be fully aware of which tasks are marked as uncompleted.
 
-## `ResetTaskCommand` Implementation
+## `ResetTaskCommand` Feature
 
-### Proposed Implementation
+### Implementation
 
 The `ResetTaskCommand` is a command designed to reset all tasks as uncompleted for all animals in the animal catalog. It does not take in any arguments.
 
@@ -380,6 +403,36 @@ Aspect: How the resetting is handled
 - Alternative 2: Resets all tasks as uncompleted for only one animal in the animal catalog.
     - Pros: Easy to reset all tasks as uncompleted for a specific animal.
     - Cons: Might be harder for users to reset all tasks as uncompleted for all animals.
+
+## `Detailed View` Feature
+
+### Implementation
+
+The detailed view is a feature that shows the details of the animals not seen in the entries of the animal list. These include
+Date of Birth(DOB), Date of Admission(DOA), and Tasks that are added to the animal. The detailed view is handled by the `AnimalDetailPanel` class.
+
+Here's a brief outline of its operations:
+- `AnimalDetailPanel#updateDetails(Animal animal)` — Updates the detail panel of the application with the input animal's details.
+
+`AnimalDetailPanel` is either updated by the user by clicking on an animal entry cell, or using animal-specific commands. The following activity diagram shows how the detailed view works:
+<puml src="diagrams/ViewDetailActivityDiagram.puml" alt="ViewDetailActivityDiagram" />
+
+For update of `AnimalDetailPanel` by clicking, this is handled in the `AnimalListPanel` class using a `Listener`. The `Listener` will listen to changes in selected cell, and update the animal details to show the selected animal.
+
+For update of `AnimalDetailPanel` by animal-specific commands, animal-specific commands that automatically update the `Detailed View` with the targeted animal include `add`, `edit`, `addtask`, 
+`deletetask`, `mark`, and `unmark`. For such animal-specific commands, the `CommandResult` will accept an additional argument `Animal`,
+and this is retrieved by the `AnimalDetailView` in the `MainWindow` class. To differentiate between `CommandResult` that contains an `Animal` (animal-specific commands) and non-animal-specific commands, Optional<Animal> was used as the Type stored in the `CommandResult` class.
+
+### Design considerations:
+
+Aspect: How the detailed view is displayed
+- Alternative 1 (current choice): Integrate detailed view with the main window of the application.
+    - Pros: Easy to see the details of the animals, better accessibility of the detailed view.
+    - Cons: None
+- Alternative 2: Make the detailed view a Pop-up
+    - Pros: Application window size can be smaller and more minimal.
+    - Cons: User has to close the pop-up whenever user is done seeing the details of animal.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -490,6 +543,17 @@ Use case resumes from step 2.
 *a2. User confirms the cancellation.
 Use case ends.
 
+**Use Case: UC05 - View Animal Details**
+
+**MSS:**
+1. User chooses to view details of animal.
+2. AnimalDetailView is updated with the selected animal.
+Use case ends.
+
+*a. At any time, User enters a valid animal-specific command.
+*a1. AnimalDetailView is updated with the specified animal in the animal-specific command.
+Use case ends.
+
 ---
 
 ### Non-Functional Requirements
@@ -504,6 +568,7 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Animal-Specific Command**: Certain commands that target an animal, which are `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -533,15 +598,11 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-2. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements** ##
 ## Planned Enhancements
@@ -562,4 +623,14 @@ testers are expected to do more *exploratory* testing.
 
 
 6. Implement more detailed error messages for `add` command. Currently, our AnimalCatalog prevents adding of identical animals, and this identity is tracked using the primary key `ID` of the animal. When a user tries to add an animal and specifies an `ID` that already exists in the AnimalCatalog, the error message states that `This animal already exists in the Catalog`. While performing as expected, it can be further enhanced with the animal `ID`, such as `Animal with ID: 1111 already exists in the Catalog`.
+
+
+
+## **Appendix: Effort**
+
+Our groups faced challenges and required to put great effort for this project. These included:
+1. An additional UI panel (Detailed View) that displays the details of an animal (if selected). These panel also had to be updated live with
+any commands that causes changes to the Animal attributes. For example, if a task of the selected animal in the detailed view is marked as complete,
+the UI needs to reflect the changes live for it to be accurate.
+2. Addition of multiple new attribute classes like `PetId`, `AdmissionDate`, `DateofBirth`, `Sex`, `Task`, and many more to fit the target audience. These meant a lot more test cases and error handling for all inputs for these classes.
 

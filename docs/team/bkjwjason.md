@@ -28,9 +28,13 @@ Given below are my contributions to the project:
 
 * **Documentation**:
     * User Guide:
-      Wrote the portion regarding detailed view, and added screenshots of examples for most commands. Also added error cases for commands
+      Wrote the portion regarding detailed view
+      Added screenshots of examples for most commands. 
+      Added error cases for commands
     * Developer Guide:
       Wrote the portion regarding UI, and Planned Enhancements
+      Wrote the EditAnimalCommand, and Detailed View
+      Wrote the MSS for View Animal Detail
 
 * **Team Tasks**:
     * Updated AboutUs
