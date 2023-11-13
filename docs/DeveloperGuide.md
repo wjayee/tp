@@ -145,7 +145,6 @@ How the parsing works:
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-
 The `AnimalModel` component,
 
 * stores the animal catalog data i.e., all `Animal` objects (which are contained in a `UniqueAnimalList` object).
@@ -162,15 +161,17 @@ The `AnimalModel` component,
 
 </box>
 
-
 ### Storage component
 
 **API** : [`AnimalStorage.java`](../src/main/java/seedu/address/storage/AnimalStorage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
-> [!NOTE]\
-> `AnimalStorage` and `Storage` are used synonymously.
+<box type="info" seamless>
+<md>
+`AnimalStorage` and `Storage` are used synonymously.
+</md>
+</box>
 
 The `AnimalStorage` component,
 * can save both animal catalog data and user preference data in JSON format, and read them back into corresponding
@@ -417,7 +418,19 @@ Refer to [`ListAnimalCommand`](#listanimalcommand-feature) for the sequence diag
 
 ## `AddTaskCommand` Feature
 
-CONTINUE IMPLEMENTATION
+The `AddTaskCommand` is a specific command designed to add a task to the task list of an animal. It identifies the animal to be selected based on its index in the current animal list.
+
+Here's a brief outline of its operations and attributes:
+
+- `AddTaskCommand#execute(AnimalModel model)` — Executes the command to add a task to the task list of a specified animal.
+- `targetIndex` — An attribute that holds the index of the specified animal.
+- `task` — An attribute that holds the task that is to be added.
+
+Given below is an example usage scenario of the `AddTaskCommand`:
+
+1. The user views the list of animals in the animal catalog. Note that this can be a filtered list, such as after using the `find` command.
+2. The user decides to add a task to a specified animal and executes the `addtask` command, providing the index of the specified animal and a task description of "Feed dog". For instance, `addtask 3 Feed dog` will add the task with task description "Feed dog" to the third animal in the list.
+3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, adds the task to the task list of that animal, and returns a successful command result.
 
 The following sequence diagram shows how the `AddTaskCommand` works:
 
@@ -427,15 +440,47 @@ Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagra
 </md>
 </box>
 
+### Design considerations:
+
+**Aspect: Multiplicity of tasks to be added and animals to be modified**
+
+- **Alternative 1 (current choice):** Allows for only one task to be added to one animal in each command.
+    - Pros: Easy to keep track of the task to be added to the specified animal.
+    - Cons: Users will not be able to add multiple tasks with just one command and have to use the `addtask` command multiple times to add multiple tasks.
+- **Alternative 2:** Allows for multiple tasks to be added to multiple animals in one command.
+    - Pros: Users can add all tasks to all animals in one command.
+    - Cons: Command can get too long and user may lose track of the animals and tasks to be added.
+
 ## `DeleteTaskCommand` Feature
 
-CONTINUE IMPLEMENTATION
+The `DeleteTaskCommand` is a specific command designed to delete a task to the task list of an animal. It identifies the animal to be selected based on its index in the current animal list and the task to be deleted based on its index in the task list of the selected animal.
+
+Here's a brief outline of its operations and attributes:
+
+- `DeleteTaskCommand#execute(AnimalModel model)` — Executes the command to delete a specified task of a specified animal.
+- `targetAnimalIndex` — An attribute that holds the index of the specified animal.
+- `targetTaskIndex` — An attribute that holds the index of the task to be deleted.
+
+Given below is an example usage scenario of the `DeleteTaskCommand`:
+
+1. The user views the list of animals in the animal catalog. Note that this can be a filtered list, such as after using the `find` command.
+2. The user decides to delete a task of a specified animal and executes the `deletetask` command, providing the index of the specified animal and the index of the task to be deleted. For instance, `deletetask 3 1` will delete the first task in the task list of the third animal in the displayed animal list.
+3. The command verifies the validity of the indices. If either index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the animal index, deletes the task corresponding to the task index of the task list of that animal, and returns a successful command result.
 
 <box type="info" seamless>
 <md>
 Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagrams of the logic and model components of `DeleteTaskCommand` as they are largely similar.
 </md>
 </box>
+
+**Aspect: Multiplicity of tasks to be deleted and animals to be modified**
+
+- **Alternative 1 (current choice):** Allows for only one task to be deleted from one animal in each command.
+    - Pros: Easy to keep track of the task to be deleted from the specified animal.
+    - Cons: Users will not be able to delete multiple tasks with just one command and have to use the `deletetask` command multiple times to delete multiple tasks.
+- **Alternative 2:** Allows for multiple tasks to be deleted from multiple animals in one command.
+    - Pros: Users can delete all specified tasks from all specified animals in one command.
+    - Cons: Command can get too long and user may lose track of the animals and tasks to be deleted.
 
 ## `MarkTaskCommand` and `UnmarkTaskCommand` Feature
 
