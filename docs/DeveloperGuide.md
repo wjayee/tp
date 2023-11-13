@@ -226,6 +226,7 @@ The following activity diagram shows how the `HelpAnimalCommand` works:
 ### Design considerations:
 
 **Aspect: How the help is implemented**
+
 - **Alternative 1 (current choice):** `help` command searches for the specified command in a `CommandEnum` class.
   - Pros: Better maintainability and separation of concerns. `CommandEnum` encapsulates the commands' name and help
           message, rather than hard-coding and maintaining a Map of commandName: helpMessage. If the help message were
@@ -261,13 +262,16 @@ inputted attributes to the model and returns a successful command result.
 
 The following sequence diagrams shows how the `AddAnimalCommand` works:
 
-In the logic component:
+**In the logic component:**
 <puml src="diagrams/AddLogicSequenceDiagram.puml" alt="AddLogicSequenceDiagram" />
 
-> [!NOTE]
-> All commands (except `list`, `search` and `reset`) have similar logic sequence diagrams, and hence only `AddAnimalCommand` will be explained in detail.
+<box type="info" seamless>
+<md>
+All commands (except `list`, `search` and `reset`) have similar logic sequence diagrams, and hence only [`AddAnimalCommand`](#addanimalcommand-feature) will be explained in detail.
+</md>
+</box>
 
-In the model component:
+**In the model component:**
 <puml src="diagrams/AddModelSequenceDiagram.puml" alt="AddModelSequenceDiagram" />
 
 ### Design considerations:
@@ -279,7 +283,6 @@ In the model component:
             not have to remember to manually add in the attributes for the animal after adding the entry.
     - Cons: Requires many error handling in case of an invalid syntax, wrong format, or missing attributes. All the
             crucial information about the animal must be known to add the animal.
-
 - **Alternative 2:** Add the animal with mandatory attributes such as name and id but optional attributes for the rest.
     - Pros: Can be easier for the user if the user does not know all the information of the animal at the moment
             of adding.
@@ -304,8 +307,11 @@ Given below is an example usage scenario of the `DeleteAnimalCommand`:
 2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would attempt to delete the third animal on the list.
 3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, removes it from the model, and returns a successful command result.
 
-> [!NOTE]\
-> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `DeleteAnimalCommand` as they are largely similar.
+<box type="info" seamless>
+<md>
+Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagrams of the logic and model components of `DeleteAnimalCommand` as they are largely similar.
+</md>
+</box>
 
 ### Design considerations:
 
@@ -314,7 +320,6 @@ Given below is an example usage scenario of the `DeleteAnimalCommand`:
 - **Alternative 1 (current choice):** Use an index to specify which animal to delete.
     - Pros: Straightforward for the user, especially if the list of animals is displayed.
     - Cons: Requires error handling in case of an invalid index.
-
 - **Alternative 2:** Delete by specifying the animal's unique identifier or name.
     - Pros: Can be more intuitive if the user knows the specific animal's details.
     - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
@@ -331,17 +336,20 @@ Given below is an example usage scenario of the `EditAnimalCommand`:
 2. The user executes the `edit` command with the animal index and the prefixes of the attribute to be edited. For instance, `edit 1 n/Boo s/Cat` will edit the first animal's name to "Boo" and the species to "Cat".
 3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result.
 
-> [!NOTE]\
-> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `EditAnimalCommand` as they are largely similar.
-
+<box type="info" seamless>
+<md>
+Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagrams of the logic and model components of `EditAnimalCommand` as they are largely similar.
+</md>
+</box>
 
 ### Design considerations:
 
-Aspect: Choices of attributes to edit
-- Alternative 1 (current choice): Restrict the editing of animal `ID`.
+**Aspect: Choices of attributes to edit**
+
+- **Alternative 1 (current choice):** Restrict the editing of animal `ID`.
     - Pros: Primary key constraint is maintained, and animals can be uniquely identified by their `ID`.
     - Cons: If user inputs the wrong `ID` when adding animal, user has to delete the entry and add again.
-- Alternative 2: Allow all attributes to be edited.
+- **Alternative 2:** Allow all attributes to be edited.
     - Pros: Animal `ID` can be edited, user does not have to delete the entry and add a new animal.
     - Cons: Might bring about cases where 2 entries for animal share exact same fields, and it becomes impossible to identify which is which animal.
 
@@ -361,16 +369,17 @@ Given below is an example usage scenario of the `ListAnimalCommand`:
 
 The following sequence diagram shows how the `ListAnimalCommand` works:
 
-In the logic component:
+**In the logic component:**
 <puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
 
 ### Design considerations:
 
-Aspect: How the listing is handled
-- Alternative 1 (current choice): Use a command to list all animals in the animal catalog.
+**Aspect: How the listing is handled**
+
+- **Alternative 1 (current choice):** Use a command to list all animals in the animal catalog.
     - Pros: Straightforward for the user.
     - Cons: None.
-- Alternative 2: Display all animals in the animal catalog by default.
+- **Alternative 2:** Display all animals in the animal catalog by default.
     - Pros: None.
     - Cons: Might be confusing for the user if the list is long.
 
@@ -389,17 +398,20 @@ Given below is an example usage scenario of the `SearchAnimalCommand`:
 2. The user executes the `search` command with the prefixes of the attributes to be searched. For instance, `search b/Poodle` would search for animals of breed Poodle.
 3. The command verifies the validity of the prefixes. If all the prefixes are invalid, it throws a `CommandException`. Otherwise, it retrieves the animals that match the valid prefixes, and returns a successful command result.
 
-> [!NOTE]
-> Refer to `ListAnimalCommand` for the sequence diagrams of the model component of `SearchAnimalCommand` as they are largely similar, except for the predicate passed into updateFilteredAnimalList.
-
+<box type="info" seamless>
+<md>
+Refer to [`ListAnimalCommand`](#listanimalcommand-feature) for the sequence diagrams of the model component of `SearchAnimalCommand` as they are largely similar, except for the predicate passed into updateFilteredAnimalList.
+</md>
+</box>
 
 ### Design considerations:
 
-Aspect: How the search is handled
-- Alternative 1 (current choice): Searches for animals based on complete matches of prefixes.
+**Aspect: How the search is handled**
+
+- **Alternative 1 (current choice):** Searches for animals based on complete matches of prefixes.
     - Pros: Easy to find specific animals
     - Cons: Might be harder for users to find animals if they do not know the exact prefixes.
-- Alternative 2: Searches for animals based on partial matches of prefixes.
+- **Alternative 2:** Searches for animals based on partial matches of prefixes.
     - Pros: Easy to find animals even if the user does not know the exact prefixes.
     - Cons: Might be harder for users to find specific animals.
 
@@ -409,16 +421,21 @@ CONTINUE IMPLEMENTATION
 
 The following sequence diagram shows how the `AddTaskCommand` works:
 
-> [!NOTE]\
-> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `AddTaskCommand` as they are largely similar.
+<box type="info" seamless>
+<md>
+Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagrams of the logic and model components of `AddTaskCommand` as they are largely similar.
+</md>
+</box>
 
 ## `DeleteTaskCommand` Feature
 
 CONTINUE IMPLEMENTATION
 
-> [!NOTE]\
-> Refer to `AddAnimalCommand` for the sequence diagrams of the logic and model components of `DeleteTaskCommand` as they are largely similar.
-
+<box type="info" seamless>
+<md>
+Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagrams of the logic and model components of `DeleteTaskCommand` as they are largely similar.
+</md>
+</box>
 
 ## `MarkTaskCommand` and `UnmarkTaskCommand` Feature
 
@@ -429,7 +446,11 @@ The `UnmarkTaskCommand` is a command designed to mark task(s) as uncompleted for
 
 Both commands take in one animal index and at least one task index as arguments.
 
-> Note: `MarkTaskCommand` and `UnmarkTaskCommand` have very similar implementations, and hence only `MarkTaskCommand` will be explained in detail.
+<box type="info" seamless>
+<md>
+`MarkTaskCommand` and `UnmarkTaskCommand` have very similar implementations, hence only `MarkTaskCommand` will be explained in detail.
+</md>
+</box>
 
 Here's a brief outline of its operations and attributes:
 - `MarkTaskCommandParser#parse(String args)` — Parses the user input to create a `MarkTaskCommand` object with the given animal index and task index(s).
@@ -442,21 +463,26 @@ Given below is an example usage scenario of the `MarkTaskCommand`:
 
 The following sequence diagrams shows how the `MarkTaskCommand` works:
 
-In the logic component:
+**In the logic component:**
 <puml src="diagrams/MarkLogicSequenceDiagram.puml" alt="MarkLogicSequenceDiagram" />
 
-In the model component:
+**In the model component:**
 <puml src="diagrams/MarkModelSequenceDiagram.puml" alt="MarkModelSequenceDiagram" />
 
-> Note: `UnmarkTaskCommand` works similarly to `MarkTaskCommand`, except that `updateTask` takes in `false` instead of `true`.
+<box type="info" seamless>
+<md>
+`UnmarkTaskCommand` works similarly to `MarkTaskCommand`, except that `updateTask` takes in `false` instead of `true`.
+</md>
+</box>
 
 ### Design considerations:
 
-Aspect: How the marking is handled
-- Alternative 1 (current choice): Marks tasks as done only when all indexes provided are valid.
+**Aspect: How the marking is handled**
+
+- **Alternative 1 (current choice):** Marks tasks as done only when all indexes provided are valid.
     - Pros: Easy to keep track which tasks are marked as done.
     - Cons: Users have to ensure that all indexes provided are valid.
-- Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as done.
+- **Alternative 2:** Ignore invalid task indexes and mark the rest of the tasks as done.
     - Pros: Easy for users to mark tasks as done.
     - Cons: Users might not be fully aware of which tasks are marked as done.
 
@@ -477,19 +503,20 @@ Given below is an example usage scenario of the `ResetTaskCommand`:
 
 The following sequence diagram shows how the `ResetTaskCommand` works:
 
-In the logic component:
+**In the logic component:**
 <puml src="diagrams/ResetLogicSequenceDiagram.puml" alt="ResetLogicSequenceDiagram" />
 
-In the model component:
+**In the model component:**
 <puml src="diagrams/ResetModelSequenceDiagram.puml" alt="ResetModelSequenceDiagram" />
 
 ### Design considerations:
 
-Aspect: How the resetting is handled
-- Alternative 1 (current choice): Resets all tasks as uncompleted for all animals in the animal catalog.
+**Aspect: How the resetting is handled**
+
+- **Alternative 1 (current choice):** Resets all tasks as uncompleted for all animals in the animal catalog.
     - Pros: Easy to reset all tasks as uncompleted.
     - Cons: None.
-- Alternative 2: Resets all tasks as uncompleted for only one animal in the animal catalog.
+- **Alternative 2:** Resets all tasks as uncompleted for only one animal in the animal catalog.
     - Pros: Easy to reset all tasks as uncompleted for a specific animal. Users have finer control.
     - Cons: Might be harder for users to reset all tasks as uncompleted for all animals. Users have to manually reset
             tasks for each of their animal.
@@ -516,11 +543,12 @@ and this is retrieved by the `AnimalDetailView` in the `MainWindow` class. To di
 
 ### Design considerations:
 
-Aspect: How the detailed view is displayed
-- Alternative 1 (current choice): Integrate detailed view with the main window of the application.
+**Aspect: How the detailed view is displayed**
+
+- **Alternative 1 (current choice):** Integrate detailed view with the main window of the application.
     - Pros: Easy to see the details of the animals, better accessibility of the detailed view.
     - Cons: None
-- Alternative 2: Make the detailed view a Pop-up
+- **Alternative 2:** Make the detailed view a Pop-up
     - Pros: Application window size can be smaller and more minimal.
     - Cons: User has to close the pop-up whenever user is done seeing the details of animal.
 
