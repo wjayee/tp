@@ -29,7 +29,7 @@ Given below are my contributions to the project:
     * Added documentation for the features `addAnimal`, `editAnimal`: [#118](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/118)
     * Added documentation for command summary and features summary
   * Developer Guide:
-    * Added implementation details and documentation for use cases for `addAnimal` [#86](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/86) 
+    * Added implementation details and documentation for use cases for `addAnimal`, along with sequence diagram [#86](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/86) 
     * Added implementation details and documentation for Model component of PawFection [#90](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/90)
 
 * **Team Tasks**:
