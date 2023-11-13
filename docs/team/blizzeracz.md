@@ -14,7 +14,6 @@ Given below are my contributions to the project:
 * **Code contributed**: [Loysius' RepoSense Link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=blizzeracz&breakdown=true)
 
 * **Project management**:
-    * Created team organization, team repository, and set up repository with MarkBind and Codecov
     * Created milestones and assigned issues to team members for v1.1, v1.2, v1.3, v1.4
 
 * **Enhancements to existing features**
@@ -35,7 +34,8 @@ Given below are my contributions to the project:
 * **Team Tasks**:
     * Updated AboutUs description [#20](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/20)
     * Updated ReadMe description and uploaded pictures
-    * Refactored code for PawFection [#59](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/59)
+    * Refactored model, parser, and logic along with validity checks and prefixes class [#59](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/59)
+    * Created team organization, team repository, and set up repository with MarkBind and Codecov
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments): [#89](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/89), [#87](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/87), [#228](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/228)
