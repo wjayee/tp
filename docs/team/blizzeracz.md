@@ -19,7 +19,7 @@ Given below are my contributions to the project:
 * **Enhancements to existing features**
     * Modify "Edit" feature for Animal Catalog [#110](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/110)
     * Modify "Add" feature for Animal Catalog [#59](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/59)
-    * Wrote tests for `AddAnimal`: [#75](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/75), [#76](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/76) 
+    * Wrote tests for `AddAnimal`: [#75](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/75), [#76](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/76)
     * Wrote tests for `Breed` and `Species`: [#80](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/80)
     * Wrote tests for `LogicManager`: [#189](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/189)
 
@@ -28,7 +28,7 @@ Given below are my contributions to the project:
     * Added documentation for the features `addAnimal`, `editAnimal`: [#118](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/118)
     * Added documentation for command summary and features summary
   * Developer Guide:
-    * Added implementation details and documentation for use cases for `addAnimal`, along with sequence diagram [#86](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/86) 
+    * Added implementation details and documentation for use cases for `addAnimal`, along with sequence diagram [#86](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/86)
     * Added implementation details and documentation for Model component of PawFection [#90](https://github.com/AY2324S1-CS2103T-F08-3/tp/pull/90)
 
 * **Team Tasks**:
