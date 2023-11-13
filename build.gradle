@@ -26,6 +26,14 @@ test {
     finalizedBy jacocoTestReport
 }
 
+testlogger {
+    showPassed false
+    showSkipped false
+    showFailed true
+    showOnlySlow false
+}
+
+
 tasks.withType(JavaExec) {
     enableAssertions = true
 }

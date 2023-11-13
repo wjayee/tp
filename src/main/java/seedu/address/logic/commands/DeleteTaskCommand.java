@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.AnimalModel.PREDICATE_SHOW_ALL_ANIMALS;
 
 import java.util.List;
 
@@ -11,8 +10,6 @@ import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalModel;
 import seedu.address.model.animal.Animal;
-import seedu.address.model.animal.Task;
-import seedu.address.model.animal.TaskList;
 
 /**
  * Deletes a specific task from the task list of an animal.
@@ -65,44 +62,15 @@ public class DeleteTaskCommand extends AnimalCommand {
         }
 
         Animal animalToEdit = lastShownList.get(targetAnimalIndex.getZeroBased());
-        List<Task> taskList = animalToEdit.getTasks();
 
-        if (targetTaskIndex.getZeroBased() >= taskList.size()) {
+        if (targetTaskIndex.getZeroBased() >= model.getSizeOfTaskList(animalToEdit)) {
             throw new CommandException(AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
-        Task taskToDelete = taskList.get(targetTaskIndex.getZeroBased());
-        Animal editedAnimal = createUpdatedTaskAnimal(animalToEdit, targetTaskIndex);
+        Animal editedAnimal = model.deleteTask(animalToEdit, targetTaskIndex);
 
-        model.setAnimal(animalToEdit, editedAnimal);
-        model.updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(),
-                AnimalMessages.format(taskToDelete)), editedAnimal);
-    }
-
-    /**
-     * Creates and returns an {@code Animal} with the details of {@code animalToEdit}
-     * after deleting the tasks with {@code targetTaskIndex}.
-     */
-    private static Animal createUpdatedTaskAnimal(Animal animalToEdit, Index targetTaskIndex) {
-        assert animalToEdit != null;
-
-        Animal editedAnimal = createAnimalWithSameAttributes(animalToEdit);
-        copyTasksFromAnimalToAnimal(animalToEdit, editedAnimal);
-        editedAnimal.deleteTaskByIndex(targetTaskIndex);
-
-        return editedAnimal;
-    }
-
-    private static Animal createAnimalWithSameAttributes(Animal source) {
-        return new Animal(source.getName(), source.getPetId(), source.getSpecies(),
-                source.getBreed(), source.getSex(), source.getAdmissionDate(),
-                source.getDateOfBirth());
-    }
-
-    private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
-        TaskList targetTaskList = target.getTaskList();
-        targetTaskList.addAllTasks(source.getTasks());
+        return new CommandResult(String.format(MESSAGE_SUCCESS, model.getName(editedAnimal),
+                AnimalMessages.format(model.getTaskByIndex(animalToEdit, targetTaskIndex))), editedAnimal);
     }
 
     @Override

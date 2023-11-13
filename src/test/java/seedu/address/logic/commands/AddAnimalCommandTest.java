@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalCatalog;
@@ -22,6 +23,7 @@ import seedu.address.model.AnimalModel;
 import seedu.address.model.AnimalReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
 import seedu.address.testutil.AnimalBuilder;
 
@@ -152,7 +154,27 @@ public class AddAnimalCommandTest {
         }
 
         @Override
-        public void addTask(Task newTask, Animal animal) {
+        public Animal addTask(Task newTask, Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Name getName(Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Task getTaskByIndex(Animal animal, Index index) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Animal deleteTask(Animal animal, Index index) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public int getSizeOfTaskList(Animal animal) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
 

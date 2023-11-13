@@ -1,5 +1,7 @@
 package seedu.address.model.animal;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -133,12 +135,41 @@ public class Animal {
         return breed.toString();
     }
 
-    public void addTask(Task task) {
-        taskList.addTask(task);
+    /**
+     * Clones the current Animal object and adds the task to the clone
+     *
+     * @param task the task to be added.
+     * @return a new Animal object with the added task.
+     */
+    public Animal addTask(Task task) {
+        requireNonNull(task);
+
+        Animal updatedAnimal = new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth);
+        copyTasksFromAnimalToAnimal(this, updatedAnimal);
+        updatedAnimal.getTaskList().addTask(task);
+
+        return updatedAnimal;
     }
 
-    public void deleteTaskByIndex(Index targetTaskIndex) {
-        taskList.deleteTaskByIndex(targetTaskIndex);
+    /**
+     * Clones the current Animal object and deletes the task of the specified task index of the clone
+     *
+     * @param targetTaskIndex the index of the task to be deleted in the Animal taskList
+     * @return a new Animal object with a taskList less the specified task
+     */
+    public Animal deleteTaskByIndex(Index targetTaskIndex) {
+        requireNonNull(targetTaskIndex);
+
+        Animal updatedAnimal = new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth);
+        copyTasksFromAnimalToAnimal(this, updatedAnimal);
+        updatedAnimal.getTaskList().deleteTaskByIndex(targetTaskIndex);
+
+        return updatedAnimal;
+    }
+
+    private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
+        TaskList targetTaskList = target.getTaskList();
+        targetTaskList.addAllTasks(source.getTasks());
     }
 
     public List<JsonAdaptedTask> getTaskListForSerialization() {

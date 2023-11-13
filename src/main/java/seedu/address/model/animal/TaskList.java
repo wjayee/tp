@@ -33,12 +33,23 @@ public class TaskList {
         return Collections.unmodifiableList(taskList);
     }
 
-    public void addTask(Task task) {
+    /**
+     * Adds a task to the taskList.
+     *
+     * @param task The task to be added.
+     * @return The updated TaskList.
+     */
+    public TaskList addTask(Task task) {
         taskList.add(task);
+        return this;
     }
 
     public void deleteTaskByIndex(Index index) {
         taskList.remove(index.getZeroBased());
+    }
+
+    public Task getTaskByIndex(Index index) {
+        return taskList.get(index.getZeroBased());
     }
 
     /**

@@ -9,7 +9,8 @@ import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SIXTH;
-import static seedu.address.testutil.TypicalTasks.FED;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
+import static seedu.address.testutil.TypicalTasks.FEED;
 import static seedu.address.testutil.TypicalTasks.WALKED;
 
 import java.util.List;
@@ -73,16 +74,13 @@ public class DeleteTaskCommandTest {
 
     @Test
     public void execute_validAnimalAndTaskIndex_success() {
-        Animal animalWithTasks = new AnimalBuilder(TOFU).withTaskList(List.of(FED, WALKED)).build();
-        model.setAnimal(TOFU, animalWithTasks);
-
         DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(INDEX_FIRST, INDEX_SECOND);
 
         String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_SUCCESS, TOFU.getName(),
                 WALKED.getDescription());
 
         AnimalModel expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
-        Animal expectedAnimal = new AnimalBuilder(animalWithTasks).withTaskList(List.of(FED)).build();
+        Animal expectedAnimal = new AnimalBuilder(TOFU).withTaskList(List.of(FEED)).build();
         expectedModel.setAnimal(TOFU, expectedAnimal);
 
         assertCommandSuccess(deleteTaskCommand, model, expectedMessage, expectedModel);
@@ -99,10 +97,7 @@ public class DeleteTaskCommandTest {
 
     @Test
     public void execute_invalidTaskIndex_failure() {
-        Animal animalWithTasks = new AnimalBuilder(TOFU).withTaskList(List.of(FED)).build();
-        model.setAnimal(TOFU, animalWithTasks);
-
-        DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(INDEX_FIRST, INDEX_SECOND);
+        DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(INDEX_FIRST, INDEX_THIRD);
 
         String expectedMessage = AnimalMessages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
