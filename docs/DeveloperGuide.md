@@ -643,80 +643,183 @@ otherwise)
 
 ---
 
-**Use Case: UC01 - Add Animal**
+**Use Case: UC01 - Help on Animal Commands**
 
 **MSS:**
-1. User chooses to add an animal.
-2. AnimalCatalog prompts for the animal details.
-3. User provides the necessary animal details.
-4. AnimalCatalog validates the details.
-5. AnimalCatalog adds the pet to the shelter database and displays the success message.
-   Use case ends.
+1. User requests help on a specific command or a list of commands related to animal handling.
+2. AnimalCatalog processes the request and identifies the command or commands in question.
+3. AnimalCatalog retrieves the usage instructions for the command(s).
+4. AnimalCatalog displays the help instructions to the user.
+    - Use case ends.
 
 **Extensions:**
-3a. AnimalCatalog detects that the name is null.
-3a1. AnimalCatalog displays the failure message: "Please input an animal name".
-Use case resumes from step 2.
+- 1a. The user does not specify any command
+    - 1a1. AnimalCatalog detects empty command.
+    - 1a2. Returns a pop-up with a link to the user guide.
+    - Use case ends.
+- 1b. The user specifies a command that does not exist or is misspelled.
+    - 1b1. AnimalCatalog displays a message indicating the command was not recognized.
+    - Use case ends.
 
 ---
 
-**Use Case: UC02 - List Animals**
+**Use Case: UC02 - Add Animal to Catalog**
 
 **MSS:**
-1. User chooses to list all animals.
-2. AnimalCatalog retrieves all animals from the shelter database.
+1. User requests to add an animal to the catalog by entering required details for the new animal.
+2. AnimalCatalog validates the details and checks for duplicate entries in the catalog.
+3. AnimalCatalog adds the animal to the catalog and displays a success message.
+    - Use case ends.
+
+**Extensions:**
+- 2a. The animal already exists in the catalog.
+  - 2a1. AnimalCatalog displays a message indicating a duplicate entry.
+  - Use case ends.
+- 1a. The user enters incomplete or invalid details.
+  - 1a1. AnimalCatalog prompts the user to enter the correct and complete details.
+  - Use case ends.
+
+---
+
+**Use Case: UC03 - Delete Animal from Catalog**
+
+**MSS:**
+1. User requests to delete an animal from the catalog by specifying the animal's index.
+2. AnimalCatalog validates the index and locates the animal in the catalog.
+3. AnimalCatalog deletes the animal from the catalog and displays a success message.
+    - Use case ends.
+
+**Extensions:**
+- 2a. The specified index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+    - Use case ends.
+
+---
+
+**Use Case: UC04 - Edit Animal Details in Catalog**
+
+**MSS:**
+1. User requests to edit the details of an existing animal in the catalog by specifying the animal's index and the new details.
+2. AnimalCatalog validates the index and locates the animal in the catalog.
+3. AnimalCatalog updates the animal's details with the new information provided and displays a success message.
+    - Use case ends.
+
+**Extensions:**
+- 1a. The user attempts to change the animal's ID.
+    - 1a1. AnimalCatalog displays an error message indicating the ID cannot be changed.
+    - Use case ends.
+- 1b. No new details are provided for the update.
+    - 1b1. AnimalCatalog prompts the user to enter at least one field to be updated.
+    - Use case ends.
+- 2a. The specified index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+    - Use case ends.
+
+---
+
+**Use Case: UC05 - List All Animals in Catalog**
+
+**MSS:**
+1. User requests to list all animals in the catalog.
+2. AnimalCatalog retrieves all animal entries.
 3. AnimalCatalog displays the list of all animals.
-   Use case ends.
+    - Use case ends.
 
 ---
 
-**Use Case: UC03 - Edit Animal**
+**Use Case: UC06 - Search for Animals in Catalog**
 
 **MSS:**
-1. User chooses to edit an animal's details.
-2. AnimalCatalog prompts for the index of the animal to be edited.
-3. User provides the index and the updated details.
-4. AnimalCatalog validates the details and the index.
-5. AnimalCatalog updates the animal details and displays the success message.
-   Use case ends.
+1. User requests to search for animals in the catalog using a specific keyword.
+2. AnimalCatalog applies the search based on the given keyword to all animal entries.
+3. AnimalCatalog displays a list of animals that match the keyword.
+    - Use case ends.
 
 **Extensions:**
-3a. AnimalCatalog detects that the given index is out of range.
-3a1. AnimalCatalog displays a failure message indicating an invalid index.
-Use case resumes from step 2.
+- 1a. No animals match the search keyword.
+    - 1a1. AnimalCatalog displays a message indicating no results found.
+    - Use case ends.
+- 1b. The keyword provided is invalid or empty.
+    - 1b1. AnimalCatalog display a message for the user to enter a valid keyword.
+    - Use case ends.
 
 ---
 
-**Use Case: UC04 - Delete Animal**
+**Use Case: UC07 - Add Task to Animal's Task List**
 
 **MSS:**
-1. User chooses to delete an animal.
-2. AnimalCatalog prompts for the index of the animal to be deleted.
-3. User provides the index.
-4. AnimalCatalog validates the index.
-5. AnimalCatalog deletes the animal and displays the success message.
-   Use case ends.
+1. User requests to add a task to the task list of an animal by specifying the animal's index and the task details.
+2. AnimalCatalog validates the index and locates the animal in the catalog.
+3. AnimalCatalog adds the task to the animal's task list and displays a success message.
+    - Use case ends.
 
 **Extensions:**
-3a. AnimalCatalog detects that the given index is out of range.
-3a1. AnimalCatalog displays a failure message indicating an invalid index.
-Use case resumes from step 2.
+- 1a. The task details provided are invalid or incomplete.
+    - 1a1. AnimalCatalog displays a message for the user to enter valid task details.
+    - Use case ends.
+- 2a. The specified index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+    - Use case ends.
 
-*a. At any time, User chooses to cancel the deletion.
-*a1. AnimalCatalog requests to confirm the cancellation.
-*a2. User confirms the cancellation.
-Use case ends.
+---
 
-**Use Case: UC05 - View Animal Details**
+**Use Case: UC08 - Delete Task from Animal's Task List**
 
 **MSS:**
-1. User chooses to view details of animal.
-2. AnimalDetailView is updated with the selected animal.
-Use case ends.
+1. User requests to delete a task from the task list of an animal by specifying the animal's index and the task index.
+2. AnimalCatalog validates the animal and task indices and locates the specified task within the animal's task list.
+3. AnimalCatalog deletes the task from the animal's task list and displays a success message.
+    - Use case ends.
 
-*a. At any time, User enters a valid animal-specific command.
-*a1. AnimalDetailView is updated with the specified animal in the animal-specific command.
-Use case ends.
+**Extensions:**
+- 2a. The specified animal index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+    - Use case ends.
+- 2b. The specified task index is invalid.
+    - 2b1. AnimalCatalog displays an error message indicating an invalid task index.
+    - Use case ends.
+
+---
+
+**Use Case: UC09 - Mark Task as Done in Animal's Task List**
+
+**MSS:**
+1. User requests to mark a task as done in the task list of an animal by specifying the animal's index and the task index(es).
+2. AnimalCatalog validates the animal and task indices and locates the specified task(s) within the animal's task list.
+3. AnimalCatalog marks the task(s) as done and displays a success message.
+    - Use case ends.
+
+**Extensions:**
+- 2a. The specified animal index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+    - Use case ends.
+- 2b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
+    - 2b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
+    - Use case ends.
+- 2c. One or more of the specified task index(es) do not correspond to an existing task.
+    - 2c1. AnimalCatalog displays an error message indicating the task does not exist.
+    - Use case ends.
+
+---
+
+**Use Case: UC10 - Unmark Task as Uncompleted in Animal's Task List**
+
+**MSS:**
+1. User requests to unmark a task as uncompleted in the task list of an animal by specifying the animal's index and the task index(es).
+2. AnimalCatalog validates the animal and task indices and locates the specified task(s) within the animal's task list.
+3. AnimalCatalog unmarks the task(s) as uncompleted and displays a success message.
+    - Use case ends.
+
+**Extensions:**
+- 2a. The specified animal index is invalid.
+    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+    - Use case ends.
+- 2b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
+    - 2b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
+    - Use case ends
+- 2c. One or more of the specified task index(es) do not correspond to an existing task.
+    - 2c1. AnimalCatalog displays an error message indicating the task does not exist.
+    - Use case ends.
 
 ---
 
@@ -780,7 +883,7 @@ testers are expected to do more *exploratory* testing.
 3. Add a `view` command, to view details of animals. Currently, to view the details of an animal, users have two approaches: <br> <br> 3.1. Click on an animal entry in the animal list to see the detailed view. <br> <br>3.2. Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`. <br><br>While intuitive, it was an oversight to not include a `view` animal command to make it more CLI-friendly. We plan on adding a `view INDEX` command in the future, where the detailed view will show the details of the animal at the specified `INDEX` of the `view INDEX` command.
 
 
-4. Implement persistent `search` status. Currently, the `search` command filters the animals based on the tags passed in. If the user follows up with any command other than `delete`, the filtered list will reset to show all animals. <br><br>For example, `search s/Dog` will show all animals whose species is Dog. If user uses the following command (`add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`, `reset`) right after the `search` command, the list will reset and show all animals. <br><br>To implement the persistent `search` status, we plan to keep track of the last `FilteredAnimalList` #######ADD HERE#######
+4. Implement persistent `search` status. Currently, the `search` command filters the animals based on the tags passed in. If the user follows up with any command other than `delete`, the filtered list will reset to show all animals. <br><br>For example, `search s/Dog` will show all animals whose species is Dog. If user uses the following command (`add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`, `reset`) right after the `search` command, the list will reset and show all animals. <br><br>To implement the persistent `search` status, we plan to keep track of the last `FilteredAnimalList` and display the animals within the last `FilteredAnimalList` after the update.
 
 
 5. Accommodate extreme length inputs for Animal `name` and Task `description`. Currently, when a user inputs an animal `name` and task `description` of extreme length, the text will be cut off in the UI. While it's highly unlikely to have such extreme length `name` and task `description`, it will still be good to include a horizontal scrollbar in the JavaFX `AnimalDetailPanel` component to accommodate such scenarios.
@@ -789,6 +892,7 @@ testers are expected to do more *exploratory* testing.
 6. Implement more detailed error messages for `add` command. Currently, our AnimalCatalog prevents adding of identical animals, and this identity is tracked using the primary key `ID` of the animal. When a user tries to add an animal and specifies an `ID` that already exists in the AnimalCatalog, the error message states that `This animal already exists in the Catalog`. While performing as expected, it can be further enhanced with the animal `ID`, such as `Animal with ID: 1111 already exists in the Catalog`.
 
 
+7. Allow for multiple task creations for single animal and creations of the same tasks for multiple animals. Currently, we only allow for one task creation for one animal per command. This can be implemented by allowing a user to specify if they are adding a single task to multiple animals with an additional `single` keyword or multiple tasks to a single animal with an additional `multiple` keyword.
 
 ## **Appendix: Effort**
 
