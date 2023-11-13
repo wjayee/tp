@@ -42,7 +42,11 @@ about animals in a shelter easily.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar pawfection.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui_default](images/Ui_default.png)
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
+
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
    Typing the name of a command typing `help`, like `help add` will display the usage guide of the [add](#adding-an-animal-add) command.
@@ -69,11 +73,21 @@ about animals in a shelter easily.
 * Items in square brackets are optional.<br>
   e.g `n/NAME [s/Dog]` can be used as `n/Pookie s/Dog` or as `n/Pookie`.
 
-* Parameters can be in any order.<br>
+* Parameters can be in any order **EXCEPT** commands that take in `ANIMAL_INDEX` and `TASK_INDEX` as inputs.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
+
+  <box type="warning" header="More information on the order of parameters">
+
+  For commands which require both `ANIMAL_INDEX` and `TASK_INDEX` as inputs, the order in the format must be adhered to.
+  E.g. for [`deletetask`](#deletes-a-task-of-an-animal-deletetask) which has the format `deletetask ANIMAL_INDEX TASK_INDEX`,
+  specifying `deletetask TASK_INDEX ANIMAL_INDEX` is not **acceptable** and may produce unintended outcomes.
+
+  </box>
 
 * Extraneous parameters for commands that do not take in parameters (such as `list`) will be ignored.<br>
   e.g. if the command specifies `list 123`, it will be interpreted as `list`.
+
+* Prefixes are **case-sensitive**. `n/` is not the same as `N/`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
@@ -98,15 +112,16 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 * `COMMAND_NAME` is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
 
 **Upon success:**
-* `help` will produce a link to the User Guide in a pop-up.
 
-  ![help](images/help.png)
+`help` will produce a link to the User Guide in a pop-up.
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/help.png" alt="Pop-up" style="height: 200px; width: 300px; margin-bottom: 16px;">
+</div>
 
-* `help add` will show usage guide of all commands that partial match with `add`.
-
-  ![help_add](images/help_add.png)
-
-* `help dele` will show usage guide of all commands that partial match with `dele`.
+`help add` will show usage guide of all commands that partial match with `add`.
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/help_add.png" alt="help add" style="height: 200px; width: 300px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
 * Inputs that result in no partial matches will produce the following error message:
@@ -116,7 +131,7 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 --------------------------------------------------------------------------------------------------------------------
 
 ### Adding an animal: `add`
-Adds an animal to the address book.
+Adds an animal to the animal catalog.
 
 **Format:**
 <box>
@@ -131,15 +146,18 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 
 * ID must be a unique 4 digit number.
 * SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
-* Date of Birth (DOB) and Date of Admission (DOA) must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
+* Date of Birth (DOB) and Date of Admission (DOA) must be in the format `yyyy-MM-dd`. e.g. `2019-01-01` for 1st January 2019.
 * DOB must come chronologically before DOA.
+* Both DOB and DOA must not be in the future (If today's date is `2023-11-13`, then any date after that is considered **invalid**).
 * Species and breed can only be alphabetic with only a single space between words. There can only be a maximum of 2 words in the species and breed.
-* Animals are uniquely identified by their ID, and hence adding a new animal that has an ID that already exists in the AnimalCatalog is not valid.
+* Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
 
 **Upon success:**
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
 
-![add_eg1](images/add_eg1.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/add_eg1.png" alt="Add animal example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
 * Attempts to `add` an animal with missing fields will produce the following error message listing the missing fields:
@@ -157,7 +175,7 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 --------------------------------------------------------------------------------------------------------------------
 
 ### Listing all animals: `list`
-Shows a list of all animals in the address book.
+Shows a list of all animals in the animal catalog.
 
 **Format:**
 <box>list</box>
@@ -171,7 +189,7 @@ Shows a list of all animals in the address book.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Deleting an animal: `delete`
-Deletes the specified animal from the address book.
+Deletes the specified animal from the animal catalog.
 
 **Format:**
 <box>delete INDEX</box>
@@ -187,7 +205,9 @@ Deletes the specified animal from the address book.
 **Upon success:**
 * `delete 2` deletes the animal at `INDEX 2`.
 
-  ![delete_eg](images/delete_eg.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/delete_eg.png" alt="Delete animal example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
 * `delete -1` is not a valid command format due to `INDEX` not being positive and will produce the following error message:
@@ -220,11 +240,15 @@ Edits animals specified by the index with the newly specified prefix attributes.
 **Upon success:**
 * `edit 2 n/Pookie` edits the name of the animal at `INDEX 2` to be `Pookie`.
 
-  ![edit_eg1](images/edit_eg1.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
 
-  ![edit_eg2](images/edit_eg2.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/edit_eg2.png" alt="Edit animal species and breed" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
 * `edit -1` is an invalid command format due to `INDEX` not being positive and will produce the following error message:
@@ -249,7 +273,7 @@ Searches animals that are filtered using the specified prefixes.
 * If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
 * Any characters or words after `search` and before any recognized prefixes will be ignored.
 * Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
-* Valid prefixes include: `n/`, `i/`, `g/`, `s/`, `b/`, `db/`, `da/`
+* Valid prefixes include: `n/[NAME]`, `i/[ID]`, `g/[SEX]`, `s/[SPECIES]`, `b/[BREED]`, `db/[DATE_OF_BIRTH]`, `da/[DATE_OF_ADMISSION]`
 * There must be at least 1 prefix specified.
 * For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
 
@@ -262,12 +286,16 @@ Searches animals that are filtered using the specified prefixes.
 
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Search_eg1.png" alt="Search for animals named 'Bear'" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
-  ![Search_success](images/Search_eg1.png)
 
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
 
-  ![Search_success](images/Search_eg2.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Search_eg2.png" alt="Search for animals with multiple prefixes" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
 * If no valid inputs are provided, the search will return the following error message.
@@ -280,7 +308,7 @@ Searches animals that are filtered using the specified prefixes.
 Adds a specific new task to the task list of an animal.
 
 **Format:**
-<box>addtask ANIMALINDEX TASK</box>
+<box>addtask ANIMAL_INDEX TASK</box>
 
 **Things to note:**
 * Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
@@ -295,13 +323,15 @@ Adds a specific new task to the task list of an animal.
 **Upon success:**
 * `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
 
-![addtask_eg1](images/addtask_eg1.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/addtask_eg1.png" alt="Add task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
 
 **Upon failure:**
-* If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
+* If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided is invalid </box>
 
-* If the `ANIMALINDEX` provided is negative or zero, the following error message will be produced:
+* If the `ANIMAL_INDEX` provided is negative or zero, the following error message will be produced:
   <box type="wrong"> Invalid command format! </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -310,32 +340,43 @@ Adds a specific new task to the task list of an animal.
 Deletes a specific task from the task list of an animal.
 
 **Format:**
-<box>deletetask ANIMALINDEX TASKINDEX</box>
+<box>deletetask ANIMAL_INDEX TASK_INDEX</box>
 
 **Things to note:**
-* Deletes the task at the specified `TASKINDEX` from the task list of the animal at the specified `ANIMALINDEX`.
-* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
-* The `TASKINDEX` refers to the index of the task on the task list of the animal.
-* `ANIMALINDEX` and `TASKINDEX` are based on 1-indexing, i.e first animal will be at index 1.
-* `ANIMALINDEX` and `TASKINDEX` must be separated by a space.
+* Deletes the task at the specified `TASK_INDEX` from the task list of the animal at the specified `ANIMAL_INDEX`.
+* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
+* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
+* `ANIMAL_INDEX` and `TASK_INDEX` are based on 1-indexing, i.e first animal will be at index 1.
+* `ANIMAL_INDEX` and `TASK_INDEX` must be separated by a space. E.g. `deletetask 12` will be treated as delete task
+from animal with index 12, but because there is a missing `TASK_INDEX`, the command is invalid.
+
+<box type="warning">
+
+* The order in which `ANIMAL_INDEX` and `TASK_INDEX` is specified must be adhered to.
+* E.g. If the user intends to delete the task with index 2 from the animal with index 1, then it must be `deletetask 1 2`.
+* `deletetask 1 2` is not equivalent to `deletetask 2 1`.
+
+</box>
 
 **Examples:**
 * `deletetask 1 1`
-* `deletetask 1    2` equivalent to `deletetask 1 2`
 
 **Upon success:**
 * `deletetask 1 1` deletes the first task from the first animal in the list
 
-![Delete_task](images/Delete_task_eg.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Delete_task_eg.png" alt="Delete task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
+
 
 **Upon failure:**
-* If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
+* If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided is invalid </box>
 
-* If the `TASKINDEX` provided is out of range, the following error message will be produced:
+* If the `TASK_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index provided is invalid </box>
 
-* If the `ANIMALINDEX` or `TASKINDEX` provided is negative or zero, the following error message will be produced:
+* If the `ANIMAL_INDEX` or `TASK_INDEX` provided is negative or zero, the following error message will be produced:
   <box type="wrong"> Invalid command format! </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -344,16 +385,24 @@ Deletes a specific task from the task list of an animal.
 Marks the specified task as done.
 
 **Format:**
-<box>mark ANIMALINDEX TASKINDEX [TASKINDEX]...</box>
+<box>mark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
 
 **Things to note:**
-* Marks the task at the specified `TASKINDEX` as done for the animal at the specified `ANIMALINDEX`.
-* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
-* The `TASKINDEX` refers to the index of the task on the task list of the animal.
-* If multiple `TASKINDEX` are specified, all the tasks at the specified `TASKINDEX` will be marked as done.
-* `TASKINDEX` must be separated by a space.
-* If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as done.
+* Marks the task at the specified `TASK_INDEX` as done for the animal at the specified `ANIMAL_INDEX`.
+* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
+* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
+* If multiple `TASK_INDEX` are specified, all the tasks at the specified `TASK_INDEX` will be marked as done.
+* `TASK_INDEX` must be separated by a space.
+* If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as done.
 * Executing the `mark` command on task(s) previously marked as done will not cause an error to be thrown, and the task(s) would remain as marked.
+
+<box type="warning">
+
+* The order in which `ANIMAL_INDEX` and `TASK_INDEX` is specified must be adhered to.
+* E.g. If the user intends to mark the task with index 2 from the animal with index 1, then it must be `mark 1 2`.
+* `mark 1 2` is not equivalent to `mark 2 1`.
+
+</box>
 
 **Examples:**
 * `mark 1 1`
@@ -362,19 +411,22 @@ Marks the specified task as done.
 **Upon success:**
 * `mark 2 1 2` marks the first and second task of the second animal as done.
 
-  ![Mark_tasks](images/Mark_tasks_eg.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Mark_tasks_eg.png" alt="Mark task example" style="height: 300px; width: 400px; : margin-bottom: 16px;">
+</div>
+
 
 **Upon failure:**
-* If no `TASKINDEX` is provided, the following error message will be produced:
+* If no `TASK_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Task index(es) is/are missing! </box>
 
-* If no `ANIMALINDEX` is provided, the following error message will be produced:
+* If no `ANIMAL_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Animal index is missing! </box>
 
-* If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
+* If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided exceeds the number of animals! </box>
 
-* If any of the `TASKINDEX` provided is out of range, the following error message will be produced:
+* If any of the `TASK_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -383,16 +435,24 @@ Marks the specified task as done.
 Marks the specified task as uncompleted.
 
 **Format:**
-<box>unmark ANIMALINDEX TASKINDEX [TASKINDEX]...</box>
+<box>unmark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
 
 **Things to note:**
-* Marks the task at the specified `TASKINDEX` as uncompleted for the animal at the specified `ANIMALINDEX`.
-* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
-* The `TASKINDEX` refers to the index of the task on the task list of the animal.
-* If multiple `TASKINDEX` are specified, all the tasks at the specified `ANIMALINDEX` will be marked as uncompleted.
-* `TASKINDEX` and `ANIMALINDEX` must be separated by a space.
-* If one of the `TASKINDEX` provided is invalid, the rest of the `TASKINDEX` will not be marked as uncompleted.
+* Marks the task at the specified `TASK_INDEX` as uncompleted for the animal at the specified `ANIMAL_INDEX`.
+* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
+* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
+* If multiple `TASKINDEX` are specified, all the tasks at the specified `ANIMAL_INDEX` will be marked as uncompleted.
+* `TASK_INDEX` and `ANIMAL_INDEX` must be separated by a space.
+* If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as uncompleted.
 * Executing the `unmark` command on task(s) previously marked as uncomplete will not cause an error to be thrown, and the task(s) would remain as uncomplete (unmarked).
+
+<box type="warning">
+
+* The order in which `ANIMAL_INDEX` and `TASK_INDEX` is specified must be adhered to.
+* E.g. If the user intends to mark the task with index 2 from the animal with index 1 as incomplete, then it must be `unmark 1 2`.
+* `unmark 1 2` is not equivalent to `unmark 2 1`.
+
+</box>
 
 **Examples:**
 * `unmark 1 1`
@@ -401,19 +461,22 @@ Marks the specified task as uncompleted.
 **Upon success:**
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
 
-  ![Unmark_tasks](images/Unmark_tasks_eg.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Unmark_tasks_eg.png" alt="Unmark task example" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
+
 
 **Upon failure:**
-* If no `TASKINDEX` is provided, the following error message will be produced:
+* If no `TASK_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Task index(es) is/are missing! </box>
 
-* If no `ANIMALINDEX` is provided, the following error message will be produced:
+* If no `ANIMAL_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Animal index is missing! </box>
 
-* If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
+* If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided exceeds the number of animals! </box>
 
-* If any of the `TASKINDEX` provided is out of range, the following error message will be produced:
+* If any of the `TASK_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -447,11 +510,17 @@ The animal cell whose details are currently being displayed in the detail view w
 **Examples:**
 * Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
 
-![Selected_Animal](images/Selected_Animal.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/Selected_Animal.png" alt="Selected animal view" style="height: 300px; width: 400px; margin-bottom: 16px;">
+</div>
+
 
 * `edit 2 n/Pooh` will automatically cause the animal at `INDEX 2` to show in the detailed view, since it is a command in the list of animal-specific commands.
 
-![detailView_eg2](images/detailView_eg2.png)
+<div style="display:flex; justify-content: center; align-items:center;">
+  <img src="images/detailView_eg2.png" alt="Detailed view" style="height: 300px; width: 400px; : margin-bottom: 16px;">
+</div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -467,7 +536,7 @@ Pawfection data are saved automatically as a JSON file `[JAR file location]/data
 
 <box type="warning" seamless>
 *Caution:*
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, Pawfection will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -475,7 +544,7 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Pawfection home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -494,9 +563,9 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 | **Delete**     | `delete INDEX`<br> e.g., `delete 3`                                                                          |
 | **List**       | `list`                                                                                                       |
 | **Search**     | `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`<br> e.g. `search n/Pookie b/Poodle` |
-| **Addtask**    | `addtask ANIMALINDEX TASK`<br> e.g. `addtask 1 Feed Pookie`                                                  |
-| **Deletetask** | `deletetask ANIMALINDEX TASKINDEX`<br> e.g. `deletetask 1 1`                                                 |
-| **Mark**       | `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `mark 2 1 2`                                            |
-| **Unmark**     | `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`<br> e.g. `unmark 2 1 2`                                        |
+| **Addtask**    | `addtask ANIMAL_INDEX TASK`<br> e.g. `addtask 1 Feed Pookie`                                                 |
+| **Deletetask** | `deletetask ANIMAL_INDEX TASK_INDEX`<br> e.g. `deletetask 1 1`                                               |
+| **Mark**       | `mark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...`<br> e.g. `mark 2 1 2`                                         |
+| **Unmark**     | `unmark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...`<br> e.g. `unmark 2 1 2`                                     |
 | **Reset**      | `reset`                                                                                                      |
 | **Help**       | `help [COMMAND_NAME]`                                                                                        |
