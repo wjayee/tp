@@ -1,6 +1,7 @@
 package seedu.address.commons.util;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.NoSuchElementException;
@@ -61,7 +62,7 @@ public class TimeUtil {
      * @return true if the given date is in the future, false if its before.
      */
     public static boolean isFutureDate(LocalDate test) {
-        return test.isAfter(LocalDate.now());
+        return test.isAfter(LocalDate.now(ZoneId.of("Asia/Singapore")));
     }
 
     /**
