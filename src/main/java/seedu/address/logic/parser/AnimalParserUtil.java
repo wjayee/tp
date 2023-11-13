@@ -155,7 +155,7 @@ public class AnimalParserUtil {
         }
         LocalDate parsedDate = TimeUtil.parseDateString(trimmedDoa);
         if (TimeUtil.isFutureDate(parsedDate)) {
-            throw new ParseException(String.format(DateOfBirth.MESSAGE_DATE_CONSTRAINTS_FORMAT, parsedDate));
+            throw new ParseException(String.format(AdmissionDate.MESSAGE_DATE_CONSTRAINTS_FORMAT, parsedDate));
         }
         return new AdmissionDate(doa);
     }
