@@ -202,7 +202,7 @@ public class MainWindow extends UiPart<Stage> {
             });
             //@@author
             return commandResult;
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | IllegalArgumentException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
