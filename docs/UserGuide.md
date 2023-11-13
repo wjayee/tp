@@ -298,6 +298,7 @@ Searches animals that are filtered using the specified prefixes.
 * Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
 * Valid prefixes include: `n/[NAME]`, `i/[ID]`, `g/[SEX]`, `s/[SPECIES]`, `b/[BREED]`, `db/[DATE_OF_BIRTH]`, `da/[DATE_OF_ADMISSION]`
 * There must be at least 1 prefix specified.
+* For empty prefix keywords such as a prefix by itself, e.g `n/` or a prefix with whitespaces `n/   `, no filtering for the prefix will be done. However, at least 1 non-empty prefix must be specified. `search`, and `search n/` is not a valid command. But `search n/Pookie s/` will show all animals with name "Pookie", as the filter for `s/` is ignored.
 * For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
