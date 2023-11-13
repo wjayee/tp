@@ -1,13 +1,13 @@
 package seedu.address.model.animal;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.storage.JsonAdaptedTask;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Represents an Animal in the catalog.

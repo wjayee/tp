@@ -10,7 +10,8 @@ import static seedu.address.testutil.TypicalAnimals.getTypicalCatalog;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SIXTH;
-import static seedu.address.testutil.TypicalTasks.FED;
+import static seedu.address.testutil.TypicalTasks.FEED;
+import static seedu.address.testutil.TypicalTasks.WALK;
 
 import java.util.List;
 
@@ -56,40 +57,13 @@ public class AddTaskCommandTest {
 
     @Test
     public void execute_validAnimalTaskIndexAndDescription_success() {
-        // Initial setup
-        Animal animal = new AnimalBuilder(TOFU).build();
-        model.setAnimal(TOFU, animal);
-
         Task newTask = new Task(VALID_TASK_DESCRIPTION);
         AddTaskCommand addTaskCommand = new AddTaskCommand(INDEX_FIRST, newTask);
 
         String expectedMessage = String.format(AddTaskCommand.MESSAGE_SUCCESS, TOFU.getName(), VALID_TASK_DESCRIPTION);
 
         AnimalModel expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
-        Animal expectedAnimal = new AnimalBuilder(TOFU).withTaskList(List.of(newTask)).build();
-        expectedModel.setAnimal(TOFU, expectedAnimal);
-
-        // Execute the command
-        assertCommandSuccess(addTaskCommand, model, expectedMessage, expectedModel);
-
-        // Verify the task has been added
-        Animal animalInModel = model.getFilteredAnimalList().get(INDEX_FIRST.getZeroBased());
-        assertTrue(animalInModel.getTaskList().contains(newTask));
-    }
-
-    @Test
-    public void execute_addTaskToAnimalWithExistingTasks_success() {
-        // Assume TOFU already has some tasks
-        Animal animalWithTasks = new AnimalBuilder(TOFU).withTaskList(List.of(FED)).build();
-        model.setAnimal(TOFU, animalWithTasks);
-
-        Task newTask = new Task(VALID_TASK_DESCRIPTION);
-        AddTaskCommand addTaskCommand = new AddTaskCommand(INDEX_FIRST, newTask);
-
-        String expectedMessage = String.format(AddTaskCommand.MESSAGE_SUCCESS, TOFU.getName(), VALID_TASK_DESCRIPTION);
-
-        AnimalModel expectedModel = new AnimalModelManager(model.getAnimalCatalog(), new AnimalUserPrefs());
-        Animal expectedAnimal = new AnimalBuilder(animalWithTasks).withTaskList(List.of(FED, newTask)).build();
+        Animal expectedAnimal = new AnimalBuilder(TOFU).withTaskList(List.of(FEED, WALK, newTask)).build();
         expectedModel.setAnimal(TOFU, expectedAnimal);
 
         // Execute the command
