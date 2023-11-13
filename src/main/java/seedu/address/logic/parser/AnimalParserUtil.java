@@ -2,12 +2,14 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.TimeUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.animal.AdmissionDate;
 import seedu.address.model.animal.Breed;
@@ -132,6 +134,10 @@ public class AnimalParserUtil {
         if (!DateOfBirth.isValidDate(trimmedDob)) {
             throw new ParseException(DateOfBirth.MESSAGE_CONSTRAINTS);
         }
+        LocalDate parsedDate = TimeUtil.parseDateString(trimmedDob);
+        if (TimeUtil.isFutureDate(parsedDate)) {
+            throw new ParseException(String.format(DateOfBirth.MESSAGE_DATE_CONSTRAINTS_FORMAT, parsedDate));
+        }
         return new DateOfBirth(dob);
     }
 
@@ -146,6 +152,10 @@ public class AnimalParserUtil {
         String trimmedDoa = doa.trim();
         if (!AdmissionDate.isValidDate(trimmedDoa)) {
             throw new ParseException(AdmissionDate.MESSAGE_CONSTRAINTS);
+        }
+        LocalDate parsedDate = TimeUtil.parseDateString(trimmedDoa);
+        if (TimeUtil.isFutureDate(parsedDate)) {
+            throw new ParseException(String.format(DateOfBirth.MESSAGE_DATE_CONSTRAINTS_FORMAT, parsedDate));
         }
         return new AdmissionDate(doa);
     }

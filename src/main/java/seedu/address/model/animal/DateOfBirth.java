@@ -18,7 +18,6 @@ public class DateOfBirth {
         "Date Of Birth should be in the following format:%n%s%n", TimeUtil.getValidDateFormats());
 
     public static final String MESSAGE_DATE_CONSTRAINTS_FORMAT = "Date Of Birth: %s is in the future!";
-    public static final String DISPLAY_FORMAT = "Date of Birth: %s%n" + "Age: %s";
     public static final String AGE_FORMAT = "%s Year(s), %s Month(s), %s Day(s)";
     private final LocalDate dateOfBirth;
 
