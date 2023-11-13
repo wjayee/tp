@@ -13,7 +13,7 @@ import seedu.address.commons.util.TimeUtil;
  */
 public class AdmissionDate {
     public static final String MESSAGE_CONSTRAINTS = String.format(
-        "Admission Date should be in one of the following formats:%n%s%n", TimeUtil.getValidDateFormats());
+        "Admission Date should be in the following format:%n%s%n", TimeUtil.getValidDateFormats());
     public static final String MESSAGE_DATE_CONSTRAINTS_FORMAT = "Admission Date: %s is in the future!";
     private final LocalDate admissionDate;
 
