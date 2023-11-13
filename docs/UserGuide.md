@@ -37,9 +37,42 @@ about animals in a shelter easily.
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
+<box type="info" light>
+<tabs>
+<tab header="Windows">
+
+1. Press Win+R.
+2. Type cmd and press Enter to open your terminal.
+3. Type `java --version` and press Enter to check if java is installed.
+4. If Java is not installed on your computer, a red error message will pop up. In that case, see below on installing Java 11.
+5. If Java is installed on your computer, some lines of white text will appear. Among these, there should be a line reading openjdk followed by a number, which is the version of Java. If you do not have Java 11 or later, see below on installing Java 11.
+
+</tab>
+<tab header="Mac">
+
+1. Press Command+Space.
+2. Type Terminal and press Enter to open your terminal.
+3. Type `java --version` and press Enter to check if java is installed.
+4. If Java is not installed on your computer, a red error message will pop up. In that case, see below on installing Java 11.
+5. If Java is installed on your computer, some lines of white text will appear. Among these, there should be a line reading openjdk followed by a number, which is the version of Java. If you do not have Java 11 or later, see below on installing Java 11.
+
+</tab>
+<tab header="Linux">
+
+1. Open the terminal.
+2. Type `java --version` and press Enter to check if java is installed.
+3. If Java is not installed on your computer, a red error message will pop up. In that case, see below on installing Java 11.
+4. If Java is installed on your computer, some lines of white text will appear. Among these, there should be a line reading openjdk followed by a number, which is the version of Java. If you do not have Java 11 or later, see below on installing Java 11.
+
+</tab>
+</tabs>
+
+If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/jdk_howto.html) to install Java 11.
+</box>
+
 2. Download the latest `pawfection.jar`.
 
-3. Copy the file to the folder you want to use as the _home folder_ for your PawFection.
+3. Copy the file to the folder you want to use as the _home folder_ for your Pawfection.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar pawfection.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
