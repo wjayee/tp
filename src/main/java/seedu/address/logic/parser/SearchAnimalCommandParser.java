@@ -42,16 +42,21 @@ public class SearchAnimalCommandParser implements AnimalParser<SearchAnimalComma
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIXES);
 
         //Obtain values of the different fields
-        String name = argMultimap.getValue(NAME).orElse("");
-        String id = argMultimap.getValue(PET_ID).orElse("");
-        String dob = argMultimap.getValue(DATE_OF_BIRTH).orElse("");
-        String doa = argMultimap.getValue(DATE_OF_ADMISSION).orElse("");
-        String species = argMultimap.getValue(SPECIES).orElse("");
-        String sex = argMultimap.getValue(SEX).orElse("");
-        String breed = argMultimap.getValue(BREED).orElse("");
+        String name = argMultimap.getValue(NAME).orElse("").trim();
+        String id = argMultimap.getValue(PET_ID).orElse("").trim();
+        String dob = argMultimap.getValue(DATE_OF_BIRTH).orElse("").trim();
+        String doa = argMultimap.getValue(DATE_OF_ADMISSION).orElse("").trim();
+        String species = argMultimap.getValue(SPECIES).orElse("").trim();
+        String sex = argMultimap.getValue(SEX).orElse("").trim();
+        String breed = argMultimap.getValue(BREED).orElse("").trim();
 
 
         List<String> keywords = List.of(name, id, dob, doa, species, sex, breed);
+
+        // Check if keywords are empty
+        if (keywords.stream().anyMatch(String::isEmpty)) {
+            throw new ParseException(getHelpMessage());
+        }
 
 
         return new SearchAnimalCommand(new KeywordPredicate(keywords));
