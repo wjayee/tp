@@ -151,13 +151,25 @@ public class Animal {
         return updatedAnimal;
     }
 
+    /**
+     * Returns a new Animal object after deleting a specified task of targetTaskIndex
+     *
+     * @param targetTaskIndex the index of the task to be deleted in the Animal taskList
+     * @return a new Animal object with a taskList less the specified task
+     */
+    public Animal deleteTaskByIndex(Index targetTaskIndex) {
+        requireNonNull(targetTaskIndex);
+
+        Animal updatedAnimal = new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth);
+        copyTasksFromAnimalToAnimal(this, updatedAnimal);
+        updatedAnimal.getTaskList().deleteTaskByIndex(targetTaskIndex);
+
+        return updatedAnimal;
+    }
+
     private static void copyTasksFromAnimalToAnimal(Animal source, Animal target) {
         TaskList targetTaskList = target.getTaskList();
         targetTaskList.addAllTasks(source.getTasks());
-    }
-
-    public void deleteTaskByIndex(Index targetTaskIndex) {
-        taskList.deleteTaskByIndex(targetTaskIndex);
     }
 
     public List<JsonAdaptedTask> getTaskListForSerialization() {

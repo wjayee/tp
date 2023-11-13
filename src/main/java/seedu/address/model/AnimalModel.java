@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
@@ -79,6 +80,10 @@ public interface AnimalModel {
     void setAnimal(Animal target, Animal editedAnimal);
 
     Animal addTask(Task newTask, Animal animal);
+
+    Animal deleteTask(Animal animal, Index taskIndex);
+
+    Task getTaskByIndex(Animal animal, Index index);
 
     int getSizeOfTaskList(Animal animal);
 

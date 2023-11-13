@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.AnimalMessages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AnimalCatalog;
@@ -159,6 +160,16 @@ public class AddAnimalCommandTest {
 
         @Override
         public Name getName(Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Task getTaskByIndex(Animal animal, Index index) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Animal deleteTask(Animal animal, Index index) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
 

@@ -48,6 +48,10 @@ public class TaskList {
         taskList.remove(index.getZeroBased());
     }
 
+    public Task getTaskByIndex(Index index) {
+        return taskList.get(index.getZeroBased());
+    }
+
     /**
      * Checks if the taskList does not contain any tasks.
      *

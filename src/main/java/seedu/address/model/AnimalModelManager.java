@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.animal.Animal;
 import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
@@ -128,6 +129,17 @@ public class AnimalModelManager implements AnimalModel {
     }
 
     @Override
+    public Animal deleteTask(Animal animal, Index taskIndex) {
+        requireAllNonNull(taskIndex, animal);
+
+        Animal updatedAnimal = animal.deleteTaskByIndex(taskIndex);
+        setAnimal(animal, updatedAnimal);
+        updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
+
+        return updatedAnimal;
+    }
+
+    @Override
     public int getSizeOfTaskList(Animal animal) {
         requireNonNull(animal);
 
@@ -139,6 +151,13 @@ public class AnimalModelManager implements AnimalModel {
         requireNonNull(animal);
 
         return animal.getName();
+    }
+
+    @Override
+    public Task getTaskByIndex(Animal animal, Index index) {
+        requireAllNonNull(animal, index);
+
+        return animal.getTaskList().getTaskByIndex(index);
     }
 
     @Override
