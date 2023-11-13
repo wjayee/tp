@@ -93,6 +93,25 @@ about animals in a shelter easily.
 
 </box>
 
+### Attributes of `Animal`
+Summarized in the table below are the attributes of `Animal` along with their constraints. Users are encouraged to read through
+this table for an idea of what the attributes are supposed to look like, and refer to this table if they are unsure.
+
+<details open style="border: 1px solid grey; padding: 10px; border-radius: 5px;">
+<summary style="font-size: 20px; cursor: pointer;">Attributes of <code>Animal</code></summary>
+
+| Format      | Constraints                                                                        | Example                                                                                                                                 |
+|-------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`    | Alphanumeric, not blank                                                            | <ul><li>✅ <code>n/Pookie</code></li><li>✅ <code>n/P00k13</code></li><li>❌ <code>n/&nbsp;</code></li><li>❌ <code>n/Be@r</code></li></ul> |
+| `i/ID`      | 4-digit, unique number                                                             | <ul><li>✅ <code>i/1234</code></li><li>❌ <code>i/123A</code></li></ul>                                                                   |
+| `g/SEX`     | Male/Female, case-insensitive                                                      | <ul><li>✅ <code>g/MALE</code></li><li>✅ <code>g/female</code></li><li>❌ <code>g/Mala</code></li></ul>                                   |
+| `s/SPECIES` | Alphabets, separated by singular whitespace                                        | <ul><li>✅ <code>s/Komodo Dragon</code></li><li>❌ <code>s/Komodo &nbsp; Dragon</code></li></ul>                                          |
+| `b/BREED`   | Alphabets, separated by singular whitespace                                        | <ul><li>✅ <code>b/Golden Retriever</code></li><li>❌ <code>b/Golden &nbsp; Retriever</code></li></ul>                                    |
+| `db/DOB`    | `yyyy-MM-dd` format. Not in the future.<br/>Not chronologically later than `DOA`   | <ul><li>✅ <code>db/2023-01-01</code></li><li>❌ <code>db/2023-1-1</code></li></ul>                                                       |
+| `da/DOA`    | `yyyy-MM-dd` format. Not in the future.<br/>Not chronologically earlier than `DOB` | <ul><li>✅ <code>da/2023-05-05</code></li></ul>                                                                                          |
+
+</details>
+
 <box type="warning">
 For longer error messages stated in the user guide, they have been shortened for brevity by displaying only the first few words followed by ellipsis.
 </box>
@@ -149,8 +168,9 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * Date of Birth (DOB) and Date of Admission (DOA) must be in the format `yyyy-MM-dd`. e.g. `2019-01-01` for 1st January 2019.
 * DOB must come chronologically before DOA.
 * Both DOB and DOA must not be in the future (If today's date is `2023-11-13`, then any date after that is considered **invalid**).
-* Species and breed can only be alphabetic with only a single space between words. There can only be a maximum of 2 words in the species and breed.
+* Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>SomeWord &emsp; Golden &nbsp; Retriever</code>(Note the extra whitespaces in between words).
 * Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
 **Upon success:**
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
@@ -232,6 +252,8 @@ Edits animals specified by the index with the newly specified prefix attributes.
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
 * `INDEX` must be a positive integer 1, 2, 3, ...
 * The order of prefixes does not matter. e.g. both `1 n/Pookie s/Cat` and `1 s/Cat n/Pookie `will edit the animal at index 1 to species `Cat` and name `Pookie`.
+* Attribute constraints must be adhered to. E.g. `Sex` must be either `male` or `female`.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
 **Examples:**
 * `edit 2 n/Pookie`
@@ -276,6 +298,7 @@ Searches animals that are filtered using the specified prefixes.
 * Valid prefixes include: `n/[NAME]`, `i/[ID]`, `g/[SEX]`, `s/[SPECIES]`, `b/[BREED]`, `db/[DATE_OF_BIRTH]`, `da/[DATE_OF_ADMISSION]`
 * There must be at least 1 prefix specified.
 * For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
 **Examples:**
 * `search n/Bear`
