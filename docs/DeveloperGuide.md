@@ -4,7 +4,7 @@ title: "Developer Guide"
 pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# Pawfection Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -13,7 +13,12 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+- [Test logging plugin](https://github.com/radarsh/gradle-test-logger-plugin) used to retrieve more detailed test logs.
+
+- Referenced and modified use of `java.utils.Optionals` when retrieving `CommandResult` from an executed `Command` from
+[Team W17-2](https://github.com/AY2324S1-CS2103T-W17-2/tp),
+[MainWindow.java](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/ui/MainWindow.java)
+lines 191 - 194.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -35,7 +40,9 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/Main.java)
+and [`MainApp`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/MainApp.java))
+is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -50,16 +57,22 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+the command `delete 1`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
+`interface` mentioned in the previous point.
 
-For example, the `AnimalLogic` component defines its API in the `AnimalLogic.java` interface and implements its functionality using the `AnimalLogicManager.java` class which follows the `AnimalLogic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+For example, the `AnimalLogic` component defines its API in the [AnimalLogic.java](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/logic/AnimalLogic.java)
+interface and implements its functionality using the [AnimalLogicManager.java](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/logic/AnimalLogicManager.java)
+class which follows the `AnimalLogic` interface. Other components interact with a given component through its interface
+rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a
+component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
@@ -67,11 +80,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103T-F08-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts. Some core components include: `CommandBox`, `ResultDisplay`, `AnimalListPanel`, `AnimalDetailPanel`, and `AnimalCard`, along with other components. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts. Some core components include: `CommandBox`, `ResultDisplay`,
+`AnimalListPanel`, `AnimalDetailPanel`, and `AnimalCard`, along with other components. All these, including the `MainWindow`,
+inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 
@@ -84,8 +99,11 @@ The layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-3/tp/tr
 
 The `UI` component does the following actions:
 
-* executes user commands using the 'Logic' component, and this is done through the `CommandBox` class of the UI where users can input a command.
-* listens for changes to `Model` data so that the UI can be updated with the modified data. For example, when an animal is deleted or added to the catalog, the UI is updated through the `AnimalListPanel` class, where the list that is referenced is an `Observable<Animal>` list that is updated live.
+* executes user commands using the 'Logic' component, and this is done through the `CommandBox` class of the UI where
+users can input a command.
+* listens for changes to `Model` data so that the UI can be updated with the modified data. For example, when an animal
+is deleted or added to the catalog, the UI is updated through the `AnimalListPanel` class, where the list that is
+referenced is an `Observable<Animal>` list that is updated live.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Animal` object residing in the `Model`.
 
@@ -108,7 +126,8 @@ The sequence diagram below illustrates the interactions within the `AnimalLogic`
 
 How the `AnimalLogic` component works:
 
-1. When `AnimalLogic` is called upon to execute a command, it is passed to an `AnimalCatalogParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `AnimalLogic` is called upon to execute a command, it is passed to an `AnimalCatalogParser` object which in
+turn creates a parser that matches the command (e.g., `DeleteAnimalCommandParser`) and uses it to parse the command.
 1. This results in a `AnimalCommand` object (more precisely, an object of one of its subclasses e.g., `DeleteAnimalCommand`) which is executed by the `AnimalLogicManager`.
 1. The command can communicate with the `AnimalModel` when it is executed (e.g. to delete a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `AnimalLogic`.
@@ -150,8 +169,10 @@ The `AnimalModel` component,
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
+> [!NOTE]\
+> `AnimalStorage` and `Storage` are used synonymously.
+
 The `AnimalStorage` component,
-> Note: `AnimalStorage` and `Storage` are used synonymously.
 * can save both animal catalog data and user preference data in JSON format, and read them back into corresponding
 objects.
 
@@ -166,7 +187,7 @@ is important for developers to take extra caution when modifying `Animal` and it
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the [commons](https://github.com/AY2324S1-CS2103T-F08-3/tp/tree/master/src/main/java/seedu/address/commons) package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -174,21 +195,69 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+## `HelpAnimalCommand` Feature
+
+### Feature
+
+The `HelpAnimalCommand` is a command designed to display useful help messages to the User, without having them refer to
+the User Guide constantly, which could be a cumbersome and frustrating user experience.
+
+Here's a brief outline of the `HelpAnimalCommand`'s operations and attributes:
+
+- `HelpAnimalCommandParser#parse` - Parses the user input to create a `HelpAnimalCommand` that may or may not contain
+an argument.
+- `HelpAnimalCommand#execute(AnimalModel model)` Executes the command to display a help message to the User.
+
+Given below is an example usage scenario of the `HelpAnimalCommand`:
+
+1. The User types in the `help` command to find out how to use the App. The user can optionally include a known command's
+name as argument, e.g. `help add` to find out how to use the `AddAnimalCommand`.
+2. The command verifies the validity of the syntax. If characters other than alphabets and whitespaces are used, a
+`CommandException` is thrown. Otherwise, if the syntax is valid, the `help` command displays 1 of 2 possible outcomes:
+   1. No arguments supplied to the command: A general help message is shown to guide the user, along with a pop-up
+   containing the link to our User Guide.
+   2. A valid command name is supplied to the command: A specific help message that teaches the user how to use the
+   command is shown.
+
+The following activity diagram shows how the `HelpAnimalCommand` works:
+
+<puml src="diagrams/HelpActivityDiagram.puml" alt="HelpActivityDiagram" />
+
+### Design considerations:
+
+**Aspect: How the help is implemented**
+- **Alternative 1 (current choice):** `help` command searches for the specified command in a `CommandEnum` class.
+  - Pros: Better maintainability and separation of concerns. `CommandEnum` encapsulates the commands' name and help
+          message, rather than hard-coding and maintaining a Map of commandName: helpMessage. If the help message were
+          to be updated, developers only have to update the `getHelp` method in the respective commands, and it would
+          automatically be refllected by `help`.
+  - Cons: Increased Developer overhead. When implementing a new command, developers have to remember to add in their
+          new command's name and help message into `CommandEnum` for `help` command to display the relevant help message.
+- **Alternative 2:** Use Java Reflections to return all implemented `Command` classes at run-time.
+  - Pros: Less developer overhead. Developers implementing new commands do not have to remember to add the new command
+          to the `CommandEnum` class for the `help` command to display the newly added command's help message.
+  - Cons: More complex to implement, test and debug.
+
 ## `AddAnimalCommand` Feature
 
 ### Implementation
 
-The `AddAnimalCommand` is a specific command designed to add an animal to the animal catalog. It identifies the animal to be added with attributes such as its name, ID, species, breed, age, date of birth and date of admission.
+The `AddAnimalCommand` is a specific command designed to add an animal to the animal catalog. It identifies the animal to
+be added with attributes such as its name, ID, sex, species, breed, age, date of birth and date of admission.
 
 Here's a brief outline of its operations and attributes:
 
-- `AddAnimalCommandParser#parse#` — Parses the user input to create an animal with the given attributes.
-- `AddAnimalCommand#execute(AnimalModel model)` — Executes the command to add a specified animal to the model.
+- `AddAnimalCommandParser#parse` — Parses the user input to create an `AddAnimalCommand` with the various
+attributes of the Animal to be added.
+- `AddAnimalCommand#execute(AnimalModel model)` — Executes the command to add the specified animal to the model.
 
 Given below is an example usage scenario of the `AddAnimalCommand`:
 
-1. The user types in the `add` command with the proper cli syntax, giving a compulsory input field for each attribute. Note that the position of the cli syntax can be in any order.
-2. The command verifies the validity of the index. If the index is missing any of the required syntax, it throws a `CommandException`. Otherwise, it adds the animal with its inputted attributes to the model and returns a successful command result.
+1. The user types in the `add` command with the proper CLI syntax, giving a compulsory input field for each attribute.
+Note that the position of the cli syntax can be in any order.
+2. The Command verifies the validity of the syntax. If any of the mandatory prefixes are missing, or if the arguments to
+the prefixes are invalid, a `CommandException` describing the error is thrown. Otherwise, it adds the animal with its
+inputted attributes to the model and returns a successful command result.
 
 The following sequence diagram shows how the `AddAnimalCommand` works:
 
@@ -198,13 +267,18 @@ The following sequence diagram shows how the `AddAnimalCommand` works:
 
 **Aspect: How the addition is handled**
 
-- **Alternative 1 (current choice):** Add the animal directly ALL of the attributes specified.
-    - Pros: Straightforward for the user, since all attributes of the animals are handled at the start.
-    - Cons: Requires many error handling in case of an invalid syntax, wrong format, or missing attributes.
+- **Alternative 1 (current choice):** Add the animal directly with ALL the attributes specified.
+    - Pros: Straightforward for the user, since all attributes of the animals are handled at the start. The user does
+            not have to remember to manually add in the attributes for the animal after adding the entry.
+    - Cons: Requires many error handling in case of an invalid syntax, wrong format, or missing attributes. All the
+            crucial information about the animal must be known to add the animal.
 
 - **Alternative 2:** Add the animal with mandatory attributes such as name and id but optional attributes for the rest.
-    - Pros: Can be more intuitive if the user does not know all the information of the animal.
-    - Cons: Have to create an optional field those attributes which require.  This can involve additional development work to allow users to input optional data as needed
+    - Pros: Can be easier for the user if the user does not know all the information of the animal at the moment
+            of adding.
+    - Cons: Have to create an optional field for all the other attributes. This can involve additional development
+            work to allow users to input optional data as needed. This can also mean that important information that are
+            not mandatory at time of adding the animal can be unintentionally left out.
 
 ## `DeleteAnimalCommand` Feature
 
@@ -220,7 +294,7 @@ Here's a brief outline of its operations and attributes:
 Given below is an example usage scenario of the `DeleteAnimalCommand`:
 
 1. The user views the list of animals in the animal catalog. Note that this can be a filtered list, such as after using the `find` command.
-2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would aim to delete the third animal on the list.
+2. The user decides to delete a specific animal and executes the `delete` command, providing the index of the animal to be deleted. For instance, `delete 3` would attempt to delete the third animal on the list.
 3. The command verifies the validity of the index. If the index is out of bounds, it throws a `CommandException`. Otherwise, it retrieves the animal corresponding to the index, removes it from the model, and returns a successful command result.
 
 The following sequence diagram shows how the `DeleteAnimalCommand` works:
@@ -252,6 +326,7 @@ Given below is an example usage scenario of the `EditAnimalCommand`:
 3. The command verifies the validity of the prefixes. If any of the prefixes are invalid, it throws a `CommandException`. Otherwise, it proceeds to edit the attributes of the selected animal, and returns a successful command result.
 
 The following sequence diagram shows how the `EditAnimalCommand` works:
+
 <puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
 
 ### Design considerations:
@@ -263,8 +338,6 @@ Aspect: Choices of attributes to edit
 - Alternative 2: Allow all attributes to be edited.
     - Pros: Animal `ID` can be edited, user does not have to delete the entry and add a new animal.
     - Cons: Might bring about cases where 2 entries for animal share exact same fields, and it becomes impossible to identify which is which animal.
-
-
 
 ## `ListAnimalCommand` Feature
 
@@ -281,6 +354,7 @@ Given below is an example usage scenario of the `ListAnimalCommand`:
 3. The command retrieves all animals from the model and returns a successful command result.
 
 The following sequence diagram shows how the `ListAnimalCommand` works:
+
 <puml src="diagrams/ListSequenceDiagram.puml" alt="ListSequenceDiagram" />
 
 ### Design considerations:
@@ -309,6 +383,7 @@ Given below is an example usage scenario of the `SearchAnimalCommand`:
 3. The command verifies the validity of the prefixes. If all the prefixes are invalid, it throws a `CommandException`. Otherwise, it retrieves the animals that match the valid prefixes, and returns a successful command result.
 
 The following sequence diagram shows how the `SearchAnimalCommand` works:
+
 <puml src="diagrams/SearchSequenceDiagram.puml" alt="SearchSequenceDiagram" />
 
 ### Design considerations:
@@ -337,13 +412,14 @@ Given below is an example usage scenario of the `MarkTaskCommand`:
 3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as done, and returns a successful command result.
 
 The following sequence diagram shows how the `MarkTaskCommand` works:
+
 <puml src="diagrams/MarkSequenceDiagram.puml" alt="MarkSequenceDiagram" />
 
 ### Design considerations:
 
 Aspect: How the marking is handled
 - Alternative 1 (current choice): Marks tasks as done only when all indexes provided are valid.
-    - Pros: Easy to keep track which tasks are marked as done.
+    - Pros: Easy to keep track which tasks are marked as done. Invalid task indices are not silently handled.
     - Cons: Users have to ensure that all indexes provided are valid.
 - Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as done.
     - Pros: Easy for users to mark tasks as done.
@@ -365,13 +441,14 @@ Given below is an example usage scenario of the `UnmarkTaskCommand`:
 3. The command verifies the validity of the indexes. If at least one index is invalid, it throws a `CommandException`. Otherwise, it retrieves the animal and tasks that match its respective indexes, marks it as uncompleted, and returns a successful command result.
 
 The following sequence diagram shows how the `UnmarkTaskCommand` works:
+
 <puml src="diagrams/UnmarkSequenceDiagram.puml" alt="UnmarkSequenceDiagram" />
 
 ### Design considerations:
 
 Aspect: How the unmarking is handled
 - Alternative 1 (current choice): Marks tasks as uncompleted only when all indexes provided are valid.
-    - Pros: Easy to keep track which tasks are marked as uncompleted.
+    - Pros: Easy to keep track which tasks are marked as uncompleted. Invalid task indices are not silently handled.
     - Cons: Users have to ensure that all indexes provided are valid.
 - Alternative 2: Ignore invalid task indexes and mark the rest of the tasks as uncompleted.
   - Pros: Easy for users to mark tasks as uncompleted.
@@ -392,6 +469,7 @@ Given below is an example usage scenario of the `ResetTaskCommand`:
 3. The command retrieves all animals and tasks from the model, marks all tasks as uncompleted, and returns a successful command result.
 
 The following sequence diagram shows how the `ResetTaskCommand` works:
+
 <puml src="diagrams/ResetSequenceDiagram.puml" alt="ResetSequenceDiagram" />
 
 ### Design considerations:
@@ -401,8 +479,9 @@ Aspect: How the resetting is handled
     - Pros: Easy to reset all tasks as uncompleted.
     - Cons: None.
 - Alternative 2: Resets all tasks as uncompleted for only one animal in the animal catalog.
-    - Pros: Easy to reset all tasks as uncompleted for a specific animal.
-    - Cons: Might be harder for users to reset all tasks as uncompleted for all animals.
+    - Pros: Easy to reset all tasks as uncompleted for a specific animal. Users have finer control.
+    - Cons: Might be harder for users to reset all tasks as uncompleted for all animals. Users have to manually reset
+            tasks for each of their animal.
 
 ## `Detailed View` Feature
 
@@ -415,6 +494,7 @@ Here's a brief outline of its operations:
 - `AnimalDetailPanel#updateDetails(Animal animal)` — Updates the detail panel of the application with the input animal's details.
 
 `AnimalDetailPanel` is either updated by the user by clicking on an animal entry cell, or using animal-specific commands. The following activity diagram shows how the detailed view works:
+
 <puml src="diagrams/ViewDetailActivityDiagram.puml" alt="ViewDetailActivityDiagram" />
 
 For update of `AnimalDetailPanel` by clicking, this is handled in the `AnimalListPanel` class using a `Listener`. The `Listener` will listen to changes in selected cell, and update the animal details to show the selected animal.
@@ -632,5 +712,5 @@ Our groups faced challenges and required to put great effort for this project. T
 1. An additional UI panel (Detailed View) that displays the details of an animal (if selected). These panel also had to be updated live with
 any commands that causes changes to the Animal attributes. For example, if a task of the selected animal in the detailed view is marked as complete,
 the UI needs to reflect the changes live for it to be accurate.
-2. Addition of multiple new attribute classes like `PetId`, `AdmissionDate`, `DateofBirth`, `Sex`, `Task`, and many more to fit the target audience. These meant a lot more test cases and error handling for all inputs for these classes.
+2. Addition of multiple new attribute classes like `PetId`, `AdmissionDate`, `DateOfBirth`, `Sex`, `Task`, and many more to fit the target audience. These meant a lot more test cases and error handling for all inputs for these classes.
 
