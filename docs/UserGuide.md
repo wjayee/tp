@@ -86,9 +86,8 @@ For longer error messages stated in the user guide, they have been shortened for
 ### Program usage help: `help`
 Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
 
-<box>
-Format: `help [COMMAND_NAME]`
-</box>
+ **Format:**
+ <box>help [COMMAND_NAME]</box>
 
 **Examples:**
 * `help`
@@ -96,26 +95,32 @@ Format: `help [COMMAND_NAME]`
 * `help del`
 
 **Things to note:**
-* COMMAND_NAME is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
+* `COMMAND_NAME` is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
 
 **Upon success:**
 * `help` will produce a link to the User Guide in a pop-up.
+
   ![help](images/help.png)
+
 * `help add` will show usage guide of all commands that partial match with `add`.
+
   ![help_add](images/help_add.png)
+
 * `help dele` will show usage guide of all commands that partial match with `dele`.
 
 **Upon failure:**
-* Inputs that result in no partial matches will produce the following error message, where {COMMAND_NAME} is the inputted field.
-<box>
-`"Command: {COMMAND_NAME} not recognized!"`
-</box>
+* Inputs that result in no partial matches will produce the following error message:
+
+  <box type="wrong">Command: {COMMAND_NAME} not recognized!</box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Adding an animal: `add`
 Adds an animal to the address book.
 
+**Format:**
 <box>
-Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
+add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 </box>
 
 **Examples:**
@@ -133,20 +138,29 @@ Format: `add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA`
 
 **Upon success:**
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
+
 ![add_eg1](images/add_eg1.png)
 
 **Upon failure:**
-* Attempts to `add` an animal with missing fields will produce the following error message listing the missing fields: `"Invalid Command! Missing prefixes:..."`
-* Attempts to `add` an animal with an ID that already exists in the AnimalCatalog will produce the following error message: `"This animal already exists in the Catalog"`
-* Attempts to `add` an animal with a wrong chronological DOB and DOA will produce the following error message: `"Date of Birth:{DOB} should not be chronologically after Date of Admission:{DOA}!"`, where {DOB} and {DOA} are inputted fields.
-* Attempts to `add` an animal with a wrong date format, or a date that does not exist e.g. `2019-02-31` will produce the following error message: `"Admission Date should be in one of the following formats: '2023-10-15'"`
+* Attempts to `add` an animal with missing fields will produce the following error message listing the missing fields:
+  <box type="wrong"> Invalid Command! Missing prefixes:...</box>
+
+* Attempts to `add` an animal with an ID that already exists in the AnimalCatalog will produce the following error message:
+  <box type="wrong"> This animal already exists in the Catalog</box>
+
+* Attempts to `add` an animal with a wrong chronological DOB and DOA will produce the following error message:
+  <box type="wrong"> Date of Birth:{DOB} should not be chronologically after Date of Admission:{DOA}!</box>
+
+* Attempts to `add` an animal with a wrong date format, or a date that does not exist e.g. `2019-02-31` will produce the following error message:
+  <box type="wrong"> Admission Date should be in the following format: '2023-10-15'</box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Listing all animals: `list`
 Shows a list of all animals in the address book.
 
-<box>
-Format: `list`
-</box>
+**Format:**
+<box>list</box>
 
 **Things to note:**
 
@@ -154,13 +168,13 @@ Format: `list`
 * Can be used after using the `search` command to list all animals again.
 * Any words after `list` will be ignored.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Deleting an animal: `delete`
 Deletes the specified animal from the address book.
 
-<box>
-Format: `delete INDEX`
-</box>
-
+**Format:**
+<box>delete INDEX</box>
 
 **Things to note:**
 * Deletes the animal at the specified `INDEX`.
@@ -168,22 +182,27 @@ Format: `delete INDEX`
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
 
 **Examples:**
-`delete 2`
+* `delete 2`
 
 **Upon success:**
 * `delete 2` deletes the animal at `INDEX 2`.
+
   ![delete_eg](images/delete_eg.png)
 
 **Upon failure:**
-* `delete -1` is not a valid command format due to `INDEX` not being positive and will produce the following error message: `"Invalid command format! delete: Deletes the animal..."`* Invalid command formats will produce the following error message: `"Invalid command format! delete: Deletes the animal identified by..."`
-* Invalid command formats will produce the following error message: `"Invalid command format! delete: Deletes the animal identified by..."`
+* `delete -1` is not a valid command format due to `INDEX` not being positive and will produce the following error message:
+  <box type="wrong">Invalid command format! delete: Deletes the animal..."</box>
+
+* Invalid command formats will produce the following error message:
+  <box type="wrong">Invalid command format! delete: Deletes the animal identified by..."</box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Editing an animal: `Edit`
 Edits animals specified by the index with the newly specified prefix attributes.
 
-<box>
-Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
-</box>
+**Format:**
+<box>edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`</box>
 
 **Things to note:**
 * ID cannot be edited.
@@ -200,22 +219,27 @@ Format: `edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 
 **Upon success:**
 * `edit 2 n/Pookie` edits the name of the animal at `INDEX 2` to be `Pookie`.
+
   ![edit_eg1](images/edit_eg1.png)
+
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
+
   ![edit_eg2](images/edit_eg2.png)
 
 **Upon failure:**
 * `edit -1` is an invalid command format due to `INDEX` not being positive and will produce the following error message:
-<box type="wrong"> Invalid command format! Example: edit 1... </box>
+  <box type="wrong"> Invalid command format! Example: edit 1... </box>
+
 * `edit 100` is an invalid command format due to missing prefix and will produce the following error message:
-<box type="wrong"> At least one field to edit must be provided </box>
+  <box type="wrong"> At least one field to edit must be provided </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
 
-<box>
-Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
-</box>
+**Format:**
+<box>search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]</box>
 
 **Things to note:**
 * Searches for animals whose attributes contain the specified search values in the prefix filter.
@@ -238,21 +262,25 @@ Format: `search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`
 
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
+
   ![Search_success](images/Search_eg1.png)
+
 * `search n/Pookie b/Poodle` returns all animals with the name `Pookie` and is of the breed `Poodle`
+
   ![Search_success](images/Search_eg2.png)
 
 **Upon failure:**
 * If no valid inputs are provided, the search will return the following error message.
+
   <box type="wrong"> Search keywords cannot be empty! At least one prefix must be provided. </box>
-  ![Search_error](images/Search_error.png)
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Adds a task to an animal: `addtask`
 Adds a specific new task to the task list of an animal.
 
-<box>
-Format: `addtask ANIMALINDEX TASK`
-</box>
+**Format:**
+<box>addtask ANIMALINDEX TASK</box>
 
 **Things to note:**
 * Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
@@ -265,21 +293,24 @@ Format: `addtask ANIMALINDEX TASK`
 * `addtask 1 Feed Pookie`
 
 **Upon success:**
-`addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
+* `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
+
 ![addtask_eg1](images/addtask_eg1.png)
 
 **Upon failure:**
 * If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
-<box type="wrong"> The animal index provided is invalid </box>
+  <box type="wrong"> The animal index provided is invalid </box>
+
 * If the `ANIMALINDEX` provided is negative or zero, the following error message will be produced:
-<box type="wrong"> Invalid command format! </box>
+  <box type="wrong"> Invalid command format! </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Deletes a task of an animal: `deletetask`
 Deletes a specific task from the task list of an animal.
 
-<box>
-Format: `deletetask ANIMALINDEX TASKINDEX`
-<box/>
+**Format:**
+<box>deletetask ANIMALINDEX TASKINDEX</box>
 
 **Things to note:**
 * Deletes the task at the specified `TASKINDEX` from the task list of the animal at the specified `ANIMALINDEX`.
@@ -294,22 +325,26 @@ Format: `deletetask ANIMALINDEX TASKINDEX`
 
 **Upon success:**
 * `deletetask 1 1` deletes the first task from the first animal in the list
+
 ![Delete_task](images/Delete_task_eg.png)
 
 **Upon failure:**
 * If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided is invalid </box>
+
 * If the `TASKINDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index provided is invalid </box>
+
 * If the `ANIMALINDEX` or `TASKINDEX` provided is negative or zero, the following error message will be produced:
   <box type="wrong"> Invalid command format! </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Marking a task as done: `mark`
 Marks the specified task as done.
 
-<box>
-Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
-</box>
+**Format:**
+<box>mark ANIMALINDEX TASKINDEX [TASKINDEX]...</box>
 
 **Things to note:**
 * Marks the task at the specified `TASKINDEX` as done for the animal at the specified `ANIMALINDEX`.
@@ -326,24 +361,29 @@ Format: `mark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 
 **Upon success:**
 * `mark 2 1 2` marks the first and second task of the second animal as done.
+
   ![Mark_tasks](images/Mark_tasks_eg.png)
 
 **Upon failure:**
 * If no `TASKINDEX` is provided, the following error message will be produced:
-<box type="wrong"> Task index(es) is/are missing! </box>
+  <box type="wrong"> Task index(es) is/are missing! </box>
+
 * If no `ANIMALINDEX` is provided, the following error message will be produced:
-<box type="wrong"> Animal index is missing! </box>
+  <box type="wrong"> Animal index is missing! </box>
+
 * If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
-<box type="wrong"> The animal index provided exceeds the number of animals! </box>
+  <box type="wrong"> The animal index provided exceeds the number of animals! </box>
+
 * If any of the `TASKINDEX` provided is out of range, the following error message will be produced:
-<box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
+  <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Unmarking a task as done: `unmark`
 Marks the specified task as uncompleted.
 
-<box>
-Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
-</box>
+**Format:**
+<box>unmark ANIMALINDEX TASKINDEX [TASKINDEX]...</box>
 
 **Things to note:**
 * Marks the task at the specified `TASKINDEX` as uncompleted for the animal at the specified `ANIMALINDEX`.
@@ -360,24 +400,29 @@ Format: `unmark ANIMALINDEX TASKINDEX [TASKINDEX]...`
 
 **Upon success:**
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
+
   ![Unmark_tasks](images/Unmark_tasks_eg.png)
 
 **Upon failure:**
 * If no `TASKINDEX` is provided, the following error message will be produced:
   <box type="wrong"> Task index(es) is/are missing! </box>
+
 * If no `ANIMALINDEX` is provided, the following error message will be produced:
   <box type="wrong"> Animal index is missing! </box>
+
 * If the `ANIMALINDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided exceeds the number of animals! </box>
+
 * If any of the `TASKINDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Reset all tasks: `reset`
 Resets all tasks of all animals as uncompleted.
 
-<box>
-Format: `reset`
-</box>
+**Format:**
+<box>reset</box>
 
 **Things to note:**
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
@@ -385,7 +430,10 @@ Format: `reset`
 
 **Upon success:**
 * `reset` will unmark all tasks of all animals and produce the following message:
-<box type="success"> All tasks are have been reset </box>
+
+  <box type="success"> All tasks are have been reset </box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Viewing animal details
 The detailed view panel on the right shows greater details about the selected animal. There are 2 ways to view the details of a certain animal:
@@ -396,17 +444,22 @@ The animal cell whose details are currently being displayed in the detail view w
 * Note that certain commands will cause the selected animal and the detailed view to reset, and these include `list`, `delete`, `search`, and `help` commands.
 * For invalid animal-specific commands, the selected animal will not change.
 
-Examples:
+**Examples:**
 * Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
+
 ![Selected_Animal](images/Selected_Animal.png)
+
 * `edit 2 n/Pooh` will automatically cause the animal at `INDEX 2` to show in the detailed view, since it is a command in the list of animal-specific commands.
+
 ![detailView_eg2](images/detailView_eg2.png)
 
-
+--------------------------------------------------------------------------------------------------------------------
 
 ### Saving the data
 
 Pawfection data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Editing the data file
 
