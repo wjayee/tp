@@ -381,11 +381,6 @@ Aspect: How the resetting is handled
     - Pros: Easy to reset all tasks as uncompleted for a specific animal.
     - Cons: Might be harder for users to reset all tasks as uncompleted for all animals.
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -411,13 +406,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| **Priority** | **As a...**          | **I want to...**                          | **So that I can...**                  |
-|--------------|----------------------|-------------------------------------------|---------------------------------------|
-| `***`        | new volunteer        | view specific information about each pet. | understand their unique needs.        |
-| `***`        | new volunteer        | be able to access a user manual.          | easily learn how to navigate the app. |
-| `***`        | volunteer            | view all animals in a single page.        | -                                     |
-| `***`        | authorized volunteer | add new animal entries                    | -                                     |
-| `***`        | authorized volunteer | update existing animal profiles           | -                                     |
+| **Priority** | **As a...** | **I want to...**                          | **So that I can...**                                       |
+|--------------|-------------|-------------------------------------------|------------------------------------------------------------|
+| `***`        | volunteer   | view specific information about each pet. | understand their unique needs.                             |
+| `***`        | volunteer   | be able to access a user manual.          | easily learn how to navigate the app.                      |
+| `***`        | volunteer   | view all animals in a single page.        | -                                                          |
+| `***`        | volunteer   | add new animal entries                    | -                                                          |
+| `***`        | volunteer   | update existing animal profiles           | -                                                          |
+| `**`         | volunteer   | add tasks to each animal                  | know each animal's needs.                                  |
+| `**`         | volunteer   | mark tasks as done                        | keep track of which animal's needs has been taken care of. |
+
+
 
 
 ### Use cases
@@ -505,7 +504,6 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Authorized volunteers**: Experienced volunteers who have been given a passcode to access limited features of the app.
 
 --------------------------------------------------------------------------------------------------------------------
 
