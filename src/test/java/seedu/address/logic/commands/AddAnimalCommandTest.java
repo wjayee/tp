@@ -152,7 +152,7 @@ public class AddAnimalCommandTest {
         }
 
         @Override
-        public void addTask(Task newTask, Animal animal) {
+        public Animal addTask(Task newTask, Animal animal) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
 

@@ -133,8 +133,16 @@ public class Animal {
         return breed.toString();
     }
 
-    public void addTask(Task task) {
-        taskList.addTask(task);
+    /**
+     * Returns a new Animal object with the added task.
+     *
+     * @param task the task to be added.
+     * @return a new Animal object with the added task.
+     */
+    public Animal addTask(Task task) {
+        TaskList updatedTaskList = taskList.addTask(task);
+
+        return new Animal(name, petId, species, breed, sex, admissionDate, dateOfBirth, updatedTaskList);
     }
 
     public void deleteTaskByIndex(Index targetTaskIndex) {
@@ -144,6 +152,7 @@ public class Animal {
     public List<JsonAdaptedTask> getTaskListForSerialization() {
         return taskList.getSerializedTaskList();
     }
+
 
     /**
      * Returns a new Animal object with the updated task list.
