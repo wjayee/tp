@@ -26,7 +26,7 @@ public class DeleteTaskCommand extends AnimalCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a specific task from an animal's task list.\n"
-            + "Parameters: ANIMAL_INDEX TASK_INDEX (must both be positive integers)";
+            + "Parameters: ANIMALINDEX TASKINDEX (must both be positive integers)";
 
     public static final String MESSAGE_SUCCESS = "Task deleted for %s: %s";
 
