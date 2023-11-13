@@ -136,7 +136,7 @@ public class Animal {
     }
 
     /**
-     * Returns a new Animal object with the added task.
+     * Clones the current Animal object and adds the task to the clone
      *
      * @param task the task to be added.
      * @return a new Animal object with the added task.
@@ -152,7 +152,7 @@ public class Animal {
     }
 
     /**
-     * Returns a new Animal object after deleting a specified task of targetTaskIndex
+     * Clones the current Animal object and deletes the task of the specified task index of the clone
      *
      * @param targetTaskIndex the index of the task to be deleted in the Animal taskList
      * @return a new Animal object with a taskList less the specified task
