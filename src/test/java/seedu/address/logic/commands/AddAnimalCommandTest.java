@@ -22,6 +22,7 @@ import seedu.address.model.AnimalModel;
 import seedu.address.model.AnimalReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyAnimalCatalog;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
 import seedu.address.testutil.AnimalBuilder;
 
@@ -153,6 +154,16 @@ public class AddAnimalCommandTest {
 
         @Override
         public Animal addTask(Task newTask, Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public Name getName(Animal animal) {
+            throw new AssertionError(INVALID_METHOD_CALL);
+        }
+
+        @Override
+        public int getSizeOfTaskList(Animal animal) {
             throw new AssertionError(INVALID_METHOD_CALL);
         }
 

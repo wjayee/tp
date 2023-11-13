@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
 
 /**
@@ -124,6 +125,20 @@ public class AnimalModelManager implements AnimalModel {
         updateFilteredAnimalList(PREDICATE_SHOW_ALL_ANIMALS);
 
         return updatedAnimal;
+    }
+
+    @Override
+    public int getSizeOfTaskList(Animal animal) {
+        requireNonNull(animal);
+
+        return animal.getNumberOfTasks();
+    }
+
+    @Override
+    public Name getName(Animal animal) {
+        requireNonNull(animal);
+
+        return animal.getName();
     }
 
     @Override

@@ -66,7 +66,7 @@ public class AddTaskCommand extends AnimalCommand {
         Animal animalToEdit = lastShownList.get(targetIndex.getZeroBased());
 
         Animal editedAnimal = model.addTask(task, animalToEdit);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, editedAnimal.getName(),
+        return new CommandResult(String.format(MESSAGE_SUCCESS, model.getName(editedAnimal),
                 AnimalMessages.format(task)), editedAnimal);
     }
 

@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.animal.Animal;
+import seedu.address.model.animal.Name;
 import seedu.address.model.animal.Task;
 
 /**
@@ -78,6 +79,10 @@ public interface AnimalModel {
     void setAnimal(Animal target, Animal editedAnimal);
 
     Animal addTask(Task newTask, Animal animal);
+
+    int getSizeOfTaskList(Animal animal);
+
+    Name getName(Animal animal);
 
     Animal updateTask(Animal animal, int[] taskIndexes, boolean isDone);
 
