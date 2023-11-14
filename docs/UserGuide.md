@@ -276,7 +276,7 @@ Deletes the specified animal from the animal catalog.
 Edits animals specified by the index with the newly specified prefix attributes.
 
 **Format:**
-<box>edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]`</box>
+<box>edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA] </box>
 
 **Things to note:**
 * ID cannot be edited.
