@@ -590,7 +590,7 @@ The following sequence diagram shows how the `ResetTaskCommand` works:
 ### Implementation
 
 The detailed view is a feature that shows the details of the animals not seen in the entries of the animal list. These include
-Date of Birth(DOB), Date of Admission(DOA), and Tasks that are added to the animal. The detailed view is handled by the `AnimalDetailPanel` class.
+Date of Birth(DOB), Date of Admission(DOA), Age, and Tasks that are added to the animal. The detailed view is handled by the `AnimalDetailPanel` class.
 
 Here's a brief outline of its operations:
 - `AnimalDetailPanel#updateDetails(Animal animal)` — Updates the detail panel of the application with the input animal's details.
