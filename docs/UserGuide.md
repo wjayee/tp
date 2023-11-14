@@ -150,6 +150,8 @@ this table for an idea of what the attributes are supposed to look like, and ref
 
 </details>
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Program usage help: `help`
 Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
 
@@ -179,7 +181,7 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 **Upon failure:**
 * Inputs that result in no partial matches will produce the following error message:
 
-  <box type="wrong">Command: {COMMAND_NAME} not recognized!</box>
+  <box type="wrong">Command: COMMAND_NAME not recognized!</box>
 
 --------------------------------------------------------------------------------------------------------------------
 
