@@ -647,9 +647,8 @@ otherwise)
 
 **MSS:**
 1. User requests help on a specific command or a list of commands related to animal handling.
-2. AnimalCatalog processes the request and identifies the command or commands in question.
-3. AnimalCatalog retrieves the usage instructions for the command(s).
-4. AnimalCatalog displays the help instructions to the user.
+2AnimalCatalog retrieves the usage instructions for the command(s).
+3AnimalCatalog displays the help instructions to the user.
     - Use case ends.
 
 **Extensions:**
@@ -667,16 +666,15 @@ otherwise)
 
 **MSS:**
 1. User requests to add an animal to the catalog by entering required details for the new animal.
-2. AnimalCatalog validates the details and checks for duplicate entries in the catalog.
-3. AnimalCatalog adds the animal to the catalog and displays a success message.
+2. AnimalCatalog adds the animal to the catalog and displays a success message.
     - Use case ends.
 
 **Extensions:**
-- 2a. The animal already exists in the catalog.
-  - 2a1. AnimalCatalog displays a message indicating a duplicate entry.
+- 1a. The animal already exists in the catalog.
+  - 1a1. AnimalCatalog displays a message indicating a duplicate entry.
   - Use case ends.
-- 1a. The user enters incomplete or invalid details.
-  - 1a1. AnimalCatalog prompts the user to enter the correct and complete details.
+- 1b. The user enters incomplete or invalid details.
+  - 1bAnimalCatalog prompts the user to enter the correct and complete details.
   - Use case ends.
 
 ---
@@ -685,13 +683,12 @@ otherwise)
 
 **MSS:**
 1. User requests to delete an animal from the catalog by specifying the animal's index.
-2. AnimalCatalog validates the index and locates the animal in the catalog.
-3. AnimalCatalog deletes the animal from the catalog and displays a success message.
+2AnimalCatalog deletes the animal from the catalog and displays a success message.
     - Use case ends.
 
 **Extensions:**
-- 2a. The specified index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+- 1a. The specified index is invalid.
+    - 1a1. AnimalCatalog displays an error message indicating an invalid index.
     - Use case ends.
 
 ---
@@ -700,8 +697,7 @@ otherwise)
 
 **MSS:**
 1. User requests to edit the details of an existing animal in the catalog by specifying the animal's index and the new details.
-2. AnimalCatalog validates the index and locates the animal in the catalog.
-3. AnimalCatalog updates the animal's details with the new information provided and displays a success message.
+2AnimalCatalog updates the animal's details with the new information provided and displays a success message.
     - Use case ends.
 
 **Extensions:**
@@ -711,8 +707,8 @@ otherwise)
 - 1b. No new details are provided for the update.
     - 1b1. AnimalCatalog prompts the user to enter at least one field to be updated.
     - Use case ends.
-- 2a. The specified index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+- 1c. The specified index is invalid.
+    - 1c1. AnimalCatalog displays an error message indicating an invalid index.
     - Use case ends.
 
 ---
@@ -721,8 +717,7 @@ otherwise)
 
 **MSS:**
 1. User requests to list all animals in the catalog.
-2. AnimalCatalog retrieves all animal entries.
-3. AnimalCatalog displays the list of all animals.
+2. AnimalCatalog displays the list of all animals.
     - Use case ends.
 
 ---
@@ -731,8 +726,7 @@ otherwise)
 
 **MSS:**
 1. User requests to search for animals in the catalog using a specific keyword.
-2. AnimalCatalog applies the search based on the given keyword to all animal entries.
-3. AnimalCatalog displays a list of animals that match the keyword.
+2. AnimalCatalog displays a list of animals that match the keyword.
     - Use case ends.
 
 **Extensions:**
@@ -749,16 +743,15 @@ otherwise)
 
 **MSS:**
 1. User requests to add a task to the task list of an animal by specifying the animal's index and the task details.
-2. AnimalCatalog validates the index and locates the animal in the catalog.
-3. AnimalCatalog adds the task to the animal's task list and displays a success message.
+2. AnimalCatalog adds the task to the animal's task list and displays a success message.
     - Use case ends.
 
 **Extensions:**
 - 1a. The task details provided are invalid or incomplete.
     - 1a1. AnimalCatalog displays a message for the user to enter valid task details.
     - Use case ends.
-- 2a. The specified index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid index.
+- 1b. The specified index is invalid.
+    - 1b1. AnimalCatalog displays an error message indicating an invalid index.
     - Use case ends.
 
 ---
@@ -767,16 +760,15 @@ otherwise)
 
 **MSS:**
 1. User requests to delete a task from the task list of an animal by specifying the animal's index and the task index.
-2. AnimalCatalog validates the animal and task indices and locates the specified task within the animal's task list.
-3. AnimalCatalog deletes the task from the animal's task list and displays a success message.
+2. AnimalCatalog deletes the task from the animal's task list and displays a success message.
     - Use case ends.
 
 **Extensions:**
-- 2a. The specified animal index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+- 1a. The specified animal index is invalid.
+    - 1a1. AnimalCatalog displays an error message indicating an invalid animal index.
     - Use case ends.
-- 2b. The specified task index is invalid.
-    - 2b1. AnimalCatalog displays an error message indicating an invalid task index.
+- 1b. The specified task index is invalid.
+    - 1b1. AnimalCatalog displays an error message indicating an invalid task index.
     - Use case ends.
 
 ---
@@ -785,19 +777,18 @@ otherwise)
 
 **MSS:**
 1. User requests to mark a task as done in the task list of an animal by specifying the animal's index and the task index(es).
-2. AnimalCatalog validates the animal and task indices and locates the specified task(s) within the animal's task list.
-3. AnimalCatalog marks the task(s) as done and displays a success message.
+2. AnimalCatalog marks the task(s) as done and displays a success message.
     - Use case ends.
 
 **Extensions:**
-- 2a. The specified animal index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+- 1a. The specified animal index is invalid.
+    - 1a1. AnimalCatalog displays an error message indicating an invalid animal index.
     - Use case ends.
-- 2b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
-    - 2b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
+- 1b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
+    - 1b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
     - Use case ends.
-- 2c. One or more of the specified task index(es) do not correspond to an existing task.
-    - 2c1. AnimalCatalog displays an error message indicating the task does not exist.
+- 1c. One or more of the specified task index(es) do not correspond to an existing task.
+    - 1c1. AnimalCatalog displays an error message indicating the task does not exist.
     - Use case ends.
 
 ---
@@ -806,19 +797,18 @@ otherwise)
 
 **MSS:**
 1. User requests to unmark a task as uncompleted in the task list of an animal by specifying the animal's index and the task index(es).
-2. AnimalCatalog validates the animal and task indices and locates the specified task(s) within the animal's task list.
-3. AnimalCatalog unmarks the task(s) as uncompleted and displays a success message.
+2. AnimalCatalog unmarks the task(s) as uncompleted and displays a success message.
     - Use case ends.
 
 **Extensions:**
-- 2a. The specified animal index is invalid.
-    - 2a1. AnimalCatalog displays an error message indicating an invalid animal index.
+- 1a. The specified animal index is invalid.
+    - 1a1. AnimalCatalog displays an error message indicating an invalid animal index.
     - Use case ends.
-- 2b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
-    - 2b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
+- 1b. The specified task index(es) are invalid or exceed the number of tasks in the task list.
+    - 1b1. AnimalCatalog displays an error message indicating invalid or excessive task index(es).
     - Use case ends
-- 2c. One or more of the specified task index(es) do not correspond to an existing task.
-    - 2c1. AnimalCatalog displays an error message indicating the task does not exist.
+- 1c. One or more of the specified task index(es) do not correspond to an existing task.
+    - 1c1. AnimalCatalog displays an error message indicating the task does not exist.
     - Use case ends.
 
 ---
