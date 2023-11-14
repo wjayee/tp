@@ -240,6 +240,8 @@ The following activity diagram shows how the `HelpAnimalCommand` works:
           to the `CommandEnum` class for the `help` command to display the newly added command's help message.
   - Cons: More complex to implement, test and debug.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## `AddAnimalCommand` Feature
 
 ### Implementation
@@ -291,6 +293,8 @@ All commands (except `list`, `search` and `reset`) have similar logic sequence d
             work to allow users to input optional data as needed. This can also mean that important information that are
             not mandatory at time of adding the animal can be unintentionally left out.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## `DeleteAnimalCommand` Feature
 
 ### Implementation
@@ -325,6 +329,8 @@ Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagra
     - Pros: Can be more intuitive if the user knows the specific animal's details.
     - Cons: Might lead to errors if multiple animals have similar names or if the user misspells the identifier.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## `EditAnimalCommand` Feature
 
 The `EditAnimalCommand` is a specific command designed to edit the field(s) of a selected animal from the animal catalog. It identifies the animal to be edited based on its displayed index in the animal list.
@@ -353,6 +359,8 @@ Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagra
 - **Alternative 2:** Allow all attributes to be edited.
     - Pros: Animal `ID` can be edited, user does not have to delete the entry and add a new animal.
     - Cons: Might bring about cases where 2 entries for animal share exact same fields, and it becomes impossible to identify which is which animal.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## `ListAnimalCommand` Feature
 
@@ -383,6 +391,8 @@ The following sequence diagram shows how the `ListAnimalCommand` works:
 - **Alternative 2:** Display all animals in the animal catalog by default.
     - Pros: None.
     - Cons: Might be confusing for the user if the list is long.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## `SearchAnimalCommand` Feature
 
@@ -415,6 +425,8 @@ Refer to [`ListAnimalCommand`](#listanimalcommand-feature) for the sequence diag
 - **Alternative 2:** Searches for animals based on partial matches of prefixes.
     - Pros: Easy to find animals even if the user does not know the exact prefixes.
     - Cons: Might be harder for users to find specific animals.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## `AddTaskCommand` Feature
 
@@ -451,6 +463,8 @@ Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagra
     - Pros: Users can add all tasks to all animals in one command.
     - Cons: Command can get too long and user may lose track of the animals and tasks to be added.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## `DeleteTaskCommand` Feature
 
 The `DeleteTaskCommand` is a specific command designed to delete a task to the task list of an animal. It identifies the animal to be selected based on its index in the current animal list and the task to be deleted based on its index in the task list of the selected animal.
@@ -481,6 +495,8 @@ Refer to [`AddAnimalCommand`](#addanimalcommand-feature) for the sequence diagra
 - **Alternative 2:** Allows for multiple tasks to be deleted from multiple animals in one command.
     - Pros: Users can delete all specified tasks from all specified animals in one command.
     - Cons: Command can get too long and user may lose track of the animals and tasks to be deleted.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## `MarkTaskCommand` and `UnmarkTaskCommand` Feature
 
@@ -531,6 +547,7 @@ The following sequence diagrams shows how the `MarkTaskCommand` works:
     - Pros: Easy for users to mark tasks as done.
     - Cons: Users might not be fully aware of which tasks are marked as done.
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## `ResetTaskCommand` Feature
 
@@ -565,6 +582,8 @@ The following sequence diagram shows how the `ResetTaskCommand` works:
     - Pros: Easy to reset all tasks as uncompleted for a specific animal. Users have finer control.
     - Cons: Might be harder for users to reset all tasks as uncompleted for all animals. Users have to manually reset
             tasks for each of their animal.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## `Detailed View` Feature
 
