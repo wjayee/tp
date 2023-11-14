@@ -6,9 +6,29 @@ pageNav: 3
 
 # Pawfection User Guide
 
-Pawfection is a **desktop app for managing animals in a pet shelter, optimized for use via a Command Line Interface** (CLI) while still
-having the benefits of a Graphical User Interface (GUI). It aims to provide a platform for volunteers to store and retrieve information
-about animals in a shelter easily.
+## Welcome to Pawfection!
+***Streamline Your Shelter: Pawfection - Commanding Care with a Click!***
+
+Welcome to Pawfection, your **desktop application for managing animals in a pet shelter**, designed with **you**, the volunteer, in mind.
+It aims to provide a platform for volunteers to **store and retrieve information** about **animals and tasks** easily, ensuring seamless
+coordination within the shelter.
+
+## Why Choose Pawfection?
+
+With Pawfection, experience a new level of convenience and control:
+
+* **User-Friendly** - Experience the best of both worlds with Pawfection's seamless Command Line Interface (CLI) and Graphical User Interface (GUI) integration, tailored for effortless navigation.
+* **Unified Animal Dashboard** - Access all your shelter's animal data at a glance with our centralized information system.
+* **Streamlined Task Tracking** - Manage your shelter's daily duties with ease using Pawfection's straightforward task management features.
+
+## Revolutionise Your Shelter Today!
+**Begin your Pawfection Journey** - New to Pawfection? Get started with our [Quick Start Guide](#quick-start)!
+
+---
+
+<div style="page-break-after: always;"></div>
+
+## Table of Contents
 
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
@@ -33,9 +53,28 @@ about animals in a shelter easily.
 - [Command summary](#command-summary)
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
+## Navigating the User Guide
+Welcome to the Pawfection User Guide! Our goal is to empower you with the knowledge and confidence to unleash the full potential of Pawfection.
+
+* **Effortless Navigation:** Use the [table of contents](#table-of-contents) for seamless navigation between sections.
+* **Quick Start for New Users:** New to Pawfection? Get started with our [Quick Start Guide](#quick-start) as we handhold you through the process of setting up Pawfection.
+* **Features:** Learn more about Pawfection's features and how to use them with our [Features](#features) section.
+* **Tutorial:** Get a step-by-step walkthrough of Pawfection's features with our [Tutorial](#pawfection-tutorial).
+
+<box type="info">Look out for these boxes for things to note when using Pawfection</box>
+<box type="tip">Look out for these boxes for tips and tricks on how to best use Pawfection</box>
+<box type="warning">These boxes are for more context and warnings</box>
+<box type="wrong">These boxes are for errors and failure messages</box>
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. **Check Java Installation.** Ensure you have Java `11` or above installed in your Computer.
 
 <box type="info" light>
 <tabs>
@@ -70,32 +109,123 @@ about animals in a shelter easily.
 If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/jdk_howto.html) to install Java 11.
 </box>
 
-2. Download the latest `pawfection.jar`.
+2. **Download Pawfection.** Download the latest version of Pawfection (`pawfection.jar`.) from our [Github Release](https://github.com/AY2324S1-CS2103T-F08-3/tp/releases/tag/v1.4.final).
+<br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/github-release.png" alt="github-release" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  </div>
+<br>
 
-3. Copy the file to the folder you want to use as the _home folder_ for your Pawfection.
+3. **Set Up Your Workspace.** Copy the file to the folder you want to use as the _home folder_ for your Pawfection.
+<box type="tip"><md>We recommend creating a new folder named `Pawfection` to keep things organized!</md></box>
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar pawfection.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. **Navigate to Workspace.** Navigate to the folder containing the `pawfection.jar` file with either of the following methods:
+   - Open a command terminal, `cd` into the folder you put the jar file in.
+   <br>
+     <div style="display:flex; justify-content: center; align-items:center;">
+       <img src="images/cd.png" alt="cd" style="height: 300px; width: 550px; margin-bottom: 16px;">
+     </div>
+   <br>
+
+   - Right-click the folder and select `New Terminal at Folder` **(Mac)** or `Open in Terminal` **(Windows)** to instantly navigate to the folder in your **Terminal**.
+
+5. **Run Pawfection.** Use the `java -jar pawfection.jar` command to run the application.<br>
+<br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/java-jar.png" alt="java-jar" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  </div>
+<br>
+
+6. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
+7. **Start using Pawfection!**
+   - For new users, you can refer to our [Tutorial](#pawfection-tutorial) for a step-by-step walkthrough of Pawfection's features.
+   - For advanced users, you can refer to our [Feature](#features) section and start using Pawfection.
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.
-   Typing the name of a command typing `help`, like `help add` will display the usage guide of the [add](#adding-an-animal-add) command.
-   For more details, see [help](#program-usage-help-help)<br>
-   Some example commands you can try:
-
-    * `list` : Lists all contacts.
-
-    * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle` : Adds a dog named 'Pookie' to the Address Book.
-
-    * `delete 3` : Deletes the animal with INDEX 3 in the displayed animal list.
-
-6. Refer to the [Features](#features) below for details of each command.
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+## Navigating the GUI
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+## Pawfection Tutorial
+
+1. **Starting Pawfection.** Launch Pawfection. You may refer to [here](#quick-start).
+<box type="info">If this is your first time using Pawfection, you will see some sample data to help you get familiar</box>
+
+2. **Opening the Help Window.** The help window can be opened by typing `help` in the command box and pressing `Enter`. The URL to this user guide will be displayed.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+3. **Using the Help Command.** Now lets try using the `help` command more effectively by typing `help ad` and pressing `Enter`. A list of commands that contain the keyword `ad` will be displayed.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+4. **Adding a New Animal.** Let us try to add a new animal. Type in `add n/Tofu i/0000 g/Male db/2019-01-01 da/2019-02-02 s/Dog b/Poodle` and press `Enter`. `Tofu` is now added to the animal list!
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+5. **Add more Animals.** Try it out yourself! Add more animals to the list using the `add` command.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+6. **Searching for Animals.** Now that the list view is getting a little too crowded, let us try to search for animals. Type in `search n/Tofu` and press `Enter`. The animal list view will now only show animals with the name `Tofu`.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+7. **Detailed Animal View.** Let us try to view the details of `Tofu`. Click on the `Tofu` card on the left of GUI. The animal details view on the right will now show the details of `Tofu`.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+8. **Adding a Task.** Now add a task to `Tofu`. Type in `addtask 1 Feed Tofu` and press `Enter`. A task with the name `Feed Tofu` is now added to `Tofu`'s task list.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+9. **Marking a Task as Done.** Type in `mark 1 1` and press `Enter`. The first task of `Tofu` is now marked as done.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+10. **Listing all Animals.** How do we return to the original list view of animals? Type in `list` and press `Enter`. The animal list view will now show all animals.
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+</div>
+
+Congratulations! You are now ready to use Pawfection! Click [here](#features) to explore other features.
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -131,6 +261,8 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 For longer error messages stated in the user guide, they have been shortened for brevity by displaying only the first few words followed by ellipsis.
 </box>
 
+---
+
 ### Attributes of `Animal`
 Summarized in the table below are the attributes of `Animal` along with their constraints. Users are encouraged to read through
 this table for an idea of what the attributes are supposed to look like, and refer to this table if they are unsure.
@@ -149,8 +281,13 @@ this table for an idea of what the attributes are supposed to look like, and ref
 | `da/DOA`    | `yyyy-MM-dd` format. Not in the future.<br/>Not chronologically earlier than `DOB` | <ul><li>✅ <code>da/2023-05-05</code></li></ul>                                                                                          |
 
 </details>
+<br>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Program usage help: `help`
 Displays either a link to this User Guide in a pop-up, or the usage guide of the specified command.
@@ -168,12 +305,12 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 
 **Upon success:**
 
-`help` will produce a link to the User Guide in a pop-up.
+* `help` will produce a link to the User Guide in a pop-up.
 <div style="display:flex; justify-content: center; align-items:center;">
   <img src="images/help.png" alt="Pop-up" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
-`help add` will show usage guide of all commands that partial match with `add`.
+* `help add` will show usage guide of all commands that partial match with `add`.
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="images/help_add.png" alt="help add" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
@@ -182,6 +319,8 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 * Inputs that result in no partial matches will produce the following error message:
 
   <box type="wrong">Command: COMMAND_NAME not recognized!</box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -228,6 +367,8 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * Attempts to `add` an animal with a wrong date format, or a date that does not exist e.g. `2019-02-31` will produce the following error message:
   <box type="wrong"> Admission Date should be in the following format: '2023-10-15'</box>
 
+[Back to Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Listing all animals: `list`
@@ -241,6 +382,8 @@ Shows a list of all animals in the animal catalog.
 * The list is sorted by the order in which the animals were added.
 * Can be used after using the `search` command to list all animals again.
 * Any words after `list` will be ignored.
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -271,6 +414,8 @@ Deletes the specified animal from the animal catalog.
 
 * Invalid command formats will produce the following error message:
   <box type="wrong">Invalid command format! delete: Deletes the animal identified by..."</box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -314,6 +459,8 @@ Edits animals specified by the index with the newly specified prefix attributes.
 
 * `edit 100` is an invalid command format due to missing prefix and will produce the following error message:
   <box type="wrong"> At least one field to edit must be provided </box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -361,6 +508,8 @@ Searches animals that are filtered using the specified prefixes.
 
   <box type="wrong"> Search keywords cannot be empty! At least one prefix must be provided. </box>
 
+[Back to Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Adds a task to an animal: `addtask`
@@ -393,6 +542,8 @@ Adds a specific new task to the task list of an animal.
 
 * If the `ANIMAL_INDEX` provided is negative or zero, the following error message will be produced:
   <box type="wrong"> Invalid command format! </box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -439,6 +590,8 @@ from animal with index 12, but because there is a missing `TASK_INDEX`, the comm
 * If the `ANIMAL_INDEX` or `TASK_INDEX` provided is negative or zero, the following error message will be produced:
   <box type="wrong"> Invalid command format! </box>
 
+[Back to Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Marking a task as done: `mark`
@@ -475,7 +628,6 @@ Marks the specified task as done.
   <img src="images/Mark_tasks_eg.png" alt="Mark task example" style="height: 300px; width: 550px; : margin-bottom: 16px;">
 </div>
 
-
 **Upon failure:**
 * If no `TASK_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Task index(es) is/are missing! </box>
@@ -488,6 +640,8 @@ Marks the specified task as done.
 
 * If any of the `TASK_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -525,7 +679,6 @@ Marks the specified task as uncompleted.
   <img src="images/Unmark_tasks_eg.png" alt="Unmark task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
-
 **Upon failure:**
 * If no `TASK_INDEX` is provided, the following error message will be produced:
   <box type="wrong"> Task index(es) is/are missing! </box>
@@ -538,6 +691,8 @@ Marks the specified task as uncompleted.
 
 * If any of the `TASK_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The task index(es) provided exceeds the number of tasks in the animal! </box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -555,6 +710,8 @@ Resets all tasks of all animals as uncompleted.
 * `reset` will unmark all tasks of all animals and produce the following message:
 
   <box type="success"> All tasks are have been reset </box>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -581,6 +738,8 @@ The animal cell whose details are currently being displayed in the detail view w
   <img src="images/detailView_eg2.png" alt="Detailed view" style="height: 300px; width: 550px; : margin-bottom: 16px;">
 </div>
 
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -630,3 +789,5 @@ If your changes to the data file makes its format invalid, Pawfection will disca
 | **Unmark**     | `unmark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...`<br> e.g. `unmark 2 1 2`                                     |
 | **Reset**      | `reset`                                                                                                      |
 | **Help**       | `help [COMMAND_NAME]`                                                                                        |
+
+[Back to Table of Contents](#table-of-contents)
