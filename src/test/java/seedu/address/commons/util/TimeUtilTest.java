@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -125,7 +126,7 @@ public class TimeUtilTest {
 
     @Test
     public void testIsInFuture_withFutureDate_returnsTrue() {
-        LocalDate futureDate = LocalDate.now().plusDays(1);
+        LocalDate futureDate = LocalDate.now(ZoneId.of("Asia/Singapore")).plusDays(1);
         assertTrue(TimeUtil.isFutureDate(futureDate));
     }
 

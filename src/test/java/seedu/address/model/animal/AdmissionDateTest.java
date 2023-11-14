@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,7 @@ public class AdmissionDateTest {
 
     @Test
     public void testConstructor_withFutureDate_throwsIllegalArgumentException() {
-        String futureDate = LocalDate.now().plusDays(1).toString();
+        String futureDate = LocalDate.now(ZoneId.of("Asia/Singapore")).plusDays(1).toString();
         assertThrows(IllegalArgumentException.class, () -> new AdmissionDate(futureDate));
     }
 

@@ -27,7 +27,7 @@ public class DateOfBirthTest {
 
     @Test
     public void testConstructor_withFutureDate_throwsIllegalArgumentException() {
-        String futureDate = LocalDate.now().plusDays(1).toString();
+        String futureDate = LocalDate.now(ZoneId.of("Asia/Singapore")).plusDays(1).toString();
         Assertions.assertThrows(IllegalArgumentException.class, () -> new DateOfBirth(futureDate));
     }
 
