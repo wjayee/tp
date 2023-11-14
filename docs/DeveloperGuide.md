@@ -874,12 +874,6 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
 ## **Appendix: Planned Enhancements** ##
 ## Planned Enhancements
 
