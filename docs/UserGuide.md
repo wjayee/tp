@@ -204,7 +204,7 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * Date of Birth (DOB) and Date of Admission (DOA) must be in the format `yyyy-MM-dd`. e.g. `2019-01-01` for 1st January 2019.
 * DOB must come chronologically before DOA.
 * Both DOB and DOA must not be in the future (If today's date is `2023-11-13`, then any date after that is considered **invalid**).
-* Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>SomeWord &emsp; Golden &nbsp; Retriever</code>(Note the extra whitespaces in between words).
+* Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>Golden &nbsp; Retriever</code> is invalid. (Note the extra whitespaces in between words).
 * Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
@@ -326,7 +326,6 @@ Searches animals that are filtered using the specified prefixes.
 **Things to note:**
 * Searches for animals whose attributes contain the specified search values in the prefix filter.
 * The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
-* The order of prefixes does not matter. e.g. both `n/Pookie i/1234` and `i/1234 n/Pookie `will match animals named `Pookie` with ID `1234`
 * Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
 * If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
 * Any characters or words after `search` and before any recognized prefixes will be ignored.
