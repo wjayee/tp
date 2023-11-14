@@ -602,7 +602,7 @@ Here's a brief outline of its operations:
 For update of `AnimalDetailPanel` by clicking, this is handled in the `AnimalListPanel` class using a `Listener`. The `Listener` will listen to changes in selected cell, and update the animal details to show the selected animal.
 
 For update of `AnimalDetailPanel` by animal-specific commands, animal-specific commands that automatically update the `Detailed View` with the targeted animal include `add`, `edit`, `addtask`,
-`deletetask`, `mark`, and `unmark`. For such animal-specific commands, the `CommandResult` will accept an additional argument `Animal`,
+`deletetask`, `mark`, and `unmark`. All other commands are considered non-animal-specific. For such animal-specific commands, the `CommandResult` will accept an additional argument `Animal`,
 and this is retrieved by the `AnimalDetailView` in the `MainWindow` class. To differentiate between `CommandResult` that contains an `Animal` (animal-specific commands) and non-animal-specific commands, Optional<Animal> was used as the Type stored in the `CommandResult` class.
 
 ### Design considerations:
