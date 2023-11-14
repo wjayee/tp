@@ -666,8 +666,8 @@ otherwise)
 
 **MSS:**
 1. User requests help on a specific command or a list of commands related to animal handling.
-2AnimalCatalog retrieves the usage instructions for the command(s).
-3AnimalCatalog displays the help instructions to the user.
+2. AnimalCatalog retrieves the usage instructions for the command(s).
+3. AnimalCatalog displays the help instructions to the user.
     - Use case ends.
 
 **Extensions:**
@@ -693,7 +693,7 @@ otherwise)
   - 1a1. AnimalCatalog displays a message indicating a duplicate entry.
   - Use case ends.
 - 1b. The user enters incomplete or invalid details.
-  - 1bAnimalCatalog prompts the user to enter the correct and complete details.
+  - 1b. AnimalCatalog prompts the user to enter the correct and complete details.
   - Use case ends.
 
 ---
@@ -702,7 +702,7 @@ otherwise)
 
 **MSS:**
 1. User requests to delete an animal from the catalog by specifying the animal's index.
-2AnimalCatalog deletes the animal from the catalog and displays a success message.
+2. AnimalCatalog deletes the animal from the catalog and displays a success message.
     - Use case ends.
 
 **Extensions:**
@@ -880,7 +880,7 @@ testers are expected to do more *exploratory* testing.
 1. Implement more detailed error messages for `search` command. The current error message for invalid inputs for the `search` command is not very accurate. It will be improved in the future by providing more accurate error messages. e.g. `search nil/other` will return an error message saying that the prefix provided is invalid, instead of saying that the search input is empty since it is not recognised.
 
 
-2. Include `INDEX` numbers of tasks in the detailedView. Currently, tasks are listed in the detailedView without the `INDEX`. While usable, it can get inconvenient to figure out which `INDEX` a task is when the task list gets longer, as users have to manually count up/down. It will be improved by displaying the `INDEX` of the task beside each task, e.g <br>1. [ ] Task 1 <br>2. [ ] Task 2 <br>3. [X] Task 3
+2. Include `INDEX` numbers of tasks in the detailedView. Currently, tasks are listed in the detailedView without the `INDEX`. While usable, it can get inconvenient to figure out which `INDEX` a task is when the task list gets longer, as users have to manually count up/down. It will be improved by displaying the `INDEX` of the task beside each task, e.g <br>1. [ ] Task 1 <br>2. [ ] Task 2 <br>3. [X] Task 3<br>
 
 
 3. Add a `view` command, to view details of animals. Currently, to view the details of an animal, users have two approaches: <br> <br> 3.1. Click on an animal entry in the animal list to see the detailed view. <br> <br>3.2. Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`. <br><br>While intuitive, it was an oversight to not include a `view` animal command to make it more CLI-friendly. We plan on adding a `view INDEX` command in the future, where the detailed view will show the details of the animal at the specified `INDEX` of the `view INDEX` command.
