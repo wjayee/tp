@@ -374,6 +374,7 @@ Adds a specific new task to the task list of an animal.
 * The `TASK` refers to the task that you want to add into the task list of the animal.
 * `TASK` can include spaces.
 * `ANIMALINDEX` is based on 1-indexing, i.e first animal will be at index 1.
+* Adding duplicate `TASK` is allowed.
 
 **Examples:**
 * `addtask 1 Feed Pookie`
