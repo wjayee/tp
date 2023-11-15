@@ -168,14 +168,14 @@ Here are the components of the Graphical User Interface (GUI), and their details
 <details open style="border: 1px solid grey; padding: 10px; border-radius: 5px;">
 <summary style="font-size: 20px; cursor: pointer;">GUI Components</summary>
 
-| Component Name      | Details                                                                                                                                  | 
+| Component Name      | Details                                                                                                                                  |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| Menu Bar            | Contains the drop down menus: **File** and **Help**.                                                                                     | 
-| Command Input Box   | Text box for users to input commands.                                                                                                    |    
+| Menu Bar            | Contains the drop down menus: **File** and **Help**.                                                                                     |
+| Command Input Box   | Text box for users to input commands.                                                                                                    |
 | Message Display Box | Box that displays result of command. Error messages will be displayed here as well.                                                      |
-| Animal Entries      | Contains information about individual animals currently at the shelter, including: Name, ID, Sex, Species and Breed of animal.           |                                         
-| Selected Animal     | Animal that is selected either by left-clicking on the animal entry, or selected by a command. Selected animal is highlighted in orange. |                                    
-| Detailed View       | Box that contains more details about the currently selected animal.                                                                      |                                                                                                                           |                                                                    
+| Animal Entries      | Contains information about individual animals currently at the shelter, including: Name, ID, Sex, Species and Breed of animal.           |
+| Selected Animal     | Animal that is selected either by left-clicking on the animal entry, or selected by a command. Selected animal is highlighted in orange. |
+| Detailed View       | Box that contains more details about the currently selected animal.                                                                      |
 
 </details>
 <br>
