@@ -10,7 +10,7 @@ pageNav: 3
 ***Streamline Your Shelter: Pawfection - Commanding Care with a Click!***
 
 Welcome to Pawfection, your **desktop application for managing animals in a pet shelter**, designed with **you**, the volunteer, in mind.
-It aims to provide a platform for volunteers to **store and retrieve information** about **animals and tasks** easily, ensuring seamless
+Pawfection aims to provide a platform for volunteers to **store and retrieve information** about **animals and tasks** easily, ensuring seamless
 coordination within the shelter.
 
 ## Why Choose Pawfection?
@@ -19,6 +19,7 @@ With Pawfection, experience a new level of convenience and control:
 
 * **User-Friendly** - Experience the best of both worlds with Pawfection's seamless Command Line Interface (CLI) and Graphical User Interface (GUI) integration, tailored for effortless navigation.
 * **Unified Animal Dashboard** - Access all your shelter's animal data at a glance with our centralized information system.
+* **Effortless Animal Management** - Streamlined with user-friendly tools, effortlessly add, edit, remove, and save animal details in a matter of seconds.
 * **Streamlined Task Tracking** - Manage your shelter's daily duties with ease using Pawfection's straightforward task management features.
 
 ## Revolutionise Your Shelter Today!
@@ -119,15 +120,14 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 3. **Set Up Your Workspace.** Copy the file to the folder you want to use as the _home folder_ for your Pawfection.
 <box type="tip"><md>We recommend creating a new folder named `Pawfection` to keep things organized!</md></box>
 
-4. **Navigate to Workspace.** Navigate to the folder containing the `pawfection.jar` file with either of the following methods:
-   - Open a command terminal, `cd` into the folder you put the jar file in.
-   <br>
+4. **Navigate to Workspace.** Navigate to the folder containing the `pawfection.jar` file using this method:
+   - Right-click the folder and select `New Terminal at Folder` **(Mac)** or `Open in Terminal` **(Windows)** to instantly navigate to the folder in your **Terminal**.
+     <br>
      <div style="display:flex; justify-content: center; align-items:center;">
        <img src="images/cd.png" alt="cd" style="height: 300px; width: 550px; margin-bottom: 16px;">
      </div>
    <br>
-
-   - Right-click the folder and select `New Terminal at Folder` **(Mac)** or `Open in Terminal` **(Windows)** to instantly navigate to the folder in your **Terminal**.
+    - Alternatively, you can manually navigate to the folder using the `cd` command in your **Terminal**.
 
 5. **Run Pawfection.** Use the `java -jar pawfection.jar` command to run the application.<br>
 <br>
@@ -135,6 +135,8 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
     <img src="images/java-jar.png" alt="java-jar" style="height: 300px; width: 550px; margin-bottom: 16px;">
   </div>
 <br>
+
+<box type="warning">The terminal may look different on different Operating System, that is fine.</box>
 
 6. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
@@ -168,56 +170,44 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 2. **Opening the Help Window.** The help window can be opened by typing `help` in the command box and pressing `Enter`. The URL to this user guide will be displayed.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/helpTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 3. **Using the Help Command.** Now lets try using the `help` command more effectively by typing `help ad` and pressing `Enter`. A list of commands that contain the keyword `ad` will be displayed.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/helpadTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 4. **Adding a New Animal.** Let us try to add a new animal. Type in `add n/Tofu i/0000 g/Male db/2019-01-01 da/2019-02-02 s/Dog b/Poodle` and press `Enter`. `Tofu` is now added to the animal list!
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/addTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 5. **Add more Animals.** Try it out yourself! Add more animals to the list using the `add` command.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
-</div>
-
 6. **Searching for Animals.** Now that the list view is getting a little too crowded, let us try to search for animals. Type in `search n/Tofu` and press `Enter`. The animal list view will now only show animals with the name `Tofu`.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/searchTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 7. **Detailed Animal View.** Let us try to view the details of `Tofu`. Click on the `Tofu` card on the left of GUI. The animal details view on the right will now show the details of `Tofu`.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
-</div>
-
 8. **Adding a Task.** Now add a task to `Tofu`. Type in `addtask 1 Feed Tofu` and press `Enter`. A task with the name `Feed Tofu` is now added to `Tofu`'s task list.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/addTaskTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 9. **Marking a Task as Done.** Type in `mark 1 1` and press `Enter`. The first task of `Tofu` is now marked as done.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/markTut.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 10. **Listing all Animals.** How do we return to the original list view of animals? Type in `list` and press `Enter`. The animal list view will now show all animals.
-
-<div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
-</div>
 
 Congratulations! You are now ready to use Pawfection! Click [here](#features) to explore other features.
 
@@ -300,8 +290,11 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 * `help add`
 * `help del`
 
-**Things to note:**
+<box type="info" header="Things to note:">
+
 * `COMMAND_NAME` is case-insensitive, and is able to do partial matches. E.g. "a", "ad", "dd", "AdD" will all match with "add".
+
+</box>
 
 **Upon success:**
 
@@ -336,7 +329,7 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * `add n/Pookie i/1234 g/MALE db/2019-01-01 da/2019-02-02 s/Dog b/Poodle`
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair`
 
-**Things to note:**
+<box type="info" header="Things to note:">
 
 * ID must be a unique 4 digit number.
 * SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
@@ -346,6 +339,9 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>Golden &nbsp; Retriever</code> is invalid. (Note the extra whitespaces in between words).
 * Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
+
+</box>
+
 
 **Upon success:**
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
@@ -377,11 +373,13 @@ Shows a list of all animals in the animal catalog.
 **Format:**
 <box>list</box>
 
-**Things to note:**
+<box type="info" header="Things to note:">
 
 * The list is sorted by the order in which the animals were added.
 * Can be used after using the `search` command to list all animals again.
 * Any words after `list` will be ignored.
+
+</box>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -393,13 +391,16 @@ Deletes the specified animal from the animal catalog.
 **Format:**
 <box>delete INDEX</box>
 
-**Things to note:**
+**Examples:**
+* `delete 2`
+
+<box type="info" header="Things to note:">
+
 * Deletes the animal at the specified `INDEX`.
 * The `INDEX` refers to the animal of the `INDEX` on the animal list view, and is a positive number.
 * `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
 
-**Examples:**
-* `delete 2`
+</box>
 
 **Upon success:**
 * `delete 2` deletes the animal at `INDEX 2`.
@@ -425,7 +426,12 @@ Edits animals specified by the index with the newly specified prefix attributes.
 **Format:**
 <box>edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA] </box>
 
-**Things to note:**
+**Examples:**
+* `edit 2 n/Pookie`
+* `edit 1 s/Dog b/Poodle`
+
+<box type="info" header="Things to note:">
+
 * ID cannot be edited.
 * At least one prefix must be provided.
 * Prefixes that are not provided will not be edited.
@@ -436,9 +442,7 @@ Edits animals specified by the index with the newly specified prefix attributes.
 * Attribute constraints must be adhered to. E.g. `Sex` must be either `male` or `female`.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
-**Examples:**
-* `edit 2 n/Pookie`
-* `edit 1 s/Dog b/Poodle`
+</box>
 
 **Upon success:**
 * `edit 2 n/Pookie` edits the name of the animal at `INDEX 2` to be `Pookie`.
@@ -460,6 +464,9 @@ Edits animals specified by the index with the newly specified prefix attributes.
 * `edit 100` is an invalid command format due to missing prefix and will produce the following error message:
   <box type="wrong"> At least one field to edit must be provided </box>
 
+<box type="tip">Want to change the ID of the animal instead? Delete the current animal and add an animal with the new ID!</box>
+
+
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -470,7 +477,15 @@ Searches animals that are filtered using the specified prefixes.
 **Format:**
 <box>search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]</box>
 
-**Things to note:**
+**Examples:**
+* `search n/Bear`
+* `search n/Pookie b/Poodle`
+* `search something n/Bear` is equivalent to `search n/Bear`
+* `search nil/something n/Bear etc/else` is equivalent to `search n/Bear`
+* `search something` and `search nil/other else/other` is equivalent to `search`
+
+<box type="info" header="Things to note:">
+
 * Searches for animals whose attributes contain the specified search values in the prefix filter.
 * The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
 * Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
@@ -483,12 +498,7 @@ Searches animals that are filtered using the specified prefixes.
 * For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
-**Examples:**
-* `search n/Bear`
-* `search n/Pookie b/Poodle`
-* `search something n/Bear` is equivalent to `search n/Bear`
-* `search nil/something n/Bear etc/else` is equivalent to `search n/Bear`
-* `search something` and `search nil/other else/other` is equivalent to `search`
+</box>
 
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
@@ -515,10 +525,14 @@ Searches animals that are filtered using the specified prefixes.
 ### Adds a task to an animal: `addtask`
 Adds a specific new task to the task list of an animal.
 
+**Examples:**
+* `addtask 1 Feed Pookie`
+
 **Format:**
 <box>addtask ANIMAL_INDEX TASK</box>
 
-**Things to note:**
+<box type="info" header="Things to note:">
+
 * Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
 * The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
 * The `TASK` refers to the task that you want to add into the task list of the animal.
@@ -526,8 +540,9 @@ Adds a specific new task to the task list of an animal.
 * `ANIMALINDEX` is based on 1-indexing, i.e first animal will be at index 1.
 * Adding duplicate `TASK` is allowed.
 
-**Examples:**
-* `addtask 1 Feed Pookie`
+</box>
+
+
 
 **Upon success:**
 * `addtask 1 Feed Pookie` adds a task with name `Feed Pookie` to the task list of the first animal.
@@ -553,13 +568,19 @@ Deletes a specific task from the task list of an animal.
 **Format:**
 <box>deletetask ANIMAL_INDEX TASK_INDEX</box>
 
-**Things to note:**
+**Examples:**
+* `deletetask 1 1`
+
+<box type="info" header="Things to note:">
+
 * Deletes the task at the specified `TASK_INDEX` from the task list of the animal at the specified `ANIMAL_INDEX`.
 * The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
 * The `TASK_INDEX` refers to the index of the task on the task list of the animal.
 * `ANIMAL_INDEX` and `TASK_INDEX` are based on 1-indexing, i.e first animal will be at index 1.
 * `ANIMAL_INDEX` and `TASK_INDEX` must be separated by a space. E.g. `deletetask 12` will be treated as delete task
-from animal with index 12, but because there is a missing `TASK_INDEX`, the command is invalid.
+  from animal with index 12, but because there is a missing `TASK_INDEX`, the command is invalid.
+
+</box>
 
 <box type="warning">
 
@@ -568,9 +589,6 @@ from animal with index 12, but because there is a missing `TASK_INDEX`, the comm
 * `deletetask 1 2` is not equivalent to `deletetask 2 1`.
 
 </box>
-
-**Examples:**
-* `deletetask 1 1`
 
 **Upon success:**
 * `deletetask 1 1` deletes the first task from the first animal in the list
@@ -600,7 +618,12 @@ Marks the specified task as done.
 **Format:**
 <box>mark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
 
-**Things to note:**
+**Examples:**
+* `mark 1 1`
+* `mark 2 1 2`
+
+<box type="info" header="Things to note:">
+
 * Marks the task at the specified `TASK_INDEX` as done for the animal at the specified `ANIMAL_INDEX`.
 * The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
 * The `TASK_INDEX` refers to the index of the task on the task list of the animal.
@@ -608,6 +631,8 @@ Marks the specified task as done.
 * `TASK_INDEX` must be separated by a space.
 * If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as done.
 * Executing the `mark` command on task(s) previously marked as done will not cause an error to be thrown, and the task(s) would remain as marked.
+
+</box>
 
 <box type="warning">
 
@@ -617,9 +642,6 @@ Marks the specified task as done.
 
 </box>
 
-**Examples:**
-* `mark 1 1`
-* `mark 2 1 2`
 
 **Upon success:**
 * `mark 2 1 2` marks the first and second task of the second animal as done.
@@ -651,7 +673,12 @@ Marks the specified task as uncompleted.
 **Format:**
 <box>unmark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
 
-**Things to note:**
+**Examples:**
+* `unmark 1 1`
+* `unmark 3 1 2`
+
+<box type="info" header="Things to note:">
+
 * Marks the task at the specified `TASK_INDEX` as uncompleted for the animal at the specified `ANIMAL_INDEX`.
 * The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
 * The `TASK_INDEX` refers to the index of the task on the task list of the animal.
@@ -659,6 +686,9 @@ Marks the specified task as uncompleted.
 * `TASK_INDEX` and `ANIMAL_INDEX` must be separated by a space.
 * If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as uncompleted.
 * Executing the `unmark` command on task(s) previously marked as uncomplete will not cause an error to be thrown, and the task(s) would remain as uncomplete (unmarked).
+
+
+</box>
 
 <box type="warning">
 
@@ -668,9 +698,6 @@ Marks the specified task as uncompleted.
 
 </box>
 
-**Examples:**
-* `unmark 1 1`
-* `unmark 3 1 2`
 
 **Upon success:**
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
@@ -702,14 +729,20 @@ Resets all tasks of all animals as uncompleted.
 **Format:**
 <box>reset</box>
 
-**Things to note:**
+<box type="info" header="Things to note:">
+
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
 * Any words after `reset` will be ignored.
+
+</box>
+
 
 **Upon success:**
 * `reset` will unmark all tasks of all animals and produce the following message:
 
   <box type="success"> All tasks are have been reset </box>
+
+<box type="tip">Want to reset the daily task? Use `reset` instead of `unmark` to unmark every tasks at once!</box>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -721,8 +754,14 @@ The detailed view panel on the right shows greater details about the selected an
 * Most animal-specific commands that involve specifying an `INDEX` of animal will automatically show the details of the animal in the detailed view. Commands include: `add`, `edit`, `addtask`, `deletetask`, `mark`, `unmark`.
 
 The animal cell whose details are currently being displayed in the detail view will be highlighted in orange.
+
+<box type="info">
+
 * Note that certain commands will cause the selected animal and the detailed view to reset, and these include `list`, `delete`, `search`, and `help` commands.
 * For invalid animal-specific commands, the selected animal will not change.
+
+</box>
+
 
 **Examples:**
 * Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
