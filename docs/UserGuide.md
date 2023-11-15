@@ -127,8 +127,8 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
        <img src="images/cd.png" alt="cd" style="height: 300px; width: 550px; margin-bottom: 16px;">
      </div>
    <br>
-   
-    - Alternatively, you can manually navigate to the folder using the `cd` command in your **Terminal**. 
+
+    - Alternatively, you can manually navigate to the folder using the `cd` command in your **Terminal**.
 
 5. **Run Pawfection.** Use the `java -jar pawfection.jar` command to run the application.<br>
 
