@@ -144,6 +144,8 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
   <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
+<box type="tip">Opt for full-screen mode to optimize your viewing experience!</box>
+
 7. **Start using Pawfection!**
    - For new users, you can refer to our [Tutorial](#pawfection-tutorial) for a step-by-step walkthrough of Pawfection's features.
    - For advanced users, you can refer to our [Feature](#features) section and start using Pawfection.
@@ -219,27 +221,38 @@ Congratulations! You are now ready to use Pawfection! Click [here](#features) to
 
 ## Features
 
+### Command Format
+
+Here are the **main components** of the commands:
+
+|  Component   |     Example     |                                                    Description                                                    |
+|:------------:|:---------------:|:-----------------------------------------------------------------------------------------------------------------:|
+| Command Word | `add`, `search` |                                            The feature to be executed                                             |
+|    Prefix    |   `n/`, `i/`    |                                        The type of attribute of the animal                                        |
+|  Parameter   |  `NAME`, `ID`   |                                     The value of the attribute of the animal                                      |
+|    Index     |    `1`, `2`     | The position of the animal or task in the current list, based on 1-indexing, i.e first animal will be at index 1. |
+
+To view the full list of animal attributes, refer to [Attributes of `Animal`](#attributes-of-animal).
+
+
+Here are the **additional symbols** used in the commands:
+
+
+| Symbol |     Example      |                       Description                        |
+|:------:|:----------------:|:--------------------------------------------------------:|
+|  None  |     `n/NAME`     |            The parameter `NAME` is compulsory            |
+| `[ ]`  |    `b/BREED`     |            The parameter `BREED` is optional             |
+| `...`  | `TASK_INDEX ...` | Multiple parameters of type `TASK_INDEX` can be accepted |
+
+
+
 <box type="info" header="Notes about the command format:">
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Pookie`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [s/Dog]` can be used as `n/Pookie s/Dog` or as `n/Pookie`.
 
 * Parameters can be in any order **EXCEPT** commands that take in `ANIMAL_INDEX` and `TASK_INDEX` as inputs.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
 
-  <box type="warning" header="More information on the order of parameters">
-
-  For commands which require both `ANIMAL_INDEX` and `TASK_INDEX` as inputs, the order in the format must be adhered to.
-  E.g. for [`deletetask`](#deletes-a-task-of-an-animal-deletetask) which has the format `deletetask ANIMAL_INDEX TASK_INDEX`,
-  specifying `deletetask TASK_INDEX ANIMAL_INDEX` is not **acceptable** and may produce unintended outcomes.
-
-  </box>
-
-* Extraneous parameters for commands that do not take in parameters (such as `list`) will be ignored.<br>
-  e.g. if the command specifies `list 123`, it will be interpreted as `list`.
+* Extraneous parameters for some commands (e.g. `list`, `reset`, `search`) will be ignored.<br>
+  e.g. if the command specifies `search 123 n/Pookie`, it will be interpreted as `search n/Pookie`.
 
 * Prefixes are **case-sensitive**. `n/` is not the same as `N/`.
 
@@ -300,12 +313,12 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 
 * `help` will produce a link to the User Guide in a pop-up.
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/help.png" alt="Pop-up" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/help.png" alt="Pop-up" style="height: 70px; width: 550px; margin-bottom: 16px;">
 </div>
 
 * `help add` will show usage guide of all commands that partial match with `add`.
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/help_add.png" alt="help add" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/help_add.png" alt="help add" style="height: 100px; width: 900px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -331,14 +344,8 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 
 <box type="info" header="Things to note:">
 
-* ID must be a unique 4 digit number.
-* SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
-* Date of Birth (DOB) and Date of Admission (DOA) must be in the format `yyyy-MM-dd`. e.g. `2019-01-01` for 1st January 2019.
-* DOB must come chronologically before DOA.
-* Both DOB and DOA must not be in the future (If today's date is `2023-11-13`, then any date after that is considered **invalid**).
-* Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>Golden &nbsp; Retriever</code> is invalid. (Note the extra whitespaces in between words).
 * Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
-* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of the constraints of each attribute.
 
 </box>
 
@@ -347,7 +354,7 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 * `add n/Tofu i/1242 g/female db/2023-04-01 da/2023-05-25 s/cat b/British Shorthair` adds Tofu to the list.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/add_eg1.png" alt="Add animal example" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/add_eg1.png" alt="Add animal example" style="height: 300px; width: 600px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -376,8 +383,6 @@ Shows a list of all animals in the animal catalog.
 <box type="info" header="Things to note:">
 
 * The list is sorted by the order in which the animals were added.
-* Can be used after using the `search` command to list all animals again.
-* Any words after `list` will be ignored.
 
 </box>
 
@@ -386,7 +391,7 @@ Shows a list of all animals in the animal catalog.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Deleting an animal: `delete`
-Deletes the specified animal from the animal catalog.
+Deletes the animal at the specified index from the animal catalog.
 
 **Format:**
 <box>delete INDEX</box>
@@ -394,19 +399,11 @@ Deletes the specified animal from the animal catalog.
 **Examples:**
 * `delete 2`
 
-<box type="info" header="Things to note:">
-
-* Deletes the animal at the specified `INDEX`.
-* The `INDEX` refers to the animal of the `INDEX` on the animal list view, and is a positive number.
-* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-
-</box>
-
 **Upon success:**
 * `delete 2` deletes the animal at `INDEX 2`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/delete_eg.png" alt="Delete animal example" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/delete_eg.png" alt="Delete animal example" style="height: 200px; width: 650px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -434,13 +431,7 @@ Edits animals specified by the index with the newly specified prefix attributes.
 
 * ID cannot be edited.
 * At least one prefix must be provided.
-* Prefixes that are not provided will not be edited.
-* The `INDEX` refers to the animal of the `INDEX` on the animal list view.
-* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-* `INDEX` must be a positive integer 1, 2, 3, ...
-* The order of prefixes does not matter. e.g. both `1 n/Pookie s/Cat` and `1 s/Cat n/Pookie `will edit the animal at index 1 to species `Cat` and name `Pookie`.
-* Attribute constraints must be adhered to. E.g. `Sex` must be either `male` or `female`.
-* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of the constraints of each attribute.
 
 </box>
 
@@ -448,13 +439,13 @@ Edits animals specified by the index with the newly specified prefix attributes.
 * `edit 2 n/Pookie` edits the name of the animal at `INDEX 2` to be `Pookie`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 650px; margin-bottom: 16px;">
 </div>
 
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/edit_eg2.png" alt="Edit animal species and breed" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/edit_eg2.png" alt="Edit animal species and breed" style="height: 300px; width: 650px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -486,24 +477,19 @@ Searches animals that are filtered using the specified prefixes.
 
 <box type="info" header="Things to note:">
 
-* Searches for animals whose attributes contain the specified search values in the prefix filter.
+* At least one prefix must be provided.
 * The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
 * Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
 * If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
-* Any characters or words after `search` and before any recognized prefixes will be ignored.
-* Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
-* Valid prefixes include: `n/[NAME]`, `i/[ID]`, `g/[SEX]`, `s/[SPECIES]`, `b/[BREED]`, `db/[DATE_OF_BIRTH]`, `da/[DATE_OF_ADMISSION]`
-* There must be at least 1 prefix specified.
-* For empty prefix keywords such as a prefix by itself, e.g `n/` or a prefix with whitespaces `n/   `, no filtering for the prefix will be done. However, at least 1 non-empty prefix must be specified. `search`, and `search n/` is not a valid command. But `search n/Pookie s/` will show all animals with name "Pookie", as the filter for `s/` is ignored.
-* For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
-* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
+* Any unrecognized prefixes or empty prefix keywords provided will be ignored.
+* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of the constraints of each attribute.
 
 </box>
 
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Search_eg1.png" alt="Search for animals named 'Bear'" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/search_eg1.png" alt="Search for animals named 'Bear'" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
@@ -523,7 +509,7 @@ Searches animals that are filtered using the specified prefixes.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Adds a task to an animal: `addtask`
-Adds a specific new task to the task list of an animal.
+Adds a new task with the specified description to the task list of an animal.
 
 **Examples:**
 * `addtask 1 Feed Pookie`
@@ -533,15 +519,10 @@ Adds a specific new task to the task list of an animal.
 
 <box type="info" header="Things to note:">
 
-* Adds a task with name `TASK` to the task list of the animal at the specified `ANIMALINDEX`.
-* The `ANIMALINDEX` refers to the index of the animal on the current animal list view.
-* The `TASK` refers to the task that you want to add into the task list of the animal.
-* `TASK` can include spaces.
-* `ANIMALINDEX` is based on 1-indexing, i.e first animal will be at index 1.
-* Adding duplicate `TASK` is allowed.
+* The `TASK` refers to the description of the task that you want to add into the task list of the animal.
+* Adding multiple `TASK` with the same description is allowed.
 
 </box>
-
 
 
 **Upon success:**
@@ -563,7 +544,7 @@ Adds a specific new task to the task list of an animal.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Deletes a task of an animal: `deletetask`
-Deletes a specific task from the task list of an animal.
+Deletes the task at the specified task index from the task list of the animal at the specified animal index.
 
 **Format:**
 <box>deletetask ANIMAL_INDEX TASK_INDEX</box>
@@ -573,10 +554,6 @@ Deletes a specific task from the task list of an animal.
 
 <box type="info" header="Things to note:">
 
-* Deletes the task at the specified `TASK_INDEX` from the task list of the animal at the specified `ANIMAL_INDEX`.
-* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
-* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
-* `ANIMAL_INDEX` and `TASK_INDEX` are based on 1-indexing, i.e first animal will be at index 1.
 * `ANIMAL_INDEX` and `TASK_INDEX` must be separated by a space. E.g. `deletetask 12` will be treated as delete task
   from animal with index 12, but because there is a missing `TASK_INDEX`, the command is invalid.
 
@@ -594,7 +571,7 @@ Deletes a specific task from the task list of an animal.
 * `deletetask 1 1` deletes the first task from the first animal in the list
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Delete_task_eg.png" alt="Delete task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/deletetask_eg1.png" alt="Delete task example" style="height: 250px; width: 550px; margin-bottom: 16px;">
 </div>
 
 
@@ -613,7 +590,7 @@ Deletes a specific task from the task list of an animal.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Marking a task as done: `mark`
-Marks the specified task as done.
+Marks the task at the specified task index as done for the animal at the specified animal index.
 
 **Format:**
 <box>mark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
@@ -624,11 +601,8 @@ Marks the specified task as done.
 
 <box type="info" header="Things to note:">
 
-* Marks the task at the specified `TASK_INDEX` as done for the animal at the specified `ANIMAL_INDEX`.
-* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
-* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
 * If multiple `TASK_INDEX` are specified, all the tasks at the specified `TASK_INDEX` will be marked as done.
-* `TASK_INDEX` must be separated by a space.
+* All indexes must be separated by a space.
 * If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as done.
 * Executing the `mark` command on task(s) previously marked as done will not cause an error to be thrown, and the task(s) would remain as marked.
 
@@ -647,7 +621,7 @@ Marks the specified task as done.
 * `mark 2 1 2` marks the first and second task of the second animal as done.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Mark_tasks_eg.png" alt="Mark task example" style="height: 300px; width: 550px; : margin-bottom: 16px;">
+  <img src="images/marktask_eg1.png" alt="Mark task example" style="height: 250px; width: 550px; : margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -668,7 +642,7 @@ Marks the specified task as done.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Unmarking a task as done: `unmark`
-Marks the specified task as uncompleted.
+Marks the task at the specified task index as uncompleted for the animal at the specified animal index.
 
 **Format:**
 <box>unmark ANIMAL_INDEX TASK_INDEX [TASK_INDEX]...</box>
@@ -679,11 +653,8 @@ Marks the specified task as uncompleted.
 
 <box type="info" header="Things to note:">
 
-* Marks the task at the specified `TASK_INDEX` as uncompleted for the animal at the specified `ANIMAL_INDEX`.
-* The `ANIMAL_INDEX` refers to the index of the animal on the current animal list view.
-* The `TASK_INDEX` refers to the index of the task on the task list of the animal.
 * If multiple `TASKINDEX` are specified, all the tasks at the specified `ANIMAL_INDEX` will be marked as uncompleted.
-* `TASK_INDEX` and `ANIMAL_INDEX` must be separated by a space.
+* All indexes must be separated by a space.
 * If one of the `TASK_INDEX` provided is invalid, the rest of the `TASK_INDEX` will not be marked as uncompleted.
 * Executing the `unmark` command on task(s) previously marked as uncomplete will not cause an error to be thrown, and the task(s) would remain as uncomplete (unmarked).
 
@@ -703,7 +674,7 @@ Marks the specified task as uncompleted.
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Unmark_tasks_eg.png" alt="Unmark task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/unmarktask_eg1.png" alt="Unmark task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -732,7 +703,6 @@ Resets all tasks of all animals as uncompleted.
 <box type="info" header="Things to note:">
 
 * Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
-* Any words after `reset` will be ignored.
 
 </box>
 
@@ -767,14 +737,14 @@ The animal cell whose details are currently being displayed in the detail view w
 * Selecting an animal in the first cell will display the details as shown below, with the selected cell highlighted in orange.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/Selected_Animal.png" alt="Selected animal view" style="height: 300px; width: 550px; margin-bottom: 16px;">
+  <img src="images/selectedanimal_eg1.png" alt="Selected animal view" style="height: 200px; width: 600px; margin-bottom: 16px;">
 </div>
 
 
 * `edit 2 n/Pooh` will automatically cause the animal at `INDEX 2` to show in the detailed view, since it is a command in the list of animal-specific commands.
 
 <div style="display:flex; justify-content: center; align-items:center;">
-  <img src="images/detailView_eg2.png" alt="Detailed view" style="height: 300px; width: 550px; : margin-bottom: 16px;">
+  <img src="images/selectedanimal_eg2.png" alt="Detailed view" style="height: 300px; width: 650px; : margin-bottom: 16px;">
 </div>
 
 
