@@ -113,7 +113,7 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 2. **Download Pawfection.** Download the latest version of Pawfection (`pawfection.jar`.) from our [Github Release](https://github.com/AY2324S1-CS2103T-F08-3/tp/releases/tag/v1.4.final).
 <br>
   <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/github-release.png" alt="github-release" style="height: 200px; width: 550px; margin-bottom: 16px;">
+    <img src="images/github-release.png" alt="github-release" style="height: 300px; width: 550px; margin-bottom: 16px;">
   </div>
 <br>
 
@@ -127,14 +127,15 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
        <img src="images/cd.png" alt="cd" style="height: 300px; width: 550px; margin-bottom: 16px;">
      </div>
    <br>
-    - Alternatively, you can manually navigate to the folder using the `cd` command in your **Terminal**.
+   
+    - Alternatively, you can manually navigate to the folder using the `cd` command in your **Terminal**. 
 
 5. **Run Pawfection.** Use the `java -jar pawfection.jar` command to run the application.<br>
 
    <box type="warning"><md>Ensure you are in the correct location when running the above command!</md></box>
 <br>
   <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/java-jar.png" alt="java-jar" style="height: 100px; width: 550px; margin-bottom: 16px;">
+    <img src="images/java-jar.png" alt="java-jar" style="height: 250px; width: 400px; margin-bottom: 16px;">
   </div>
 <br>
 
@@ -163,7 +164,7 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 **Main Window**:
 <br>
   <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/marked_ui" alt="marked-ui" style="height: 300px; width: 550px; margin-bottom: 16px;">
+    <img src="images/marked_ui.png" alt="marked-ui" style="height: 300px; width: 550px; margin-bottom: 16px;">
   </div>
 <br>
 
@@ -215,10 +216,6 @@ Here are the components of the Graphical User Interface (GUI), and their details
 
 5. **Add more Animals.** Try it out yourself! Add more animals to the list using the `add` command.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
-</div>
-
 6. **Searching for Animals.** Now that the list view is getting a little too crowded, let us try to search for animals. Type in `search n/Tofu` and press `Enter`. The animal list view will now only show animals with the name `Tofu`.
 
 <div style="display: flex; justify-content: center; align-items: center;">
@@ -267,7 +264,7 @@ Here are the **main components** of the commands:
 |:------------:|:---------------:|:-----------------------------------------------------------------------------------------------------------------:|
 | Command Word | `add`, `search` |                                            The feature to be executed                                             |
 |    Prefix    |   `n/`, `i/`    |                                        The type of attribute of the animal                                        |
-|  Parameter   |  `NAME`, `ID`   |                                     The value of the attribute of the animal                                      |
+|  Parameter   |  `NAME`, `ID`   |                       The value of the attribute of the animal, which is supplied by users                        |
 |    Index     |    `1`, `2`     | The position of the animal or task in the current list, based on 1-indexing, i.e first animal will be at index 1. |
 
 To view the full list of animal attributes, refer to [Attributes of `Animal`](#attributes-of-animal).
@@ -279,18 +276,13 @@ Here are the **additional symbols** used in the commands:
 | Symbol |     Example      |                       Description                        |
 |:------:|:----------------:|:--------------------------------------------------------:|
 |  None  |     `n/NAME`     |            The parameter `NAME` is compulsory            |
-| `[ ]`  |    `b/BREED`     |            The parameter `BREED` is optional             |
+| `[ ]`  |   `[b/BREED]`    |            The parameter `BREED` is optional             |
 | `...`  | `TASK_INDEX ...` | Multiple parameters of type `TASK_INDEX` can be accepted |
 
 
 
 <box type="info" header="Notes about the command format:">
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Pookie`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [s/Dog]` can be used as `n/Pookie s/Dog` or as `n/Pookie`.
 
 * Parameters can be in any order **EXCEPT** commands that take in `ANIMAL_INDEX` and `TASK_INDEX` as inputs.<br>
   e.g. if the command specifies `n/NAME db/DOB`, `db/DOB n/NAME` is also acceptable.
@@ -388,12 +380,6 @@ add n/NAME i/ID g/SEX s/SPECIES b/BREED db/DOB da/DOA
 
 <box type="info" header="Things to note:">
 
-* ID must be a unique 4 digit number.
-* SEX must be either `male` or `female`. Note that it is NOT case-sensitive.
-* Date of Birth (DOB) and Date of Admission (DOA) must be in the format `yyyy-MM-dd`. e.g. `2019-01-01` for 1st January 2019.
-* DOB must come chronologically before DOA.
-* Both DOB and DOA must not be in the future (If today's date is `2023-11-13`, then any date after that is considered **invalid**).
-* Species and breed can only be alphabetic with only a single space between words. E.g. `Golden Retriever` is valid, but <code>Golden &nbsp; Retriever</code> is invalid. (Note the extra whitespaces in between words).
 * Animals are uniquely identified by their ID. Hence, attempting to add a new animal that has an ID that already exists in the AnimalCatalog is not valid.
 * Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of the constraints of each attribute.
 
@@ -446,11 +432,6 @@ Deletes the animal at the specified index from the animal catalog.
 **Format:**
 <box>delete INDEX</box>
 
-**Things to note:**
-* Deletes the animal at the specified `INDEX`.
-* The `INDEX` refers to the animal of the `INDEX` on the animal list view, and is a positive number.
-* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-
 **Examples:**
 * `delete 2`
 
@@ -477,17 +458,6 @@ Edits animals specified by the index with the newly specified prefix attributes.
 
 **Format:**
 <box>edit INDEX [n/NAME] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA] </box>
-
-**Things to note:**
-* ID cannot be edited.
-* At least one prefix must be provided.
-* Prefixes that are not provided will not be edited.
-* The `INDEX` refers to the animal of the `INDEX` on the animal list view.
-* `INDEX` is based on 1-indexing, i.e first animal will be at index 1.
-* `INDEX` must be a positive integer 1, 2, 3, ...
-* The order of prefixes does not matter. e.g. both `1 n/Pookie s/Cat` and `1 s/Cat n/Pookie `will edit the animal at index 1 to species `Cat` and name `Pookie`.
-* Attribute constraints must be adhered to. E.g. `Sex` must be either `male` or `female`.
-* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
 **Examples:**
 * `edit 2 n/Pookie`
@@ -534,18 +504,6 @@ Searches animals that are filtered using the specified prefixes.
 **Format:**
 <box>search [n/NAME] [i/ID] [g/SEX] [s/SPECIES] [b/BREED] [db/DOB] [da/DOA]</box>
 
-**Things to note:**
-* Searches for animals whose attributes contain the specified search values in the prefix filter.
-* The search is case-insensitive. e.g `n/pookie` will match animals named `Pookie`
-* Searches will only return complete matches of its respective attributes, not partial matches. e.g. `search n/ear` will not match animals whose name contains `ear` like `Bear`, it will only search for animals whose names are spelt exactly `ear`.
-* If searching by more than 1 prefix, the animal's attribute has to match all the specified fields e.g. `search b/dog n/tofu` will only return a dog named tofu and not any other dog or any pet named tofu
-* Any characters or words after `search` and before any recognized prefixes will be ignored.
-* Any unrecognized prefixes will be ignored and will not be treated as a keyword to search for.
-* Valid prefixes include: `n/[NAME]`, `i/[ID]`, `g/[SEX]`, `s/[SPECIES]`, `b/[BREED]`, `db/[DATE_OF_BIRTH]`, `da/[DATE_OF_ADMISSION]`
-* There must be at least 1 prefix specified.
-* For empty prefix keywords such as a prefix by itself, e.g `n/` or a prefix with whitespaces `n/   `, no filtering for the prefix will be done. However, at least 1 non-empty prefix must be specified. `search`, and `search n/` is not a valid command. But `search n/Pookie s/` will show all animals with name "Pookie", as the filter for `s/` is ignored.
-* For fields that take in dates (`db/` and `da/`), the date must be in the format `YYYY-MM-DD`. e.g. `2019-01-01` for 1st January 2019.
-* Refer to [attributes of `Animal`](#attributes-of-animal) for a better idea of what the constraints are.
 
 **Examples:**
 * `search n/Bear`
