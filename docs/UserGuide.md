@@ -33,7 +33,10 @@ With Pawfection, experience a new level of convenience and control:
 
 <!-- * Table of Contents -->
 - [Quick start](#quick-start)
+- [Navigating the GUI](#navigating-the-gui)
+- [Pawfection Tutorial](#pawfection-tutorial)
 - [Features](#features)
+    - [Command Format](#command-format)
     - [Attributes of `Animal`](#attributes-of-animal)
     - [Program usage help: `help`](#program-usage-help-help)
     - [Adding an animal: `add`](#adding-an-animal-add)
@@ -110,8 +113,10 @@ Welcome to the Pawfection User Guide! Our goal is to empower you with the knowle
 If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/jdk_howto.html) to install Java 11.
 </box>
 
+<div style="page-break-after: always;"></div>
+
 2. **Download Pawfection.** Download the latest version of Pawfection (`pawfection.jar`.) from our [Github Release](https://github.com/AY2324S1-CS2103T-F08-3/tp/releases/tag/v1.4.final).
-<br>
+  <br>
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/github-release.png" alt="github-release" style="height: 300px; width: 550px; margin-bottom: 16px;">
   </div>
@@ -122,7 +127,7 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 
 4. **Navigate to Workspace.** Navigate to the folder containing the `pawfection.jar` file using this method:
    - Right-click the folder and select `New Terminal at Folder` **(Mac)** or `Open in Terminal` **(Windows)** to instantly navigate to the folder in your **Terminal**.
-     <br>
+     <br> <br>
      <div style="display:flex; justify-content: center; align-items:center;">
        <img src="images/cd.png" alt="cd" style="height: 300px; width: 550px; margin-bottom: 16px;">
      </div>
@@ -141,13 +146,15 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
 
 <box type="warning">The terminal may look different on different Operating System, that is fine.</box>
 
-6. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+6. A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="images/Ui_default.png" alt="Default View" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
 <box type="tip">Opt for full-screen mode to optimize your viewing experience!</box>
+
+<div style="page-break-after: always;"></div>
 
 7. **Start using Pawfection!**
    - For new users, you can refer to our [Tutorial](#pawfection-tutorial) for a step-by-step walkthrough of Pawfection's features.
@@ -166,7 +173,6 @@ If Java 11 is not installed, follow the instructions [here](https://www3.ntu.edu
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/marked_ui.png" alt="marked-ui" style="height: 300px; width: 550px; margin-bottom: 16px;">
   </div>
-<br>
 
 Here are the components of the Graphical User Interface (GUI), and their details.
 
@@ -186,10 +192,6 @@ Here are the components of the Graphical User Interface (GUI), and their details
 <br>
 
 [Back to Table of Contents](#table-of-contents)
-
----
-
-<div style="page-break-after: always;"></div>
 
 ## Pawfection Tutorial
 
@@ -219,7 +221,7 @@ Here are the components of the Graphical User Interface (GUI), and their details
 6. **Searching for Animals.** Now that the list view is getting a little too crowded, let us try to search for animals. Type in `search n/Tofu` and press `Enter`. The animal list view will now only show animals with the name `Tofu`.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/search-tut.png" alt="search-tut" style="height: 280px; width: 550px; margin-bottom: 16px;">
+  <img src="images/search-tut.png" alt="search-tut" style="height: 200px; width: 550px; margin-bottom: 16px;">
 </div>
 
 7. **Detailed Animal View.** Let us try to view the details of `Tofu`. Click on the `Tofu` card on the left of GUI. The animal details view on the right will now show the details of `Tofu`.
@@ -234,7 +236,7 @@ Here are the components of the Graphical User Interface (GUI), and their details
   <img src="images/list-tut.png" alt="list-tut" style="height: 400px; width: 550px; margin-bottom: 16px;">
 </div>
 
-9. **Adding a Task.** Now add a task to `Tofu`. Type in `addtask 1 Feed Tofu` and press `Enter`. A task with the name `Feed Tofu` is now added to `Tofu`'s task list.
+9. **Adding a Task.** Now add a task to `Tofu`. Type in `addtask 3 Feed Tofu` and press `Enter`. A task with the name `Feed Tofu` is now added to `Tofu`'s task list.
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="images/add-task-tut.png" alt="add-task-tut" style="height: 300px; width: 550px; margin-bottom: 16px;">
@@ -262,8 +264,8 @@ Here are the **main components** of the commands:
 
 |  Component   |     Example     |                                                    Description                                                    |
 |:------------:|:---------------:|:-----------------------------------------------------------------------------------------------------------------:|
-| Command Word | `add`, `search` |                                            The feature to be executed                                             |
-|    Prefix    |   `n/`, `i/`    |                                        The type of attribute of the animal                                        |
+| Command Word | `add`, `search` |                                            The command to be executed                                             |
+|    Prefix    |   `n/`, `i/`    |                                            The attribute of the animal                                            |
 |  Parameter   |  `NAME`, `ID`   |                       The value of the attribute of the animal, which is supplied by users                        |
 |    Index     |    `1`, `2`     | The position of the animal or task in the current list, based on 1-indexing, i.e first animal will be at index 1. |
 
@@ -279,7 +281,7 @@ Here are the **additional symbols** used in the commands:
 | `[ ]`  |   `[b/BREED]`    |            The parameter `BREED` is optional             |
 | `...`  | `TASK_INDEX ...` | Multiple parameters of type `TASK_INDEX` can be accepted |
 
-
+<div style="page-break-after: always;"></div>
 
 <box type="info" header="Notes about the command format:">
 
@@ -303,8 +305,8 @@ For longer error messages stated in the user guide, they have been shortened for
 ---
 
 ### Attributes of `Animal`
-Summarized in the table below are the attributes of `Animal` along with their constraints. Users are encouraged to read through
-this table for an idea of what the attributes are supposed to look like, and refer to this table if they are unsure.
+Summarized in the table below are the attributes of `Animal` along with their constraints. You are encouraged to read through
+this table for an idea of what the attributes are supposed to look like, and refer to this table if you are unsure.
 
 <details open style="border: 1px solid grey; padding: 10px; border-radius: 5px;">
 <summary style="font-size: 20px; cursor: pointer;">Attributes of <code>Animal</code></summary>
@@ -354,7 +356,7 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 
 * `help add` will show usage guide of all commands that partial match with `add`.
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="images/help_add.png" alt="help add" style="height: 100px; width: 900px; margin-bottom: 16px;">
+  <img src="images/help_add.png" alt="help add" style="height: 100px; width: 700px; margin-bottom: 16px;">
 </div>
 
 **Upon failure:**
@@ -365,6 +367,7 @@ Displays either a link to this User Guide in a pop-up, or the usage guide of the
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ### Adding an animal: `add`
 Adds an animal to the animal catalog.
@@ -426,6 +429,8 @@ Shows a list of all animals in the animal catalog.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Deleting an animal: `delete`
 Deletes the animal at the specified index from the animal catalog.
 
@@ -453,6 +458,8 @@ Deletes the animal at the specified index from the animal catalog.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Editing an animal: `Edit`
 Edits animals specified by the index with the newly specified prefix attributes.
 
@@ -478,6 +485,8 @@ Edits animals specified by the index with the newly specified prefix attributes.
   <img src="images/edit_eg1.png" alt="Edit animal name" style="height: 300px; width: 650px; margin-bottom: 16px;">
 </div>
 
+<div style="page-break-after: always;"></div>
+
 * `edit 1 s/Dog b/Poodle` edits the species of the animal at `INDEX 1` to be `Dog` and the breed to be `Poodle`.
 
 <div style="display:flex; justify-content: center; align-items:center;">
@@ -497,6 +506,8 @@ Edits animals specified by the index with the newly specified prefix attributes.
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Searching an animal: `Search`
 Searches animals that are filtered using the specified prefixes.
@@ -523,6 +534,8 @@ Searches animals that are filtered using the specified prefixes.
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 **Upon success:**
 * `search n/Bear` returns all animals with the name `Bear`, not animals whose species is `Bear`
 <div style="display:flex; justify-content: center; align-items:center;">
@@ -544,6 +557,8 @@ Searches animals that are filtered using the specified prefixes.
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Adds a task to an animal: `addtask`
 Adds a new task with the specified description to the task list of an animal.
@@ -569,6 +584,8 @@ Adds a new task with the specified description to the task list of an animal.
   <img src="images/addtask_eg1.png" alt="Add task example" style="height: 300px; width: 550px; margin-bottom: 16px;">
 </div>
 
+<div style="page-break-after: always;"></div>
+
 **Upon failure:**
 * If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
   <box type="wrong"> The animal index provided is invalid </box>
@@ -579,6 +596,8 @@ Adds a new task with the specified description to the task list of an animal.
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Deletes a task of an animal: `deletetask`
 Deletes the task at the specified task index from the task list of the animal at the specified animal index.
@@ -614,6 +633,7 @@ Deletes the task at the specified task index from the task list of the animal at
   <img src="images/deletetask_eg1.png" alt="Delete task example" style="height: 250px; width: 550px; margin-bottom: 16px;">
 </div>
 
+<div style="page-break-after: always;"></div>
 
 **Upon failure:**
 * If the `ANIMAL_INDEX` provided is out of range, the following error message will be produced:
@@ -628,6 +648,8 @@ Deletes the task at the specified task index from the task list of the animal at
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Marking a task as done: `mark`
 Marks the task at the specified task index as done for the animal at the specified animal index.
@@ -660,12 +682,16 @@ Marks the task at the specified task index as done for the animal at the specifi
 * `mark 1 1`
 * `mark 2 1 2`
 
+<div style="page-break-after: always;"></div>
+
 **Upon success:**
 * `mark 2 1 2` marks the first and second task of the second animal as done.
 
 <div style="display:flex; justify-content: center; align-items:center;">
   <img src="images/marktask_eg1.png" alt="Mark task example" style="height: 250px; width: 550px; : margin-bottom: 16px;">
 </div>
+
+<br>
 
 **Upon failure:**
 * If no `TASK_INDEX` is provided, the following error message will be produced:
@@ -683,6 +709,8 @@ Marks the task at the specified task index as done for the animal at the specifi
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Unmarking a task as done: `unmark`
 Marks the task at the specified task index as uncompleted for the animal at the specified animal index.
@@ -716,6 +744,8 @@ Marks the task at the specified task index as uncompleted for the animal at the 
 * `unmark 1 1`
 * `unmark 3 1 2`
 
+<div style="page-break-after: always;"></div>
+
 **Upon success:**
 * `unmark 3 1 2` marks the first and second task of the third animal as uncompleted.
 
@@ -740,15 +770,17 @@ Marks the task at the specified task index as uncompleted for the animal at the 
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Reset all tasks: `reset`
-Resets all tasks of all animals as uncompleted.
+Sets all tasks of all animals as uncompleted.
 
 **Format:**
 <box>reset</box>
 
 <box type="info" header="Things to note:">
 
-* Resets all tasks of all animals in the catalog as uncompleted, regardless of the current animal list view.
+* Resets all tasks of all animals in the catalog, regardless of the current animal list view.
 
 </box>
 
@@ -763,6 +795,8 @@ Resets all tasks of all animals as uncompleted.
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Viewing animal details
 The detailed view panel on the right shows greater details about the selected animal. There are 2 ways to view the details of a certain animal:
@@ -786,6 +820,7 @@ The animal cell whose details are currently being displayed in the detail view w
   <img src="images/selectedanimal_eg1.png" alt="Selected animal view" style="height: 200px; width: 600px; margin-bottom: 16px;">
 </div>
 
+<div style="page-break-after: always;"></div>
 
 * `edit 2 n/Pooh` will automatically cause the animal at `INDEX 2` to show in the detailed view, since it is a command in the list of animal-specific commands.
 
@@ -793,6 +828,7 @@ The animal cell whose details are currently being displayed in the detail view w
   <img src="images/selectedanimal_eg2.png" alt="Detailed view" style="height: 300px; width: 650px; : margin-bottom: 16px;">
 </div>
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -808,13 +844,11 @@ Pawfection data are saved in the hard disk automatically after any command that 
 
 Pawfection data are saved automatically as a JSON file `[JAR file location]/data/animalcatalog.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
-
-*Caution:*
-If your changes to the data file makes its format invalid, Pawfection will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
+<box type="warning">If your changes to the data file makes its format invalid, Pawfection will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.</box>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -828,6 +862,8 @@ If your changes to the data file makes its format invalid, Pawfection will disca
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
